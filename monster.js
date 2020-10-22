@@ -1,6 +1,4 @@
 
-
-
 class Monster
 {
     constructor(numericStats, descriptors, passives, actions, reactions)
@@ -97,5 +95,42 @@ class SpecialPassives
         this.names = names;
         this.descriptions = descriptions;
         this.spellCasting = spellCasting;
+    }
+}
+class MonsterSpellCasting
+{
+    constructor(castLevel, castAbility, spellSaveEquation, spellSlots, spells)
+    {
+        this.castLevel = castLevel;
+        this.castAbility = castAbility;
+        this.spellSaveEquation = spellSaveEquation;
+        this.spellSlots = spellSlots;
+        this.spells = spells;
+    }
+}
+class MonsterActions 
+{ // all string[] unless otherwise
+	constructor(names, descriptions, legendaryActions)
+    {
+        this.names = names;
+        this.descriptions = descriptions;
+        this.legendaryActions = legendaryActions;
+    }
+    
+}
+class LegendaryActions 
+{
+	constructor(names, descriptions)
+    {
+        this.names = names;
+        this.descriptions = descriptions;
+    }
+}
+class MonsterReactions 
+{ // all string[]
+	constructor(names, descriptions)
+    {
+        this.names = names;
+        this.descriptions = descriptions;
     }
 }
