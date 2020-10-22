@@ -1,0 +1,67 @@
+[
+    {
+        "name": "Kobold",
+        "NumericStats": {
+            "ac": 12,
+            "hp": 5,
+            "cr": 0.125,
+            "Speeds": {
+                "landSpeed": 30,
+                "flySpeed": 0,
+                "swimSpeed": 0
+            },
+            "AbilityScores": {
+                "str": 7,
+                "dex": 15,
+                "con": 9,
+                "int": 8,
+                "wis": 7,
+                "cha": 8
+            },
+            "SavingThrows": {
+                "str": 0,
+                "dex": 0,
+                "con": 0,
+                "int": 0,
+                "wis": 0,
+                "cha": 0
+            }
+        },
+        "Descriptors": {
+            "size": "small",
+            "type": "humanoid",
+            "alignment": "lawful evil"
+        },
+        "Passives": {
+            "senses": ["darkvision 60ft.", "passive perception 8"],
+            "skills": [""],
+            "languages": ["Common", "Draconic"],
+            "resistances": [""],
+            "immunities": [""],
+            "conditionalImmunities": [""],
+            "SpecialPassives": {
+                "names": ["Sunlight Sensitivity", "Pack Tactics"],
+                "descriptions": ["Disadvantage in sunlight: attack, perception(sight) rolls", "Advantage on attack if ally within 5 ft."],
+                "SpellCasting": {
+                    "castLevel": 0,
+                    "castAbility": "",
+                    "spellSaveEquation": "",
+                    "spellSlots": [],
+                    "spells": []
+                }
+            }
+        },
+        "Actions": {
+            "names": ["Dagger", "Sling"],
+            "descriptions": ["Melee Attack: +4 hit, 1d4 + 2p", "Ranged Attack: +4 hit, 30/120ft., 1d4+2b"],
+            "LegendaryActions": {
+                "names": [],
+                "descriptions": []
+            }
+        },
+        "Reactions": {
+            "names": [],
+            "descriptions": []
+        }
+    }
+]
