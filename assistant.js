@@ -56,3 +56,7 @@ function showSidebar() {
         .setTitle('DM Assistant');
     DocumentApp.getUi().showSidebar(ui);
 }
+
+function selectUtility(event) {
+    alert(this.options[this.selectedIndex].text);
+}
