@@ -35,7 +35,6 @@
   </head>
   <body>
     <div class="sidebar branding-below">
-      <form>
         <div>
             <select name="utilities" id="utilities">
                 <option value="loot-gen">Loot Generator</option>
@@ -67,16 +66,18 @@
             </div>
         </div>
         <div id="bestiary" style="display: none;">
-            <div>
-                <label for="bestiary-sort">Sort by:</label>
-                <select name="bestiary=sort" id="bestiary-sort">
-                    <option value="name">Name</option>
-                    <option value="cr">CR</option>
-                    <option value="hp">HP</option>
-                </select>
-            </div>
+            <form>
+                <input type="text" placeholder="Search">
+                <button id="bestiary-search">Search</button>
+            </form>
+            <br>
+            <label for="bestiary-sort">Sort by:</label>
+            <select name="bestiary-sort" id="bestiary-sort">
+                <option value="name">Name</option>
+                <option value="cr">CR</option>
+                <option value="hp">HP</option>
+            </select>
         </div>
-      </form>
     </div>
 
     <div class="sidebar bottom">
