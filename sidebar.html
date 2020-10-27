@@ -147,6 +147,7 @@
             }
         }
 
+        // call on its own to insert a new element after the reference
         function insertAfter(newNode, referenceNode)
         {
             referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
@@ -155,14 +156,21 @@
         // generate collapsibles via script
         for (let i = 0; i < 5; i++)
         {
-            // create new div
-            let newDiv = document.createElement("div");
-
-            // create text to place in div
-            let newContent = document.createTextNode("Hello! I'm div #" + i);
+            let newDiv = document.createElement("div");         // create new div
             
-            // place text in div
-            newDiv.appendChild(newContent);
+            let newButton = document.createElement("button");   // create button to place in the dive
+            newButton.innerHTML = "Collapible #" + i;           // add text to the button
+            newButton.classList.add("collapsible");             // add collapsible class to button
+
+            let collapseDiv = document.createElement("div");    // create div class="collapse-content"
+            collapseDiv.classList.add("collapse-content");
+
+            let testPara = document.createElement("p");         // add content to the collapse div
+            testPara.innerHTML = "I contain collapsible content #" + i;
+
+            collapseDiv.appendChild(testPara);                  // attach content to collapse div
+            newDiv.appendChild(newButton);                      // attach button to parent div
+            newDiv.appendChild(collapseDiv);                    // attach collapse div to parent div
 
             // add div to document
             let currentDiv = document.getElementById("test-collapse");
