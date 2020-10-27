@@ -147,6 +147,29 @@
             }
         }
 
+        function insertAfter(newNode, referenceNode)
+        {
+            referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+        }
+
+        // generate collapsibles via script
+        for (let i = 0; i < 5; i++)
+        {
+            // create new div
+            let newDiv = document.createElement("div");
+
+            // create text to place in div
+            let newContent = document.createTextNode("Hello! I'm div #" + i);
+            
+            // place text in div
+            newDiv.appendChild(newContent);
+
+            // add div to document
+            let currentDiv = document.getElementById("test-collapse");
+            insertAfter(newDiv, currentDiv);
+
+        }
+
         // for loop for collapsible functionality
         let collapse = document.getElementsByClassName("collapsible");
         for (let i = 0; i < collapse.length; i++)
