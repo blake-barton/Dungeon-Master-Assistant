@@ -266,8 +266,21 @@
                     <td><button type="button" class="add-button">Add Legendary Action</button></td>
                 </tr>
             </table>
+            <hr>
+            <h3>Reactions</h3>
+            <table>
+                <tr>
+                    <td><label for="reaction0">Reactions:</label></td>
+                    <td><input type="text" id="reaction0" name="reaction0" placeholder="Name"></td>
+                    <td><input type="text" id="reaction-desc0" name="reaction-desc0" placeholder="Description"></td>
+                    <td><button type="button" class="add-button">Add Reaction</button></td>
+                </tr>
+            </table>
             <br>
         </form>
-        <input type="button" value="Close" onclick="google.script.host.close()" />
+        <div class="block" id="submit-bar">
+            <button class="blue" id="save">Save Custom Monster</button>
+            <input type="button" value="Close" onclick="google.script.host.close()" />
+        </div>
     </body>
 </html>
