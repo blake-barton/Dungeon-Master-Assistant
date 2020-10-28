@@ -87,7 +87,7 @@
         </div>
         <div id="bestiary" style="display: none;">
             <form>
-                <button class="blue" id="custom-monster">Create Custom Monster</button>
+                <button class="blue" id="custom-monster" onclick="popoutDialog()">Create Custom Monster</button>
             </form>
             <br>
             <form>
@@ -117,8 +117,16 @@
     </div>
 
     <script>
+        // pops out the custom monster dialog
+        function popoutDialog()
+        {
+            google.script.run.showDialog();
+        }
+    </script>
+    <script>
         document.getElementById("utilities").onchange = function() {selectUtility();}
-        function selectUtility() {
+        function selectUtility() 
+        {
 
             // track which functionality is selected
             let utilitySelect = document.getElementById("utilities").selectedIndex;

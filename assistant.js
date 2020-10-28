@@ -57,6 +57,12 @@ function showSidebar() {
     DocumentApp.getUi().showSidebar(ui);
 }
 
-function selectUtility(event) {
-    alert(this.options[this.selectedIndex].text);
+// function to create a popup modal
+function showDialog()
+{
+    var html = HtmlService.createHtmlOutputFromFile('dialog')
+        .setWidth(400)
+        .setHeight(300);
+    DocumentApp.getUi()
+        .showModalDialog(html, 'Create a new Monster');
 }
