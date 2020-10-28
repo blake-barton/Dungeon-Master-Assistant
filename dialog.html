@@ -4,61 +4,68 @@
         <base target="_top">
         <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
         <!-- The CSS package above applies Google styling to buttons and other elements. -->
-
         <style>
-            /* this CSS is used to align the inputs of the form */
-            form  { display: table;      }
-            p     { display: table-row;  }
-            label { display: table-cell; }
-            input { display: table-cell; }
+            table.ability-scores {
+                table-layout: fixed;
+                width: 600px;
+            }
         </style>
     </head>
     <body>
         <form>
             <h3>Descriptors</h3>
-            <p>
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name">
-            </p>
-            <br>
-            <p>
-                <label for="type">Type:</label>
-                <input type="text" id="type" name="type">
-            </p>
-            <br>
-            <p>
-                <label for="size">Size:</label>
-                <input type="text" id="size" name="size">
-            </p>
-            <br>
-            <p>
-                <label for="alignment">Alignment:</label>
-                <input type="text" id="alignment" name="alignment">
-            </p>
-            <br>
+            <table>
+                <tr>
+                    <td><label for="name">Name:</label></td>
+                    <td><input type="text" id="name" name="name"></td>
+                </tr>
+                <tr>
+                    <td><label for="type">Type:</label></td>
+                    <td><input type="text" id="type" name="type"></td>
+                </tr>
+                <tr>
+                    <td><label for="size">Size:</label></td>
+                    <td><input type="text" id="size" name="size"></td>
+                </tr>
+                <tr>
+                    <td><label for="alignment">Alignment:</label></td>
+                    <td><input type="text" id="alignment" name="alignment"></td>
+                </tr>
+            </table>
             <hr>
             <h3>Numeric Stats</h3>
-            <p>
-                <label for="ac">Armor Class:</label>
-                <input type="text" id="ac" name="ac">
-            </p>
-            <br>
-            <p>
-                <label for="hp">Hit Points:</label>
-                <input type="text" id="hp" name="hp">
-            </p>
-            <br>
-            <p>
-                <label for="land-speed">Speeds:</label>
-                <input type="text" id="land-speed" name="land-speed" placeholder="Land">
-                <input type="text" id="fly-speed" name="fly-speed" placeholder="Fly">
-                <input type="text" id="swim-speed" name="swim-speed" placeholder="Swim">
-            </p>
-            <br>
-            <p>
-                <label for="cr">Challenge Rating:</label>
-                <input type="text" id="cr" name="cr">
-            </p>
+            <table>
+                <tr>
+                    <td><label for="ac">Armor Class:</label></td>
+                    <td><input type="text" id="ac" name="ac"></td>
+                </tr>
+                <tr>
+                    <td><label for="hp">Hit Points:</label></td>
+                    <td><input type="text" id="hp" name="hp"></td>
+                </tr>
+                <tr>
+                    <td><label for="land-speed">Speeds:</label></td>
+                    <td><input type="text" id="land-speed" name="land-speed" placeholder="Land"></td>
+                    <td><input type="text" id="fly-speed" name="fly-speed" placeholder="Fly"></td>
+                    <td><input type="text" id="swim-speed" name="swim-speed" placeholder="Swim"></td>
+                </tr>
+                <tr>
+                    <td><label for="cr">Challenge Rating:</label></td>
+                    <td><input type="text" id="cr" name="cr"></td>
+                </tr>
+            </table>
+            <hr>
+            <h3>Ability Scores</h3>
+            <table class="ability-scores">
+                <tr>
+                    <td>STR</td>
+                    <td>DEX</td>
+                    <td>CON</td>
+                    <td>INT</td>
+                    <td>WIS</td>
+                    <td>CHA</td>
+                </tr>
+            </table>
             <br>
         </form>
         <input type="button" value="Close" onclick="google.script.host.close()" />
