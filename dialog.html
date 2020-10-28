@@ -16,6 +16,9 @@
             table.ability-scores td input {
                 text-align: center;
             }
+            .add-button {
+                margin-left: 5px;
+            }
         </style>
     </head>
     <body>
@@ -99,6 +102,20 @@
                     <td><input type="text" id="save-int" name="save-int" size="9" maxlength="2"></td>
                     <td><input type="text" id="save-wis" name="save-wis" size="9" maxlength="2"></td>
                     <td><input type="text" id="save-cha" name="save-cha" size="9" maxlength="2"></td>
+                </tr>
+            </table>
+            <hr>
+            <h3>Passives</h3>
+            <table>
+                <tr>
+                    <td><label for="senses">Senses:</label></td>
+                    <td><input type="text" id="sense0" name="sense0"></td>
+                    <td><button type="button" class="add-button">Add sense</button></td>
+                </tr>
+                <tr>
+                    <td><label for="skills">Skills:</label></td>
+                    <td><input type="text" id="skill0" name="skill0"></td>
+                    <td><button type="button" class="add-button">Add Skill</button></td>
                 </tr>
             </table>
             <br>
