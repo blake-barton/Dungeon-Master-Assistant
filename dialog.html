@@ -26,6 +26,9 @@
             td select {
                 margin-left: 5px !important;
             }
+            td input[type=number] {
+                width: 60px !important;
+            }
         </style>
     </head>
     <body>
@@ -93,21 +96,21 @@
             <table>
                 <tr>
                     <td><label for="ac">Armor Class:</label></td>
-                    <td><input type="text" id="ac" name="ac" size="5"></td>
+                    <td><input type="number" id="ac" name="ac" size="5" min="0"></td>
                 </tr>
                 <tr>
                     <td><label for="hp">Hit Points:</label></td>
-                    <td><input type="text" id="hp" name="hp" size="5"></td>
+                    <td><input type="number" id="hp" name="hp" size="5" min="0"></td>
                 </tr>
                 <tr>
                     <td><label for="land-speed">Speeds:</label></td>
-                    <td><input type="text" id="land-speed" name="land-speed" placeholder="Land" size="5"></td>
-                    <td><input type="text" id="fly-speed" name="fly-speed" placeholder="Fly" size="5"></td>
-                    <td><input type="text" id="swim-speed" name="swim-speed" placeholder="Swim" size="5"></td>
+                    <td><input type="number" id="land-speed" name="land-speed" placeholder="Land" size="5" min="0"></td>
+                    <td><input type="number" id="fly-speed" name="fly-speed" placeholder="Fly" size="5" min="0"></td>
+                    <td><input type="number" id="swim-speed" name="swim-speed" placeholder="Swim" size="5" min="0"></td>
                 </tr>
                 <tr>
                     <td><label for="cr">Challenge Rating:</label></td>
-                    <td><input type="text" id="cr" name="cr" size="5"></td>
+                    <td><input type="number" id="cr" name="cr" size="5" min="0"></td>
                 </tr>
             </table>
             <hr>
@@ -122,12 +125,12 @@
                     <td>CHA</td>
                 </tr>
                 <tr>
-                    <td><input type="text" id="str" name="str" size="9" maxlength="2"></td>
-                    <td><input type="text" id="dex" name="dex" size="9" maxlength="2"></td>
-                    <td><input type="text" id="con" name="con" size="9" maxlength="2"></td>
-                    <td><input type="text" id="int" name="int" size="9" maxlength="2"></td>
-                    <td><input type="text" id="wis" name="wis" size="9" maxlength="2"></td>
-                    <td><input type="text" id="cha" name="cha" size="9" maxlength="2"></td>
+                    <td><input type="number" id="str" name="str" size="9" maxlength="2" min="0"></td>
+                    <td><input type="number" id="dex" name="dex" size="9" maxlength="2" min="0"></td>
+                    <td><input type="number" id="con" name="con" size="9" maxlength="2" min="0"></td>
+                    <td><input type="number" id="int" name="int" size="9" maxlength="2" min="0"></td>
+                    <td><input type="number" id="wis" name="wis" size="9" maxlength="2" min="0"></td>
+                    <td><input type="number" id="cha" name="cha" size="9" maxlength="2" min="0"></td>
                 </tr>
             </table>
             <hr>
@@ -142,12 +145,12 @@
                     <td>CHA</td>
                 </tr>
                 <tr>
-                    <td><input type="text" id="save-str" name="save-str" size="9" maxlength="2"></td>
-                    <td><input type="text" id="save-dex" name="save-dex" size="9" maxlength="2"></td>
-                    <td><input type="text" id="save-con" name="save-con" size="9" maxlength="2"></td>
-                    <td><input type="text" id="save-int" name="save-int" size="9" maxlength="2"></td>
-                    <td><input type="text" id="save-wis" name="save-wis" size="9" maxlength="2"></td>
-                    <td><input type="text" id="save-cha" name="save-cha" size="9" maxlength="2"></td>
+                    <td><input type="number" id="save-str" name="save-str" size="9" maxlength="2"></td>
+                    <td><input type="number" id="save-dex" name="save-dex" size="9" maxlength="2"></td>
+                    <td><input type="number" id="save-con" name="save-con" size="9" maxlength="2"></td>
+                    <td><input type="number" id="save-int" name="save-int" size="9" maxlength="2"></td>
+                    <td><input type="number" id="save-wis" name="save-wis" size="9" maxlength="2"></td>
+                    <td><input type="number" id="save-cha" name="save-cha" size="9" maxlength="2"></td>
                 </tr>
             </table>
             <hr>
@@ -199,7 +202,7 @@
             <table>
                 <tr>
                     <td><label for="cast-level">Cast Level:</label></td>
-                    <td><input type="text" id="cast-level" name="cast-level" size="5"></td>
+                    <td><input type="number" id="cast-level" name="cast-level" size="5" min="0"></td>
                 </tr>
                 <tr>
                     <td><label for="cast-ability">Cast Ability:</label></td>
@@ -207,11 +210,11 @@
                 </tr>
                 <tr>
                     <td><label for="save-dc">Spell Save DC:</label></td>
-                    <td><input type="text" id="save-dc" name="save-dc" size="5"></td>
+                    <td><input type="number" id="save-dc" name="save-dc" size="5" min="0"></td>
                 </tr>
                 <tr>
                     <td><label for="spell-attack-bonus">Spell Attack Bonus:</label></td>
-                    <td><input type="text" id="spell-attack-bonus" name="spell-attack-bonus" size="5"></td>
+                    <td><input type="number" id="spell-attack-bonus" name="spell-attack-bonus" size="5"></td>
                 </tr>
             </table>
             <h4>Spellslots</h4>
@@ -228,15 +231,15 @@
                     <td>9</td>
                 </tr>
                 <tr>
-                    <td><input type="text" id="slot1" name="slot1" size="4" maxlength="2"></td>
-                    <td><input type="text" id="slot2" name="slot2" size="4" maxlength="2"></td>
-                    <td><input type="text" id="slot3" name="slot3" size="4" maxlength="2"></td>
-                    <td><input type="text" id="slot4" name="slot4" size="4" maxlength="2"></td>
-                    <td><input type="text" id="slot5" name="slot5" size="4" maxlength="2"></td>
-                    <td><input type="text" id="slot6" name="slot6" size="4" maxlength="2"></td>
-                    <td><input type="text" id="slot7" name="slot7" size="4" maxlength="2"></td>
-                    <td><input type="text" id="slot8" name="slot8" size="4" maxlength="2"></td>
-                    <td><input type="text" id="slot9" name="slot9" size="4" maxlength="2"></td>
+                    <td><input type="number" id="slot1" name="slot1" size="4" maxlength="2"></td>
+                    <td><input type="number" id="slot2" name="slot2" size="4" maxlength="2"></td>
+                    <td><input type="number" id="slot3" name="slot3" size="4" maxlength="2"></td>
+                    <td><input type="number" id="slot4" name="slot4" size="4" maxlength="2"></td>
+                    <td><input type="number" id="slot5" name="slot5" size="4" maxlength="2"></td>
+                    <td><input type="number" id="slot6" name="slot6" size="4" maxlength="2"></td>
+                    <td><input type="number" id="slot7" name="slot7" size="4" maxlength="2"></td>
+                    <td><input type="number" id="slot8" name="slot8" size="4" maxlength="2"></td>
+                    <td><input type="number" id="slot9" name="slot9" size="4" maxlength="2"></td>
                 </tr>
             </table>
             <h4>Spells</h4>
