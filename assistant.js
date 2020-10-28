@@ -61,8 +61,8 @@ function showSidebar() {
 function showDialog()
 {
     var html = HtmlService.createHtmlOutputFromFile('dialog')
-        .setWidth(400)
-        .setHeight(300);
+        .setWidth(800)
+        .setHeight(600);
     DocumentApp.getUi()
         .showModalDialog(html, 'Create a new Monster');
 }
