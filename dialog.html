@@ -4,8 +4,46 @@
         <base target="_top">
         <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
         <!-- The CSS package above applies Google styling to buttons and other elements. -->
+
+        <style>
+            /* this CSS is used to align the inputs of the form */
+            form  { display: table;      }
+            p     { display: table-row;  }
+            label { display: table-cell; }
+            input { display: table-cell; }
+        </style>
     </head>
     <body>
-        Hello, world! <input type="button" value="Close" onclick="google.script.host.close()" />
+        <form>
+            <h3>Descriptors</h3>
+            <p>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name">
+            </p>
+            <br>
+            <p>
+                <label for="type">Type:</label>
+                <input type="text" id="type" name="type">
+            </p>
+            <br>
+            <p>
+                <label for="size">Size:</label>
+                <input type="text" id="size" name="size">
+            </p>
+            <br>
+            <p>
+                <label for="alignment">Alignment:</label>
+                <input type="text" id="alignment" name="alignment">
+            </p>
+            <br>
+            <hr>
+            <h3>Numeric Stats</h3>
+            <p>
+                <label for="ac">Armor Class:</label>
+                <input type="text" id="ac" name="ac">
+            </p>
+            <br>
+        </form>
+        <input type="button" value="Close" onclick="google.script.host.close()" />
     </body>
 </html>
