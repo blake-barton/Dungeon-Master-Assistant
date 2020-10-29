@@ -164,18 +164,40 @@
                     <td><label for="sense0">Senses:</label></td>
                     <td>
                         <select name="sense0" id="sense0">
+                            <option value="no-sense">None</option>
                             <option value="blindsight">Blindsight</option>
                             <option value="darkvision">Darkvision</option>
                             <option value="tremorsense">Tremorsense</option>
                             <option value="Truesight">Truesight</option>
                         </select>
                     </td>
-                    <td><input type="number" id="sense-range-0" name="sense-range-0" min="0" placeholder="ft."></td>
+                    <td><input type="number" id="sense-range0" name="sense-range0" min="0" placeholder="ft."></td>
                     <td><button type="button" class="add-button">Add sense</button></td>
                 </tr>
                 <tr>
                     <td><label for="skill0">Skills:</label></td>
-                    <td><input type="text" id="skill0" name="skill0"></td>
+                    <td>
+                        <select name="skill0" id="skill0">
+                            <option value="acrobatics">Acrobatics (dex)</option>
+                            <option value="animal">Animal Handling (wis)</option>
+                            <option value="arcana">Arcana (int)</option>
+                            <option value="athletics">Athletics (str)</option>
+                            <option value="deception">Deception (cha)</option>
+                            <option value="history">History (int)</option>
+                            <option value="insight">Insight (wis)</option>
+                            <option value="intimidation">Intimidation (cha)</option>
+                            <option value="investigation">Investigation (int)</option>
+                            <option value="medicine">Medicine (wis)</option>
+                            <option value="nature">Nature (int)</option>
+                            <option value="performance">Performance (cha)</option>
+                            <option value="persuasion">Persuasion (cha)</option>
+                            <option value="religion">Religion (int)</option>
+                            <option value="sleight">Sleight of Hand (dex)</option>
+                            <option value="stealth">Stealth (dex)</option>
+                            <option value="survival">Survival (wis)</option>
+                        </select>
+                    </td>
+                    <td><input type="number" id="skill-mod0" name="skill-mod0" min="0" placeholder="+mod"></td>
                     <td><button type="button" class="add-button">Add Skill</button></td>
                 </tr>
                 <tr>
@@ -229,7 +251,7 @@
                     <td><input type="number" id="spell-attack-bonus" name="spell-attack-bonus" size="5"></td>
                 </tr>
             </table>
-            <h4>Spellslots</h4>
+            <h4>Spell slots</h4>
             <table class="ability-scores">
                 <tr>
                     <td>1</td>
