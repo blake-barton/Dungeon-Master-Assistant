@@ -160,7 +160,7 @@
                     <td><label for="pass-perception">Passive Perception:</label></td>
                     <td><input type="number" id="pass-perception" name="pass-perception" size="5" min="0"></td>
                 </tr>
-                <tr>
+                <tr id="senses">
                     <td><label for="sense0">Senses:</label></td>
                     <td>
                         <select name="sense0" id="sense0">
@@ -440,8 +440,21 @@
             <br>
         </form>
         <div class="block" id="submit-bar">
-            <button class="blue" id="save">Save Custom Monster</button>
+            <button type="submit" class="blue" id="save" onclick="testConsole()">Save Custom Monster</button>
             <input type="button" value="Close" onclick="google.script.host.close()" />
         </div>
+
+        <script>
+
+            // call on its own to insert a new element after the reference
+            function insertAfter(newNode, referenceNode)
+            {
+                referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+            }
+
+            function generateNewInput(rowID)
+            {
+            }
+        </script>
     </body>
 </html>
