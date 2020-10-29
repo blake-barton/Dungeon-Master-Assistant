@@ -178,6 +178,7 @@
                     <td><label for="skill0">Skills:</label></td>
                     <td>
                         <select name="skill0" id="skill0">
+                            <option value="no-skills">None</option>
                             <option value="acrobatics">Acrobatics (dex)</option>
                             <option value="animal">Animal Handling (wis)</option>
                             <option value="arcana">Arcana (int)</option>
@@ -204,6 +205,7 @@
                     <td><label for="language0">Languages:</label></td>
                     <td>
                         <select name="language0" id="language0">
+                            <option value="no-language">None</option>
                             <option value="common">Common</option>
                             <option value="dwarvish">Dwarvish</option>
                             <option value="elvish">Elvish</option>
@@ -226,18 +228,69 @@
                 </tr>
                 <tr>
                     <td><label for="resistance0">Resistances:</label></td>
-                    <td><input type="text" id="resistance0" name="resistance0"></td>
+                    <td>
+                        <select name="resistance0" id="resistance0">
+                            <option value="no-resistance">None</option>
+                            <option value="acid">Acid</option>
+                            <option value="bludgeoning">Bludgeoning</option>
+                            <option value="cold">Cold</option>
+                            <option value="fire">Fire</option>
+                            <option value="force">Force</option>
+                            <option value="lightning">Lightning</option>
+                            <option value="necrotic">Necrotic</option>
+                            <option value="piercing">Piercing</option>
+                            <option value="poison">Poison</option>
+                            <option value="psychic">Psychic</option>
+                            <option value="radiant">Radiant</option>
+                            <option value="slashing">Slashing</option>
+                            <option value="thunder">Thunder</option>
+                        </select>
+                    </td>
                     <td><button type="button" class="add-button">Add Resistance</button></td>
                 </tr>
                 <tr>
                     <td><label for="immunity0">Immunities:</label></td>
-                    <td><input type="text" id="immunity0" name="immunity0"></td>
+                    <td>
+                        <select name="immunity0" id="immunity0">
+                            <option value="no-immunity">None</option>
+                            <option value="acid">Acid</option>
+                            <option value="bludgeoning">Bludgeoning</option>
+                            <option value="cold">Cold</option>
+                            <option value="fire">Fire</option>
+                            <option value="force">Force</option>
+                            <option value="lightning">Lightning</option>
+                            <option value="necrotic">Necrotic</option>
+                            <option value="piercing">Piercing</option>
+                            <option value="poison">Poison</option>
+                            <option value="psychic">Psychic</option>
+                            <option value="radiant">Radiant</option>
+                            <option value="slashing">Slashing</option>
+                            <option value="thunder">Thunder</option>
+                        </select>
+                    </td>
                     <td><button type="button" class="add-button">Add Immunity</button></td>
                 </tr>
                 <tr>
-                    <td><label for="c-immunity0">Conditional Immunities:</label></td>
-                    <td><input type="text" id="c-immunity0" name="c-immunity0"></td>
-                    <td><button type="button" class="add-button">Add Conditional Immunity</button></td>
+                    <td><label for="c-immunity0">Condition Immunities:</label></td>
+                    <td>
+                        <select name="c-immunity0" id="c-immunity0">
+                            <option value="no-c-immunity">None</option>
+                            <option value="blinded">Blinded</option>
+                            <option value="charmed">Charmed</option>
+                            <option value="deafened">Deafened</option>
+                            <option value="exhaustion">Exhaustion</option>
+                            <option value="frightened">Frightened</option>
+                            <option value="grappled">Grappled</option>
+                            <option value="paralyzed">Paralyzed</option>
+                            <option value="petrified">Petrified</option>
+                            <option value="poisoned">Poisoned</option>
+                            <option value="prone">Prone</option>
+                            <option value="restrained">Restrained</option>
+                            <option value="stunned">Stunned</option>
+                            <option value="unconscious">Unconscious</option>
+                        </select>
+                    </td>
+                    <td><button type="button" class="add-button">Add Condition Immunity</button></td>
                 </tr>
             </table>
             <hr>
