@@ -162,7 +162,15 @@
                 </tr>
                 <tr>
                     <td><label for="sense0">Senses:</label></td>
-                    <td><input type="text" id="sense0" name="sense0"></td>
+                    <td>
+                        <select name="sense0" id="sense0">
+                            <option value="blindsight">Blindsight</option>
+                            <option value="darkvision">Darkvision</option>
+                            <option value="tremorsense">Tremorsense</option>
+                            <option value="Truesight">Truesight</option>
+                        </select>
+                    </td>
+                    <td><input type="number" id="sense-range-0" name="sense-range-0" min="0" placeholder="ft."></td>
                     <td><button type="button" class="add-button">Add sense</button></td>
                 </tr>
                 <tr>
