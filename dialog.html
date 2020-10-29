@@ -312,7 +312,17 @@
                 </tr>
                 <tr>
                     <td><label for="cast-ability">Cast Ability:</label></td>
-                    <td><input type="text" id="cast-ability" name="cast-ability"></td>
+                    <td>
+                        <select name="cast-ability" id="cast-ability">
+                            <option value="cast-none">None</option>
+                            <option value="cast-strength">Strength</option>
+                            <option value="cast-dexterity">Dexterity</option>
+                            <option value="cast-constitution">Constitution</option>
+                            <option value="cast-intelligence">Intelligence</option>
+                            <option value="cast-wisdom">Wisdom</option>
+                            <option value="cast-charisma">Charisma</option>
+                        </select>
+                    </td>
                 </tr>
                 <tr>
                     <td><label for="save-dc">Spell Save DC:</label></td>
