@@ -455,7 +455,7 @@
             function incrementIdNumber(id)
             {
                 // get number off of rowID
-                num = id.charAt(id.length - 1);
+                let num = id.charAt(id.length - 1);
                 console.log("original row #: " + num);
                 
                 // increment num;
@@ -488,7 +488,8 @@
                 let inputID = row.getElementsByTagName('input')[0].id;
                 let inputName = row.getElementsByTagName('input')[0].name;
 
-                // button: generateNewInput('sense-row0')
+                // change button function
+                row.getElementsByTagName('button')[0].setAttribute("onClick", "generateNewInput('" + clone.id + "')");
                 
                 // change clone children ids
                 clone.getElementsByTagName('label')[0].htmlFor = incrementIdNumber(labelFor);
@@ -496,6 +497,8 @@
                 clone.getElementsByTagName('select')[0].id = incrementIdNumber(selectID);
                 clone.getElementsByTagName('input')[0].id = incrementIdNumber(inputID);
                 clone.getElementsByTagName('input')[0].name = incrementIdNumber(inputName);
+
+                // cut the button td
 
                 // insert clone
                 insertAfter(clone, row);
