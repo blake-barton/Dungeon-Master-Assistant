@@ -172,7 +172,7 @@
                         </select>
                     </td>
                     <td><input type="number" id="sense-range0" name="sense-range0" min="0" placeholder="ft."></td>
-                    <td><button type="button" class="add-button">Add sense</button></td>
+                    <td><button type="button" class="add-button" onclick="generateNewInput('senses')">Add sense</button></td>
                 </tr>
                 <tr>
                     <td><label for="skill0">Skills:</label></td>
@@ -454,6 +454,21 @@
 
             function generateNewInput(rowID)
             {
+                console.log("rowID = " + rowID);
+                
+                // get row
+                let row = document.getElementById(rowID);
+
+                // clone row
+                let clone = row.cloneNode(true);
+
+                // change clone id
+                clone.id = "cloneRow";
+                
+                clone.getElementsByTagName('label')[0].id = "labelClone";
+                clone.getElementsByTagName('select')[0].id = "selectClone";
+                clone.getElementsByTagName('input')[0].id = "inputClone"
+                insertAfter(clone, row);
             }
         </script>
     </body>
