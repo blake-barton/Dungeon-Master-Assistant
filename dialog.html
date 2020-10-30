@@ -456,17 +456,24 @@
             {
                 // get number off of rowID
                 let num = id.charAt(id.length - 1);
-                console.log("original row #: " + num);
                 
                 // increment num;
                 num++;
-                console.log("new row number will be: " + num);
 
                 // cut off rowID number
                 let cutID = id.substring(0, id.length - 1);
 
                 // change clone id
                 return cutID + num;
+            }
+
+            function getHomeRow(id)
+            {
+                // cut off rowID number
+                let cutID = id.substring(0, id.length - 1);
+
+                // change clone id
+                return cutID + '0';
             }
 
             function generateNewInput(rowID)
@@ -479,7 +486,6 @@
 
                 // change clone id
                 clone.id = incrementIdNumber(rowID);
-                console.log("cloned row id: " + clone.id);
 
                 // get original children ids
                 let labelFor = row.getElementsByTagName('label')[0].htmlFor;
@@ -488,8 +494,9 @@
                 let inputID = row.getElementsByTagName('input')[0].id;
                 let inputName = row.getElementsByTagName('input')[0].name;
 
-                // change button function
-                row.getElementsByTagName('button')[0].setAttribute("onClick", "generateNewInput('" + clone.id + "')");
+                // change button function of home row
+                homeRow = document.getElementById(getHomeRow(row.id));
+                homeRow.getElementsByTagName('button')[0].setAttribute("onClick", "generateNewInput('" + clone.id + "')");
                 
                 // change clone children ids
                 clone.getElementsByTagName('label')[0].htmlFor = incrementIdNumber(labelFor);
@@ -499,7 +506,12 @@
                 clone.getElementsByTagName('input')[0].name = incrementIdNumber(inputName);
 
                 // cut the button td
-
+                if (clone.getElementsByTagName('button').length > 0)
+                {
+                    console.log('there is a button in the clone');
+                    clone.deleteCell(-1);
+                }
+                
                 // insert clone
                 insertAfter(clone, row);
             }
