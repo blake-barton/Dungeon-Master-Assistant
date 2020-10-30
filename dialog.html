@@ -160,7 +160,7 @@
                     <td><label for="pass-perception">Passive Perception:</label></td>
                     <td><input type="number" id="pass-perception" name="pass-perception" size="5" min="0"></td>
                 </tr>
-                <tr id="senses">
+                <tr id="sense-row0">
                     <td><label for="sense0">Senses:</label></td>
                     <td>
                         <select name="sense0" id="sense0">
@@ -172,9 +172,9 @@
                         </select>
                     </td>
                     <td><input type="number" id="sense-range0" name="sense-range0" min="0" placeholder="ft."></td>
-                    <td><button type="button" class="add-button" onclick="generateNewInput('senses')">Add sense</button></td>
+                    <td><button type="button" class="add-button" onclick="generateNewInput('sense-row0')">Add sense</button></td>
                 </tr>
-                <tr>
+                <tr id="skill-row0">
                     <td><label for="skill0">Skills:</label></td>
                     <td>
                         <select name="skill0" id="skill0">
@@ -201,7 +201,7 @@
                     <td><input type="number" id="skill-mod0" name="skill-mod0" min="0" placeholder="+mod"></td>
                     <td><button type="button" class="add-button">Add Skill</button></td>
                 </tr>
-                <tr>
+                <tr id="language-row0">
                     <td><label for="language0">Languages:</label></td>
                     <td>
                         <select name="language0" id="language0">
@@ -226,7 +226,7 @@
                     </td>
                     <td><button type="button" class="add-button">Add Language</button></td>
                 </tr>
-                <tr>
+                <tr id="resistance-row0">
                     <td><label for="resistance0">Resistances:</label></td>
                     <td>
                         <select name="resistance0" id="resistance0">
@@ -248,7 +248,7 @@
                     </td>
                     <td><button type="button" class="add-button">Add Resistance</button></td>
                 </tr>
-                <tr>
+                <tr id="immunity-row0">
                     <td><label for="immunity0">Immunities:</label></td>
                     <td>
                         <select name="immunity0" id="immunity0">
@@ -270,7 +270,7 @@
                     </td>
                     <td><button type="button" class="add-button">Add Immunity</button></td>
                 </tr>
-                <tr>
+                <tr id="c-immunity-row0">
                     <td><label for="c-immunity0">Condition Immunities:</label></td>
                     <td>
                         <select name="c-immunity0" id="c-immunity0">
@@ -296,7 +296,7 @@
             <hr>
             <h3>Special Passives</h3>
             <table>
-                <tr>
+                <tr id="s-passive-row0">
                     <td><label for="s-passive0">Special Passives:</label></td>
                     <td><input type="text" id="s-passive0" name="s-passive0" placeholder="Name"></td>
                     <td><input type="text" id="s-passive-desc0" name="s-passive-desc0" placeholder="Description"></td>
@@ -452,10 +452,25 @@
                 referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
             }
 
-            function generateNewInput(rowID)
+            function incrementIdNumber(id)
             {
-                console.log("rowID = " + rowID);
+                // get number off of rowID
+                num = id.charAt(id.length - 1);
+                console.log("original row #: " + num);
                 
+                // increment num;
+                num++;
+                console.log("new row number will be: " + num);
+
+                // cut off rowID number
+                let cutID = id.substring(0, id.length - 1);
+
+                // change clone id
+                return cutID + num;
+            }
+
+            function generateNewInput(rowID)
+            {   
                 // get row
                 let row = document.getElementById(rowID);
 
@@ -463,11 +478,26 @@
                 let clone = row.cloneNode(true);
 
                 // change clone id
-                clone.id = "cloneRow";
+                clone.id = incrementIdNumber(rowID);
+                console.log("cloned row id: " + clone.id);
+
+                // get original children ids
+                let labelFor = row.getElementsByTagName('label')[0].htmlFor;
+                let selectName = row.getElementsByTagName('select')[0].name;
+                let selectID = row.getElementsByTagName('select')[0].id;
+                let inputID = row.getElementsByTagName('input')[0].id;
+                let inputName = row.getElementsByTagName('input')[0].name;
+
+                // button: generateNewInput('sense-row0')
                 
-                clone.getElementsByTagName('label')[0].id = "labelClone";
-                clone.getElementsByTagName('select')[0].id = "selectClone";
-                clone.getElementsByTagName('input')[0].id = "inputClone"
+                // change clone children ids
+                clone.getElementsByTagName('label')[0].htmlFor = incrementIdNumber(labelFor);
+                clone.getElementsByTagName('select')[0].name = incrementIdNumber(selectName);
+                clone.getElementsByTagName('select')[0].id = incrementIdNumber(selectID);
+                clone.getElementsByTagName('input')[0].id = incrementIdNumber(inputID);
+                clone.getElementsByTagName('input')[0].name = incrementIdNumber(inputName);
+
+                // insert clone
                 insertAfter(clone, row);
             }
         </script>
