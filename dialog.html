@@ -360,55 +360,55 @@
             </table>
             <h4>Spells</h4>
             <table>
-                <tr>
+                <tr id="cantrip-row0">
                     <td><label for="level0-0">Cantrips:</label></td>
                     <td><input type="text" id="level0-0" name="level0-0"></td>
-                    <td><button type="button" class="add-button">Add Spell</button></td>
+                    <td><button type="button" class="add-button" onclick="generateInput('cantrip-row0')">Add Spell</button></td>
                 </tr>
-                <tr>
+                <tr id="spell-level1-row0">
                     <td><label for="level1-0">1st Level:</label></td>
                     <td><input type="text" id="level1-0" name="level1-0"></td>
-                    <td><button type="button" class="add-button">Add Spell</button></td>
+                    <td><button type="button" class="add-button" onclick="generateInput('spell-level1-row0')">Add Spell</button></td>
                 </tr>
-                <tr>
+                <tr id="spell-level2-row0">
                     <td><label for="level2-0">2nd Level:</label></td>
                     <td><input type="text" id="level2-0" name="level2-0"></td>
-                    <td><button type="button" class="add-button">Add Spell</button></td>
+                    <td><button type="button" class="add-button" onclick="generateInput('spell-level2-row0')">Add Spell</button></td>
                 </tr>
-                <tr>
+                <tr id="spell-level3-row0">
                     <td><label for="level3-0">3rd Level:</label></td>
                     <td><input type="text" id="level3-0" name="level3-0"></td>
-                    <td><button type="button" class="add-button">Add Spell</button></td>
+                    <td><button type="button" class="add-button" onclick="generateInput('spell-level3-row0')">Add Spell</button></td>
                 </tr>
-                <tr>
+                <tr id="spell-level4-row0">
                     <td><label for="level4-0">4th Level:</label></td>
                     <td><input type="text" id="level4-0" name="level4-0"></td>
-                    <td><button type="button" class="add-button">Add Spell</button></td>
+                    <td><button type="button" class="add-button" onclick="generateInput('spell-level4-row0')">Add Spell</button></td>
                 </tr>
-                <tr>
+                <tr id="spell-level5-row0">
                     <td><label for="level5-0">5th Level:</label></td>
                     <td><input type="text" id="level5-0" name="level5-0"></td>
-                    <td><button type="button" class="add-button">Add Spell</button></td>
+                    <td><button type="button" class="add-button" onclick="generateInput('spell-level5-row0')">Add Spell</button></td>
                 </tr>
-                <tr>
+                <tr id="spell-level6-row0">
                     <td><label for="level6-0">6th Level:</label></td>
                     <td><input type="text" id="level6-0" name="level6-0"></td>
-                    <td><button type="button" class="add-button">Add Spell</button></td>
+                    <td><button type="button" class="add-button" onclick="generateInput('spell-level6-row0')">Add Spell</button></td>
                 </tr>
-                <tr>
+                <tr id="spell-level7-row0">
                     <td><label for="level7-0">7th Level:</label></td>
                     <td><input type="text" id="level7-0" name="level7-0"></td>
-                    <td><button type="button" class="add-button">Add Spell</button></td>
+                    <td><button type="button" class="add-button" onclick="generateInput('spell-level7-row0')">Add Spell</button></td>
                 </tr>
-                <tr>
+                <tr id="spell-level8-row0">
                     <td><label for="level8-0">8th Level:</label></td>
                     <td><input type="text" id="level8-0" name="level8-0"></td>
-                    <td><button type="button" class="add-button">Add Spell</button></td>
+                    <td><button type="button" class="add-button" onclick="generateInput('spell-level8-row0')">Add Spell</button></td>
                 </tr>
-                <tr>
+                <tr id="spell-level9-row0">
                     <td><label for="level9-0">9th Level:</label></td>
                     <td><input type="text" id="level9-0" name="level9-0"></td>
-                    <td><button type="button" class="add-button">Add Spell</button></td>
+                    <td><button type="button" class="add-button" onclick="generateInput('spell-level9-row0')">Add Spell</button></td>
                 </tr>
             </table>
             <hr>
@@ -496,7 +496,7 @@
 
                 // change button function of home row
                 homeRow = document.getElementById(getHomeRow(row.id));
-                homeRow.getElementsByTagName('button')[0].setAttribute("onClick", "generateNewInput('" + clone.id + "')");
+                homeRow.getElementsByTagName('button')[0].setAttribute("onClick", "generateSelectInput('" + clone.id + "')");
                 
                 // change clone children ids
                 clone.getElementsByTagName('label')[0].htmlFor = incrementIdNumber(labelFor);
@@ -534,7 +534,7 @@
 
                 // change button function of home row
                 homeRow = document.getElementById(getHomeRow(row.id));
-                homeRow.getElementsByTagName('button')[0].setAttribute("onClick", "generateNewInput('" + clone.id + "')");
+                homeRow.getElementsByTagName('button')[0].setAttribute("onClick", "generateSelect('" + clone.id + "')");
 
                 // change clone children ids
                 clone.getElementsByTagName('label')[0].htmlFor = incrementIdNumber(labelFor);
@@ -554,7 +554,38 @@
 
             function generateInput(rowID)
             {
+                // get row
+                let row = document.getElementById(rowID);
 
+                // clone row
+                let clone = row.cloneNode(true);
+
+                // change clone id
+                clone.id = incrementIdNumber(rowID);
+
+                // get original children ids
+                let labelFor = row.getElementsByTagName('label')[0].htmlFor;
+                let inputID = row.getElementsByTagName('input')[0].id;
+                let inputName = row.getElementsByTagName('input')[0].name;
+
+                // change button function of home row
+                homeRow = document.getElementById(getHomeRow(row.id));
+                homeRow.getElementsByTagName('button')[0].setAttribute("onClick", "generateInput('" + clone.id + "')");
+
+                // change clone children ids
+                clone.getElementsByTagName('label')[0].htmlFor = incrementIdNumber(labelFor);
+                clone.getElementsByTagName('input')[0].id = incrementIdNumber(inputID);
+                clone.getElementsByTagName('input')[0].name = incrementIdNumber(inputName);
+
+                // cut the button td
+                if (clone.getElementsByTagName('button').length > 0)
+                {
+                    console.log('there is a button in the clone');
+                    clone.deleteCell(-1);
+                }
+                
+                // insert clone
+                insertAfter(clone, row);
             }
 
             function generateInputInput(rowID)
