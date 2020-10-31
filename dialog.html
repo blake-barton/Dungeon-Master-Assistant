@@ -414,27 +414,27 @@
             <hr>
             <h3>Actions</h3>
             <table>
-                <tr>
+                <tr id="action-row0">
                     <td><label for="action0">Actions:</label></td>
                     <td><input type="text" id="action0" name="action0" placeholder="Name"></td>
                     <td><input type="text" id="action-desc0" name="action-desc0" placeholder="Description"></td>
-                    <td><button type="button" class="add-button">Add Action</button></td>
+                    <td><button type="button" class="add-button" onclick="generateInputInput('action-row0')">Add Action</button></td>
                 </tr>
-                <tr>
+                <tr id="le-action-row0">
                     <td><label for="le-action0">Legendary Actions:</label></td>
                     <td><input type="text" id="le-action0" name="le-action0" placeholder="Name"></td>
                     <td><input type="text" id="le-action-desc0" name="le-action-desc0" placeholder="Description"></td>
-                    <td><button type="button" class="add-button">Add Legendary Action</button></td>
+                    <td><button type="button" class="add-button" onclick="generateInputInput('le-action-row0')">Add Legendary Action</button></td>
                 </tr>
             </table>
             <hr>
             <h3>Reactions</h3>
             <table>
-                <tr>
+                <tr id="reaction-row0">
                     <td><label for="reaction0">Reactions:</label></td>
                     <td><input type="text" id="reaction0" name="reaction0" placeholder="Name"></td>
                     <td><input type="text" id="reaction-desc0" name="reaction-desc0" placeholder="Description"></td>
-                    <td><button type="button" class="add-button">Add Reaction</button></td>
+                    <td><button type="button" class="add-button" onclick="generateInputInput('reaction-row0')">Add Reaction</button></td>
                 </tr>
             </table>
             <br>
@@ -590,7 +590,42 @@
 
             function generateInputInput(rowID)
             {
+                // get row
+                let row = document.getElementById(rowID);
 
+                // clone row
+                let clone = row.cloneNode(true);
+
+                // change clone id
+                clone.id = incrementIdNumber(rowID);
+
+                // get original children ids
+                let labelFor = row.getElementsByTagName('label')[0].htmlFor;
+                let inputID0 = row.getElementsByTagName('input')[0].id;
+                let inputName0 = row.getElementsByTagName('input')[0].name;
+                let inputID1 = row.getElementsByTagName('input')[0].id;
+                let inputName1 = row.getElementsByTagName('input')[0].name;
+
+                // change button function of home row
+                homeRow = document.getElementById(getHomeRow(row.id));
+                homeRow.getElementsByTagName('button')[0].setAttribute("onClick", "generateInputInput('" + clone.id + "')");
+
+                // change clone children ids
+                clone.getElementsByTagName('label')[0].htmlFor = incrementIdNumber(labelFor);
+                clone.getElementsByTagName('input')[0].id = incrementIdNumber(inputID0);
+                clone.getElementsByTagName('input')[0].name = incrementIdNumber(inputName0);
+                clone.getElementsByTagName('input')[1].id = incrementIdNumber(inputID1);
+                clone.getElementsByTagName('input')[1].name = incrementIdNumber(inputName1);
+
+                // cut the button td
+                if (clone.getElementsByTagName('button').length > 0)
+                {
+                    console.log('there is a button in the clone');
+                    clone.deleteCell(-1);
+                }
+                
+                // insert clone
+                insertAfter(clone, row);
             }
         </script>
     </body>
