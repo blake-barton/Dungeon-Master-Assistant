@@ -172,7 +172,7 @@
                         </select>
                     </td>
                     <td><input type="number" id="sense-range0" name="sense-range0" min="0" placeholder="ft."></td>
-                    <td><button type="button" class="add-button" onclick="generateNewInput('sense-row0')">Add sense</button></td>
+                    <td><button type="button" class="add-button" onclick="generateSelectInput('sense-row0')">Add sense</button></td>
                 </tr>
                 <tr id="skill-row0">
                     <td><label for="skill0">Skills:</label></td>
@@ -199,7 +199,7 @@
                         </select>
                     </td>
                     <td><input type="number" id="skill-mod0" name="skill-mod0" min="0" placeholder="+mod"></td>
-                    <td><button type="button" class="add-button">Add Skill</button></td>
+                    <td><button type="button" class="add-button" onclick="generateSelectInput('skill-row0')">Add Skill</button></td>
                 </tr>
                 <tr id="language-row0">
                     <td><label for="language0">Languages:</label></td>
@@ -224,7 +224,7 @@
                             <option value="undercommon">Undercommon</option>
                         </select>
                     </td>
-                    <td><button type="button" class="add-button">Add Language</button></td>
+                    <td><button type="button" class="add-button" onclick="generateSelect('language-row0')">Add Language</button></td>
                 </tr>
                 <tr id="resistance-row0">
                     <td><label for="resistance0">Resistances:</label></td>
@@ -246,7 +246,7 @@
                             <option value="thunder">Thunder</option>
                         </select>
                     </td>
-                    <td><button type="button" class="add-button">Add Resistance</button></td>
+                    <td><button type="button" class="add-button" onclick="generateSelect('resistance-row0')">Add Resistance</button></td>
                 </tr>
                 <tr id="immunity-row0">
                     <td><label for="immunity0">Immunities:</label></td>
@@ -268,7 +268,7 @@
                             <option value="im-thunder">Thunder</option>
                         </select>
                     </td>
-                    <td><button type="button" class="add-button">Add Immunity</button></td>
+                    <td><button type="button" class="add-button" onclick="generateSelect('immunity-row0')">Add Immunity</button></td>
                 </tr>
                 <tr id="c-immunity-row0">
                     <td><label for="c-immunity0">Condition Immunities:</label></td>
@@ -290,7 +290,7 @@
                             <option value="unconscious">Unconscious</option>
                         </select>
                     </td>
-                    <td><button type="button" class="add-button">Add Condition Immunity</button></td>
+                    <td><button type="button" class="add-button" onclick="generateSelect('c-immunity-row0')">Add Condition Immunity</button></td>
                 </tr>
             </table>
             <hr>
@@ -300,7 +300,7 @@
                     <td><label for="s-passive0">Special Passives:</label></td>
                     <td><input type="text" id="s-passive0" name="s-passive0" placeholder="Name"></td>
                     <td><input type="text" id="s-passive-desc0" name="s-passive-desc0" placeholder="Description"></td>
-                    <td><button type="button" class="add-button">Add Special Passive</button></td>
+                    <td><button type="button" class="add-button" onclick="generateInputInput('s-passive-row0')">Add Special Passive</button></td>
                 </tr>
             </table>
             <hr>
@@ -476,7 +476,7 @@
                 return cutID + '0';
             }
 
-            function generateNewInput(rowID)
+            function generateSelectInput(rowID)
             {   
                 // get row
                 let row = document.getElementById(rowID);
@@ -514,6 +514,52 @@
                 
                 // insert clone
                 insertAfter(clone, row);
+            }
+
+            function generateSelect(rowID)
+            {
+                // get row
+                let row = document.getElementById(rowID);
+
+                // clone row
+                let clone = row.cloneNode(true);
+
+                // change clone id
+                clone.id = incrementIdNumber(rowID);
+
+                // get original children ids
+                let labelFor = row.getElementsByTagName('label')[0].htmlFor;
+                let selectName = row.getElementsByTagName('select')[0].name;
+                let selectID = row.getElementsByTagName('select')[0].id;
+
+                // change button function of home row
+                homeRow = document.getElementById(getHomeRow(row.id));
+                homeRow.getElementsByTagName('button')[0].setAttribute("onClick", "generateNewInput('" + clone.id + "')");
+
+                // change clone children ids
+                clone.getElementsByTagName('label')[0].htmlFor = incrementIdNumber(labelFor);
+                clone.getElementsByTagName('select')[0].name = incrementIdNumber(selectName);
+                clone.getElementsByTagName('select')[0].id = incrementIdNumber(selectID);
+
+                // cut the button td
+                if (clone.getElementsByTagName('button').length > 0)
+                {
+                    console.log('there is a button in the clone');
+                    clone.deleteCell(-1);
+                }
+                
+                // insert clone
+                insertAfter(clone, row);
+            }
+
+            function generateInput(rowID)
+            {
+
+            }
+
+            function generateInputInput(rowID)
+            {
+
             }
         </script>
     </body>
