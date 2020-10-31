@@ -505,6 +505,9 @@
                 clone.getElementsByTagName('input')[0].id = incrementIdNumber(inputID);
                 clone.getElementsByTagName('input')[0].name = incrementIdNumber(inputName);
 
+                // empty clone label
+                clone.getElementsByTagName('label')[0].innerHTML = "";
+
                 // cut the button td
                 if (clone.getElementsByTagName('button').length > 0)
                 {
@@ -541,6 +544,9 @@
                 clone.getElementsByTagName('select')[0].name = incrementIdNumber(selectName);
                 clone.getElementsByTagName('select')[0].id = incrementIdNumber(selectID);
 
+                // empty clone label
+                clone.getElementsByTagName('label')[0].innerHTML = "";
+
                 // cut the button td
                 if (clone.getElementsByTagName('button').length > 0)
                 {
@@ -576,6 +582,9 @@
                 clone.getElementsByTagName('label')[0].htmlFor = incrementIdNumber(labelFor);
                 clone.getElementsByTagName('input')[0].id = incrementIdNumber(inputID);
                 clone.getElementsByTagName('input')[0].name = incrementIdNumber(inputName);
+
+                // empty clone label
+                clone.getElementsByTagName('label')[0].innerHTML = "";
 
                 // cut the button td
                 if (clone.getElementsByTagName('button').length > 0)
@@ -616,6 +625,9 @@
                 clone.getElementsByTagName('input')[0].name = incrementIdNumber(inputName0);
                 clone.getElementsByTagName('input')[1].id = incrementIdNumber(inputID1);
                 clone.getElementsByTagName('input')[1].name = incrementIdNumber(inputName1);
+
+                // empty clone label
+                clone.getElementsByTagName('label')[0].innerHTML = "";
 
                 // cut the button td
                 if (clone.getElementsByTagName('button').length > 0)
