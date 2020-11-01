@@ -32,7 +32,7 @@
         </style>
     </head>
     <body>
-        <form>
+        <form id="monsterForm" action="" method="GET">
             <h3>Descriptors</h3>
             <table>
                 <tr>
@@ -440,7 +440,7 @@
             <br>
         </form>
         <div class="block" id="submit-bar">
-            <button type="submit" class="blue" id="save" onclick="testConsole()">Save Custom Monster</button>
+            <button type="submit" class="blue" id="save" onclick="getResults('monsterForm')">Save Custom Monster</button>
             <input type="button" value="Close" onclick="google.script.host.close()" />
         </div>
 
@@ -638,6 +638,15 @@
                 
                 // insert clone
                 insertAfter(clone, row);
+            }
+
+            function getResults(formID)
+            {
+                let form = document.getElementById(formID);
+
+                let testGet = form.name.value;
+
+                alert("The name of the monster is: " + testGet);
             }
         </script>
     </body>
