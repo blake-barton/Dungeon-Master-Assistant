@@ -66,3 +66,8 @@ function showDialog()
     DocumentApp.getUi()
         .showModalDialog(html, 'Create a new Monster');
 }
+
+function createMonsterJSON(filename, monsterJSON)
+{
+    DriveApp.createFile(filename, monsterJSON);
+}

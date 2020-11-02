@@ -104,9 +104,9 @@
                 </tr>
                 <tr>
                     <td><label for="land-speed">Speeds:</label></td>
-                    <td><input type="number" id="land-speed" name="land-speed" placeholder="Land" size="5" min="0"></td>
-                    <td><input type="number" id="fly-speed" name="fly-speed" placeholder="Fly" size="5" min="0"></td>
-                    <td><input type="number" id="swim-speed" name="swim-speed" placeholder="Swim" size="5" min="0"></td>
+                    <td><input type="number" id="land-speed" name="landSpeed" placeholder="Land" size="5" min="0"></td>
+                    <td><input type="number" id="fly-speed" name="flySpeed" placeholder="Fly" size="5" min="0"></td>
+                    <td><input type="number" id="swim-speed" name="swimSpeed" placeholder="Swim" size="5" min="0"></td>
                 </tr>
                 <tr>
                     <td><label for="cr">Challenge Rating:</label></td>
@@ -145,12 +145,12 @@
                     <td>CHA</td>
                 </tr>
                 <tr>
-                    <td><input type="number" id="save-str" name="save-str" size="9" maxlength="2"></td>
-                    <td><input type="number" id="save-dex" name="save-dex" size="9" maxlength="2"></td>
-                    <td><input type="number" id="save-con" name="save-con" size="9" maxlength="2"></td>
-                    <td><input type="number" id="save-int" name="save-int" size="9" maxlength="2"></td>
-                    <td><input type="number" id="save-wis" name="save-wis" size="9" maxlength="2"></td>
-                    <td><input type="number" id="save-cha" name="save-cha" size="9" maxlength="2"></td>
+                    <td><input type="number" id="save-str" name="saveStr" size="9" maxlength="2"></td>
+                    <td><input type="number" id="save-dex" name="saveDex" size="9" maxlength="2"></td>
+                    <td><input type="number" id="save-con" name="saveCon" size="9" maxlength="2"></td>
+                    <td><input type="number" id="save-int" name="saveInt" size="9" maxlength="2"></td>
+                    <td><input type="number" id="save-wis" name="saveWis" size="9" maxlength="2"></td>
+                    <td><input type="number" id="save-cha" name="saveCha" size="9" maxlength="2"></td>
                 </tr>
             </table>
             <hr>
@@ -158,7 +158,7 @@
             <table>
                 <tr>
                     <td><label for="pass-perception">Passive Perception:</label></td>
-                    <td><input type="number" id="pass-perception" name="pass-perception" size="5" min="0"></td>
+                    <td><input type="number" id="pass-perception" name="passPerception" size="5" min="0"></td>
                 </tr>
                 <tr id="sense-row0">
                     <td><label for="sense0">Senses:</label></td>
@@ -171,7 +171,7 @@
                             <option value="Truesight">Truesight</option>
                         </select>
                     </td>
-                    <td><input type="number" id="sense-range0" name="sense-range0" min="0" placeholder="ft."></td>
+                    <td><input type="number" id="sense-range0" name="senseRange0" min="0" placeholder="ft."></td>
                     <td><button type="button" class="add-button" onclick="generateSelectInput('sense-row0')">Add sense</button></td>
                 </tr>
                 <tr id="skill-row0">
@@ -198,7 +198,7 @@
                             <option value="survival">Survival (wis)</option>
                         </select>
                     </td>
-                    <td><input type="number" id="skill-mod0" name="skill-mod0" min="0" placeholder="+mod"></td>
+                    <td><input type="number" id="skill-mod0" name="skillMod0" min="0" placeholder="+mod"></td>
                     <td><button type="button" class="add-button" onclick="generateSelectInput('skill-row0')">Add Skill</button></td>
                 </tr>
                 <tr id="language-row0">
@@ -273,7 +273,7 @@
                 <tr id="c-immunity-row0">
                     <td><label for="c-immunity0">Condition Immunities:</label></td>
                     <td>
-                        <select name="c-immunity0" id="c-immunity0">
+                        <select name="cImmunity0" id="c-immunity0">
                             <option value="no-c-immunity">None</option>
                             <option value="blinded">Blinded</option>
                             <option value="charmed">Charmed</option>
@@ -298,8 +298,8 @@
             <table>
                 <tr id="s-passive-row0">
                     <td><label for="s-passive0">Special Passives:</label></td>
-                    <td><input type="text" id="s-passive0" name="s-passive0" placeholder="Name"></td>
-                    <td><input type="text" id="s-passive-desc0" name="s-passive-desc0" placeholder="Description"></td>
+                    <td><input type="text" id="s-passive0" name="sPassive0" placeholder="Name"></td>
+                    <td><input type="text" id="s-passive-desc0" name="sPassiveDesc0" placeholder="Description"></td>
                     <td><button type="button" class="add-button" onclick="generateInputInput('s-passive-row0')">Add Special Passive</button></td>
                 </tr>
             </table>
@@ -308,12 +308,12 @@
             <table>
                 <tr>
                     <td><label for="cast-level">Cast Level:</label></td>
-                    <td><input type="number" id="cast-level" name="cast-level" size="5" min="0"></td>
+                    <td><input type="number" id="cast-level" name="castLevel" size="5" min="0"></td>
                 </tr>
                 <tr>
                     <td><label for="cast-ability">Cast Ability:</label></td>
                     <td>
-                        <select name="cast-ability" id="cast-ability">
+                        <select name="castAbility" id="cast-ability">
                             <option value="cast-none">None</option>
                             <option value="cast-strength">Strength</option>
                             <option value="cast-dexterity">Dexterity</option>
@@ -326,11 +326,11 @@
                 </tr>
                 <tr>
                     <td><label for="save-dc">Spell Save DC:</label></td>
-                    <td><input type="number" id="save-dc" name="save-dc" size="5" min="0"></td>
+                    <td><input type="number" id="save-dc" name="saveDC" size="5" min="0"></td>
                 </tr>
                 <tr>
                     <td><label for="spell-attack-bonus">Spell Attack Bonus:</label></td>
-                    <td><input type="number" id="spell-attack-bonus" name="spell-attack-bonus" size="5"></td>
+                    <td><input type="number" id="spell-attack-bonus" name="spellAttackBonus" size="5"></td>
                 </tr>
             </table>
             <h4>Spell slots</h4>
@@ -362,52 +362,52 @@
             <table>
                 <tr id="cantrip-row0">
                     <td><label for="level0-0">Cantrips:</label></td>
-                    <td><input type="text" id="level0-0" name="level0-0"></td>
+                    <td><input type="text" id="level0-0" name="level0_0"></td>
                     <td><button type="button" class="add-button" onclick="generateInput('cantrip-row0')">Add Spell</button></td>
                 </tr>
                 <tr id="spell-level1-row0">
                     <td><label for="level1-0">1st Level:</label></td>
-                    <td><input type="text" id="level1-0" name="level1-0"></td>
+                    <td><input type="text" id="level1-0" name="level1_0"></td>
                     <td><button type="button" class="add-button" onclick="generateInput('spell-level1-row0')">Add Spell</button></td>
                 </tr>
                 <tr id="spell-level2-row0">
                     <td><label for="level2-0">2nd Level:</label></td>
-                    <td><input type="text" id="level2-0" name="level2-0"></td>
+                    <td><input type="text" id="level2-0" name="level2_0"></td>
                     <td><button type="button" class="add-button" onclick="generateInput('spell-level2-row0')">Add Spell</button></td>
                 </tr>
                 <tr id="spell-level3-row0">
                     <td><label for="level3-0">3rd Level:</label></td>
-                    <td><input type="text" id="level3-0" name="level3-0"></td>
+                    <td><input type="text" id="level3-0" name="level3_0"></td>
                     <td><button type="button" class="add-button" onclick="generateInput('spell-level3-row0')">Add Spell</button></td>
                 </tr>
                 <tr id="spell-level4-row0">
                     <td><label for="level4-0">4th Level:</label></td>
-                    <td><input type="text" id="level4-0" name="level4-0"></td>
+                    <td><input type="text" id="level4-0" name="level4_0"></td>
                     <td><button type="button" class="add-button" onclick="generateInput('spell-level4-row0')">Add Spell</button></td>
                 </tr>
                 <tr id="spell-level5-row0">
                     <td><label for="level5-0">5th Level:</label></td>
-                    <td><input type="text" id="level5-0" name="level5-0"></td>
+                    <td><input type="text" id="level5-0" name="level5_0"></td>
                     <td><button type="button" class="add-button" onclick="generateInput('spell-level5-row0')">Add Spell</button></td>
                 </tr>
                 <tr id="spell-level6-row0">
                     <td><label for="level6-0">6th Level:</label></td>
-                    <td><input type="text" id="level6-0" name="level6-0"></td>
+                    <td><input type="text" id="level6-0" name="level6_0"></td>
                     <td><button type="button" class="add-button" onclick="generateInput('spell-level6-row0')">Add Spell</button></td>
                 </tr>
                 <tr id="spell-level7-row0">
                     <td><label for="level7-0">7th Level:</label></td>
-                    <td><input type="text" id="level7-0" name="level7-0"></td>
+                    <td><input type="text" id="level7-0" name="level7_0"></td>
                     <td><button type="button" class="add-button" onclick="generateInput('spell-level7-row0')">Add Spell</button></td>
                 </tr>
                 <tr id="spell-level8-row0">
                     <td><label for="level8-0">8th Level:</label></td>
-                    <td><input type="text" id="level8-0" name="level8-0"></td>
+                    <td><input type="text" id="level8-0" name="level8_0"></td>
                     <td><button type="button" class="add-button" onclick="generateInput('spell-level8-row0')">Add Spell</button></td>
                 </tr>
                 <tr id="spell-level9-row0">
                     <td><label for="level9-0">9th Level:</label></td>
-                    <td><input type="text" id="level9-0" name="level9-0"></td>
+                    <td><input type="text" id="level9-0" name="level9_0"></td>
                     <td><button type="button" class="add-button" onclick="generateInput('spell-level9-row0')">Add Spell</button></td>
                 </tr>
             </table>
@@ -417,13 +417,13 @@
                 <tr id="action-row0">
                     <td><label for="action0">Actions:</label></td>
                     <td><input type="text" id="action0" name="action0" placeholder="Name"></td>
-                    <td><input type="text" id="action-desc0" name="action-desc0" placeholder="Description"></td>
+                    <td><input type="text" id="action-desc0" name="actionDesc0" placeholder="Description"></td>
                     <td><button type="button" class="add-button" onclick="generateInputInput('action-row0')">Add Action</button></td>
                 </tr>
                 <tr id="le-action-row0">
                     <td><label for="le-action0">Legendary Actions:</label></td>
-                    <td><input type="text" id="le-action0" name="le-action0" placeholder="Name"></td>
-                    <td><input type="text" id="le-action-desc0" name="le-action-desc0" placeholder="Description"></td>
+                    <td><input type="text" id="le-action0" name="leAction0" placeholder="Name"></td>
+                    <td><input type="text" id="le-action-desc0" name="leActionDesc0" placeholder="Description"></td>
                     <td><button type="button" class="add-button" onclick="generateInputInput('le-action-row0')">Add Legendary Action</button></td>
                 </tr>
             </table>
@@ -433,7 +433,7 @@
                 <tr id="reaction-row0">
                     <td><label for="reaction0">Reactions:</label></td>
                     <td><input type="text" id="reaction0" name="reaction0" placeholder="Name"></td>
-                    <td><input type="text" id="reaction-desc0" name="reaction-desc0" placeholder="Description"></td>
+                    <td><input type="text" id="reaction-desc0" name="reactionDesc0" placeholder="Description"></td>
                     <td><button type="button" class="add-button" onclick="generateInputInput('reaction-row0')">Add Reaction</button></td>
                 </tr>
             </table>
@@ -644,9 +644,46 @@
             {
                 let form = document.getElementById(formID);
 
-                let testGet = form.name.value;
+                let newMonster = {
+                    "name": form.name.value,
+                    "Descriptors": {
+                        "type": form.type.value,
+                        "size": form.size.value,
+                        "alignment": form.alignment.value
+                    },
+                    "NumericStats": {
+                        "ac": form.ac.value,
+                        "hp": form.hp.value,
+                        "Speeds": {
+                            "land": form.landSpeed.value,
+                            "fly": form.flySpeed.value,
+                            "swim": form.swimSpeed.value
+                        },
+                        "cr": form.cr.value,
+                    },
+                    "AbilityScores": {
+                        "str": form.str.value,
+                        "dex": form.dex.value,
+                        "con": form.con.value,
+                        "int": form.int.value,
+                        "wis": form.wis.value,
+                        "cha": form.cha.value 
+                    },
+                    "SavingThrows": {
+                        "str": form.saveStr.value,
+                        "dex": form.saveDex.value,
+                        "con": form.saveCon.value,
+                        "int": form.saveInt.value,
+                        "wis": form.saveWis.value,
+                        "cha": form.saveCha.value 
+                    }
+                }
 
-                alert("The name of the monster is: " + testGet);
+                let monsterJSON = JSON.stringify(newMonster);
+                let filename = newMonster.name + ".json";
+
+                google.script.run.createMonsterJSON(filename, monsterJSON);
+                alert(filename + " successfully created.");
             }
         </script>
     </body>
