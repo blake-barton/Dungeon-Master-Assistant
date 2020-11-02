@@ -681,6 +681,39 @@
                 return returnArray;
             }
 
+            function selectResults(form, rowID, selectName)
+            {
+                returnArray = [];
+                currentVal = "";
+
+                // push current sense to senses array
+                returnArray.push(form[selectName].value);
+
+                // loop through the senses rows
+                homeRow = document.getElementById(rowID);
+                let currentRow = homeRow;
+                let siblingID;
+                let rowCount = 1;
+                while(true)
+                {
+                    currentRow = currentRow.nextElementSibling;
+                    siblingID = currentRow.id;
+                    if (siblingID.substring(0, siblingID.length - 1) === rowID.substring(0, rowID.length - 1))
+                    {
+                        currentVal = selectName.substring(0, selectName.length - 1) + rowCount;
+                        returnArray.push(form[currentVal].value);
+                        currentVal = "";
+                        rowCount++;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
+                return returnArray;
+            }
+
             function getResults(formID)
             {
                 let form = document.getElementById(formID);
@@ -688,6 +721,7 @@
                 // calculate passives
                 let senses = selectInputResults(form, "sense-row0", "sense0", "senseRange0");
                 let skills = selectInputResults(form, "skill-row0", "skill0", "skillMod0");
+                let languages = selectResults(form, "language-row0", "language0");
                 
                 let newMonster = {
                     "name": form.name.value,
@@ -725,7 +759,8 @@
                     "Passives": {
                         "passivePerception": form.passPerception.value,
                         "senses": senses,
-                        "skills": skills
+                        "skills": skills,
+                        "languages": languages
                     }
                 }
 
