@@ -685,47 +685,9 @@
             {
                 let form = document.getElementById(formID);
 
-                // calculate senses array
+                // calculate passives
                 let senses = selectInputResults(form, "sense-row0", "sense0", "senseRange0");
-
-                /*
-                let currentSense = [];
-
-                // push sense to current sense
-                currentSense.push(form.sense0.value);
-                currentSense.push(form.senseRange0.value);
-
-                // push current sense to senses array
-                senses.push(currentSense);
-                currentSense = [];
-
-                // loop through the senses rows
-                senseHome = document.getElementById("sense-row0");
-                let currentRow = senseHome;
-                let siblingID;
-                let rowCount = 1;
-                let senseName;
-                let rangeName;
-                while(true)
-                {
-                    currentRow = currentRow.nextElementSibling;
-                    siblingID = currentRow.id;
-                    if (siblingID.substring(0, siblingID.length - 1) === "sense-row")
-                    {
-                        senseName = "sense" + rowCount;
-                        rangeName = "senseRange" + rowCount;
-                        currentSense.push(form[senseName].value);
-                        currentSense.push(form[rangeName].value);
-                        senses.push(currentSense);
-                        currentSense = [];
-                        rowCount++;
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-                */
+                let skills = selectInputResults(form, "skill-row0", "skill0", "skillMod0");
                 
                 let newMonster = {
                     "name": form.name.value,
@@ -762,7 +724,8 @@
                     },
                     "Passives": {
                         "passivePerception": form.passPerception.value,
-                        "senses": senses
+                        "senses": senses,
+                        "skills": skills
                     }
                 }
 
