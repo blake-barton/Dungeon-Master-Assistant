@@ -654,18 +654,40 @@
 
                 // push current sense to senses array
                 senses.push(currentSense);
+                currentSense = [];
 
                 // loop through the senses rows
                 senseHome = document.getElementById("sense-row0");
-                let nextSibling = senseHome.nextSibling;
-                let siblingID = nextSibling.id;
-                console.log("next sibling id: " + siblingID); 
-                
-                if (siblingID.substring(0, siblingID.length - 1) === "sense-row")
+                let currentRow = senseHome;
+                let siblingID;
+                let rowCount = 1;
+                let senseName;
+                let rangeName;
+                while(true)
                 {
-                    console.log("the next row is also a sense.");
+                    console.log("Entering loop");
+                    currentRow = currentRow.nextElementSibling;
+                    siblingID = currentRow.id;
+                    console.log("sibling ID: " + siblingID);
+                    if (siblingID.substring(0, siblingID.length - 1) === "sense-row")
+                    {
+                        console.log("this is a sense row");
+                        senseName = "sense" + rowCount;
+                        console.log("sense name:" + senseName);
+                        rangeName = "senseRange" + rowCount;
+                        console.log("range name:" + rangeName);
+                        currentSense.push(form[senseName].value);
+                        currentSense.push(form[rangeName].value);
+                        senses.push(currentSense);
+                        currentSense = [];
+                        rowCount++;
+                    }
+                    else
+                    {
+                        break;
+                    }
                 }
-
+                
                 let newMonster = {
                     "name": form.name.value,
                     "Descriptors": {
