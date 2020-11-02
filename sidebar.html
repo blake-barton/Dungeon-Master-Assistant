@@ -74,8 +74,8 @@
             </div>
             <br>
             <div class="block" id="button-bar">
-                <button class="blue" id="run-translatio">Roll Treasure Horde</button>
-                <button id="insert-text">Roll Individual Loot</button>
+                <button class="blue" id="run-translatio" onclick="treasureHorde()">Roll Treasure Horde</button>
+                <button id="insert-text" onclick="individualLoot()">Roll Individual Loot</button>
             </div>
             <div class="block form-group">
                 <label for="translated-text"><b>Results</b></label>
@@ -121,6 +121,24 @@
         function popoutDialog()
         {
             google.script.run.showDialog();
+        }
+        
+        function individualLoot() {
+          //sel will have the value of the challenge rating that was selected by the user in the dropdown (zero, five, eleven, or seventeen)
+          var sel = document.getElementById("loot-cr").value;
+          function callback(whatToWrite) {
+            document.getElementById("translated-text").value = whatToWrite;
+          }
+          function runIndividualLoot() {
+            google.script.run.withSuccessHandler(callback).individuallootgen(sel);
+          }
+          runIndividualLoot();
+        }
+        
+        function treasureHorde() {
+          //sel2 will have the value of the challenge rating that was selected by the user in the dropdown (zero, five, eleven, or seventeen)
+          var sel2 = document.getElementById("loot-cr").value;
+          google.script.run.treasurehordegen(sel2);
         }
     </script>
     <script>
@@ -202,3 +220,5 @@
     </script>
   </body>
 </html>
+
+
