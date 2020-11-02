@@ -441,7 +441,7 @@
         </form>
         <div class="block" id="submit-bar">
             <button type="submit" class="blue" id="save" onclick="getResults('monsterForm')">Save Custom Monster</button>
-            <input type="button" value="Close" onclick="google.script.host.close()" />
+            <input type="button" value="Cancel" onclick="google.script.host.close()" />
         </div>
 
         <script>
@@ -644,6 +644,25 @@
             {
                 let form = document.getElementById(formID);
 
+                // calculate senses array
+                let senses = [];
+                let currentSense = [];
+
+                console.log("reading senses");
+
+                // push sense to current sense
+                currentSense.push(form.sense0.value);
+                currentSense.push(form.senseRange0.value);
+
+                console.log("done reading senses");
+
+                // push current sense to senses array
+                senses.push(currentSense);
+
+                // loop through the senses rows
+                senseHome = document.getElementById("sense-row0");
+                
+
                 let newMonster = {
                     "name": form.name.value,
                     "Descriptors": {
@@ -676,6 +695,10 @@
                         "int": form.saveInt.value,
                         "wis": form.saveWis.value,
                         "cha": form.saveCha.value 
+                    },
+                    "Passives": {
+                        "passivePerception": form.passPerception.value,
+                        "senses": senses
                     }
                 }
 
@@ -684,6 +707,7 @@
 
                 google.script.run.createMonsterJSON(filename, monsterJSON);
                 alert(filename + " successfully created.");
+                google.script.host.close();
             }
         </script>
     </body>
