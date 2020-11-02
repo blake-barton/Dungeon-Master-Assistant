@@ -648,20 +648,23 @@
                 let senses = [];
                 let currentSense = [];
 
-                console.log("reading senses");
-
                 // push sense to current sense
                 currentSense.push(form.sense0.value);
                 currentSense.push(form.senseRange0.value);
-
-                console.log("done reading senses");
 
                 // push current sense to senses array
                 senses.push(currentSense);
 
                 // loop through the senses rows
                 senseHome = document.getElementById("sense-row0");
+                let nextSibling = senseHome.nextSibling;
+                let siblingID = nextSibling.id;
+                console.log("next sibling id: " + siblingID); 
                 
+                if (siblingID.substring(0, siblingID.length - 1) === "sense-row")
+                {
+                    console.log("the next row is also a sense.");
+                }
 
                 let newMonster = {
                     "name": form.name.value,
