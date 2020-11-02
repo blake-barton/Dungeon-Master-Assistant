@@ -168,7 +168,7 @@
                             <option value="blindsight">Blindsight</option>
                             <option value="darkvision">Darkvision</option>
                             <option value="tremorsense">Tremorsense</option>
-                            <option value="Truesight">Truesight</option>
+                            <option value="truesight">Truesight</option>
                         </select>
                     </td>
                     <td><input type="number" id="sense-range0" name="senseRange0" min="0" placeholder="ft."></td>
@@ -640,12 +640,55 @@
                 insertAfter(clone, row);
             }
 
+            function selectInputResults(form, rowID, selectName, inputName)
+            {
+                returnArray = [];
+                let currentVals = [];
+
+                // push sense to current sense
+                currentVals.push(form[selectName].value);
+                currentVals.push(form[inputName].value);
+
+                // push current sense to senses array
+                returnArray.push(currentVals);
+                currentVals = [];
+
+                // loop through the senses rows
+                homeRow = document.getElementById(rowID);
+                let currentRow = homeRow;
+                let siblingID;
+                let rowCount = 1;
+                while(true)
+                {
+                    currentRow = currentRow.nextElementSibling;
+                    siblingID = currentRow.id;
+                    if (siblingID.substring(0, siblingID.length - 1) === rowID.substring(0, rowID.length - 1))
+                    {
+                        selectName = selectName.substring(0, selectName.length - 1) + rowCount;
+                        inputName = inputName.substring(0, inputName.length - 1) + rowCount;
+                        currentVals.push(form[selectName].value);
+                        currentVals.push(form[inputName].value);
+                        returnArray.push(currentVals);
+                        currentVals = [];
+                        rowCount++;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
+                return returnArray;
+            }
+
             function getResults(formID)
             {
                 let form = document.getElementById(formID);
 
                 // calculate senses array
-                let senses = [];
+                let senses = selectInputResults(form, "sense-row0", "sense0", "senseRange0");
+
+                /*
                 let currentSense = [];
 
                 // push sense to current sense
@@ -665,17 +708,12 @@
                 let rangeName;
                 while(true)
                 {
-                    console.log("Entering loop");
                     currentRow = currentRow.nextElementSibling;
                     siblingID = currentRow.id;
-                    console.log("sibling ID: " + siblingID);
                     if (siblingID.substring(0, siblingID.length - 1) === "sense-row")
                     {
-                        console.log("this is a sense row");
                         senseName = "sense" + rowCount;
-                        console.log("sense name:" + senseName);
                         rangeName = "senseRange" + rowCount;
-                        console.log("range name:" + rangeName);
                         currentSense.push(form[senseName].value);
                         currentSense.push(form[rangeName].value);
                         senses.push(currentSense);
@@ -687,6 +725,7 @@
                         break;
                     }
                 }
+                */
                 
                 let newMonster = {
                     "name": form.name.value,
