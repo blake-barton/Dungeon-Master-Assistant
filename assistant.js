@@ -66,3 +66,12 @@ function showDialog()
     DocumentApp.getUi()
         .showModalDialog(html, 'Create a new Monster');
 }
+
+
+// create a DMAssistant folder with monsterList.txt and monsters folder when the add-on is installed
+function createFolder()
+{
+    var folder = DriveApp.createFolder("DMAssistant");
+    var file = folder.createFile('monsterList.txt', '', MimeType.PLAIN_TEXT);
+
+}

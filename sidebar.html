@@ -145,7 +145,6 @@
         document.getElementById("utilities").onchange = function() {selectUtility();}
         function selectUtility() 
         {
-
             // track which functionality is selected
             let utilitySelect = document.getElementById("utilities").selectedIndex;
             let selectedUtility = (document.getElementsByTagName("option")[utilitySelect].value);
@@ -188,6 +187,9 @@
             collapseDiv.classList.add("collapse-content");
 
             let testPara = document.createElement("p");         // add content to the collapse div
+
+            // pull content from a JSON
+
             testPara.innerHTML = "I contain collapsible content #" + i;
 
             collapseDiv.appendChild(testPara);                  // attach content to collapse div
