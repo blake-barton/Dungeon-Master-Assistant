@@ -74,12 +74,15 @@ function createMonsterJSON(filename, monsterJSON)
 
 function parseMonsterJSONs()
 {
-    let iter = DriveApp.getFilesByName("Lumberjack.json");
+    var iter = DriveApp.getFilesByName("Lumberjack.json");
 
     while (iter.hasNext())
     {
-        let file = iter.next;
-        let jsonFile = file.getAs('application/json')
+        var file = iter.next();
+        var jsonFile = file.getAs('application/json');
+        
+        // get as javascript object
+        var monsterFileObject = JSON.parse(jsonFile);
 
         Logger.log(jsonFile.getDataAsString());
     }
