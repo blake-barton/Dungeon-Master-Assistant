@@ -23,10 +23,28 @@ function parseMonsterJSONs(filename)
 }
 
 // take in monster name as a string and write it to the user's monsterList file
-function saveMonsterList(monsterName)
+function saveMonsterToList(monsterName)
 {
-    var fileName = "monsterList";
+    monsterName = "testNameSpace2";
+    var filename = "monsterList.txt";
     var folderName = "DMAssistant";
 
-    var folderList = DriveApp.getFoldersByName();
+    // find folder "DMAssistant"
+    var folderList = DriveApp.getFoldersByName(folderName);
+    if (folderList.hasNext())
+    {
+        // get matching folder
+        var folder = folderList.next();
+
+        // search for file "monsterList.txt"
+        var fileList = folder.getFilesByName(filename);
+
+        if (fileList.hasNext())
+        {
+            // found matching file, appending text
+            var file = fileList.next();
+            var combinedContent = file.getBlob().getDataAsString() + monsterName + " ";
+            file.setContent(combinedContent);
+        }
+    }
 }
