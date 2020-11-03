@@ -724,52 +724,6 @@
                 return returnArray;
             }
 
-            function inputResults()
-            {
-                returnArray = [];
-                let currentVals = [];
-
-                // push sense to current sense
-                currentVals.push(form[selectName].value);
-                currentVals.push(form[inputName].value);
-
-                // push current sense to senses array
-                returnArray.push(currentVals);
-                currentVals = [];
-
-                // loop through the senses rows
-                homeRow = document.getElementById(rowID);
-                let currentRow = homeRow;
-                let siblingID;
-                let rowCount = 1;
-                while(true)
-                {
-                    currentRow = currentRow.nextElementSibling;
-                    siblingID = currentRow.id;
-                    if (siblingID.substring(0, siblingID.length - 1) === rowID.substring(0, rowID.length - 1))
-                    {
-                        selectName = selectName.substring(0, selectName.length - 1) + rowCount;
-                        inputName = inputName.substring(0, inputName.length - 1) + rowCount;
-                        currentVals.push(form[selectName].value);
-                        currentVals.push(form[inputName].value);
-                        returnArray.push(currentVals);
-                        currentVals = [];
-                        rowCount++;
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-
-                return returnArray;
-            }
-
-            function inputInputResults()
-            {
-                
-            }
-
             function getResults(formID)
             {
                 let form = document.getElementById(formID);
@@ -784,6 +738,18 @@
 
                 // special passives
                 let specialPassives = selectInputResults(form, "s-passive-row0", "sPassive0", "sPassiveDesc0");
+
+                // spells
+                let cantrips = selectResults(form, "cantrip-row0", "level0_0");
+                let level1 = selectResults(form, "spell-level1-row0", "level1_0");
+                let level2 = selectResults(form, "spell-level2-row0", "level2_0");
+                let level3 = selectResults(form, "spell-level3-row0", "level3_0");
+                let level4 = selectResults(form, "spell-level4-row0", "level4_0");
+                let level5 = selectResults(form, "spell-level5-row0", "level5_0");
+                let level6 = selectResults(form, "spell-level6-row0", "level6_0");
+                let level7 = selectResults(form, "spell-level7-row0", "level7_0");
+                let level8 = selectResults(form, "spell-level8-row0", "level8_0");
+                let level9 = selectResults(form, "spell-level9-row0", "level9_0");
                 
                 let newMonster = {
                     "name": form.name.value,
@@ -827,7 +793,36 @@
                         "immunities": immunities,
                         "conditionImmunities": conditionImmunities
                     },
-                    "SpecialPassives": specialPassives
+                    "SpecialPassives": specialPassives,
+                    "Spellcasting": {
+                        "castLevel": form.castLevel.value,
+                        "castAbility": form.castAbility.value,
+                        "saveDC": form.saveDC.value,
+                        "spellAttackBonus": form.spellAttackBonus.value,
+                        "SpellSlots": {
+                            "slot1": form.slot1.value,
+                            "slot2": form.slot2.value,
+                            "slot3": form.slot3.value,
+                            "slot4": form.slot4.value,
+                            "slot5": form.slot5.value,
+                            "slot6": form.slot6.value,
+                            "slot7": form.slot7.value,
+                            "slot8": form.slot8.value,
+                            "slot9": form.slot9.value,
+                        },
+                        "Spells": {
+                            "cantrips": cantrips,
+                            "level1": level1,
+                            "level2": level2,
+                            "level3": level3,
+                            "level4": level4,
+                            "level5": level5,
+                            "level6": level6,
+                            "level7": level7,
+                            "level8": level8,
+                            "level9": level9,
+                        }
+                    }
                 }
 
                 let monsterJSON = JSON.stringify(newMonster);
