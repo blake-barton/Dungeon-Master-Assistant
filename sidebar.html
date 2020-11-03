@@ -78,11 +78,14 @@
                 <button id="ind-loot-btn" onclick="individualLoot()">Roll Individual Loot</button>
             </div>
             <div class="block form-group">
-                <label for="result-box"><b>Results</b></label>
+                <label for="translated-text"><b>Results</b></label>
                 <textarea class="width-100" id="result-box" rows="10"></textarea>
             </div>
+            <div class="block" id="insert-button">
+                <button class="red" id="insert-buttonID" onclick="InsertLoot()">Insert</button>
+            </div>
             <div class="block">
-            
+                
             </div>
         </div>
         <div id="bestiary" style="display: none;">
@@ -138,13 +141,26 @@
         function treasureHorde() {
           //sel2 will have the value of the challenge rating that was selected by the user in the dropdown (zero, five, eleven, or seventeen)
           var sel2 = document.getElementById("loot-cr").value;
-          google.script.run.treasurehordegen(sel2);
+          //google.script.run.treasurehordegen(sel2);
+          function callback(whatToWrite) {
+            document.getElementById("result-box").value = whatToWrite;
+          }
+          function runHordeLoot() {
+            google.script.run.withSuccessHandler(callback).treasurehordegen(sel2);
+          }
+          runHordeLoot();
+        }
+        
+        function InsertLoot() {
+          var loot = document.getElementById("result-box").value;
+          google.script.run.insertloot(loot);
         }
     </script>
     <script>
         document.getElementById("utilities").onchange = function() {selectUtility();}
         function selectUtility() 
         {
+
             // track which functionality is selected
             let utilitySelect = document.getElementById("utilities").selectedIndex;
             let selectedUtility = (document.getElementsByTagName("option")[utilitySelect].value);
@@ -187,9 +203,6 @@
             collapseDiv.classList.add("collapse-content");
 
             let testPara = document.createElement("p");         // add content to the collapse div
-
-            // pull content from a JSON
-
             testPara.innerHTML = "I contain collapsible content #" + i;
 
             collapseDiv.appendChild(testPara);                  // attach content to collapse div
@@ -222,5 +235,3 @@
     </script>
   </body>
 </html>
-
-
