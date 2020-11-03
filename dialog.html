@@ -840,7 +840,7 @@
                 let monsterJSON = JSON.stringify(newMonster);
                 let filename = newMonster.name + ".json";
 
-                google.script.run.createMonsterJSON(filename, monsterJSON);
+                google.script.run.createMonsterJSON(filename, monsterJSON, newMonster.name);
                 alert(filename + " successfully created.");
                 google.script.host.close();
             }
