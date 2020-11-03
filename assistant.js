@@ -66,24 +66,3 @@ function showDialog()
     DocumentApp.getUi()
         .showModalDialog(html, 'Create a new Monster');
 }
-
-function createMonsterJSON(filename, monsterJSON)
-{
-    DriveApp.createFile(filename, monsterJSON);
-}
-
-function parseMonsterJSONs()
-{
-    var iter = DriveApp.getFilesByName("Lumberjack.json");
-
-    while (iter.hasNext())
-    {
-        var file = iter.next();
-        var jsonFile = file.getAs('application/json');
-        
-        // get as javascript object
-        var monsterFileObject = JSON.parse(jsonFile);
-
-        Logger.log(jsonFile.getDataAsString());
-    }
-}
