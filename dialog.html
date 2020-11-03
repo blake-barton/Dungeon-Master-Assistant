@@ -750,6 +750,13 @@
                 let level7 = selectResults(form, "spell-level7-row0", "level7_0");
                 let level8 = selectResults(form, "spell-level8-row0", "level8_0");
                 let level9 = selectResults(form, "spell-level9-row0", "level9_0");
+
+                // actions
+                let actions = selectInputResults(form, "action-row0", "action0", "actionDesc0");
+                let legendaryActions = selectInputResults(form, "le-action-row0", "leAction0", "leActionDesc0");
+
+                // reactions
+                let reactions = selectInputResults(form, "reaction-row0", "reaction0", "reactionDesc0");
                 
                 let newMonster = {
                     "name": form.name.value,
@@ -822,7 +829,12 @@
                             "level8": level8,
                             "level9": level9,
                         }
-                    }
+                    },
+                    "Actions": {
+                        "actions": actions,
+                        "legendaryActions": legendaryActions
+                    },
+                    "Reactions": reactions
                 }
 
                 let monsterJSON = JSON.stringify(newMonster);
