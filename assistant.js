@@ -71,7 +71,14 @@ function showDialog()
 // create a DMAssistant folder with monsterList.txt and monsters folder when the add-on is installed
 function createFolder()
 {
-    var folder = DriveApp.createFolder("DMAssistant");
-    var file = folder.createFile('monsterList.txt', '', MimeType.PLAIN_TEXT);
-
+    var folderCheck = DriveApp.getFoldersByName("DMAssistant");
+    if (folderCheck.hasNext())
+    {
+        // nothing
+    }
+    else
+    {
+        var folder = DriveApp.createFolder("DMAssistant");
+        var file = folder.createFile('monsterList.txt', '', MimeType.PLAIN_TEXT);
+    }
 }
