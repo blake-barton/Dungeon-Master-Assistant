@@ -612,8 +612,8 @@
                 let labelFor = row.getElementsByTagName('label')[0].htmlFor;
                 let inputID0 = row.getElementsByTagName('input')[0].id;
                 let inputName0 = row.getElementsByTagName('input')[0].name;
-                let inputID1 = row.getElementsByTagName('input')[0].id;
-                let inputName1 = row.getElementsByTagName('input')[0].name;
+                let inputID1 = row.getElementsByTagName('input')[1].id;
+                let inputName1 = row.getElementsByTagName('input')[1].name;
 
                 // change button function of home row
                 homeRow = document.getElementById(getHomeRow(row.id));
@@ -661,6 +661,12 @@
                 while(true)
                 {
                     currentRow = currentRow.nextElementSibling;
+
+                    if (currentRow == null)
+                    {
+                        break;
+                    }
+
                     siblingID = currentRow.id;
                     if (siblingID.substring(0, siblingID.length - 1) === rowID.substring(0, rowID.length - 1))
                     {
@@ -718,6 +724,52 @@
                 return returnArray;
             }
 
+            function inputResults()
+            {
+                returnArray = [];
+                let currentVals = [];
+
+                // push sense to current sense
+                currentVals.push(form[selectName].value);
+                currentVals.push(form[inputName].value);
+
+                // push current sense to senses array
+                returnArray.push(currentVals);
+                currentVals = [];
+
+                // loop through the senses rows
+                homeRow = document.getElementById(rowID);
+                let currentRow = homeRow;
+                let siblingID;
+                let rowCount = 1;
+                while(true)
+                {
+                    currentRow = currentRow.nextElementSibling;
+                    siblingID = currentRow.id;
+                    if (siblingID.substring(0, siblingID.length - 1) === rowID.substring(0, rowID.length - 1))
+                    {
+                        selectName = selectName.substring(0, selectName.length - 1) + rowCount;
+                        inputName = inputName.substring(0, inputName.length - 1) + rowCount;
+                        currentVals.push(form[selectName].value);
+                        currentVals.push(form[inputName].value);
+                        returnArray.push(currentVals);
+                        currentVals = [];
+                        rowCount++;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
+                return returnArray;
+            }
+
+            function inputInputResults()
+            {
+                
+            }
+
             function getResults(formID)
             {
                 let form = document.getElementById(formID);
@@ -729,6 +781,9 @@
                 let resistances = selectResults(form, "resistance-row0", "resistance0");
                 let immunities = selectResults(form, "immunity-row0", "immunity0");
                 let conditionImmunities = selectResults(form, "c-immunity-row0", "cImmunity0");
+
+                // special passives
+                let specialPassives = selectInputResults(form, "s-passive-row0", "sPassive0", "sPassiveDesc0");
                 
                 let newMonster = {
                     "name": form.name.value,
@@ -771,7 +826,8 @@
                         "resistances": resistances,
                         "immunities": immunities,
                         "conditionImmunities": conditionImmunities
-                    }
+                    },
+                    "SpecialPassives": specialPassives
                 }
 
                 let monsterJSON = JSON.stringify(newMonster);
