@@ -364,14 +364,274 @@ function individuallootgen(cr) {
   //horde loot table for challenge rating 17+
   function horde_17(gemstone1000gp, gemstone5000gp, art2500gp, art7500gp) {
     var roll = Math.floor(Math.random() * 100) + 1;
+    var coins = "Coins: 42000gp, 28000pp\n";
     
-    if((roll >= 1) && (roll <= 15)) {
-      return "7000ep 2800gp"; 
+    if((roll >= 1) && (roll <= 2)) {
+     return coins; 
     }
-    else if((roll >= 16) && (roll <= 55)) {
-      return "3500gp 350pp"; 
-    }
-    else if((roll >= 55) && (roll <= 100)) {
-      return "3500gp 700pp"; 
+    else if((roll >= 3) && (roll <= 5)) {
+       var rollgems = 0;
+       var gems = "Gems: ";
+       for(var i = 0; i < 10; i++) {
+         rollgems = Math.floor(Math.random() * gemstone1000gp.length);
+         gems += gemstone1000gp[rollgems];
+         gems += " ";
+       }
+       gems += "\n";
+       return coins + gems; 
    }
+    else if((roll >= 6) && (roll <= 8)) {
+       var rollart = 0;
+       var art = "Art: ";
+       for(var i = 0; i < 5; i++) {
+           rollart = Math.floor(Math.random() * art2500gp.length);
+           art += art2500gp[rollart];
+           art += " ";
+       }
+       art += "\n";
+       return coins + art; 
+   }
+    else if((roll >= 9) && (roll <= 11)) {
+     var rollart = 0;
+     var art = "Art: ";
+     for(var i = 0; i < 2; i++) {
+         rollart = Math.floor(Math.random() * art7500gp.length);
+         art += art7500gp[rollart];
+         art += " ";
+     }
+     art += "\n";
+     return coins + art; 
   }
+  else if((roll >= 12) && (roll <= 14)) {
+   var rollgems = 0;
+   var gems = "Gems: ";
+   for(var i = 0; i < 4; i++) {
+     rollgems = Math.floor(Math.random() * gemstone5000gp.length);
+     gems += gemstone5000gp[rollgems];
+     gems += " ";
+   }
+   gems += "\n";
+   return coins + gems; 
+    }
+    else if((roll >= 15) && (roll <= 22)) {
+    var rollgems = 0;
+    var gems = "Gems: ";
+    for(var i = 0; i < 10; i++) {
+        rollgems = Math.floor(Math.random() * gemstone1000gp.length);
+        gems += gemstone1000gp[rollgems];
+        gems += " ";
+    }
+    gems += "\n";
+    return coins + gems; 
+    }
+    else if((roll >= 23) && (roll <= 30)) {
+    var rollart = 0;
+    var art = "Art: ";
+    for(var i = 0; i < 5; i++) {
+        rollart = Math.floor(Math.random() * art2500gp.length);
+        art += art2500gp[rollart];
+        art += " ";
+    }
+    art += "\n";
+    return coins + art; 
+    }
+    else if((roll >= 31) && (roll <= 38)) {
+    var rollart = 0;
+    var art = "Art: ";
+    for(var i = 0; i < 2; i++) {
+        rollart = Math.floor(Math.random() * art7500gp.length);
+        art += art7500gp[rollart];
+        art += " ";
+    }
+    art += "\n";
+    return coins + art; 
+    }
+    else if((roll >= 39) && (roll <= 46)) {
+    var rollgems = 0;
+    var gems = "Gems: ";
+    for(var i = 0; i < 4; i++) {
+        rollgems = Math.floor(Math.random() * gemstone5000gp.length);
+        gems += gemstone5000gp[rollgems];
+        gems += " ";
+    }
+    gems += "\n";
+    return coins + gems; 
+    }
+    else if((roll >= 47) && (roll <= 52)) {
+    var rollgems = 0;
+    var gems = "Gems: ";
+    for(var i = 0; i < 10; i++) {
+        rollgems = Math.floor(Math.random() * gemstone1000gp.length);
+        gems += gemstone1000gp[rollgems];
+        gems += " ";
+    }
+    gems += "\n";
+    return coins + gems; 
+    }
+    else if((roll >= 53) && (roll <= 58)) {
+    var rollart = 0;
+    var art = "Art: ";
+    for(var i = 0; i < 5; i++) {
+        rollart = Math.floor(Math.random() * art2500gp.length);
+        art += art2500gp[rollart];
+        art += " ";
+    }
+    art += "\n";
+    return coins + art; 
+    }
+    else if((roll >= 59) && (roll <= 63)) {
+    var rollart = 0;
+    var art = "Art: ";
+    for(var i = 0; i < 2; i++) {
+        rollart = Math.floor(Math.random() * art7500gp.length);
+        art += art7500gp[rollart];
+        art += " ";
+    }
+    art += "\n";
+    return coins + art; 
+    }
+    else if((roll >= 64) && (roll <= 68)) {
+    var rollgems = 0;
+    var gems = "Gems: ";
+    for(var i = 0; i < 4; i++) {
+        rollgems = Math.floor(Math.random() * gemstone5000gp.length);
+        gems += gemstone5000gp[rollgems];
+        gems += " ";
+    }
+    gems += "\n";
+    return coins + gems; 
+    }
+    else if(roll == 69){
+    var rollgems = 0;
+    var gems = "Gems: ";
+    for(var i = 0; i < 10; i++) {
+        rollgems = Math.floor(Math.random() * gemstone1000gp.length);
+        gems += gemstone1000gp[rollgems];
+        gems += " ";
+    }
+    gems += "\n";
+    return coins + gems; 
+    }
+    else if(roll == 70) {
+    var rollart = 0;
+    var art = "Art: ";
+    for(var i = 0; i < 5; i++) {
+        rollart = Math.floor(Math.random() * art2500gp.length);
+        art += art2500gp[rollart];
+        art += " ";
+    }
+    art += "\n";
+    return coins + art; 
+    }
+    else if(roll == 71) {
+    var rollart = 0;
+    var art = "Art: ";
+    for(var i = 0; i < 2; i++) {
+        rollart = Math.floor(Math.random() * art7500gp.length);
+        art += art7500gp[rollart];
+        art += " ";
+    }
+    art += "\n";
+    return coins + art; 
+    }
+    else if(roll == 72){
+    var rollgems = 0;
+    var gems = "Gems: ";
+    for(var i = 0; i < 4; i++) {
+        rollgems = Math.floor(Math.random() * gemstone5000gp.length);
+        gems += gemstone5000gp[rollgems];
+        gems += " ";
+    }
+    gems += "\n";
+    return coins + gems; 
+    }
+    else if((roll >= 73) && (roll <= 74)) {
+    var rollgems = 0;
+    var gems = "Gems: ";
+    for(var i = 0; i < 10; i++) {
+        rollgems = Math.floor(Math.random() * gemstone1000gp.length);
+        gems += gemstone1000gp[rollgems];
+        gems += " ";
+    }
+    gems += "\n";
+    return coins + gems; 
+    }
+    else if((roll >= 75) && (roll <= 76)) {
+    var rollart = 0;
+    var art = "Art: ";
+    for(var i = 0; i < 5; i++) {
+        rollart = Math.floor(Math.random() * art2500gp.length);
+        art += art2500gp[rollart];
+        art += " ";
+    }
+    art += "\n";
+    return coins + art; 
+    }
+    else if((roll >= 77) && (roll <= 78)) {
+    var rollart = 0;
+    var art = "Art: ";
+    for(var i = 0; i < 2; i++) {
+        rollart = Math.floor(Math.random() * art7500gp.length);
+        art += art7500gp[rollart];
+        art += " ";
+    }
+    art += "\n";
+    return coins + art; 
+    }
+    else if((roll >= 79) && (roll <= 80)) {
+    var rollgems = 0;
+    var gems = "Gems: ";
+    for(var i = 0; i < 4; i++) {
+        rollgems = Math.floor(Math.random() * gemstone5000gp.length);
+        gems += gemstone5000gp[rollgems];
+        gems += " ";
+    }
+    gems += "\n";
+    return coins + gems; 
+    }
+    else if((roll >= 81) && (roll <= 85)) {
+    var rollgems = 0;
+    var gems = "Gems: ";
+    for(var i = 0; i < 10; i++) {
+        rollgems = Math.floor(Math.random() * gemstone1000gp.length);
+        gems += gemstone1000gp[rollgems];
+        gems += " ";
+    }
+    gems += "\n";
+    return coins + gems; 
+    }
+    else if((roll >= 86) && (roll <= 90)) {
+    var rollart = 0;
+    var art = "Art: ";
+    for(var i = 0; i < 5; i++) {
+        rollart = Math.floor(Math.random() * art2500gp.length);
+        art += art2500gp[rollart];
+        art += " ";
+    }
+    art += "\n";
+    return coins + art; 
+    }
+    else if((roll >= 91) && (roll <= 95)) {
+    var rollart = 0;
+    var art = "Art: ";
+    for(var i = 0; i < 2; i++) {
+        rollart = Math.floor(Math.random() * art7500gp.length);
+        art += art7500gp[rollart];
+        art += " ";
+    }
+    art += "\n";
+    return coins + art; 
+    }
+    else if((roll >= 96) && (roll <= 100)) {
+    var rollgems = 0;
+    var gems = "Gems: ";
+    for(var i = 0; i < 4; i++) {
+        rollgems = Math.floor(Math.random() * gemstone5000gp.length);
+        gems += gemstone5000gp[rollgems];
+        gems += " ";
+    }
+    gems += "\n";
+    return coins + gems; 
+    }
+ 
+ }
