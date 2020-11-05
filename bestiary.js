@@ -96,3 +96,40 @@ function clearMonsterList()
         }
     }
 }
+
+// pull the names from monsterList.txt into an array which will be used to find monster jsons/sort bestiary
+function loadNamesIntoArray()
+{
+    var filename = "monsterList.txt";
+    var folderName = "DMAssistant";
+    var content = "";
+
+    // find folder "DMAssistant"
+    var folderList = DriveApp.getFoldersByName(folderName);
+    if (folderList.hasNext())
+    {
+        // get matching folder
+        var folder = folderList.next();
+
+        // search for file "monsterList.txt"
+        var fileList = folder.getFilesByName(filename);
+
+        if (fileList.hasNext())
+        {
+            // found matching file, load in text
+            var file = fileList.next();
+            content = file.getBlob().getDataAsString();
+        }
+    }
+
+    // split content by spaces, ignoring spaces in quotes
+    var nameArray = content.match(/(?:[^\s"]+|"[^"]*")+/g);
+
+    for (var i = 0; i < nameArray.length; i++)
+    {
+        var cutString = nameArray[i].substring(1, nameArray[i].length - 1);
+        nameArray[i] = cutString;
+    }
+
+    return nameArray;
+}
