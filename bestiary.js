@@ -7,7 +7,7 @@ function createMonsterJSON(filename, monsterJSON, monsterName)
     if (folderList.hasNext())
     {
         folder = folderList.next();
-        folder.createFile(filename, monsterJSON);
+        folder.createFile(filename, monsterJSON, 'application/json');
     }
 
     // add monster's name to the monsterList
