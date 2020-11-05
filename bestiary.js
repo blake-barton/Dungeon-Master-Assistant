@@ -133,3 +133,45 @@ function loadNamesIntoArray()
 
     return nameArray;
 }
+
+// create an array of monster JSON objects from the nameArray to be sorted
+function generateObjectArray(nameArray)
+{
+    var objectArray = [];
+    var filename = "";
+    var currentMonster = "";
+
+    // loop through nameArray
+    for (var i = 0; i < nameArray.length; i++)
+    {
+        // append .json to name
+        filename = nameArray[i] + ".json";
+
+        // pull monster object from file
+        currentMonster = parseMonsterJSON(filename);
+
+        objectArray.push(currentMonster);
+    }
+
+    return objectArray;
+}
+
+// take in a string from the sidebar select, reorder array
+function sortBestiary(sortType)
+{
+    switch (sortType)
+    {
+        case "name":
+            alert("name");
+            break;
+        case "hp":
+            alert("hp");
+            break;
+        case "cr":
+            alert("cr")
+            break;
+        case "date":
+            alert("date")
+            break;
+    }
+}
