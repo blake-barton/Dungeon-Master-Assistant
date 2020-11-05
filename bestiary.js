@@ -15,8 +15,9 @@ function createMonsterJSON(filename, monsterJSON, monsterName)
 }
 
 // read monster from list and turn it into a json
-function parseMonsterJSONs(filename)
+function parseMonsterJSON(filename)
 {
+    filename = "Dragon.json";
     var folderName = "DMAssistant";
 
     // find folder "DMAssistant"
@@ -29,18 +30,18 @@ function parseMonsterJSONs(filename)
         // search for monster file
         var fileList = folder.getFilesByName(filename);
 
-        if (fileList.hasNext())
+        while (fileList.hasNext())
         {
             // found matching file, loading json
             var file = fileList.next();
-            var jsonFile = file.getAs('application/json');
+            var jsonFile = file.getBlob().getDataAsString();
             
             // get as javascript object
             var monsterFileObject = JSON.parse(jsonFile);
-
-            Logger.log(jsonFile.getDataAsString());
-
+            Logger.log(jsonFile);
+            
             return monsterFileObject;
+
         }
     }
 }
