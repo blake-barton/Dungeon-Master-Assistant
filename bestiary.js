@@ -6,7 +6,7 @@ function createMonsterJSON(filename, monsterJSON, monsterName)
     var folderList = DriveApp.getFoldersByName(folderName);
     if (folderList.hasNext())
     {
-        folder = folderList.next();
+        var folder = folderList.next();
         folder.createFile(filename, monsterJSON, 'application/json');
     }
 
@@ -156,9 +156,12 @@ function generateObjectArray(nameArray)
     return objectArray;
 }
 
-// take in a string from the sidebar select, reorder object array
-function sortBestiary(objectArray, sortType)
+// take in a string from the sidebar select, reorder object array and return
+function sortBestiary(sortType)
 {
+    // generate object array
+    var objectArray = generateObjectArray(loadNamesIntoArray());
+
     switch (sortType)
     {
         case "name":

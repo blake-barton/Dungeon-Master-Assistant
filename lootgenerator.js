@@ -35,6 +35,18 @@ function insertloot(loot)
     cursor.insertText(" ");
 }
 
+function diceRoller(count, dieValue)
+{
+    var sum = 0;
+
+    for (var i = 0; i < count; i++)
+    {
+        sum += Math.floor(Math.random() * dieValue) + 1;
+    }
+
+    return sum;
+}
+
 //individual loot table for challenge rating 0-4
 function individual_0_4()
 {
