@@ -17,19 +17,31 @@ function createMonsterJSON(filename, monsterJSON, monsterName)
 // read monster from list and turn it into a json
 function parseMonsterJSONs(filename)
 {
-    var iter = DriveApp.getFilesByName(filename);
+    var folderName = "DMAssistant";
 
-    while (iter.hasNext())
+    // find folder "DMAssistant"
+    var folderList = DriveApp.getFoldersByName(folderName);
+    if (folderList.hasNext())
     {
-        var file = iter.next();
-        var jsonFile = file.getAs('application/json');
-        
-        // get as javascript object
-        var monsterFileObject = JSON.parse(jsonFile);
+        // get matching folder
+        var folder = folderList.next();
 
-        Logger.log(jsonFile.getDataAsString());
+        // search for monster file
+        var fileList = folder.getFilesByName(filename);
 
-        return monsterFileObject;
+        if (fileList.hasNext())
+        {
+            // found matching file, loading json
+            var file = fileList.next();
+            var jsonFile = file.getAs('application/json');
+            
+            // get as javascript object
+            var monsterFileObject = JSON.parse(jsonFile);
+
+            Logger.log(jsonFile.getDataAsString());
+
+            return monsterFileObject;
+        }
     }
 }
 
