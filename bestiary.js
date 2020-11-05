@@ -1,9 +1,9 @@
 function createMonsterJSON(filename, monsterJSON, monsterName)
 {
-    //DriveApp.createFile(filename, monsterJSON);
+    var folderName = "DMAssistant";
 
     // save monster json
-    var folderList = DriveApp.getFoldersByName("DMAssistant");
+    var folderList = DriveApp.getFoldersByName(folderName);
     if (folderList.hasNext())
     {
         folder = folderList.next();
@@ -55,6 +55,31 @@ function saveMonsterToList(monsterName)
             var file = fileList.next();
             var combinedContent = file.getBlob().getDataAsString() + monsterName + " ";
             file.setContent(combinedContent);
+        }
+    }
+}
+
+/* CURRENTLY FOR DEBUG PURPOSES ONLY. DOES NOT REMOVE MONSTER JSON FILES */
+function clearMonsterList()
+{
+    var filename = "monsterList.txt";
+    var folderName = "DMAssistant";
+
+    // find folder "DMAssistant"
+    var folderList = DriveApp.getFoldersByName(folderName);
+    if (folderList.hasNext())
+    {
+        // get matching folder
+        var folder = folderList.next();
+
+        // search for file "monsterList.txt"
+        var fileList = folder.getFilesByName(filename);
+
+        if (fileList.hasNext())
+        {
+            // found matching file, erasing text
+            var file = fileList.next();
+            file.setContent("");
         }
     }
 }
