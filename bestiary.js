@@ -156,8 +156,8 @@ function generateObjectArray(nameArray)
     return objectArray;
 }
 
-// take in a string from the sidebar select, reorder array
-function sortBestiary(sortType)
+// take in a string from the sidebar select, reorder object array
+function sortBestiary(objectArray, sortType)
 {
     switch (sortType)
     {
@@ -168,7 +168,7 @@ function sortBestiary(sortType)
             alert("hp");
             break;
         case "cr":
-            alert("cr")
+            alert("cr");
             break;
         case "date":
             alert("date")
