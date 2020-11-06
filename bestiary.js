@@ -174,6 +174,14 @@ function sortByName(a, b)
     }
 }
 
+function sortByHP(a, b)
+{
+    var hpA = a.NumericStats.hp;
+    var hpB = b.NumericStats.hp;
+
+    return hpA - hpB;
+}
+
 // take in a string from the sidebar select, reorder object array and return
 function sortBestiary(sortType)
 {
@@ -186,6 +194,7 @@ function sortBestiary(sortType)
             objectArray.sort(sortByName);
             break;
         case "hp":
+            objectArray.sort(sortByHP);
             break;
         case "cr":
             break;
@@ -193,3 +202,12 @@ function sortBestiary(sortType)
             break;
     }
 }
+
+/*
+    test print of objectArray
+    for (var i = 0; i < objectArray.length; i++)
+    {
+        Logger.log(objectArray[i].NumericStats.hp);
+    }
+
+*/
