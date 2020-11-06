@@ -1,59 +1,67 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <base target="_top">
-        <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
-        <!-- The CSS package above applies Google styling to buttons and other elements. -->
 
-        <style>
-            .branding-below {
-                bottom: 56px;
-                top: 0;
-            }
-            .branding-text {
-                left: 7px;
-                position: relative;
-                top: 3px;
-            }
-            .col-contain {
-                overflow: hidden;
-            }
-            .col-one {
-                float: left;
-                width: 50%;
-            }
-            .logo {
-                vertical-align: middle;
-            }
-            .radio-spacer {
-                height: 20px;
-            }
-            .width-100 {
-                width: 100%;
-            }
+<head>
+    <base target="_top">
+    <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
+    <!-- The CSS package above applies Google styling to buttons and other elements. -->
 
-            .collapsible {
-                width: 100%;
-                text-align: left;
-                /*background-image: url(https://blake-barton.github.io/Dungeon-Master-Assistant/dropdownArrow.png);*/
-            }
+    <style>
+        .branding-below {
+            bottom: 56px;
+            top: 0;
+        }
 
-            /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover)
+        .branding-text {
+            left: 7px;
+            position: relative;
+            top: 3px;
+        }
+
+        .col-contain {
+            overflow: hidden;
+        }
+
+        .col-one {
+            float: left;
+            width: 50%;
+        }
+
+        .logo {
+            vertical-align: middle;
+        }
+
+        .radio-spacer {
+            height: 20px;
+        }
+
+        .width-100 {
+            width: 100%;
+        }
+
+        .collapsible {
+            width: 100%;
+            text-align: left;
+            /*background-image: url(https://blake-barton.github.io/Dungeon-Master-Assistant/dropdownArrow.png);*/
+        }
+
+        /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover)
             .active, .collapsible:hover {
                 background-color: #ccc;
             }
             */
 
-            /* Style the collapsible content. Note: hidden by default */
-            .collapse-content {
-                padding: 0 18px;
-                display: none;
-                overflow: hidden;
-                background-color: #f1f1f1;
-            }
-        </style>
-    </head>
-  <body>
+        /* Style the collapsible content. Note: hidden by default */
+        .collapse-content {
+            padding: 0 18px;
+            display: none;
+            overflow: hidden;
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+
+<body>
     <div class="sidebar branding-below">
         <div>
             <select name="utilities" id="utilities">
@@ -85,7 +93,7 @@
                 <button class="red" id="insert-buttonID" onclick="InsertLoot()">Insert</button>
             </div>
             <div class="block">
-                
+
             </div>
         </div>
         <div id="bestiary" style="display: none;">
@@ -105,18 +113,14 @@
                 <option value="hp">HP</option>
             </select>
             <br><br>
-            <div id="test-collapse">
-                <button type="button" class="collapsible">Open Collapsible</button>
-                <div class="collapse-content">
-                    <p>I am to become a monster.</p>
-                </div>
-            </div>
+            <div id="collapse-target"></div>
         </div>
     </div>
 
     <div class="sidebar bottom">
-      <img alt="Add-on logo" class="logo" src="https://blake-barton.github.io/Dungeon-Master-Assistant/d20pixelized.png" width="54" height="54">
-      <span class="gray branding-text">DM Assistant by Blake Barton</span>
+        <img alt="Add-on logo" class="logo"
+            src="https://blake-barton.github.io/Dungeon-Master-Assistant/d20pixelized.png" width="54" height="54">
+        <span class="gray branding-text">DM Assistant by Blake Barton</span>
     </div>
 
     <script>
@@ -125,39 +129,46 @@
         {
             google.script.run.showDialog();
         }
-        
-        function individualLoot() {
-          //sel will have the value of the challenge rating that was selected by the user in the dropdown (zero, five, eleven, or seventeen)
-          var sel = document.getElementById("loot-cr").value;
-          function callback(whatToWrite) {
-            document.getElementById("result-box").value = whatToWrite;
-          }
-          function runIndividualLoot() {
-            google.script.run.withSuccessHandler(callback).individuallootgen(sel);
-          }
-          runIndividualLoot();
+
+        function individualLoot()
+        {
+            //sel will have the value of the challenge rating that was selected by the user in the dropdown (zero, five, eleven, or seventeen)
+            var sel = document.getElementById("loot-cr").value;
+            function callback(whatToWrite)
+            {
+                document.getElementById("result-box").value = whatToWrite;
+            }
+            function runIndividualLoot()
+            {
+                google.script.run.withSuccessHandler(callback).individuallootgen(sel);
+            }
+            runIndividualLoot();
         }
-        
-        function treasureHorde() {
-          //sel2 will have the value of the challenge rating that was selected by the user in the dropdown (zero, five, eleven, or seventeen)
-          var sel2 = document.getElementById("loot-cr").value;
-          //google.script.run.treasurehordegen(sel2);
-          function callback(whatToWrite) {
-            document.getElementById("result-box").value = whatToWrite;
-          }
-          function runHordeLoot() {
-            google.script.run.withSuccessHandler(callback).treasurehordegen(sel2);
-          }
-          runHordeLoot();
+
+        function treasureHorde()
+        {
+            //sel2 will have the value of the challenge rating that was selected by the user in the dropdown (zero, five, eleven, or seventeen)
+            var sel2 = document.getElementById("loot-cr").value;
+            //google.script.run.treasurehordegen(sel2);
+            function callback(whatToWrite)
+            {
+                document.getElementById("result-box").value = whatToWrite;
+            }
+            function runHordeLoot()
+            {
+                google.script.run.withSuccessHandler(callback).treasurehordegen(sel2);
+            }
+            runHordeLoot();
         }
-        
-        function InsertLoot() {
-          var loot = document.getElementById("result-box").value;
-          google.script.run.insertloot(loot);
+
+        function InsertLoot()
+        {
+            var loot = document.getElementById("result-box").value;
+            google.script.run.insertloot(loot);
         }
     </script>
     <script>
-        document.getElementById("utilities").onchange = function() {selectUtility();}
+        document.getElementById("utilities").onchange = function () { selectUtility(); }
         function selectUtility() 
         {
 
@@ -190,11 +201,46 @@
             referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
         }
 
-        // generate collapsibles via script
+        // displayMonsterList is called after the server request is complete
+        document.getElementById("bestiary-sort").onchange = function() { loadMonsterList(); }
+        function displayMonsterList(monsterList)
+        {
+            for (let i = 0; i < monsterList.length; i++)
+            {
+                let newDiv = document.createElement("div");         // create new div
+
+                let newButton = document.createElement("button");   // create button to place in the div
+                newButton.innerHTML = monsterList[i].name;           // add text to the button
+                newButton.classList.add("collapsible");             // add collapsible class to button
+
+                let collapseDiv = document.createElement("div");    // create div class="collapse-content"
+                collapseDiv.classList.add("collapse-content");
+
+                let testPara = document.createElement("p");         // add content to the collapse div
+                testPara.innerHTML = monsterList[i].Descriptors.type;
+
+                collapseDiv.appendChild(testPara);                  // attach content to collapse div
+                newDiv.appendChild(newButton);                      // attach button to parent div
+                newDiv.appendChild(collapseDiv);                    // attach collapse div to parent div
+
+                // add div to document
+                let currentDiv = document.getElementById("collapse-target");
+                insertAfter(newDiv, currentDiv);
+            }
+        }
+        
+        // pulls monsterList object from server
+        function loadMonsterList()
+        {
+            let sortVal = document.getElementById("bestiary-sort").value;
+            google.script.run.withSuccessHandler(displayMonsterList).sortBestiary(sortVal);
+        }
+
+        /* generate collapsibles via script
         for (let i = 0; i < 5; i++)
         {
             let newDiv = document.createElement("div");         // create new div
-            
+
             let newButton = document.createElement("button");   // create button to place in the dive
             newButton.innerHTML = "Collapsible #" + i;           // add text to the button
             newButton.classList.add("collapsible");             // add collapsible class to button
@@ -214,12 +260,14 @@
             insertAfter(newDiv, currentDiv);
 
         }
+        */
 
         // for loop for collapsible functionality
         let collapse = document.getElementsByClassName("collapsible");
         for (let i = 0; i < collapse.length; i++)
         {
-            collapse[i].addEventListener("click", function() {
+            collapse[i].addEventListener("click", function ()
+            {
                 this.classList.toggle("active");
                 let content = this.nextElementSibling;
                 if (content.style.display === "block")
@@ -233,5 +281,6 @@
             });
         }
     </script>
-  </body>
+</body>
+
 </html>
