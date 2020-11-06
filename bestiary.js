@@ -182,6 +182,14 @@ function sortByHP(a, b)
     return hpA - hpB;
 }
 
+function sortByCR(a, b)
+{
+    var crA = a.NumericStats.cr;
+    var crB = b.NumericStats.cr;
+
+    return crA - crB;
+}
+
 // take in a string from the sidebar select, reorder object array and return
 function sortBestiary(sortType)
 {
@@ -197,6 +205,7 @@ function sortBestiary(sortType)
             objectArray.sort(sortByHP);
             break;
         case "cr":
+            objectArray.sort(sortByCR);
             break;
         case "date":
             break;
