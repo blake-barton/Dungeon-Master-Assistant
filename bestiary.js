@@ -210,6 +210,8 @@ function sortBestiary(sortType)
         case "date":
             break;
     }
+
+    return objectArray;
 }
 
 /*
