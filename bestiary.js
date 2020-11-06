@@ -37,7 +37,6 @@ function parseMonsterJSON(filename)
             
             // get as javascript object
             var monsterFileObject = JSON.parse(jsonFile);
-            Logger.log(jsonFile);
             
             return monsterFileObject;
 
@@ -156,6 +155,25 @@ function generateObjectArray(nameArray)
     return objectArray;
 }
 
+function sortByName(a, b)
+{
+    var nameA = a.name.toUpperCase();
+    var nameB = b.name.toUpperCase();
+
+    if (nameA < nameB)
+    {
+        return -1;
+    }
+    else if (nameA > nameB)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
 // take in a string from the sidebar select, reorder object array and return
 function sortBestiary(sortType)
 {
@@ -165,16 +183,13 @@ function sortBestiary(sortType)
     switch (sortType)
     {
         case "name":
-            alert("name");
+            objectArray.sort(sortByName);
             break;
         case "hp":
-            alert("hp");
             break;
         case "cr":
-            alert("cr");
             break;
         case "date":
-            alert("date")
             break;
     }
 }
