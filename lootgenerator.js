@@ -777,25 +777,450 @@ function horde_5_10(gemstone50gp, gemstone500gp, art25gp, art250gp)
 }
 
 //horde loot table for challenge rating 11-16
-function horde_11_16(gemstone500gp, gemstone1000gp, art250gp, art750gp)
+function horde_11_16(gemstone500gp,gemstone1000gp,art250gp,art750gp)
 {
-    var roll = Math.floor(Math.random() * 100) + 1;
+    var roll = Math.floor(Math.random()*100+1);
+    var coins = "Coins = 1400gp, 1750pp\n";
 
-    if ((roll >= 1) && (roll <= 20))
+    if((roll >= 1) && (roll <=3))
     {
-        return "1400sp 350gp";
+        return coins;
     }
-    else if ((roll >= 21) && (roll <= 35))
+
+    else if ((roll >=4) && (roll <=6 ))
     {
-        return "350ep 350gp";
+        var rollart = 0;
+        var art = "Art: ";
+        for(var i = 0; i < 5 ; i++)
+        {
+            rollart = Math.floor(Math.random() * art250gp.length);
+            art += art250gp[rollart];
+            art +=" ";
+        }
+        gems += "\n";
+        return coins + art;
+
     }
-    else if ((roll >= 36) && (roll <= 75))
+
+    else if ((roll>=7) && (roll<=10))
     {
-        return "700gp 35pp";
+        var rollart = 0;
+        var art = "Art: ";
+        for (var i = 0; i < 5 ; i++)
+        {
+            rollart = Math.floor(Math.random()* art750gp.length);
+            art +=art750gp[rollart];
+            art +=" ";
+
+        }
+        art +="\n";
+        return coins + art;
     }
-    else if ((roll >= 76) && (roll <= 100))
+    else if ((roll >= 11) && (roll <= 12))
     {
-        return "700gp 70pp";
+        var rollgems = 0;
+        var gems = "Gems: ";
+        for(var i=0; i < 10; i++)
+        {
+            rollgems = Math.floor(Math.random() * gemstone500gp.length);
+            gems += gemstone500gp[rollgems];
+            gems +=" ";
+        }
+        gems += "\n";
+        return coins + gems;
+    }
+    else if ((roll >=13) && (roll <= 15))
+    {
+        var rollgems = 0;
+        var gems = "Gems: ";
+        for( var i =0; i < 10 ; i++)
+        {
+            rollgems = Math.floor(Math.random() * gemstone1000gp.length);
+            gems += gemstone1000gp[rollgems];
+            gems += " ";
+        }
+        gems += "\n";
+        return coins + gems;
+    }
+    else if ((roll >= 16) && (roll <= 19))//needs magic item roll
+    {
+        var rollart = 0;
+        var art = "Art: ";
+        for(var i = 0 ; i < 5; i++){
+            rollart = Math.floor(Math.random() * art250gp.length)
+            art += art250gp[rollart];
+            art += " ";
+
+        }
+        art += "\n";
+        return coins + art;
+    }
+    else if ((roll >= 20) && (roll <= 23)) // needs magic items
+    {
+        var rollart = 0;
+        var art = "Art: ";
+        for( var i =0; i < 5; i++)
+        {
+            rollart = Math.floor(Math.random() * art750gp.length);
+            art += art750gp[rollart];
+            art += " ";
+
+        }
+        art += "\n";
+        return coins + art;
+    }
+    else if ((roll>=24) && (roll<=26))
+    {
+        var rollgems = 0;
+        var gems = "Gems: ";
+        for(var i = 0; i < 10 ; i++)
+        {
+            rollgems = Math.floor(Math.random() * gemstone500gp.length);
+            gems += gemstone500gp[rollgems];
+            gems += " ";
+
+        }
+        gems += "\n";
+        return coins + gems;
+    }
+    else if ((roll >= 27) && (roll <= 29))
+    {
+        rollgems = 0;
+        gems = "Gems: ";
+        for(var i = 0; i < 10; i++)
+        {
+            rollgems = Math.floor(Math.random() * gemstone1000gp.length);
+            gems += gemstone1000gp[rollgems];
+            gems += " ";
+        }
+        gems += "\n"
+        return coins + gems;
+    }
+    else if ((roll >= 30) && (roll <= 35))//needs magic item roll
+    {
+        var rollart = 0;
+        var art = "Art: ";
+        for(var i = 0 ; i < 5; i++){
+            rollart = Math.floor(Math.random() * art250gp.length)
+            art += art250gp[rollart];
+            art += " ";
+
+        }
+        art += "\n";
+        return coins + art;
+    }
+    else if ((roll >= 36) && (roll <= 40)) // needs magic items
+    {
+        var rollart = 0;
+        var art = "Art: ";
+        for( var i =0; i < 5; i++)
+        {
+            rollart = Math.floor(Math.random() * art750gp.length);
+            art += art750gp[rollart];
+            art += " ";
+
+        }
+        art += "\n";
+        return coins + art;
+    }
+    else if ((roll>=41) && (roll<=45))
+    {
+        var rollgems = 0;
+        var gems = "Gems: ";
+        for(var i = 0; i < 10 ; i++)
+        {
+            rollgems = Math.floor(Math.random() * gemstone500gp.length);
+            gems += gemstone500gp[rollgems];
+            gems += " ";
+
+        }
+        gems += "\n";
+        return coins + gems;
+    }
+    else if ((roll >= 46) && (roll <= 50))
+    {
+        rollgems = 0;
+        gems = "Gems: ";
+        for(var i = 0; i < 10; i++)
+        {
+            rollgems = Math.floor(Math.random() * gemstone1000gp.length);
+            gems += gemstone1000gp[rollgems];
+            gems += " ";
+        }
+        gems += "\n"
+        return coins + gems;
+    }
+    else if ((roll >= 51) && (roll <= 54))//needs magic item roll
+    {
+        var rollart = 0;
+        var art = "Art: ";
+        for(var i = 0 ; i < 5; i++){
+            rollart = Math.floor(Math.random() * art250gp.length)
+            art += art250gp[rollart];
+            art += " ";
+
+        }
+        art += "\n";
+        return coins + art;
+    }
+    else if ((roll >= 55) && (roll <= 58)) // needs magic items
+    {
+        var rollart = 0;
+        var art = "Art: ";
+        for( var i =0; i < 5; i++)
+        {
+            rollart = Math.floor(Math.random() * art750gp.length);
+            art += art750gp[rollart];
+            art += " ";
+
+        }
+        art += "\n";
+        return coins + art;
+    }
+    else if ((roll>=59) && (roll<=62))
+    {
+        var rollgems = 0;
+        var gems = "Gems: ";
+        for(var i = 0; i < 10 ; i++)
+        {
+            rollgems = Math.floor(Math.random() * gemstone500gp.length);
+            gems += gemstone500gp[rollgems];
+            gems += " ";
+
+        }
+        gems += "\n";
+        return coins + gems;
+    }
+    else if ((roll >= 63) && (roll <= 66))
+    {
+        rollgems = 0;
+        gems = "Gems: ";
+        for(var i = 0; i < 10; i++)
+        {
+            rollgems = Math.floor(Math.random() * gemstone1000gp.length);
+            gems += gemstone1000gp[rollgems];
+            gems += " ";
+        }
+        gems += "\n"
+        return coins + gems;
+    }
+
+    else if ((roll >= 67) && (roll <= 68))//needs magic item roll
+    {
+        var rollart = 0;
+        var art = "Art: ";
+        for(var i = 0 ; i < 5; i++){
+            rollart = Math.floor(Math.random() * art250gp.length)
+            art += art250gp[rollart];
+            art += " ";
+
+        }
+        art += "\n";
+        return coins + art;
+    }
+    else if ((roll >= 69) && (roll <= 70)) // needs magic items
+    {
+        var rollart = 0;
+        var art = "Art: ";
+        for( var i =0; i < 5; i++)
+        {
+            rollart = Math.floor(Math.random() * art750gp.length);
+            art += art750gp[rollart];
+            art += " ";
+
+        }
+        art += "\n";
+        return coins + art;
+    }
+    else if ((roll>=71) && (roll<=72))
+    {
+        var rollgems = 0;
+        var gems = "Gems: ";
+        for(var i = 0; i < 10 ; i++)
+        {
+            rollgems = Math.floor(Math.random() * gemstone500gp.length);
+            gems += gemstone500gp[rollgems];
+            gems += " ";
+
+        }
+        gems += "\n";
+        return coins + gems;
+    }
+    else if ((roll >= 73) && (roll <= 74))
+    {
+        rollgems = 0;
+        gems = "Gems: ";
+        for(var i = 0; i < 10; i++)
+        {
+            rollgems = Math.floor(Math.random() * gemstone1000gp.length);
+            gems += gemstone1000gp[rollgems];
+            gems += " ";
+        }
+        gems += "\n"
+        return coins + gems;
+    }
+    else if ((roll >= 75) && (roll <= 76))//needs magic item roll
+    {
+        var rollart = 0;
+        var art = "Art: ";
+        for(var i = 0 ; i < 5; i++){
+            rollart = Math.floor(Math.random() * art250gp.length)
+            art += art250gp[rollart];
+            art += " ";
+
+        }
+        art += "\n";
+        return coins + art;
+    }
+    else if ((roll >= 77) && (roll <= 78)) // needs magic items
+    {
+        var rollart = 0;
+        var art = "Art: ";
+        for( var i =0; i < 5; i++)
+        {
+            rollart = Math.floor(Math.random() * art750gp.length);
+            art += art750gp[rollart];
+            art += " ";
+
+        }
+        art += "\n";
+        return coins + art;
+    }
+    else if ((roll>=79) && (roll<=80))
+    {
+        var rollgems = 0;
+        var gems = "Gems: ";
+        for(var i = 0; i < 10 ; i++)
+        {
+            rollgems = Math.floor(Math.random() * gemstone500gp.length);
+            gems += gemstone500gp[rollgems];
+            gems += " ";
+
+        }
+        gems += "\n";
+        return coins + gems;
+    }
+    else if ((roll >= 81) && (roll <= 82))
+    {
+        rollgems = 0;
+        gems = "Gems: ";
+        for(var i = 0; i < 10; i++)
+        {
+            rollgems = Math.floor(Math.random() * gemstone1000gp.length);
+            gems += gemstone1000gp[rollgems];
+            gems += " ";
+        }
+        gems += "\n"
+        return coins + gems;
+    }
+
+    else if ((roll >= 83) && (roll <= 85))//needs magic item roll
+    {
+        var rollart = 0;
+        var art = "Art: ";
+        for(var i = 0 ; i < 5; i++){
+            rollart = Math.floor(Math.random() * art250gp.length)
+            art += art250gp[rollart];
+            art += " ";
+
+        }
+        art += "\n";
+        return coins + art;
+    }
+    else if ((roll >= 86) && (roll <= 88)) // needs magic items
+    {
+        var rollart = 0;
+        var art = "Art: ";
+        for( var i =0; i < 5; i++)
+        {
+            rollart = Math.floor(Math.random() * art750gp.length);
+            art += art750gp[rollart];
+            art += " ";
+
+        }
+        art += "\n";
+        return coins + art;
+    }
+    else if ((roll>=89) && (roll<=90))
+    {
+        var rollgems = 0;
+        var gems = "Gems: ";
+        for(var i = 0; i < 10 ; i++)
+        {
+            rollgems = Math.floor(Math.random() * gemstone500gp.length);
+            gems += gemstone500gp[rollgems];
+            gems += " ";
+
+        }
+        gems += "\n";
+        return coins + gems;
+    }
+    else if ((roll >= 91) && (roll <= 92))
+    {
+        rollgems = 0;
+        gems = "Gems: ";
+        for(var i = 0; i < 10; i++)
+        {
+            rollgems = Math.floor(Math.random() * gemstone1000gp.length);
+            gems += gemstone1000gp[rollgems];
+            gems += " ";
+        }
+        gems += "\n"
+        return coins + gems;
+    }
+    else if ((roll >= 93) && (roll <= 94))//needs magic item roll
+    {
+        var rollart = 0;
+        var art = "Art: ";
+        for(var i = 0 ; i < 5; i++){
+            rollart = Math.floor(Math.random() * art250gp.length)
+            art += art250gp[rollart];
+            art += " ";
+
+        }
+        art += "\n";
+        return coins + art;
+    }
+    else if ((roll >= 95) && (roll <=96 )) // needs magic items
+    {
+        var rollgems = 0;
+        var gems = "Gems: ";
+        for( var i =0; i < 10; i++)
+        {
+            rollgems = Math.floor(Math.random() * gemstone500gp.length);
+            gems += gemstone500gp[rollart];
+            gems += " ";
+
+        }
+        gems += "\n";
+        return coins + gems;
+    }
+    else if ((roll>=97) && (roll<=98))
+    {
+        var rollgems = 0;
+        var gems = "Gems: ";
+        for(var i = 0; i < 10 ; i++)
+        {
+            rollgems = Math.floor(Math.random() * gemstone1000gp.length);
+            gems += gemstone1000gp[rollgems];
+            gems += " ";
+
+        }
+        gems += "\n";
+        return coins + gems;
+    }
+    else if ((roll >= 99) && (roll <= 100))
+    {
+        rollgems = 0;
+        gems = "Gems: ";
+        for(var i = 0; i < 10; i++)
+        {
+            rollgems = Math.floor(Math.random() * gemstone1000gp.length);
+            gems += gemstone1000gp[rollgems];
+            gems += " ";
+        }
+        gems += "\n"
+        return coins + gems;
     }
 }
 
@@ -1121,5 +1546,4 @@ function horde_17(gemstone1000gp, gemstone5000gp, art2500gp, art7500gp)
         gems += "\n";
         return coins + gems;
     }
-
 }
