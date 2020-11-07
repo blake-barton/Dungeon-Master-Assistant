@@ -174,7 +174,7 @@ function sortByName(a, b)
     }
 }
 
-function sortByHP(a, b)
+function sortByHPLow(a, b)
 {
     var hpA = a.NumericStats.hp;
     var hpB = b.NumericStats.hp;
@@ -182,12 +182,28 @@ function sortByHP(a, b)
     return hpA - hpB;
 }
 
-function sortByCR(a, b)
+function sortByHPHigh(a, b)
+{
+    var hpA = a.NumericStats.hp;
+    var hpB = b.NumericStats.hp;
+
+    return hpB - hpA;
+}
+
+function sortByCRLow(a, b)
 {
     var crA = a.NumericStats.cr;
     var crB = b.NumericStats.cr;
 
     return crA - crB;
+}
+
+function sortByCRHigh(a, b)
+{
+    var crA = a.NumericStats.cr;
+    var crB = b.NumericStats.cr;
+
+    return crB - crA;
 }
 
 // take in a string from the sidebar select, reorder object array and return
@@ -201,11 +217,17 @@ function sortBestiary(sortType)
         case "name":
             objectArray.sort(sortByName);
             break;
-        case "hp":
-            objectArray.sort(sortByHP);
+        case "hp-low":
+            objectArray.sort(sortByHPLow);
             break;
-        case "cr":
-            objectArray.sort(sortByCR);
+        case "hp-high":
+            objectArray.sort(sortByHPHigh);
+            break;
+        case "cr-low":
+            objectArray.sort(sortByCRLow);
+            break;
+        case "cr-high":
+            objectArray.sort(sortByCRHigh);
             break;
         case "date":
             break;
