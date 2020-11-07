@@ -205,6 +205,18 @@
         document.getElementById("bestiary-sort").onchange = function() { loadMonsterList(); }
         function displayMonsterList(monsterList)
         {
+            // if the monsterList div exists, delete it
+            if (document.contains(document.getElementById("monster-list")))
+            {
+                document.getElementById("monster-list").remove();
+            }
+
+            // create a div to contain the list
+            let listDiv = document.createElement("div");
+            listDiv.id = "monster-list";
+            let targetDiv = document.getElementById("collapse-target");
+            insertAfter(listDiv, targetDiv);
+
             for (let i = 0; i < monsterList.length; i++)
             {
                 let newDiv = document.createElement("div");         // create new div
@@ -223,9 +235,8 @@
                 newDiv.appendChild(newButton);                      // attach button to parent div
                 newDiv.appendChild(collapseDiv);                    // attach collapse div to parent div
 
-                // add div to document
-                let currentDiv = document.getElementById("collapse-target");
-                insertAfter(newDiv, currentDiv);
+                // add div to monsterList div
+                listDiv.appendChild(newDiv);
             }
         }
         
@@ -235,32 +246,6 @@
             let sortVal = document.getElementById("bestiary-sort").value;
             google.script.run.withSuccessHandler(displayMonsterList).sortBestiary(sortVal);
         }
-
-        /* generate collapsibles via script
-        for (let i = 0; i < 5; i++)
-        {
-            let newDiv = document.createElement("div");         // create new div
-
-            let newButton = document.createElement("button");   // create button to place in the dive
-            newButton.innerHTML = "Collapsible #" + i;           // add text to the button
-            newButton.classList.add("collapsible");             // add collapsible class to button
-
-            let collapseDiv = document.createElement("div");    // create div class="collapse-content"
-            collapseDiv.classList.add("collapse-content");
-
-            let testPara = document.createElement("p");         // add content to the collapse div
-            testPara.innerHTML = "I contain collapsible content #" + i;
-
-            collapseDiv.appendChild(testPara);                  // attach content to collapse div
-            newDiv.appendChild(newButton);                      // attach button to parent div
-            newDiv.appendChild(collapseDiv);                    // attach collapse div to parent div
-
-            // add div to document
-            let currentDiv = document.getElementById("test-collapse");
-            insertAfter(newDiv, currentDiv);
-
-        }
-        */
 
         // for loop for collapsible functionality
         let collapse = document.getElementsByClassName("collapsible");
