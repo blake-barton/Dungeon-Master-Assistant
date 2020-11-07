@@ -43,20 +43,20 @@
                     <td><label for="type">Type:</label></td>
                     <td>
                         <select name="type" id="type">
-                            <option value="aberration">Aberration</option>
-                            <option value="beast">Beast</option>
-                            <option value="celestial">Celestial</option>
-                            <option value="construct">Construct</option>
-                            <option value="dragon">Dragon</option>
-                            <option value="elemental">Elemental</option>
-                            <option value="fey">Fey</option>
-                            <option value="fiend">Fiend</option>
-                            <option value="giant">Giant</option>
-                            <option value="humanoid">Humanoid</option>
-                            <option value="monstrosity">Monstrosity</option>
-                            <option value="ooze">Ooze</option>
-                            <option value="plant">Plant</option>
-                            <option value="undead">Undead</option>
+                            <option value="Aberration">Aberration</option>
+                            <option value="Beast">Beast</option>
+                            <option value="Celestial">Celestial</option>
+                            <option value="Construct">Construct</option>
+                            <option value="Dragon">Dragon</option>
+                            <option value="Elemental">Elemental</option>
+                            <option value="Fey">Fey</option>
+                            <option value="Fiend">Fiend</option>
+                            <option value="Giant">Giant</option>
+                            <option value="Humanoid">Humanoid</option>
+                            <option value="Monstrosity">Monstrosity</option>
+                            <option value="Ooze">Ooze</option>
+                            <option value="Plant">Plant</option>
+                            <option value="Undead">Undead</option>
                         </select>
                     </td>
                 </tr>
@@ -64,12 +64,12 @@
                     <td><label for="size">Size:</label></td>
                     <td>
                         <select name="size" id="size">
-                            <option value="tiny">Tiny</option>
-                            <option value="small">Small</option>
-                            <option value="medium">Medium</option>
-                            <option value="large">Large</option>
-                            <option value="huge">Huge</option>
-                            <option value="gargantuan">Gargantuan</option>
+                            <option value="Tiny">Tiny</option>
+                            <option value="Small">Small</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Large">Large</option>
+                            <option value="Huge">Huge</option>
+                            <option value="Gargantuan">Gargantuan</option>
                         </select>
                     </td>
                 </tr>
@@ -77,16 +77,16 @@
                     <td><label for="alignment">Alignment:</label></td>
                     <td>
                         <select name="alignment" id="alignment">
-                            <option value="lg">Lawful Good</option>
-                            <option value="ng">Neutral Good</option>
-                            <option value="cg">Chaotic Good</option>
-                            <option value="ln">Lawful Neutral</option>
-                            <option value="n">Neutral</option>
-                            <option value="cn">Chaotic Neutral</option>
-                            <option value="le">Lawful Evil</option>
-                            <option value="ne">Neutral Evil</option>
-                            <option value="ce">Chaotic Evil</option>
-                            <option value="u">Unaligned</option>
+                            <option value="Lawful Good">Lawful Good</option>
+                            <option value="Neutral Good">Neutral Good</option>
+                            <option value="Chaotic Good">Chaotic Good</option>
+                            <option value="Lawful Neutral">Lawful Neutral</option>
+                            <option value="Neutral">Neutral</option>
+                            <option value="Chaotic Neutral">Chaotic Neutral</option>
+                            <option value="Lawful Evil">Lawful Evil</option>
+                            <option value="Neutral Evil">Neutral Evil</option>
+                            <option value="Chaotic Evil">Chaotic Evil</option>
+                            <option value="Unaligned">Unaligned</option>
                         </select>
                     </td>
                 </tr>
@@ -164,133 +164,139 @@
                     <td><label for="sense0">Senses:</label></td>
                     <td>
                         <select name="sense0" id="sense0">
-                            <option value="no-sense">None</option>
-                            <option value="blindsight">Blindsight</option>
-                            <option value="darkvision">Darkvision</option>
-                            <option value="tremorsense">Tremorsense</option>
-                            <option value="truesight">Truesight</option>
+                            <option value="None">None</option>
+                            <option value="Blindsight">Blindsight</option>
+                            <option value="Darkvision">Darkvision</option>
+                            <option value="Tremorsense">Tremorsense</option>
+                            <option value="Truesight">Truesight</option>
                         </select>
                     </td>
                     <td><input type="number" id="sense-range0" name="senseRange0" min="0" placeholder="ft."></td>
-                    <td><button type="button" class="add-button" onclick="generateSelectInput('sense-row0')">Add sense</button></td>
+                    <td><button type="button" class="add-button" onclick="generateSelectInput('sense-row0')">+</button></td>
                 </tr>
                 <tr id="skill-row0">
                     <td><label for="skill0">Skills:</label></td>
                     <td>
                         <select name="skill0" id="skill0">
-                            <option value="no-skills">None</option>
-                            <option value="acrobatics">Acrobatics (dex)</option>
-                            <option value="animal">Animal Handling (wis)</option>
-                            <option value="arcana">Arcana (int)</option>
-                            <option value="athletics">Athletics (str)</option>
-                            <option value="deception">Deception (cha)</option>
-                            <option value="history">History (int)</option>
-                            <option value="insight">Insight (wis)</option>
-                            <option value="intimidation">Intimidation (cha)</option>
-                            <option value="investigation">Investigation (int)</option>
-                            <option value="medicine">Medicine (wis)</option>
-                            <option value="nature">Nature (int)</option>
-                            <option value="performance">Performance (cha)</option>
-                            <option value="persuasion">Persuasion (cha)</option>
-                            <option value="religion">Religion (int)</option>
-                            <option value="sleight">Sleight of Hand (dex)</option>
-                            <option value="stealth">Stealth (dex)</option>
-                            <option value="survival">Survival (wis)</option>
+                            <option value="None">None</option>
+                            <option value="Acrobatics">Acrobatics (dex)</option>
+                            <option value="Animal Handling">Animal Handling (wis)</option>
+                            <option value="Arcana">Arcana (int)</option>
+                            <option value="Athletics">Athletics (str)</option>
+                            <option value="Deception">Deception (cha)</option>
+                            <option value="History">History (int)</option>
+                            <option value="Insight">Insight (wis)</option>
+                            <option value="Intimidation">Intimidation (cha)</option>
+                            <option value="Investigation">Investigation (int)</option>
+                            <option value="Medicine">Medicine (wis)</option>
+                            <option value="Nature">Nature (int)</option>
+                            <option value="Performance">Performance (cha)</option>
+                            <option value="Persuasion">Persuasion (cha)</option>
+                            <option value="Religion">Religion (int)</option>
+                            <option value="Sleight of Hand">Sleight of Hand (dex)</option>
+                            <option value="Stealth">Stealth (dex)</option>
+                            <option value="Survival">Survival (wis)</option>
                         </select>
                     </td>
                     <td><input type="number" id="skill-mod0" name="skillMod0" min="0" placeholder="+mod"></td>
-                    <td><button type="button" class="add-button" onclick="generateSelectInput('skill-row0')">Add Skill</button></td>
+                    <td><button type="button" class="add-button" onclick="generateSelectInput('skill-row0')">+</button></td>
                 </tr>
                 <tr id="language-row0">
                     <td><label for="language0">Languages:</label></td>
                     <td>
                         <select name="language0" id="language0">
-                            <option value="no-language">None</option>
-                            <option value="common">Common</option>
-                            <option value="dwarvish">Dwarvish</option>
-                            <option value="elvish">Elvish</option>
-                            <option value="giant">Giant</option>
-                            <option value="gnomish">Gnomish</option>
-                            <option value="goblin">Goblin</option>
-                            <option value="halfling">Halfling</option>
-                            <option value="orc">Orc</option>
-                            <option value="abyssal">Abyssal</option>
-                            <option value="celestial">Celestial</option>
-                            <option value="draconic">Draconic</option>
-                            <option value="deep-speech">Deep Speech</option>
-                            <option value="infernal">Infernal</option>
-                            <option value="primordial">Primordial</option>
-                            <option value="sylvan">Sylvan</option>
-                            <option value="undercommon">Undercommon</option>
+                            <option value="None">None</option>
+                            <option value="Common">Common</option>
+                            <option value="Dwarvish">Dwarvish</option>
+                            <option value="Elvish">Elvish</option>
+                            <option value="Giant">Giant</option>
+                            <option value="Gnomish">Gnomish</option>
+                            <option value="Goblin">Goblin</option>
+                            <option value="Halfling">Halfling</option>
+                            <option value="Orc">Orc</option>
+                            <option value="Abyssal">Abyssal</option>
+                            <option value="Celestial">Celestial</option>
+                            <option value="Draconic">Draconic</option>
+                            <option value="Deep-speech">Deep Speech</option>
+                            <option value="Infernal">Infernal</option>
+                            <option value="Primordial">Primordial</option>
+                            <option value="Sylvan">Sylvan</option>
+                            <option value="Undercommon">Undercommon</option>
                         </select>
                     </td>
-                    <td><button type="button" class="add-button" onclick="generateSelect('language-row0')">Add Language</button></td>
+                    <td><button type="button" class="add-button" onclick="generateSelect('language-row0')">+</button></td>
                 </tr>
                 <tr id="resistance-row0">
                     <td><label for="resistance0">Resistances:</label></td>
                     <td>
                         <select name="resistance0" id="resistance0">
-                            <option value="no-resistance">None</option>
-                            <option value="acid">Acid</option>
-                            <option value="bludgeoning">Bludgeoning</option>
-                            <option value="cold">Cold</option>
-                            <option value="fire">Fire</option>
-                            <option value="force">Force</option>
-                            <option value="lightning">Lightning</option>
-                            <option value="necrotic">Necrotic</option>
-                            <option value="piercing">Piercing</option>
-                            <option value="poison">Poison</option>
-                            <option value="psychic">Psychic</option>
-                            <option value="radiant">Radiant</option>
-                            <option value="slashing">Slashing</option>
+                            <option value="None">None</option>
+                            <option value="Acid">Acid</option>
+                            <option value="Bludgeoning (non-magical)">Bludgeoning (non-magical)</option>
+                            <option value="Bludgeoning (magical)">Bludgeoning (magical)</option>
+                            <option value="Cold">Cold</option>
+                            <option value="Fire">Fire</option>
+                            <option value="Force">Force</option>
+                            <option value="Lightning">Lightning</option>
+                            <option value="Necrotic">Necrotic</option>
+                            <option value="Piercing (non-magical)">Piercing (non-magical)</option>
+                            <option value="Piercing (magical)">Piercing (magical)</option>
+                            <option value="Poison">Poison</option>
+                            <option value="Psychic">Psychic</option>
+                            <option value="Radiant">Radiant</option>
+                            <option value="Slashing (non-magical)">Slashing (non-magical)</option>
+                            <option value="Slashing (magical)">Slashing (magical)</option>
                             <option value="thunder">Thunder</option>
                         </select>
                     </td>
-                    <td><button type="button" class="add-button" onclick="generateSelect('resistance-row0')">Add Resistance</button></td>
+                    <td><button type="button" class="add-button" onclick="generateSelect('resistance-row0')">+</button></td>
                 </tr>
                 <tr id="immunity-row0">
                     <td><label for="immunity0">Immunities:</label></td>
                     <td>
                         <select name="immunity0" id="immunity0">
-                            <option value="no-immunity">None</option>
-                            <option value="im-acid">Acid</option>
-                            <option value="im-bludgeoning">Bludgeoning</option>
-                            <option value="im-cold">Cold</option>
-                            <option value="im-fire">Fire</option>
-                            <option value="im-force">Force</option>
-                            <option value="im-lightning">Lightning</option>
-                            <option value="im-necrotic">Necrotic</option>
-                            <option value="im-piercing">Piercing</option>
-                            <option value="im-poison">Poison</option>
-                            <option value="im-psychic">Psychic</option>
-                            <option value="im-radiant">Radiant</option>
-                            <option value="im-slashing">Slashing</option>
-                            <option value="im-thunder">Thunder</option>
+                            <option value="None">None</option>
+                            <option value="Acid">Acid</option>
+                            <option value="Bludgeoning (non-magical)">Bludgeoning (non-magical)</option>
+                            <option value="Bludgeoning (magical)">Bludgeoning (magical)</option>
+                            <option value="Cold">Cold</option>
+                            <option value="Fire">Fire</option>
+                            <option value="Force">Force</option>
+                            <option value="Lightning">Lightning</option>
+                            <option value="Necrotic">Necrotic</option>
+                            <option value="Piercing (non-magical)">Piercing (non-magical)</option>
+                            <option value="Piercing (magical)">Piercing (magical)</option>
+                            <option value="Poison">Poison</option>
+                            <option value="Psychic">Psychic</option>
+                            <option value="Radiant">Radiant</option>
+                            <option value="Slashing (non-magical)">Slashing (non-magical)</option>
+                            <option value="Slashing (magical)">Slashing (magical)</option>
+                            <option value="thunder">Thunder</option>
                         </select>
                     </td>
-                    <td><button type="button" class="add-button" onclick="generateSelect('immunity-row0')">Add Immunity</button></td>
+                    <td><button type="button" class="add-button" onclick="generateSelect('immunity-row0')">+</button></td>
                 </tr>
                 <tr id="c-immunity-row0">
                     <td><label for="c-immunity0">Condition Immunities:</label></td>
                     <td>
                         <select name="cImmunity0" id="c-immunity0">
-                            <option value="no-c-immunity">None</option>
-                            <option value="blinded">Blinded</option>
-                            <option value="charmed">Charmed</option>
-                            <option value="deafened">Deafened</option>
-                            <option value="exhaustion">Exhaustion</option>
-                            <option value="frightened">Frightened</option>
-                            <option value="grappled">Grappled</option>
-                            <option value="paralyzed">Paralyzed</option>
-                            <option value="petrified">Petrified</option>
-                            <option value="poisoned">Poisoned</option>
-                            <option value="prone">Prone</option>
-                            <option value="restrained">Restrained</option>
-                            <option value="stunned">Stunned</option>
-                            <option value="unconscious">Unconscious</option>
+                            <option value="None">None</option>
+                            <option value="Blinded">Blinded</option>
+                            <option value="Charmed">Charmed</option>
+                            <option value="Deafened">Deafened</option>
+                            <option value="Exhaustion">Exhaustion</option>
+                            <option value="Frightened">Frightened</option>
+                            <option value="Grappled">Grappled</option>
+                            <option value="Paralyzed">Paralyzed</option>
+                            <option value="Petrified">Petrified</option>
+                            <option value="Poisoned">Poisoned</option>
+                            <option value="Prone">Prone</option>
+                            <option value="Restrained">Restrained</option>
+                            <option value="Stunned">Stunned</option>
+                            <option value="Unconscious">Unconscious</option>
                         </select>
                     </td>
-                    <td><button type="button" class="add-button" onclick="generateSelect('c-immunity-row0')">Add Condition Immunity</button></td>
+                    <td><button type="button" class="add-button" onclick="generateSelect('c-immunity-row0')">+</button></td>
                 </tr>
             </table>
             <hr>
@@ -300,7 +306,7 @@
                     <td><label for="s-passive0">Special Passives:</label></td>
                     <td><input type="text" id="s-passive0" name="sPassive0" placeholder="Name"></td>
                     <td><input type="text" id="s-passive-desc0" name="sPassiveDesc0" placeholder="Description"></td>
-                    <td><button type="button" class="add-button" onclick="generateInputInput('s-passive-row0')">Add Special Passive</button></td>
+                    <td><button type="button" class="add-button" onclick="generateInputInput('s-passive-row0')">+</button></td>
                 </tr>
             </table>
             <hr>
@@ -314,13 +320,13 @@
                     <td><label for="cast-ability">Cast Ability:</label></td>
                     <td>
                         <select name="castAbility" id="cast-ability">
-                            <option value="cast-none">None</option>
-                            <option value="cast-strength">Strength</option>
-                            <option value="cast-dexterity">Dexterity</option>
-                            <option value="cast-constitution">Constitution</option>
-                            <option value="cast-intelligence">Intelligence</option>
-                            <option value="cast-wisdom">Wisdom</option>
-                            <option value="cast-charisma">Charisma</option>
+                            <option value="None">None</option>
+                            <option value="Strength">Strength</option>
+                            <option value="Dexterity">Dexterity</option>
+                            <option value="Constitution">Constitution</option>
+                            <option value="Intelligence">Intelligence</option>
+                            <option value="Wisdom">Wisdom</option>
+                            <option value="Charisma">Charisma</option>
                         </select>
                     </td>
                 </tr>
@@ -363,52 +369,52 @@
                 <tr id="cantrip-row0">
                     <td><label for="level0-0">Cantrips:</label></td>
                     <td><input type="text" id="level0-0" name="level0_0"></td>
-                    <td><button type="button" class="add-button" onclick="generateInput('cantrip-row0')">Add Spell</button></td>
+                    <td><button type="button" class="add-button" onclick="generateInput('cantrip-row0')">+</button></td>
                 </tr>
                 <tr id="spell-level1-row0">
                     <td><label for="level1-0">1st Level:</label></td>
                     <td><input type="text" id="level1-0" name="level1_0"></td>
-                    <td><button type="button" class="add-button" onclick="generateInput('spell-level1-row0')">Add Spell</button></td>
+                    <td><button type="button" class="add-button" onclick="generateInput('spell-level1-row0')">+</button></td>
                 </tr>
                 <tr id="spell-level2-row0">
                     <td><label for="level2-0">2nd Level:</label></td>
                     <td><input type="text" id="level2-0" name="level2_0"></td>
-                    <td><button type="button" class="add-button" onclick="generateInput('spell-level2-row0')">Add Spell</button></td>
+                    <td><button type="button" class="add-button" onclick="generateInput('spell-level2-row0')">+</button></td>
                 </tr>
                 <tr id="spell-level3-row0">
                     <td><label for="level3-0">3rd Level:</label></td>
                     <td><input type="text" id="level3-0" name="level3_0"></td>
-                    <td><button type="button" class="add-button" onclick="generateInput('spell-level3-row0')">Add Spell</button></td>
+                    <td><button type="button" class="add-button" onclick="generateInput('spell-level3-row0')">+</button></td>
                 </tr>
                 <tr id="spell-level4-row0">
                     <td><label for="level4-0">4th Level:</label></td>
                     <td><input type="text" id="level4-0" name="level4_0"></td>
-                    <td><button type="button" class="add-button" onclick="generateInput('spell-level4-row0')">Add Spell</button></td>
+                    <td><button type="button" class="add-button" onclick="generateInput('spell-level4-row0')">+</button></td>
                 </tr>
                 <tr id="spell-level5-row0">
                     <td><label for="level5-0">5th Level:</label></td>
                     <td><input type="text" id="level5-0" name="level5_0"></td>
-                    <td><button type="button" class="add-button" onclick="generateInput('spell-level5-row0')">Add Spell</button></td>
+                    <td><button type="button" class="add-button" onclick="generateInput('spell-level5-row0')">+</button></td>
                 </tr>
                 <tr id="spell-level6-row0">
                     <td><label for="level6-0">6th Level:</label></td>
                     <td><input type="text" id="level6-0" name="level6_0"></td>
-                    <td><button type="button" class="add-button" onclick="generateInput('spell-level6-row0')">Add Spell</button></td>
+                    <td><button type="button" class="add-button" onclick="generateInput('spell-level6-row0')">+</button></td>
                 </tr>
                 <tr id="spell-level7-row0">
                     <td><label for="level7-0">7th Level:</label></td>
                     <td><input type="text" id="level7-0" name="level7_0"></td>
-                    <td><button type="button" class="add-button" onclick="generateInput('spell-level7-row0')">Add Spell</button></td>
+                    <td><button type="button" class="add-button" onclick="generateInput('spell-level7-row0')">+</button></td>
                 </tr>
                 <tr id="spell-level8-row0">
                     <td><label for="level8-0">8th Level:</label></td>
                     <td><input type="text" id="level8-0" name="level8_0"></td>
-                    <td><button type="button" class="add-button" onclick="generateInput('spell-level8-row0')">Add Spell</button></td>
+                    <td><button type="button" class="add-button" onclick="generateInput('spell-level8-row0')">+</button></td>
                 </tr>
                 <tr id="spell-level9-row0">
                     <td><label for="level9-0">9th Level:</label></td>
                     <td><input type="text" id="level9-0" name="level9_0"></td>
-                    <td><button type="button" class="add-button" onclick="generateInput('spell-level9-row0')">Add Spell</button></td>
+                    <td><button type="button" class="add-button" onclick="generateInput('spell-level9-row0')">+</button></td>
                 </tr>
             </table>
             <hr>
@@ -418,13 +424,13 @@
                     <td><label for="action0">Actions:</label></td>
                     <td><input type="text" id="action0" name="action0" placeholder="Name"></td>
                     <td><input type="text" id="action-desc0" name="actionDesc0" placeholder="Description"></td>
-                    <td><button type="button" class="add-button" onclick="generateInputInput('action-row0')">Add Action</button></td>
+                    <td><button type="button" class="add-button" onclick="generateInputInput('action-row0')">+</button></td>
                 </tr>
                 <tr id="le-action-row0">
                     <td><label for="le-action0">Legendary Actions:</label></td>
                     <td><input type="text" id="le-action0" name="leAction0" placeholder="Name"></td>
                     <td><input type="text" id="le-action-desc0" name="leActionDesc0" placeholder="Description"></td>
-                    <td><button type="button" class="add-button" onclick="generateInputInput('le-action-row0')">Add Legendary Action</button></td>
+                    <td><button type="button" class="add-button" onclick="generateInputInput('le-action-row0')">+</button></td>
                 </tr>
             </table>
             <hr>
@@ -434,7 +440,7 @@
                     <td><label for="reaction0">Reactions:</label></td>
                     <td><input type="text" id="reaction0" name="reaction0" placeholder="Name"></td>
                     <td><input type="text" id="reaction-desc0" name="reactionDesc0" placeholder="Description"></td>
-                    <td><button type="button" class="add-button" onclick="generateInputInput('reaction-row0')">Add Reaction</button></td>
+                    <td><button type="button" class="add-button" onclick="generateInputInput('reaction-row0')">+</button></td>
                 </tr>
             </table>
             <br>
