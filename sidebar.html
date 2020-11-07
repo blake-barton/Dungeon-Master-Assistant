@@ -51,6 +51,20 @@
             }
             */
 
+            .loader {
+                border: 4px solid #f3f3f3; /* Light grey */
+                border-top: 4px solid #3498db; /* Blue */
+                border-radius: 50%;
+                width: 10px;
+                height: 10px;
+                animation: spin .75s linear infinite;
+            }
+
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+
         /* Style the collapsible content. Note: hidden by default */
         .collapse-content {
             padding: 0 18px;
@@ -116,6 +130,7 @@
             </select>
             <br><br>
             <div id="collapse-target"></div>
+            <div class="loader" id="list-loader"></div>
         </div>
     </div>
 
@@ -208,6 +223,11 @@
         document.getElementById("bestiary-sort").onchange = function() { loadMonsterList(); }
         function displayMonsterList(monsterList)
         {
+
+            // hide the loader
+            let loader = document.getElementById("list-loader");
+            loader.style.display = "none";
+
             // if the monsterList div exists, delete it
             if (document.contains(document.getElementById("monster-list")))
             {
@@ -246,6 +266,8 @@
         // pulls monsterList object from server
         function loadMonsterList()
         {
+            let loader = document.getElementById("list-loader");
+            loader.style.display = "block";
             let sortVal = document.getElementById("bestiary-sort").value;
             google.script.run.withSuccessHandler(displayMonsterList).sortBestiary(sortVal);
         }
