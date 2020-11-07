@@ -228,12 +228,6 @@
             let loader = document.getElementById("list-loader");
             loader.style.display = "none";
 
-            // if the monsterList div exists, delete it
-            if (document.contains(document.getElementById("monster-list")))
-            {
-                document.getElementById("monster-list").remove();
-            }
-
             // create a div to contain the list
             let listDiv = document.createElement("div");
             listDiv.id = "monster-list";
@@ -266,6 +260,12 @@
         // pulls monsterList object from server
         function loadMonsterList()
         {
+            // if the monsterList div exists, delete it
+            if (document.contains(document.getElementById("monster-list")))
+            {
+                document.getElementById("monster-list").remove();
+            }
+            
             let loader = document.getElementById("list-loader");
             loader.style.display = "block";
             let sortVal = document.getElementById("bestiary-sort").value;
