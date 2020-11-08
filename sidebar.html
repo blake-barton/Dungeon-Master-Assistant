@@ -53,7 +53,7 @@
 
         .ability-scores {
             table-layout: fixed;
-            width: 255px;
+            width: 235px;
         }
 
         table.ability-scores td {
@@ -400,6 +400,45 @@
                 let abilitiesHR = document.createElement("hr");
 
                 // Saving throws
+                let strSave = monsterList[i].SavingThrows.str;
+                let dexSave = monsterList[i].SavingThrows.dex;
+                let conSave = monsterList[i].SavingThrows.con;
+                let intSave = monsterList[i].SavingThrows.int;
+                let wisSave = monsterList[i].SavingThrows.wis;
+                let chaSave = monsterList[i].SavingThrows.cha;
+                
+                let hasSavingThrows = false;
+                let savingThrows = document.createElement("p");
+                if (!(strSave === "" && dexSave === "" && conSave === "" && intSave === "" && wisSave === "" && chaSave === ""))
+                {
+                    hasSavingThrows = true;
+                    savingThrows.innerHTML = "<b>Saving Throws</b> ";
+                    
+                    if (strSave !== "")
+                    {
+                        savingThrows.innerHTML += "Str +" + strSave + " ";
+                    }
+                    if (dexSave !== "")
+                    {
+                        savingThrows.innerHTML += "Dex +" + dexSave + " ";
+                    }
+                    if (conSave !== "")
+                    {
+                        savingThrows.innerHTML += "Con +" + conSave + " ";
+                    }
+                    if (intSave !== "")
+                    {
+                        savingThrows.innerHTML += "Int +" + intSave + " ";
+                    }
+                    if (wisSave !== "")
+                    {
+                        savingThrows.innerHTML += "Wis +" + wisSave + " ";
+                    }
+                    if (chaSave !== "")
+                    {
+                        savingThrows.innerHTML += "Cha +" + strSave + " ";
+                    }
+                }
 
                 
                 // ADDING CONTENT TO STAT BLOCK
@@ -411,6 +450,8 @@
                 collapseDiv.appendChild(speedsHR);
                 collapseDiv.appendChild(abilityScores);
                 collapseDiv.appendChild(abilitiesHR);
+                if (hasSavingThrows) { collapseDiv.appendChild(savingThrows); } 
+
 
                 newDiv.appendChild(newButton);                      // attach button to parent div
                 newDiv.appendChild(collapseDiv);                    // attach collapse div to parent div
