@@ -53,7 +53,13 @@
 
         .ability-scores {
             table-layout: fixed;
-            width: 270px;
+            width: 255px;
+        }
+
+        table.ability-scores td {
+            padding: 0;
+            text-align: center;
+            border: none;
         }
 
         /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover)
@@ -239,6 +245,19 @@
             referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
         }
 
+        function calculateModifier(score)
+        {
+            let mod = Math.floor(score / 2) - 5;
+            if (mod >= 0)
+            {
+                return "+" + mod;
+            }
+            else
+            {
+                return mod;
+            }
+        }
+
         // displayMonsterList is called after the server request is complete
         document.getElementById("bestiary-sort").onchange = function() { loadMonsterList(); }
         function displayMonsterList(monsterList)
@@ -344,6 +363,44 @@
                 abCHA.innerHTML = "<b>CHA</b>";
                 abLabels.appendChild(abCHA);
 
+                // adding numbers
+                let abStats = document.createElement("tr");
+                abilityScores.appendChild(abStats);
+
+                // STR
+                let statSTR = document.createElement("td");
+                statSTR.innerHTML = monsterList[i].AbilityScores.str + " (" + calculateModifier(monsterList[i].AbilityScores.str) + ")";
+                abStats.appendChild(statSTR);
+
+                // DEX
+                let statDEX = document.createElement("td");
+                statDEX.innerHTML = monsterList[i].AbilityScores.dex + " (" + calculateModifier(monsterList[i].AbilityScores.dex) + ")";
+                abStats.appendChild(statDEX);
+
+                // CON
+                let statCON = document.createElement("td");
+                statCON.innerHTML = monsterList[i].AbilityScores.con + " (" + calculateModifier(monsterList[i].AbilityScores.con) + ")";
+                abStats.appendChild(statCON);
+
+                // INT
+                let statINT = document.createElement("td");
+                statINT.innerHTML = monsterList[i].AbilityScores.int + " (" + calculateModifier(monsterList[i].AbilityScores.int) + ")";
+                abStats.appendChild(statINT);
+
+                // WIS
+                let statWIS = document.createElement("td");
+                statWIS.innerHTML = monsterList[i].AbilityScores.wis + " (" + calculateModifier(monsterList[i].AbilityScores.wis) + ")";
+                abStats.appendChild(statWIS);
+
+                // CHA
+                let statCHA = document.createElement("td");
+                statCHA.innerHTML = monsterList[i].AbilityScores.cha + " (" + calculateModifier(monsterList[i].AbilityScores.cha) + ")";
+                abStats.appendChild(statCHA);
+
+                let abilitiesHR = document.createElement("hr");
+
+                // Saving throws
+
                 
                 // ADDING CONTENT TO STAT BLOCK
                 collapseDiv.appendChild(descLine);
@@ -353,6 +410,7 @@
                 collapseDiv.appendChild(speeds);
                 collapseDiv.appendChild(speedsHR);
                 collapseDiv.appendChild(abilityScores);
+                collapseDiv.appendChild(abilitiesHR);
 
                 newDiv.appendChild(newButton);                      // attach button to parent div
                 newDiv.appendChild(collapseDiv);                    // attach collapse div to parent div
