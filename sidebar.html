@@ -273,12 +273,26 @@
                 // Armor class
                 let armorClass = document.createElement("p");
                 armorClass.innerHTML = "<b>Armor Class</b> " + monsterList[i].NumericStats.ac;
+
+                // HP
+                let hitPoints = document.createElement("p");
+                hitPoints.innerHTML = "<b>Hit Points</b> " + monsterList[i].NumericStats.hp;
+
+                // Speeds
+                let speeds = document.createElement("p");
+                speeds.innerHTML = "<b>Speed</b> ";
+                if (monsterList[i].NumericStats.Speeds.land !== "")
+                {
+                    speeds.innerHTML += monsterList[i].NumericStats.Speeds.land + "ft."
+                }
                 
 
                 // ADDING CONTENT TO STAT BLOCK
-                collapseDiv.appendChild(descLine);                  // attach content to collapse div
+                collapseDiv.appendChild(descLine);
                 collapseDiv.appendChild(descHR);
                 collapseDiv.appendChild(armorClass);
+                collapseDiv.appendChild(hitPoints);
+                collapseDiv.appendChild(speeds);
 
                 newDiv.appendChild(newButton);                      // attach button to parent div
                 newDiv.appendChild(collapseDiv);                    // attach collapse div to parent div
