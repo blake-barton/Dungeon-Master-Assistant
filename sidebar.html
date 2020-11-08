@@ -283,7 +283,23 @@
                 speeds.innerHTML = "<b>Speed</b> ";
                 if (monsterList[i].NumericStats.Speeds.land !== "")
                 {
-                    speeds.innerHTML += monsterList[i].NumericStats.Speeds.land + "ft."
+                    speeds.innerHTML += monsterList[i].NumericStats.Speeds.land + "ft. "
+                }
+                if (monsterList[i].NumericStats.Speeds.fly !== "")
+                {
+                    speeds.innerHTML += "Fly: " + monsterList[i].NumericStats.Speeds.fly + "ft. "
+                }
+                if (monsterList[i].NumericStats.Speeds.swim !== "")
+                {
+                    speeds.innerHTML += "Swim: " + monsterList[i].NumericStats.Speeds.swim + "ft. "
+                }
+                if (monsterList[i].NumericStats.Speeds.climb !== "")
+                {
+                    speeds.innerHTML += "Climb: " + monsterList[i].NumericStats.Speeds.climb + "ft. "
+                }
+                if (monsterList[i].NumericStats.Speeds.burrow !== "")
+                {
+                    speeds.innerHTML += "Burrow: " + monsterList[i].NumericStats.Speeds.burrow + "ft. "
                 }
                 
 
