@@ -249,12 +249,21 @@
 
                 let collapseDiv = document.createElement("div");    // create div class="collapse-content"
                 collapseDiv.classList.add("collapse-content");
+                
+                // GENERATING CONTENT FOR STAT BLOCK
 
-                let descLine = document.createElement("p");         // add content to the collapse div
+                // Description line
+                let descLine = document.createElement("p");
                 descLine.classList.add("desc-line");
                 descLine.innerHTML = monsterList[i].Descriptors.size + " " + monsterList[i].Descriptors.type + ", " + monsterList[i].Descriptors.alignment;
 
+                // HR tag
+                let descHR = document.createElement("hr");
+
+                // ADDING CONTENT TO STAT BLOCK
                 collapseDiv.appendChild(descLine);                  // attach content to collapse div
+                collapseDiv.appendChild(descHR);
+
                 newDiv.appendChild(newButton);                      // attach button to parent div
                 newDiv.appendChild(collapseDiv);                    // attach collapse div to parent div
 
