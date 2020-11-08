@@ -109,6 +109,7 @@
                     <td><input type="number" id="fly-speed" name="flySpeed" placeholder="Fly" size="5" min="0"></td>
                     <td><input type="number" id="swim-speed" name="swimSpeed" placeholder="Swim" size="5" min="0"></td>
                     <td><input type="number" id="climb-speed" name="climbSpeed" placeholder="Climb" size="5" min="0"></td>
+                    <td><input type="number" id="burrow-speed" name="burrowSpeed" placeholder="Dig" size="5" min="0"></td>
                 </tr>
                 <tr>
                     <td><label for="cr">Challenge Rating:</label></td>
@@ -782,7 +783,8 @@
                             "land": form.landSpeed.value,
                             "fly": form.flySpeed.value,
                             "swim": form.swimSpeed.value,
-                            "climb": form.climbSpeed.value
+                            "climb": form.climbSpeed.value,
+                            "burrow": form.burrowSpeed.value
                         },
                         "cr": form.cr.value,
                     },
