@@ -51,6 +51,11 @@
             font-weight: 500;
         }
 
+        .ability-scores {
+            table-layout: fixed;
+            width: 270px;
+        }
+
         /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover)
             .active, .collapsible:hover {
                 background-color: #ccc;
@@ -283,32 +288,71 @@
                 speeds.innerHTML = "<b>Speed</b> ";
                 if (monsterList[i].NumericStats.Speeds.land !== "")
                 {
-                    speeds.innerHTML += monsterList[i].NumericStats.Speeds.land + "ft. "
+                    speeds.innerHTML += monsterList[i].NumericStats.Speeds.land + "ft. ";
                 }
                 if (monsterList[i].NumericStats.Speeds.fly !== "")
                 {
-                    speeds.innerHTML += "Fly: " + monsterList[i].NumericStats.Speeds.fly + "ft. "
+                    speeds.innerHTML += "Fly: " + monsterList[i].NumericStats.Speeds.fly + "ft. ";
                 }
                 if (monsterList[i].NumericStats.Speeds.swim !== "")
                 {
-                    speeds.innerHTML += "Swim: " + monsterList[i].NumericStats.Speeds.swim + "ft. "
+                    speeds.innerHTML += "Swim: " + monsterList[i].NumericStats.Speeds.swim + "ft. ";
                 }
                 if (monsterList[i].NumericStats.Speeds.climb !== "")
                 {
-                    speeds.innerHTML += "Climb: " + monsterList[i].NumericStats.Speeds.climb + "ft. "
+                    speeds.innerHTML += "Climb: " + monsterList[i].NumericStats.Speeds.climb + "ft. ";
                 }
                 if (monsterList[i].NumericStats.Speeds.burrow !== "")
                 {
-                    speeds.innerHTML += "Burrow: " + monsterList[i].NumericStats.Speeds.burrow + "ft. "
+                    speeds.innerHTML += "Burrow: " + monsterList[i].NumericStats.Speeds.burrow + "ft. ";
                 }
-                
+                let speedsHR = document.createElement("hr");
 
+                // Ability Scores
+                let abilityScores = document.createElement("table");
+                abilityScores.classList.add("ability-scores");
+                let abLabels = document.createElement("tr");
+                abilityScores.appendChild(abLabels);
+
+                // STR
+                let abSTR = document.createElement("td");
+                abSTR.innerHTML = "<b>STR</b>";
+                abLabels.appendChild(abSTR);
+
+                // DEX
+                let abDEX = document.createElement("td");
+                abDEX.innerHTML = "<b>DEX</b>";
+                abLabels.appendChild(abDEX);
+
+                // CON
+                let abCON = document.createElement("td");
+                abCON.innerHTML = "<b>CON</b>";
+                abLabels.appendChild(abCON);
+
+                // INT
+                let abINT = document.createElement("td");
+                abINT.innerHTML = "<b>INT</b>";
+                abLabels.appendChild(abINT);
+
+                // WIS
+                let abWIS = document.createElement("td");
+                abWIS.innerHTML = "<b>WIS</b>";
+                abLabels.appendChild(abWIS);
+
+                // CHA
+                let abCHA = document.createElement("td");
+                abCHA.innerHTML = "<b>CHA</b>";
+                abLabels.appendChild(abCHA);
+
+                
                 // ADDING CONTENT TO STAT BLOCK
                 collapseDiv.appendChild(descLine);
                 collapseDiv.appendChild(descHR);
                 collapseDiv.appendChild(armorClass);
                 collapseDiv.appendChild(hitPoints);
                 collapseDiv.appendChild(speeds);
+                collapseDiv.appendChild(speedsHR);
+                collapseDiv.appendChild(abilityScores);
 
                 newDiv.appendChild(newButton);                      // attach button to parent div
                 newDiv.appendChild(collapseDiv);                    // attach collapse div to parent div
