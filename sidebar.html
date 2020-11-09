@@ -456,7 +456,14 @@
                     hasSkills = true;
                     for (let skillIter = 0; skillIter < monsterList[i].Passives.skills.length; skillIter++)
                     {
-                        skills.innerHTML += monsterList[i].Passives.skills[skillIter][0] + " " + "+" + monsterList[i].Passives.skills[skillIter][1] + " ";
+                        if (skillIter == monsterList[i].Passives.skills.length - 1)
+                        {
+                            skills.innerHTML += monsterList[i].Passives.skills[skillIter][0] + " " + "+" + monsterList[i].Passives.skills[skillIter][1];
+                        }
+                        else
+                        {
+                            skills.innerHTML += monsterList[i].Passives.skills[skillIter][0] + " " + "+" + monsterList[i].Passives.skills[skillIter][1] + ", ";
+                        }
                     }
                 }
 
@@ -470,7 +477,14 @@
                     hasVulnerabilities = true;
                     for (let vulnIter = 0; vulnIter < monsterList[i].Passives.vulnerabilities.length; vulnIter++)
                     {
-                        vulnerabilities.innerHTML += monsterList[i].Passives.vulnerabilities[vulnIter] + " ";
+                        if (vulnIter == monsterList[i].Passives.vulnerabilities.length - 1)
+                        {
+                            vulnerabilities.innerHTML += monsterList[i].Passives.vulnerabilities[vulnIter] + ", ";
+                        }
+                        else
+                        {
+                            vulnerabilities.innerHTML += monsterList[i].Passives.vulnerabilities[vulnIter];
+                        }
                     }
                 }
 
@@ -484,7 +498,14 @@
                     hasResistances = true;
                     for (let iter = 0; iter < monsterList[i].Passives.resistances.length; iter++)
                     {
-                        resistances.innerHTML += monsterList[i].Passives.resistances[iter] + " ";
+                        if (iter == monsterList[i].Passives.resistances.length - 1)
+                        {
+                            resistances.innerHTML += monsterList[i].Passives.resistances[iter];
+                        }
+                        else
+                        {
+                            resistances.innerHTML += monsterList[i].Passives.resistances[iter] + ", ";
+                        }
                     }
                 }
 
@@ -498,7 +519,14 @@
                     hasImmunities = true;
                     for (let iter = 0; iter < monsterList[i].Passives.immunities.length; iter++)
                     {
-                        immunities.innerHTML += monsterList[i].Passives.immunities[iter] + " ";
+                        if (iter == monsterList[i].Passives.immunities.length - 1)
+                        {
+                            immunities.innerHTML += monsterList[i].Passives.immunities[iter];
+                        }
+                        else
+                        {
+                            immunities.innerHTML += monsterList[i].Passives.immunities[iter] + ", ";
+                        }
                     }
                 }
 
@@ -512,7 +540,14 @@
                     hasConditionImmunities = true;
                     for (let iter = 0; iter < monsterList[i].Passives.conditionImmunities.length; iter++)
                     {
-                        conditionImmunities.innerHTML += monsterList[i].Passives.conditionImmunities[iter] + " ";
+                        if (iter == monsterList[i].Passives.conditionImmunities.length - 1)
+                        {
+                            conditionImmunities.innerHTML += monsterList[i].Passives.conditionImmunities[iter];
+                        }
+                        else
+                        {
+                            conditionImmunities.innerHTML += monsterList[i].Passives.conditionImmunities[iter] + ", ";
+                        }
                     }
                 }
 
@@ -526,7 +561,14 @@
                     hasSenses = true;
                     for (let iter = 0; iter < monsterList[i].Passives.senses.length; iter++)
                     {
-                        senses.innerHTML += monsterList[i].Passives.senses[iter][0] + " " + monsterList[i].Passives.senses[iter][1] + "ft. ";
+                        if (iter == monsterList[i].Passives.senses.length - 1)
+                        {
+                            senses.innerHTML += monsterList[i].Passives.senses[iter][0] + " " + monsterList[i].Passives.senses[iter][1] + "ft.";
+                        }
+                        else
+                        {
+                            senses.innerHTML += monsterList[i].Passives.senses[iter][0] + " " + monsterList[i].Passives.senses[iter][1] + "ft., ";
+                        }  
                     }
                 }
 
@@ -549,7 +591,14 @@
                     hasLanguages = true;
                     for (let iter = 0; iter < monsterList[i].Passives.languages.length; iter++)
                     {
-                        languages.innerHTML += monsterList[i].Passives.languages[iter] + " ";
+                        if (iter == monsterList[i].Passives.languages.length - 1)
+                        {
+                            languages.innerHTML += monsterList[i].Passives.languages[iter];
+                        }
+                        else
+                        {
+                            languages.innerHTML += monsterList[i].Passives.languages[iter] + ", ";
+                        }
                     }
                 }
                 let passivesHR = document.createElement("hr");
@@ -599,7 +648,7 @@
                     attackBonus.innerHTML = "<b>Spell Attack Bonus</b> +" + monsterList[i].Spellcasting.spellAttackBonus;
                     spellcasting.appendChild(attackBonus);
 
-                    // spells/spell slots ERROR
+                    // spells/spell slots
                     if (monsterList[i].Spellcasting.Spells.cantrips[0] !== "")
                     {
                         let cantrips = document.createElement("p");
