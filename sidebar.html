@@ -546,6 +546,27 @@
                         languages.innerHTML += monsterList[i].Passives.languages[iter] + " ";
                     }
                 }
+                let passivesHR = document.createElement("hr");
+
+                // Special Passives
+                let hasSpecialPassives = false;
+                let specialPassives = document.createElement("div");
+                let specialArray = monsterList[i].SpecialPassives;
+
+                if (specialArray[0][0] !== "")
+                {
+                    hasSpecialPassives = true;
+                    for (let iter = 0; iter < specialArray.length; iter++)
+                    {
+                        let para = document.createElement("p");
+                        para.innerHTML = "<b>" + specialArray[iter][0] + ".</b> " + specialArray[iter][1];
+                        specialPassives.appendChild(para);
+                    }
+                }
+                let specialPassivesHR = document.createElement("hr");
+
+                // Spellcasting
+                let hasSpellCasting = false;
 
                 
                 // ADDING CONTENT TO STAT BLOCK
@@ -566,6 +587,12 @@
                 if (hasSenses) { collapseDiv.appendChild(senses); }
                 if (hasPassivePerception) { collapseDiv.appendChild(passivePerception); }
                 if (hasLanguages) { collapseDiv.appendChild(languages); }
+                collapseDiv.appendChild(passivesHR);
+                if (hasSpecialPassives)
+                { 
+                    collapseDiv.appendChild(specialPassives); 
+                    collapseDiv.appendChild(specialPassivesHR);
+                }
 
 
                 newDiv.appendChild(newButton);                      // attach button to parent div
