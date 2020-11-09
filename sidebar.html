@@ -440,6 +440,20 @@
                     }
                 }
 
+                // Skills
+                let hasSkills = false;
+                let skills = document.createElement("p");
+                if (monsterList[i].Passives.skills[0][0] !== "None")
+                {
+                    skills.innerHTML = "<b>Skills</b> ";
+
+                    hasSkills = true;
+                    for (let skillIter = 0; skillIter < monsterList[i].Passives.skills.length; skillIter++)
+                    {
+                        skills.innerHTML += monsterList[i].Passives.skills[skillIter][0] + " " + "+" + monsterList[i].Passives.skills[skillIter][1] + " ";
+                    }
+                }
+
                 
                 // ADDING CONTENT TO STAT BLOCK
                 collapseDiv.appendChild(descLine);
@@ -450,7 +464,8 @@
                 collapseDiv.appendChild(speedsHR);
                 collapseDiv.appendChild(abilityScores);
                 collapseDiv.appendChild(abilitiesHR);
-                if (hasSavingThrows) { collapseDiv.appendChild(savingThrows); } 
+                if (hasSavingThrows) { collapseDiv.appendChild(savingThrows); }
+                if (hasSkills) { collapseDiv.appendChild(skills); } 
 
 
                 newDiv.appendChild(newButton);                      // attach button to parent div
