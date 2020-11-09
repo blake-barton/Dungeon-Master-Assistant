@@ -510,6 +510,29 @@
                     }
                 }
 
+                // Senses
+                let hasSenses = false;
+                let senses = document.createElement("p");
+                if (monsterList[i].Passives.senses[0][0] !== "None")
+                {
+                    senses.innerHTML = "<b>Senses</b> ";
+
+                    hasSenses = true;
+                    for (let iter = 0; iter < monsterList[i].Passives.senses.length; iter++)
+                    {
+                        senses.innerHTML += monsterList[i].Passives.senses[iter][0] + " " + monsterList[i].Passives.senses[iter][1] + "ft. ";
+                    }
+                }
+
+                // Passive perception
+                let hasPassivePerception = false;
+                let passivePerception = document.createElement("p");
+                if (monsterList[i].Passives.passivePerception !== "")
+                {
+                    hasPassivePerception = true;
+                    passivePerception.innerHTML = "<b>Passive Perception</b> " + monsterList[i].Passives.passivePerception;
+                }
+
                 
                 // ADDING CONTENT TO STAT BLOCK
                 collapseDiv.appendChild(descLine);
@@ -526,6 +549,8 @@
                 if (hasResistances) { collapseDiv.appendChild(resistances); }
                 if (hasImmunities) { collapseDiv.appendChild(immunities); }
                 if (hasConditionImmunities) { collapseDiv.appendChild(conditionImmunities); }
+                if (hasSenses) { collapseDiv.appendChild(senses); }
+                if (hasPassivePerception) { collapseDiv.appendChild(passivePerception); }
 
 
                 newDiv.appendChild(newButton);                      // attach button to parent div
