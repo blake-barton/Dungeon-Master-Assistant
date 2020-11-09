@@ -98,6 +98,13 @@
         div.collapse-content hr {
             border: 1px solid #6b2b1c;
         }
+
+        div.collapse-content h2 {
+            color: #6b2b1c;
+            font-weight: bold;
+            text-decoration: underline;
+            font-size: 1.1em;
+        }
     </style>
 </head>
 
@@ -566,7 +573,36 @@
                 let specialPassivesHR = document.createElement("hr");
 
                 // Spellcasting
-                let hasSpellCasting = false;
+                let hasSpellcasting = false;
+                let spellcasting = document.createElement("div");
+
+                if (monsterList[i].Spellcasting.castLevel !== "")
+                {
+                    hasSpellcasting = true;
+
+                    let spellHeader = document.createElement("h2");
+                    spellHeader.innerHTML = "Spellcasting";
+                    spellcasting.appendChild(spellHeader);
+
+                    let castLevel = document.createElement("p");
+                    castLevel.innerHTML = "<b>Cast Level</b> " + monsterList[i].Spellcasting.castLevel;
+                    spellcasting.appendChild(castLevel);
+
+                    let castAbility = document.createElement("p");
+                    castAbility.innerHTML = "<b>Cast Ability</b> " + monsterList[i].Spellcasting.castAbility;
+                    spellcasting.appendChild(castAbility);
+
+                    let saveDC = document.createElement("p");
+                    saveDC.innerHTML = "<b>Spell Save DC</b> " + monsterList[i].Spellcasting.saveDC;
+                    spellcasting.appendChild(saveDC);
+
+                    let attackBonus = document.createElement("p");
+                    attackBonus.innerHTML = "<b>Spell Attack Bonus</b> " + monsterList[i].Spellcasting.spellAttackBonus;
+                    spellcasting.appendChild(attackBonus);
+
+                    // spells/spell slots
+
+                }
 
                 
                 // ADDING CONTENT TO STAT BLOCK
@@ -592,6 +628,10 @@
                 { 
                     collapseDiv.appendChild(specialPassives); 
                     collapseDiv.appendChild(specialPassivesHR);
+                }
+                if (hasSpellcasting)
+                {
+                    collapseDiv.appendChild(spellcasting);
                 }
 
 
