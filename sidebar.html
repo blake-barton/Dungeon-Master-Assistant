@@ -454,6 +454,20 @@
                     }
                 }
 
+                // vulnerabilities
+                let hasVulnerabilities = false;
+                let vulnerabilities = document.createElement("p");
+                if (monsterList[i].Passives.vulnerabilities[0] !== "None")
+                {
+                    vulnerabilities.innerHTML = "<b>Vulnerabilities</b> ";
+                    
+                    hasVulnerabilities = true;
+                    for (let vulnIter = 0; vulnIter < monsterList[i].Passives.vulnerabilities.length; vulnIter++)
+                    {
+                        vulnerabilities.innerHTML += monsterList[i].Passives.vulnerabilities[vulnIter] + " ";
+                    }
+                }
+
                 
                 // ADDING CONTENT TO STAT BLOCK
                 collapseDiv.appendChild(descLine);
@@ -465,7 +479,8 @@
                 collapseDiv.appendChild(abilityScores);
                 collapseDiv.appendChild(abilitiesHR);
                 if (hasSavingThrows) { collapseDiv.appendChild(savingThrows); }
-                if (hasSkills) { collapseDiv.appendChild(skills); } 
+                if (hasSkills) { collapseDiv.appendChild(skills); }
+                if (hasVulnerabilities) { collapseDiv.appendChild(vulnerabilities); }
 
 
                 newDiv.appendChild(newButton);                      // attach button to parent div
