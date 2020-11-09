@@ -227,9 +227,35 @@
                             <option value="Sylvan">Sylvan</option>
                             <option value="Terran">Terran</option>
                             <option value="Undercommon">Undercommon</option>
+                            <option value="Telepathic">Telepathic</option>
                         </select>
                     </td>
                     <td><button type="button" class="add-button" onclick="generateSelect('language-row0')">+</button></td>
+                </tr>
+                <tr id="vulnerability-row0">
+                    <td><label for="vulnerability0">Vulnerabilities:</label></td>
+                    <td>
+                        <select name="vulnerability0" id="vulnerability0">
+                            <option value="None">None</option>
+                            <option value="Acid">Acid</option>
+                            <option value="Bludgeoning (non-magical)">Bludgeoning (non-magical)</option>
+                            <option value="Bludgeoning (magical)">Bludgeoning (magical)</option>
+                            <option value="Cold">Cold</option>
+                            <option value="Fire">Fire</option>
+                            <option value="Force">Force</option>
+                            <option value="Lightning">Lightning</option>
+                            <option value="Necrotic">Necrotic</option>
+                            <option value="Piercing (non-magical)">Piercing (non-magical)</option>
+                            <option value="Piercing (magical)">Piercing (magical)</option>
+                            <option value="Poison">Poison</option>
+                            <option value="Psychic">Psychic</option>
+                            <option value="Radiant">Radiant</option>
+                            <option value="Slashing (non-magical)">Slashing (non-magical)</option>
+                            <option value="Slashing (magical)">Slashing (magical)</option>
+                            <option value="Thunder">Thunder</option>
+                        </select>
+                    </td>
+                    <td><button type="button" class="add-button" onclick="generateSelect('vulnerability-row0')">+</button></td>
                 </tr>
                 <tr id="resistance-row0">
                     <td><label for="resistance0">Resistances:</label></td>
@@ -251,7 +277,7 @@
                             <option value="Radiant">Radiant</option>
                             <option value="Slashing (non-magical)">Slashing (non-magical)</option>
                             <option value="Slashing (magical)">Slashing (magical)</option>
-                            <option value="thunder">Thunder</option>
+                            <option value="Thunder">Thunder</option>
                         </select>
                     </td>
                     <td><button type="button" class="add-button" onclick="generateSelect('resistance-row0')">+</button></td>
@@ -276,7 +302,7 @@
                             <option value="Radiant">Radiant</option>
                             <option value="Slashing (non-magical)">Slashing (non-magical)</option>
                             <option value="Slashing (magical)">Slashing (magical)</option>
-                            <option value="thunder">Thunder</option>
+                            <option value="Thunder">Thunder</option>
                         </select>
                     </td>
                     <td><button type="button" class="add-button" onclick="generateSelect('immunity-row0')">+</button></td>
@@ -743,6 +769,7 @@
                 let senses = selectInputResults(form, "sense-row0", "sense0", "senseRange0");
                 let skills = selectInputResults(form, "skill-row0", "skill0", "skillMod0");
                 let languages = selectResults(form, "language-row0", "language0");
+                let vulnerabilities = selectResults(form, "vulnerability-row0", "vulnerability0");
                 let resistances = selectResults(form, "resistance-row0", "resistance0");
                 let immunities = selectResults(form, "immunity-row0", "immunity0");
                 let conditionImmunities = selectResults(form, "c-immunity-row0", "cImmunity0");
@@ -809,6 +836,7 @@
                         "senses": senses,
                         "skills": skills,
                         "languages": languages,
+                        "vulnerabilities": vulnerabilities,
                         "resistances": resistances,
                         "immunities": immunities,
                         "conditionImmunities": conditionImmunities
