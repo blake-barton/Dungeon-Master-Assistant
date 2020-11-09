@@ -533,6 +533,20 @@
                     passivePerception.innerHTML = "<b>Passive Perception</b> " + monsterList[i].Passives.passivePerception;
                 }
 
+                // Languages
+                let hasLanguages = false;
+                let languages = document.createElement("p");
+                if (monsterList[i].Passives.languages[0] !== "None")
+                {
+                    languages.innerHTML = "<b>Languages</b> ";
+
+                    hasLanguages = true;
+                    for (let iter = 0; iter < monsterList[i].Passives.languages.length; iter++)
+                    {
+                        languages.innerHTML += monsterList[i].Passives.languages[iter] + " ";
+                    }
+                }
+
                 
                 // ADDING CONTENT TO STAT BLOCK
                 collapseDiv.appendChild(descLine);
@@ -551,6 +565,7 @@
                 if (hasConditionImmunities) { collapseDiv.appendChild(conditionImmunities); }
                 if (hasSenses) { collapseDiv.appendChild(senses); }
                 if (hasPassivePerception) { collapseDiv.appendChild(passivePerception); }
+                if (hasLanguages) { collapseDiv.appendChild(languages); }
 
 
                 newDiv.appendChild(newButton);                      // attach button to parent div
