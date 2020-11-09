@@ -482,6 +482,22 @@
                     }
                 }
 
+                // Immunities
+                let hasImmunities = false;
+                let immunities = document.createElement("p");
+                if (monsterList[i].Passives.immunities[0] !== "None")
+                {
+                    immunities.innerHTML = "<b>Immunities</b> ";
+
+                    hasImmunities = true;
+                    for (let iter = 0; iter < monsterList[i].Passives.immunities.length; iter++)
+                    {
+                        immunities.innerHTML += monsterList[i].Passives.immunities[iter] + " ";
+                    }
+                }
+
+                // Condition immunities
+                
                 
                 // ADDING CONTENT TO STAT BLOCK
                 collapseDiv.appendChild(descLine);
@@ -496,6 +512,7 @@
                 if (hasSkills) { collapseDiv.appendChild(skills); }
                 if (hasVulnerabilities) { collapseDiv.appendChild(vulnerabilities); }
                 if (hasResistances) { collapseDiv.appendChild(resistances); }
+                if (hasImmunities) { collapseDiv.appendChild(immunities); }
 
 
                 newDiv.appendChild(newButton);                      // attach button to parent div
