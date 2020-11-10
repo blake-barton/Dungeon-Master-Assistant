@@ -601,6 +601,11 @@
                         }
                     }
                 }
+
+                // Challenge Rating
+                let challenge = document.createElement("p");
+                challenge.innerHTML = "<b>Challenge</b> " + monsterList[i].NumericStats.cr;
+
                 let passivesHR = document.createElement("hr");
 
                 // Special Passives
@@ -768,6 +773,7 @@
                 if (hasSenses) { collapseDiv.appendChild(senses); }
                 if (hasPassivePerception) { collapseDiv.appendChild(passivePerception); }
                 if (hasLanguages) { collapseDiv.appendChild(languages); }
+                collapseDiv.appendChild(challenge);
                 //collapseDiv.appendChild(passivesHR);
                 if (hasSpecialPassives)
                 { 
