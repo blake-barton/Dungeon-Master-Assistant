@@ -726,6 +726,28 @@
                 }
                 let actionsHR = document.createElement("hr");
 
+                // Legendary Actions
+                let hasLegendaryActions = false;
+                let legendaryActions = document.createElement("div");
+
+                if (monsterList[i].Actions.legendaryActions[0][0] !== "")
+                {
+                    hasLegendaryActions = true;
+                    
+                    // header
+                    let legendaryActionHeader = document.createElement("h2");
+                    legendaryActionHeader.innerHTML = "Legendary Actions";
+                    legendaryActions.append(legendaryActionHeader);
+
+                    let legendaryActionArray = monsterList[i].Actions.legendaryActions;
+                    for (let iter = 0; iter < legendaryActionArray.length; iter++)
+                    {
+                        let para = document.createElement("p");
+                        para.innerHTML = "<b>" + legendaryActionArray[iter][0] + ".</b> " + legendaryActionArray[iter][1];
+                        legendaryActions.appendChild(para);
+                    }
+                }
+
                 
                 // ADDING CONTENT TO STAT BLOCK
                 collapseDiv.appendChild(descLine);
@@ -760,6 +782,10 @@
                 {
                     collapseDiv.appendChild(actions);
                     collapseDiv.appendChild(actionsHR);
+                }
+                if (hasLegendaryActions)
+                {
+                    collapseDiv.appendChild(legendaryActions);
                 }
 
 
