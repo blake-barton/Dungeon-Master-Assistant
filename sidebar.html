@@ -648,6 +648,28 @@
                     attackBonus.innerHTML = "<b>Spell Attack Bonus</b> +" + monsterList[i].Spellcasting.spellAttackBonus;
                     spellcasting.appendChild(attackBonus);
 
+                    function printSpells(spellArray, spellSlots, ordinal)
+                    {
+                        if (spellArray[0] !== "")
+                        {
+                            let currentSpell = document.createElement("p");
+                            currentSpell.innerHTML = "<b>" + ordinal + " level (" + spellSlots + " slots):</b> "; 
+
+                            for (let iter = 0; iter < spellArray.length; iter++)
+                            {
+                                if (iter == spellArray.length - 1)
+                                {
+                                    currentSpell.innerHTML += spellArray[iter];
+                                }
+                                else
+                                {
+                                    currentSpell.innerHTML += spellArray[iter] + ", ";
+                                } 
+                            }
+                            spellcasting.appendChild(currentSpell);
+                        }
+                    }
+
                     // spells/spell slots
                     if (monsterList[i].Spellcasting.Spells.cantrips[0] !== "")
                     {
@@ -667,6 +689,35 @@
                         }
                         spellcasting.appendChild(cantrips);
                     }
+
+                    // 1st level
+                    printSpells(monsterList[i].Spellcasting.Spells.level1, monsterList[i].Spellcasting.SpellSlots.slot1, "1st");
+
+                    // 2nd level
+                    printSpells(monsterList[i].Spellcasting.Spells.level2, monsterList[i].Spellcasting.SpellSlots.slot2, "2nd");
+
+                    // 3rd level
+                    printSpells(monsterList[i].Spellcasting.Spells.level3, monsterList[i].Spellcasting.SpellSlots.slot3, "3rd");
+
+                    // 4th level
+                    printSpells(monsterList[i].Spellcasting.Spells.level4, monsterList[i].Spellcasting.SpellSlots.slot4, "4th");
+
+                    // 5th level
+                    printSpells(monsterList[i].Spellcasting.Spells.level5, monsterList[i].Spellcasting.SpellSlots.slot5, "5th");
+
+                    // 6th level
+                    printSpells(monsterList[i].Spellcasting.Spells.level6, monsterList[i].Spellcasting.SpellSlots.slot6, "6th");
+
+                    // 7th level
+                    printSpells(monsterList[i].Spellcasting.Spells.level7, monsterList[i].Spellcasting.SpellSlots.slot7, "7th");
+
+                    // 8th level
+                    printSpells(monsterList[i].Spellcasting.Spells.level8, monsterList[i].Spellcasting.SpellSlots.slot8, "8th");
+
+                    // 9th level
+                    printSpells(monsterList[i].Spellcasting.Spells.level9, monsterList[i].Spellcasting.SpellSlots.slot9, "9th");
+
+
 
 
                 }
