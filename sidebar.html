@@ -690,37 +690,41 @@
                         spellcasting.appendChild(cantrips);
                     }
 
-                    // 1st level
+                    // 1st level and on
                     printSpells(monsterList[i].Spellcasting.Spells.level1, monsterList[i].Spellcasting.SpellSlots.slot1, "1st");
-
-                    // 2nd level
                     printSpells(monsterList[i].Spellcasting.Spells.level2, monsterList[i].Spellcasting.SpellSlots.slot2, "2nd");
-
-                    // 3rd level
                     printSpells(monsterList[i].Spellcasting.Spells.level3, monsterList[i].Spellcasting.SpellSlots.slot3, "3rd");
-
-                    // 4th level
                     printSpells(monsterList[i].Spellcasting.Spells.level4, monsterList[i].Spellcasting.SpellSlots.slot4, "4th");
-
-                    // 5th level
                     printSpells(monsterList[i].Spellcasting.Spells.level5, monsterList[i].Spellcasting.SpellSlots.slot5, "5th");
-
-                    // 6th level
                     printSpells(monsterList[i].Spellcasting.Spells.level6, monsterList[i].Spellcasting.SpellSlots.slot6, "6th");
-
-                    // 7th level
                     printSpells(monsterList[i].Spellcasting.Spells.level7, monsterList[i].Spellcasting.SpellSlots.slot7, "7th");
-
-                    // 8th level
                     printSpells(monsterList[i].Spellcasting.Spells.level8, monsterList[i].Spellcasting.SpellSlots.slot8, "8th");
-
-                    // 9th level
                     printSpells(monsterList[i].Spellcasting.Spells.level9, monsterList[i].Spellcasting.SpellSlots.slot9, "9th");
-
-
-
-
                 }
+                let spellcastingHR = document.createElement("hr");
+
+                // Actions
+                let hasActions = false;
+                let actions = document.createElement("div");
+
+                if (monsterList[i].Actions.actions[0][0] !== "")
+                {
+                    hasActions = true;
+                    
+                    // header
+                    let actionHeader = document.createElement("h2");
+                    actionHeader.innerHTML = "Actions";
+                    actions.append(actionHeader);
+
+                    let actionArray = monsterList[i].Actions.actions;
+                    for (let iter = 0; iter < actionArray.length; iter++)
+                    {
+                        let para = document.createElement("p");
+                        para.innerHTML = "<b>" + actionArray[iter][0] + ".</b> " + actionArray[iter][1];
+                        actions.appendChild(para);
+                    }
+                }
+                let actionsHR = document.createElement("hr");
 
                 
                 // ADDING CONTENT TO STAT BLOCK
@@ -750,7 +754,14 @@
                 if (hasSpellcasting)
                 {
                     collapseDiv.appendChild(spellcasting);
+                    collapseDiv.appendChild(spellcastingHR);
                 }
+                if (hasActions)
+                {
+                    collapseDiv.appendChild(actions);
+                    collapseDiv.appendChild(actionsHR);
+                }
+
 
 
                 newDiv.appendChild(newButton);                      // attach button to parent div
