@@ -176,7 +176,7 @@
                     </td>
                     <td><input type="number" id="sense-range00" name="senseRange00" min="0" placeholder="ft."></td>
                     <td><button type="button" class="add-button" onclick="generateSelectInput('sense-row00')">+</button></td>
-                    <td><button type="button" class="add-button" onclick="removeRow()">-</button></td>
+                    <td><button type="button" class="add-button" onclick="removeRow('sense-row00', 'generateSelectInput')">-</button></td>
                 </tr>
                 <tr id="skill-row00">
                     <td><label for="skill00">Skills:</label></td>
@@ -205,7 +205,7 @@
                     </td>
                     <td><input type="number" id="skill-mod00" name="skillMod00" min="0" placeholder="+mod"></td>
                     <td><button type="button" class="add-button" onclick="generateSelectInput('skill-row00')">+</button></td>
-                    <td><button type="button" class="add-button" onclick="removeRow()">-</button></td>
+                    <td><button type="button" class="add-button" onclick="removeRow('skill-row00', 'generateSelectInput')">-</button></td>
                 </tr>
                 <tr id="language-row00">
                     <td><label for="language00">Languages:</label></td>
@@ -253,7 +253,7 @@
                         </select>
                     </td>
                     <td><button type="button" class="add-button" onclick="generateSelect('language-row00')">+</button></td>
-                    <td><button type="button" class="add-button" onclick="removeRow()">-</button></td>
+                    <td><button type="button" class="add-button" onclick="removeRow('language-row00', 'generateSelect')">-</button></td>
                 </tr>
                 <tr id="vulnerability-row00">
                     <td><label for="vulnerability00">Vulnerabilities:</label></td>
@@ -279,7 +279,7 @@
                         </select>
                     </td>
                     <td><button type="button" class="add-button" onclick="generateSelect('vulnerability-row00')">+</button></td>
-                    <td><button type="button" class="add-button" onclick="removeRow()">-</button></td>
+                    <td><button type="button" class="add-button" onclick="removeRow('vulnerability-row00', 'generateSelect')">-</button></td>
                 </tr>
                 <tr id="resistance-row00">
                     <td><label for="resistance00">Resistances:</label></td>
@@ -305,7 +305,7 @@
                         </select>
                     </td>
                     <td><button type="button" class="add-button" onclick="generateSelect('resistance-row00')">+</button></td>
-                    <td><button type="button" class="add-button" onclick="removeRow()">-</button></td>
+                    <td><button type="button" class="add-button" onclick="removeRow('resistance-row00', 'generateSelect')">-</button></td>
                 </tr>
                 <tr id="immunity-row00">
                     <td><label for="immunity00">Immunities:</label></td>
@@ -331,7 +331,7 @@
                         </select>
                     </td>
                     <td><button type="button" class="add-button" onclick="generateSelect('immunity-row00')">+</button></td>
-                    <td><button type="button" class="add-button" onclick="removeRow()">-</button></td>
+                    <td><button type="button" class="add-button" onclick="removeRow('immunity-row00', 'generateSelect')">-</button></td>
                 </tr>
                 <tr id="c-immunity-row00">
                     <td><label for="c-immunity00">Condition Immunities:</label></td>
@@ -354,7 +354,7 @@
                         </select>
                     </td>
                     <td><button type="button" class="add-button" onclick="generateSelect('c-immunity-row00')">+</button></td>
-                    <td><button type="button" class="add-button" onclick="removeRow()">-</button></td>
+                    <td><button type="button" class="add-button" onclick="removeRow('c-immunity-row00', 'generateSelect')">-</button></td>
                 </tr>
             </table>
             <hr>
@@ -365,7 +365,7 @@
                     <td><input type="text" id="s-passive00" name="sPassive00" placeholder="Name"></td>
                     <td><input type="text" id="s-passive-desc00" name="sPassiveDesc00" placeholder="Description"></td>
                     <td><button type="button" class="add-button" onclick="generateInputInput('s-passive-row00')">+</button></td>
-                    <td><button type="button" class="add-button" onclick="removeRow()">-</button></td>
+                    <td><button type="button" class="add-button" onclick="removeRow('s-passive-row00', 'generateInputInput')">-</button></td>
                 </tr>
             </table>
             <hr>
@@ -429,61 +429,61 @@
                     <td><label for="level0-00">Cantrips:</label></td>
                     <td><input type="text" id="level0-00" name="level0_00"></td>
                     <td><button type="button" class="add-button" onclick="generateInput('cantrip-row00')">+</button></td>
-                    <td><button type="button" class="add-button" onclick="removeRow()">-</button></td>
+                    <td><button type="button" class="add-button" onclick="removeRow('cantrip-row00', 'generateInput')">-</button></td>
                 </tr>
                 <tr id="spell-level1-row00">
                     <td><label for="level1-00">1st Level:</label></td>
                     <td><input type="text" id="level1-00" name="level1_00"></td>
                     <td><button type="button" class="add-button" onclick="generateInput('spell-level1-row00')">+</button></td>
-                    <td><button type="button" class="add-button" onclick="removeRow()">-</button></td>
+                    <td><button type="button" class="add-button" onclick="removeRow('spell-level1-row00', 'generateInput')">-</button></td>
                 </tr>
                 <tr id="spell-level2-row00">
                     <td><label for="level2-00">2nd Level:</label></td>
                     <td><input type="text" id="level2-00" name="level2_00"></td>
                     <td><button type="button" class="add-button" onclick="generateInput('spell-level2-row00')">+</button></td>
-                    <td><button type="button" class="add-button" onclick="removeRow()">-</button></td>
+                    <td><button type="button" class="add-button" onclick="removeRow('spell-level2-row00', 'generateInput')">-</button></td>
                 </tr>
                 <tr id="spell-level3-row00">
                     <td><label for="level3-00">3rd Level:</label></td>
                     <td><input type="text" id="level3-00" name="level3_00"></td>
                     <td><button type="button" class="add-button" onclick="generateInput('spell-level3-row00')">+</button></td>
-                    <td><button type="button" class="add-button" onclick="removeRow()">-</button></td>
+                    <td><button type="button" class="add-button" onclick="removeRow('spell-level3-row00', 'generateInput')">-</button></td>
                 </tr>
                 <tr id="spell-level4-row00">
                     <td><label for="level4-00">4th Level:</label></td>
                     <td><input type="text" id="level4-00" name="level4_00"></td>
                     <td><button type="button" class="add-button" onclick="generateInput('spell-level4-row00')">+</button></td>
-                    <td><button type="button" class="add-button" onclick="removeRow()">-</button></td>
+                    <td><button type="button" class="add-button" onclick="removeRow('spell-level4-row00', 'generateInput')">-</button></td>
                 </tr>
                 <tr id="spell-level5-row00">
                     <td><label for="level5-00">5th Level:</label></td>
                     <td><input type="text" id="level5-00" name="level5_00"></td>
                     <td><button type="button" class="add-button" onclick="generateInput('spell-level5-row00')">+</button></td>
-                    <td><button type="button" class="add-button" onclick="removeRow()">-</button></td>
+                    <td><button type="button" class="add-button" onclick="removeRow('spell-level5-row00', 'generateInput')">-</button></td>
                 </tr>
                 <tr id="spell-level6-row00">
                     <td><label for="level6-00">6th Level:</label></td>
                     <td><input type="text" id="level6-00" name="level6_00"></td>
                     <td><button type="button" class="add-button" onclick="generateInput('spell-level6-row00')">+</button></td>
-                    <td><button type="button" class="add-button" onclick="removeRow()">-</button></td>
+                    <td><button type="button" class="add-button" onclick="removeRow('spell-level6-row00', 'generateInput')">-</button></td>
                 </tr>
                 <tr id="spell-level7-row00">
                     <td><label for="level7-00">7th Level:</label></td>
                     <td><input type="text" id="level7-00" name="level7_00"></td>
                     <td><button type="button" class="add-button" onclick="generateInput('spell-level7-row00')">+</button></td>
-                    <td><button type="button" class="add-button" onclick="removeRow()">-</button></td>
+                    <td><button type="button" class="add-button" onclick="removeRow('spell-level7-row00', 'generateInput')">-</button></td>
                 </tr>
                 <tr id="spell-level8-row00">
                     <td><label for="level8-00">8th Level:</label></td>
                     <td><input type="text" id="level8-00" name="level8_00"></td>
                     <td><button type="button" class="add-button" onclick="generateInput('spell-level8-row00')">+</button></td>
-                    <td><button type="button" class="add-button" onclick="removeRow()">-</button></td>
+                    <td><button type="button" class="add-button" onclick="removeRow('spell-level8-row00', 'generateInput')">-</button></td>
                 </tr>
                 <tr id="spell-level9-row00">
                     <td><label for="level9-00">9th Level:</label></td>
                     <td><input type="text" id="level9-00" name="level9_00"></td>
                     <td><button type="button" class="add-button" onclick="generateInput('spell-level9-row00')">+</button></td>
-                    <td><button type="button" class="add-button" onclick="removeRow()">-</button></td>
+                    <td><button type="button" class="add-button" onclick="removeRow('spell-level9-row00', 'generateInput')">-</button></td>
                 </tr>
             </table>
             <hr>
@@ -494,14 +494,14 @@
                     <td><input type="text" id="action00" name="action00" placeholder="Name"></td>
                     <td><input type="text" id="action-desc00" name="actionDesc00" placeholder="Description"></td>
                     <td><button type="button" class="add-button" onclick="generateInputInput('action-row00')">+</button></td>
-                    <td><button type="button" class="add-button" onclick="removeRow()">-</button></td>
+                    <td><button type="button" class="add-button" onclick="removeRow('action-row00', 'generateInputInput')">-</button></td>
                 </tr>
                 <tr id="le-action-row00">
                     <td><label for="le-action00">Legendary Actions:</label></td>
                     <td><input type="text" id="le-action00" name="leAction00" placeholder="Name"></td>
                     <td><input type="text" id="le-action-desc00" name="leActionDesc00" placeholder="Description"></td>
                     <td><button type="button" class="add-button" onclick="generateInputInput('le-action-row00')">+</button></td>
-                    <td><button type="button" class="add-button" onclick="removeRow()">-</button></td>
+                    <td><button type="button" class="add-button" onclick="removeRow('le-action-row00', 'generateInputInput')">-</button></td>
                 </tr>
             </table>
             <hr>
@@ -512,7 +512,7 @@
                     <td><input type="text" id="reaction00" name="reaction00" placeholder="Name"></td>
                     <td><input type="text" id="reaction-desc00" name="reactionDesc00" placeholder="Description"></td>
                     <td><button type="button" class="add-button" onclick="generateInputInput('reaction-row00')">+</button></td>
-                    <td><button type="button" class="add-button" onclick="removeRow()">-</button></td>
+                    <td><button type="button" class="add-button" onclick="removeRow('reaction-row00', 'generateInputInput')">-</button></td>
                 </tr>
             </table>
             <br>
@@ -551,6 +551,27 @@
                 return cutID + num;
             }
 
+            function decrementNumber(id)
+            {
+                // get number off of rowID
+                let num = id.substring(id.length - 2, id.length);
+                
+                // increment num;
+                num--;
+
+                // append a 0 if num < 10
+                if (num < 10)
+                {
+                    num = "0" + num;
+                }
+
+                // cut off rowID number
+                let cutID = id.substring(0, id.length - 2);
+
+                // change clone id
+                return cutID + num;
+            }
+
             function getHomeRow(id)
             {
                 // cut off rowID number
@@ -558,6 +579,69 @@
 
                 // change clone id
                 return cutID + '00';
+            }
+
+            function removeRow(rowID, genFunction)
+            {
+                // loop through the senses rows
+                homeRow = document.getElementById(rowID);
+                let currentRow = homeRow;
+                let siblingID;
+                let rowCount = 1;
+                while(true)
+                {
+                    catchNull = currentRow;                     // use in case the next sibling is null
+                    currentRow = currentRow.nextElementSibling;
+
+                    // if end of the table
+                    if (currentRow == null)
+                    {
+                        // go to the row before
+                        currentRow = catchNull;
+
+                        // check that this is not the home row
+                        if (currentRow.id !== rowID)
+                        {
+                            // store decremented number to change home row add button
+                            let decreasedID = decrementNumber(currentRow.id);
+
+                            let parent = currentRow.parentElement;
+                            parent.deleteRow(currentRow.rowIndex);
+
+                            // decrement home add button
+                            // homeRow.getElementsByTagName('button')[0].setAttribute("onClick", "generateSelectInput('" + decreasedID + "')");
+                            homeRow.getElementsByTagName('button')[0].setAttribute("onClick", genFunction + "('" + decreasedID + "')");
+                        }
+
+                        // done deleting
+                        break;
+                    }
+
+                    siblingID = currentRow.id;
+
+                    // once the name of the row is different
+                    if (siblingID.substring(0, siblingID.length - 2) !== rowID.substring(0, rowID.length - 2))
+                    {
+                        // go to the row before
+                        currentRow = currentRow.previousElementSibling;
+
+                        // check that this is not the home row
+                        if (currentRow != homeRow)
+                        {
+                            // store decremented number to change home row add button
+                            let decreasedID = decrementNumber(currentRow.id);
+
+                            let parent = currentRow.parentElement;
+                            parent.deleteRow(currentRow.rowIndex);
+
+                            // decrement home add button
+                            homeRow.getElementsByTagName('button')[0].setAttribute("onClick", genFunction + "('" + decreasedID + "')");
+                        }
+
+                        // done deleting
+                        break;
+                    }
+                }
             }
 
             function generateSelectInput(rowID)
