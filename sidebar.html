@@ -864,6 +864,7 @@
                 let name = cutFirst.replace("</mark>", "");
                 btn.innerHTML = name;
                 btn.id = "";
+                btn.click();
             }
 
             monsterList = document.getElementById("monster-list");
@@ -882,6 +883,9 @@
 
                     // tag as marked so it can be removed on the next search
                     currentMonster.getElementsByTagName('button')[0].id = "marked";
+
+                    // click the collapsible
+                    currentMonster.getElementsByTagName('button')[0].click()
                 }
             }
         }
