@@ -4,6 +4,8 @@
 <head>
     <base target="_top">
     <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <!-- The CSS package above applies Google styling to buttons and other elements. -->
 
     <style>
@@ -104,6 +106,11 @@
             font-weight: bold;
             font-size: 1.1em;
         }
+
+        #refresh-btn {
+            position: relative;
+            bottom: 1px;
+        }
     </style>
 </head>
 
@@ -152,14 +159,17 @@
                 <button id="bestiary-search">Search</button>
             </form>
             <br>
-            <label for="bestiary-sort">Sort by:</label>
-            <select name="bestiary-sort" id="bestiary-sort">
-                <option value="name">Name</option>
-                <option value="cr-low">CR (Lowest)</option>
-                <option value="cr-high">CR (Highest)</option>
-                <option value="hp-low">HP (Lowest)</option>
-                <option value="hp-high">HP (Highest)</option>
-            </select>
+            <form>
+                <label for="bestiary-sort">Sort by:</label>
+                <select name="bestiary-sort" id="bestiary-sort">
+                    <option value="name">Name</option>
+                    <option value="cr-low">CR (Lowest)</option>
+                    <option value="cr-high">CR (Highest)</option>
+                    <option value="hp-low">HP (Lowest)</option>
+                    <option value="hp-high">HP (Highest)</option>
+                </select>
+                <button id="refresh-btn"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+            </form>
             <br><br>
             <div id="collapse-target"></div>
             <div class="loader" id="list-loader"></div>
@@ -832,8 +842,11 @@
                 document.getElementById("monster-list").remove();
             }
 
+            // show loading circle
             let loader = document.getElementById("list-loader");
             loader.style.display = "block";
+
+            // sort
             let sortVal = document.getElementById("bestiary-sort").value;
             google.script.run.withSuccessHandler(displayMonsterList).sortBestiary(sortVal);
         }
