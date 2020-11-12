@@ -864,7 +864,13 @@
                 let name = cutFirst.replace("</mark>", "");
                 btn.innerHTML = name;
                 btn.id = "";
-                btn.click();
+
+                // close collapsible
+                let content = btn.nextElementSibling;
+                if (content.style.display === "block")
+                {
+                    btn.click();
+                }
             }
 
             monsterList = document.getElementById("monster-list");
@@ -879,13 +885,26 @@
                 
                 if (currentName.toUpperCase() === term.toUpperCase())
                 {
-                    currentMonster.getElementsByTagName('button')[0].innerHTML = "<mark>" + currentName + "</mark>";
+                    let btn = currentMonster.getElementsByTagName('button')[0];
+
+                    // highlight button
+                    btn.innerHTML = "<mark>" + currentName + "</mark>";
 
                     // tag as marked so it can be removed on the next search
-                    currentMonster.getElementsByTagName('button')[0].id = "marked";
+                    btn.id = "marked";
 
                     // click the collapsible
-                    currentMonster.getElementsByTagName('button')[0].click()
+                    let content = btn.nextElementSibling;
+                    if (content.style.display === "block")
+                    {
+                    }
+                    else
+                    {
+                        btn.click();
+                    }
+
+                    // scroll into view
+                    btn.scrollIntoView();
                 }
             }
         }
