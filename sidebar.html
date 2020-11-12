@@ -155,8 +155,8 @@
             </form>
             <br>
             <form>
-                <input type="text" placeholder="Search Bestiary">
-                <button id="bestiary-search">Search</button>
+                <input type="text" id="search-term" placeholder="Search Bestiary">
+                <button id="bestiary-search" onclick="searchList()"><i class="fa fa-search"></i></button>
             </form>
             <br>
             <form>
@@ -849,6 +849,41 @@
             // sort
             let sortVal = document.getElementById("bestiary-sort").value;
             google.script.run.withSuccessHandler(displayMonsterList).sortBestiary(sortVal);
+        }
+
+        function searchList()
+        {
+            term = document.getElementById("search-term").value;
+
+            // unmark any previously marked text
+            if (document.contains(document.getElementById("marked")))
+            {
+                let btn = document.getElementById("marked");
+                let text = btn.innerHTML;
+                let cutFirst = text.replace("<mark>", "");
+                let name = cutFirst.replace("</mark>", "");
+                btn.innerHTML = name;
+                btn.id = "";
+            }
+
+            monsterList = document.getElementById("monster-list");
+            let count = monsterList.childElementCount;
+            let currentMonster = "";
+            let currentName = "";
+
+            for (let i = 0; i < count; i++)
+            {   
+                currentMonster = monsterList.children[i];
+                currentName = currentMonster.getElementsByTagName('button')[0].innerHTML;
+                
+                if (currentName.toUpperCase() === term.toUpperCase())
+                {
+                    currentMonster.getElementsByTagName('button')[0].innerHTML = "<mark>" + currentName + "</mark>";
+
+                    // tag as marked so it can be removed on the next search
+                    currentMonster.getElementsByTagName('button')[0].id = "marked";
+                }
+            }
         }
 
         
