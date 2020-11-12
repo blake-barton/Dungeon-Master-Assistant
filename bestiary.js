@@ -206,7 +206,7 @@ function sortByCRHigh(a, b)
     return crB - crA;
 }
 
-// take in a string from the sidebar select, reorder object array and return
+// take in a string from the sidebar select, reorder object array and return, called whenever sort dropdown is changed
 function sortBestiary(sortType)
 {
     // generate object array
@@ -236,11 +236,14 @@ function sortBestiary(sortType)
     return objectArray;
 }
 
-/*
-    test print of objectArray
-    for (var i = 0; i < objectArray.length; i++)
-    {
-        Logger.log(objectArray[i].NumericStats.hp);
-    }
+// use this to return the object array from file, called whenever bestiary panel is loaded or refresh button is pressed
+function loadObjectArray()
+{
+    // generate object array
+    var objectArray = generateObjectArray(loadNamesIntoArray());
 
-*/
+    // sort by name by default
+    objectArray.sort(sortByName);
+
+    return objectArray;
+}
