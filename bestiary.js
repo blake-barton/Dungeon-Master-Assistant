@@ -235,15 +235,3 @@ function sortBestiary(sortType)
 
     return objectArray;
 }
-
-// use this to return the object array from file, called whenever bestiary panel is loaded or refresh button is pressed
-function loadObjectArray()
-{
-    // generate object array
-    var objectArray = generateObjectArray(loadNamesIntoArray());
-
-    // sort by name by default
-    objectArray.sort(sortByName);
-
-    return objectArray;
-}
