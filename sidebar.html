@@ -111,6 +111,12 @@
             position: relative;
             bottom: 1px;
         }
+
+        #status {
+            color: red;
+            margin-left: 5px;
+            font-style: italic;
+        }
     </style>
 </head>
 
@@ -173,6 +179,7 @@
             <br>
             <div class="block">
                 <button class="red" id="collapse-all-btn" onclick="collapseAll()">Collapse All</button>
+                <span id="status"></span>
             </div>
             <br>
             <div id="collapse-target"></div>
@@ -881,6 +888,7 @@
             let count = monsterList.childElementCount;
             let currentMonster = "";
             let currentName = "";
+            let matchFound = false;
 
             for (let i = 0; i < count; i++)
             {   
@@ -911,7 +919,19 @@
 
                     // scroll into view
                     btn.scrollIntoView();
+
+                    matchFound = true;
                 }
+            }
+
+            let status = document.getElementById("status");
+            if (!matchFound)
+            {
+                status.innerHTML = "No matches.";
+            }
+            else
+            {
+                status.innerHTML = "";
             }
         }
 
