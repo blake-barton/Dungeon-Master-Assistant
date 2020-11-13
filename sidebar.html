@@ -917,6 +917,17 @@
 
         function collapseAll()
         {
+            // clear marked text
+            if (document.contains(document.getElementById("marked")))
+            {
+                let btn = document.getElementById("marked");
+                let text = btn.innerHTML;
+                let cutFirst = text.replace("<mark>", "");
+                let name = cutFirst.replace("</mark>", "");
+                btn.innerHTML = name;
+                btn.id = "";
+            }
+
             monsterList = document.getElementById("monster-list");
             let count = monsterList.childElementCount;
             let currentMonster = "";
