@@ -887,7 +887,9 @@
                 currentMonster = monsterList.children[i];
                 currentName = currentMonster.getElementsByTagName('button')[0].innerHTML;
                 
-                if (currentName.toUpperCase() === term.toUpperCase())
+                let testName = currentName.replace(" ", "");
+                let testTerm = term.replace(" ", "");
+                if (testName.toUpperCase() === testTerm.toUpperCase())
                 {
                     let btn = currentMonster.getElementsByTagName('button')[0];
 
