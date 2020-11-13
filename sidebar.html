@@ -172,7 +172,7 @@
             </form>
             <br>
             <div class="block">
-                <button class="red" id="collapse-all-btn" onclick="">Collapse All</button>
+                <button class="red" id="collapse-all-btn" onclick="collapseAll()">Collapse All</button>
             </div>
             <br>
             <div id="collapse-target"></div>
@@ -909,6 +909,26 @@
 
                     // scroll into view
                     btn.scrollIntoView();
+                }
+            }
+        }
+
+        function collapseAll()
+        {
+            monsterList = document.getElementById("monster-list");
+            let count = monsterList.childElementCount;
+            let currentMonster = "";
+
+            for (let i = 0; i < count; i++)
+            {
+                currentMonster = monsterList.children[i];
+                let btn = currentMonster.getElementsByTagName('button')[0];
+
+                // close collapsible
+                let content = btn.nextElementSibling;
+                if (content.style.display === "block")
+                {
+                    btn.click();
                 }
             }
         }
