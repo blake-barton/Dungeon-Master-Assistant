@@ -294,6 +294,9 @@
             let loader = document.getElementById("list-loader");
             loader.style.display = "none";
 
+            // update status
+            document.getElementById("status").innerHTML = "Displaying " + monsterList.length + " monsters."; 
+
             // create a div to contain the list
             let listDiv = document.createElement("div");
             listDiv.id = "monster-list";
@@ -859,7 +862,15 @@
 
             // sort
             let sortVal = document.getElementById("bestiary-sort").value;
-            google.script.run.withSuccessHandler(displayMonsterList).sortBestiary(sortVal);
+
+            try {
+                google.script.run.withSuccessHandler(displayMonsterList).sortBestiary(sortVal);
+            }
+            catch(err) {
+                loader.style.display = "none";
+                document.getElementById("status").innerHTML = "No monsters found in bestiary.";
+            }
+            
         }
 
         function searchList()
