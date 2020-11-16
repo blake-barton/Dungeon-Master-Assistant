@@ -117,6 +117,18 @@
             margin-left: 5px;
             font-style: italic;
         }
+
+        .delete-button {
+            float: right;
+            margin-top: 5px;
+            width: 30px;
+            min-width: 30px;
+            color: #ec0c0c;
+        }
+
+        .delete-button:hover {
+            color: #ec0c0c;
+        }
     </style>
 </head>
 
@@ -315,6 +327,11 @@
                 collapseDiv.classList.add("collapse-content");
                 
                 // GENERATING CONTENT FOR STAT BLOCK
+
+                // delete button
+                let deleteButton = document.createElement("button");
+                deleteButton.innerHTML = '<i class="fa fa-trash"></i>';
+                deleteButton.classList.add("delete-button");
 
                 // Description line
                 let descLine = document.createElement("p");
@@ -780,6 +797,7 @@
 
                 
                 // ADDING CONTENT TO STAT BLOCK
+                collapseDiv.appendChild(deleteButton);
                 collapseDiv.appendChild(descLine);
                 collapseDiv.appendChild(descHR);
                 collapseDiv.appendChild(armorClass);
