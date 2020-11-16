@@ -860,17 +860,12 @@
             let loader = document.getElementById("list-loader");
             loader.style.display = "block";
 
+            // display loading message
+            document.getElementById("status").innerHTML = "Loading monster list...";
+
             // sort
             let sortVal = document.getElementById("bestiary-sort").value;
-
-            try {
-                google.script.run.withSuccessHandler(displayMonsterList).sortBestiary(sortVal);
-            }
-            catch(err) {
-                loader.style.display = "none";
-                document.getElementById("status").innerHTML = "No monsters found in bestiary.";
-            }
-            
+            google.script.run.withSuccessHandler(displayMonsterList).sortBestiary(sortVal);
         }
 
         function searchList()
