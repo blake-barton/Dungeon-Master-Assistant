@@ -332,6 +332,7 @@
                 let deleteButton = document.createElement("button");
                 deleteButton.innerHTML = '<i class="fa fa-trash"></i>';
                 deleteButton.classList.add("delete-button");
+                deleteButton.setAttribute("onClick", "removeMonster('" + monsterList[i].name + "')");
 
                 // Description line
                 let descLine = document.createElement("p");
@@ -988,6 +989,11 @@
                     btn.click();
                 }
             }
+        }
+
+        function removeMonster(name)
+        {
+            google.script.run.deleteMonster(name);
         }
 
         

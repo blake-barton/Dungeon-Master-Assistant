@@ -235,3 +235,61 @@ function sortBestiary(sortType)
 
     return objectArray;
 }
+
+// delete a specific monster json
+function deleteMonster(name)
+{
+    // append .json to name
+    let filename = name + ".json";
+
+    // find json in DMAssistant
+    var folderName = "DMAssistant";
+
+    // find folder "DMAssistant"
+    var folderList = DriveApp.getFoldersByName(folderName);
+    if (folderList.hasNext())
+    {
+        // get matching folder
+        var folder = folderList.next();
+
+        // search for monster file
+        var fileList = folder.getFilesByName(filename);
+
+        while (fileList.hasNext())
+        {
+            // found matching file, loading json
+            var file = fileList.next();
+            
+            // delete file
+            file.setTrashed(true);
+        }
+    }
+
+    // open monsterList.txt
+    filename = "monsterList.txt";
+
+    // find folder "DMAssistant"
+    var folderList = DriveApp.getFoldersByName(folderName);
+    if (folderList.hasNext())
+    {
+        // get matching folder
+        var folder = folderList.next();
+
+        // search for file "monsterList.txt"
+        var fileList = folder.getFilesByName(filename);
+
+        if (fileList.hasNext())
+        {
+            // found matching file, erasing text
+            var file = fileList.next();
+            
+            // find name and replace with blank
+            var content = file.getBlob().getDataAsString();
+            var target = '"' + name + '"' + " ";
+            var result = content.replace(target, "");
+
+            // set content
+            file.setContent(result);
+        }
+    }
+}
