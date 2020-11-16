@@ -318,6 +318,7 @@
             for (let i = 0; i < monsterList.length; i++)
             {
                 let newDiv = document.createElement("div");         // create new div
+                newDiv.id = monsterList[i].name;
 
                 let newButton = document.createElement("button");   // create button to place in the div
                 newButton.innerHTML = monsterList[i].name;           // add text to the button
@@ -993,6 +994,16 @@
 
         function removeMonster(name)
         {
+            // TODO: add an alert to make sure the user wants to delete
+
+            // remove element from list
+            let obj = document.getElementById(name);
+            obj.remove();
+
+            // update status
+            document.getElementById("status").innerHTML = "Deleted " + name + ".";
+
+            // remove file from drive
             google.script.run.deleteMonster(name);
         }
 
