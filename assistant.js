@@ -62,7 +62,8 @@ function showSidebar() {
 // function to create a popup modal
 function showDialog()
 {
-    var html = HtmlService.createHtmlOutputFromFile('dialog')
+    var html = HtmlService.createTemplateFromFile('dialog')
+        .evaluate()
         .setWidth(800)
         .setHeight(600);
     DocumentApp.getUi()
@@ -70,7 +71,8 @@ function showDialog()
 }
 
 function showItemDialog() {
-      var html = HtmlService.createHtmlOutputFromFile('itemDialog')
+      var html = HtmlService.createTemplateFromFile('itemDialog')
+        .evaluate()
         .setWidth(800)
         .setHeight(600);
     DocumentApp.getUi()
