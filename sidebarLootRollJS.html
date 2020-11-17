@@ -1,0 +1,38 @@
+<script>
+    function individualLoot()
+    {
+        //sel will have the value of the challenge rating that was selected by the user in the dropdown (zero, five, eleven, or seventeen)
+        var sel = document.getElementById("loot-cr").value;
+        function callback(whatToWrite)
+        {
+            document.getElementById("result-box").value = whatToWrite;
+        }
+        function runIndividualLoot()
+        {
+            google.script.run.withSuccessHandler(callback).individuallootgen(sel);
+        }
+        runIndividualLoot();
+    }
+
+    function treasureHorde()
+    {
+        //sel2 will have the value of the challenge rating that was selected by the user in the dropdown (zero, five, eleven, or seventeen)
+        var sel2 = document.getElementById("loot-cr").value;
+        //google.script.run.treasurehordegen(sel2);
+        function callback(whatToWrite)
+        {
+            document.getElementById("result-box").value = whatToWrite;
+        }
+        function runHordeLoot()
+        {
+            google.script.run.withSuccessHandler(callback).treasurehordegen(sel2);
+        }
+        runHordeLoot();
+    }
+
+    function InsertLoot()
+    {
+        var loot = document.getElementById("result-box").value;
+        google.script.run.insertloot(loot);
+    }
+</script>

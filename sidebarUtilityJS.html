@@ -1,0 +1,42 @@
+<script>
+    document.getElementById("utilities").onchange = function () { selectUtility(); }
+    function selectUtility() 
+    {
+        // track which functionality is selected
+        let utilitySelect = document.getElementById("utilities").selectedIndex;
+        let selectedUtility = (document.getElementsByTagName("option")[utilitySelect].value);
+
+        // track bestiary and lootgen divs
+        let lootGen = document.getElementById("loot-gen");
+        let bestiary = document.getElementById("bestiary");
+
+        // hide/show elements based on selectedUtility
+        if (selectedUtility === "loot-gen")
+        {
+            // show loot generation panel, hide bestiary panel
+            lootGen.style.display = "block";
+            bestiary.style.display = "none";
+        }
+        else if (selectedUtility === "bestiary")
+        {
+            // show bestiary panel, hide lootgen panel 
+            bestiary.style.display = "block";
+            lootGen.style.display = "none";
+        }
+    }
+
+    // call on its own to insert a new element after the reference
+    function insertAfter(newNode, referenceNode)
+    {
+        referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+    }
+    // pops out the custom monster dialog
+    function popoutDialog()
+    {
+        google.script.run.showDialog();
+    }
+    
+    function itemPopoutDialog() {
+        google.script.run.showItemDialog();
+    }
+</script>
