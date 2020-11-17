@@ -5,34 +5,7 @@
         
         <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
         <!-- The CSS package above applies Google styling to buttons and other elements. -->
-        <style>
-            table.ability-scores {
-                table-layout: fixed;
-                width: 600px;
-            }
-            table.ability-scores td {
-                font-weight: bold;
-                text-align: center;
-            }
-            table.ability-scores td input {
-                text-align: center;
-            }
-            .add-button {
-                margin-left: 5px;
-            }
-            td input {
-                margin-left: 5px !important;
-            }
-            td select {
-                margin-left: 5px !important;
-            }
-            td input[type=number] {
-                width: 60px !important;
-            }
-            td textarea {
-                width: 500px !important;
-            }
-        </style>
+        <?!= include('itemDialogCSS'); ?>
     </head>
     <body>
         <form id="itemForm" action="" method="GET">
@@ -93,30 +66,7 @@
             <input type="button" value="Cancel" onclick="google.script.host.close()" />
         </div>
 
-        <script>
-
-            function getResults(formID)
-            {
-                let form = document.getElementById(formID);
-                
-                let newItem = {
-                    "name": form.name.value,
-                    "Descriptors": {
-                        "rarity": form.rarity.value,
-                        "attunement": form.attunement.value,
-                        "typeofitem": form.typeofitem.value,
-                        "description": form.description.value
-                    }
-                }
-
-                let itemJSON = JSON.stringify(newItem);
-                let filename = newItem.name + ".json";
-
-                google.script.run.createItemJSON(filename, itemJSON, newItem.name);
-                alert(filename + " successfully created.");
-                google.script.host.close();
-            }
-        </script>
+        <?!= include('customItemDialogJS'); ?>
     </body>
 </html>
 

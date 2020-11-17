@@ -1,0 +1,25 @@
+<script>
+
+    function getResults(formID)
+    {
+        let form = document.getElementById(formID);
+        
+        let newItem = {
+            "name": form.name.value,
+            "Descriptors": {
+                "rarity": form.rarity.value,
+                "attunement": form.attunement.value,
+                "typeofitem": form.typeofitem.value,
+                "description": form.description.value
+            }
+        }
+
+        let itemJSON = JSON.stringify(newItem);
+        let filename = newItem.name + ".json";
+
+        google.script.run.createItemJSON(filename, itemJSON, newItem.name);
+        alert(filename + " successfully created.");
+        google.script.host.close();
+    }
+    
+</script>
