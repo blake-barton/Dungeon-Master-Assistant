@@ -52,6 +52,8 @@ function onInstall(e) {
  * the mobile add-on version.
  */
 function showSidebar() {
+    createFolder("DMAssistant", 'monsterList.txt');
+    createFolder("DMAssistantItems", 'itemsList.txt');
     var ui = HtmlService.createHtmlOutputFromFile('sidebar')
         .setTitle('DM Assistant');
     DocumentApp.getUi().showSidebar(ui);
@@ -67,18 +69,22 @@ function showDialog()
         .showModalDialog(html, 'Create a new Monster');
 }
 
+function showItemDialog() {
+      var html = HtmlService.createHtmlOutputFromFile('itemdialog')
+        .setWidth(800)
+        .setHeight(600);
+    DocumentApp.getUi()
+        .showModalDialog(html, 'Create Custom Item');
+}
+
 
 // create a DMAssistant folder with monsterList.txt and monsters folder when the add-on is installed
-function createFolder()
+function createFolder(foldername, referencefile)
 {
-    var folderCheck = DriveApp.getFoldersByName("DMAssistant");
-    if (folderCheck.hasNext())
-    {
-        // nothing
+    var folderCheck = DriveApp.getFoldersByName(foldername);
+    if (!folderCheck.hasNext()){
+      var folder = DriveApp.createFolder(foldername);
+      var file = folder.createFile(referencefile, '', MimeType.PLAIN_TEXT);
     }
-    else
-    {
-        var folder = DriveApp.createFolder("DMAssistant");
-        var file = folder.createFile('monsterList.txt', '', MimeType.PLAIN_TEXT);
-    }
+
 }
