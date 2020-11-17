@@ -1,0 +1,122 @@
+<style>
+    .branding-below {
+        bottom: 56px;
+        top: 0;
+    }
+
+    .branding-text {
+        left: 7px;
+        position: relative;
+        top: 3px;
+    }
+
+    .col-contain {
+        overflow: hidden;
+    }
+
+    .col-one {
+        float: left;
+        width: 50%;
+    }
+
+    .logo {
+        vertical-align: middle;
+    }
+
+    .radio-spacer {
+        height: 20px;
+    }
+
+    .width-100 {
+        width: 100%;
+    }
+
+    .collapsible {
+        width: 100%;
+        text-align: left;
+        /*background-image: url(https://blake-barton.github.io/Dungeon-Master-Assistant/dropdownArrow.png);*/
+    }
+
+    .desc-line {
+        font-style: italic;
+        color: #222;
+        font-weight: 500;
+    }
+
+    .ability-scores {
+        table-layout: fixed;
+        width: 235px;
+    }
+
+    table.ability-scores td {
+        padding: 0;
+        text-align: center;
+        border: none;
+    }
+
+    /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover)
+        .active, .collapsible:hover {
+            background-color: #ccc;
+        }
+        */
+
+        .loader {
+            border: 4px solid #f3f3f3; /* Light grey */
+            border-top: 4px solid #3498db; /* Blue */
+            border-radius: 50%;
+            width: 10px;
+            height: 10px;
+            animation: spin .75s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+    /* Style the collapsible content. Note: hidden by default */
+    .collapse-content {
+        font-size: .85em;
+        padding: 0 10px;
+        display: none;
+        overflow: hidden;
+        background-color: #fff6e3;
+        color: #6b2b1c;
+        border-right: 1px inset #23080340;
+        border-left: 1px inset #23080340;
+        border-bottom: 1px inset #23080340;
+    }
+
+    div.collapse-content hr {
+        border: 1px solid #6b2b1c;
+    }
+
+    div.collapse-content h2 {
+        color: #6b2b1c;
+        font-weight: bold;
+        font-size: 1.1em;
+    }
+
+    #refresh-btn {
+        position: relative;
+        bottom: 1px;
+    }
+
+    #status {
+        color: #636363;
+        margin-left: 5px;
+        font-style: italic;
+    }
+
+    .delete-button {
+        float: right;
+        margin-top: 5px;
+        width: 30px;
+        min-width: 30px;
+        color: #ec0c0c;
+    }
+
+    .delete-button:hover {
+        color: #ec0c0c;
+    }
+</style>

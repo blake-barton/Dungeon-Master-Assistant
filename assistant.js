@@ -53,9 +53,10 @@ function onInstall(e) {
  */
 function showSidebar() {
     createFolder("DMAssistant", "DMAssistantItems", 'monsterList.txt', 'itemsList.txt');
-    var ui = HtmlService.createHtmlOutputFromFile('sidebar')
-        .setTitle('DM Assistant');
-    DocumentApp.getUi().showSidebar(ui);
+    var template = HtmlService.createTemplateFromFile('sidebar')
+      .evaluate()
+      .setTitle('DM Assistant');
+    DocumentApp.getUi().showSidebar(template);
 }
 
 // function to create a popup modal
@@ -87,5 +88,11 @@ function createFolder(foldername1, foldername2, referencefile1, referencefile2)
       var folder2 = folder.createFolder(foldername2);
       var file2 = folder2.createFile(referencefile2, '', MimeType.PLAIN_TEXT);
     }
+}
 
+// used to separate scripts and css files
+function include(filename)
+{
+    return HtmlService.createHtmlOutputFromFile(filename)
+      .getContent();
 }
