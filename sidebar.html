@@ -12,7 +12,7 @@
     
 </head>
 
-<body onload="loadMonsterList()">
+<body onload="loadLists()">
     <div class="sidebar branding-below">
         <div>
             <select name="utilities" id="utilities">
@@ -58,8 +58,8 @@
                 <label for="item-sort">Sort by:</label>
                 <select name="item-sort" id="item-sort">
                     <option value="name">Name</option>
-                    <option value="rarity">Rarity (Lowest)</option>
-                    <option value="rarity">Rarity (Highest)</option>
+                    <option value="rarity-low">Rarity (Lowest)</option>
+                    <option value="rarity-high">Rarity (Highest)</option>
                 </select>
                 <button id="refresh-btn2" onclick="loadItemList()"><i class="fa fa-refresh" aria-hidden="true"></i></button>
             </form>

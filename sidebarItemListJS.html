@@ -19,7 +19,7 @@ function displayItemList(itemList) {
     
     let newButton = document.createElement("button");   // create button to place in the div
     newButton.innerHTML = itemList[i].name;           // add text to the button
-    newButton.classList.add("collapsible");             // add collapsible class to button
+    newButton.classList.add("collapsible-item");             // add collapsible class to button
     
     let collapseDiv = document.createElement("div");    // create div class="collapse-content"
     collapseDiv.classList.add("collapse-content");
@@ -38,17 +38,24 @@ function displayItemList(itemList) {
     let typeLine = document.createElement("p");
     typeLine.innerHTML = "<b>Type </b>" + itemList[i].Descriptors.typeofitem;
     
-    let descHR = document.createElement("hr");
+    let hasDescription = false;
+    if (itemList[i].Descriptors.description !== "") {
+      hasDescription = true;
+      
+      var descHR = document.createElement("hr");
     
-    let descLine = document.createElement("p");
-    descLine.innerHTML = "<b>Description </b>" + itemList[i].Descriptors.description;
+      var descLine = document.createElement("p");
+      descLine.innerHTML = "<b>Description </b>" + itemList[i].Descriptors.description;
+    }
     
     collapseDiv.appendChild(deleteButton);
     collapseDiv.appendChild(rarityLine);
     collapseDiv.appendChild(attLine);
     collapseDiv.appendChild(typeLine);
-    collapseDiv.appendChild(descHR);
-    collapseDiv.appendChild(descLine);
+    if(hasDescription) {
+      collapseDiv.appendChild(descHR);
+      collapseDiv.appendChild(descLine);
+    }
     
     newDiv.appendChild(newButton);                      // attach button to parent div
     newDiv.appendChild(collapseDiv);                    // attach collapse div to parent div
@@ -57,7 +64,7 @@ function displayItemList(itemList) {
     listDiv.appendChild(newDiv);
     
   }
-    let collapse = document.getElementsByClassName("collapsible");
+    let collapse = document.getElementsByClassName("collapsible-item");
         for (let i = 0; i < collapse.length; i++)
         {
             collapse[i].addEventListener("click", function ()
@@ -102,9 +109,9 @@ function displayItemList(itemList) {
         term = document.getElementById("search-term2").value;
 
         // unmark any previously marked text
-        if (document.contains(document.getElementById("marked")))
+        if (document.contains(document.getElementById("marked-item")))
         {
-            let btn = document.getElementById("marked");
+            let btn = document.getElementById("marked-item");
             let text = btn.innerHTML;
             let cutFirst = text.replace("<mark>", "");
             let name = cutFirst.replace("</mark>", "");
@@ -130,8 +137,8 @@ function displayItemList(itemList) {
             currentItem = itemList.children[i];
             currentName = currentItem.getElementsByTagName('button')[0].innerHTML;
             
-            let testName = currentName.replace(" ", "");
-            let testTerm = term.replace(" ", "");
+            let testName = currentName.replaceAll(" ", "");
+            let testTerm = term.replaceAll(" ", "");
             if (testName.toUpperCase() === testTerm.toUpperCase())
             {
                 let btn = currentItem.getElementsByTagName('button')[0];
@@ -140,7 +147,7 @@ function displayItemList(itemList) {
                 btn.innerHTML = "<mark>" + currentName + "</mark>";
 
                 // tag as marked so it can be removed on the next search
-                btn.id = "marked";
+                btn.id = "marked-item";
 
                 // click the collapsible
                 let content = btn.nextElementSibling;
@@ -159,7 +166,7 @@ function displayItemList(itemList) {
             }
         }
 
-        let status = document.getElementById("status");
+        let status = document.getElementById("status2");
         if (!matchFound)
         {
             status.innerHTML = "No matches.";
@@ -173,9 +180,9 @@ function displayItemList(itemList) {
     function collapseAllItems()
     {
         // clear marked text
-        if (document.contains(document.getElementById("marked")))
+        if (document.contains(document.getElementById("marked-item")))
         {
-            let btn = document.getElementById("marked");
+            let btn = document.getElementById("marked-item");
             let text = btn.innerHTML;
             let cutFirst = text.replace("<mark>", "");
             let name = cutFirst.replace("</mark>", "");
@@ -210,7 +217,7 @@ function displayItemList(itemList) {
         obj.remove();
 
         // update status
-        document.getElementById("status").innerHTML = "Deleted " + name + ".";
+        document.getElementById("status2").innerHTML = "Deleted " + name + ".";
 
         // remove file from drive
         google.script.run.deleteItem(name);

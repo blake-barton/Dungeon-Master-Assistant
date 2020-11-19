@@ -157,18 +157,107 @@ function generateObjectArrayItem(nameArray)
 
 function sortByRarityLow(a, b)
 {
-    var hpA = a.NumericStats.hp;
-    var hpB = b.NumericStats.hp;
-
-    return hpA - hpB;
+  let co = 1;
+  let un = 2;
+  let ra = 3;
+  let vr = 4;
+  let le = 5;
+  var RA = a.Descriptors.rarity;
+  var RB = b.Descriptors.rarity;
+  if(RA == "Common") {
+    RA = co;
+  }
+  else if(RA == "Uncommon") {
+    RA = un;
+  }
+  else if(RA == "Rare") {
+    RA = ra;
+  }
+  else if(RA == "Very Rare") {
+    RA = vr;
+  }
+  else if(RA == "Legendary") {
+    RA = le;
+  }
+  
+  if(RB == "Common") {
+    RB = co;
+  }
+  else if(RB == "Uncommon") {
+    RB = un;
+  }
+  else if(RB == "Rare") {
+    RB = ra;
+  }
+  else if(RB == "Very Rare") {
+    RB = vr;
+  }
+  else if(RB == "Legendary") {
+    RB = le;
+  }
+  
+  if(RA < RB) {
+    return -1;
+  }
+  else if(RA > RB) {
+    return 1;
+  }
+  else {
+    return 0;
+  }
+  
 }
 
 function sortByRarityHigh(a, b)
 {
-    var hpA = a.NumericStats.hp;
-    var hpB = b.NumericStats.hp;
+  let co = 5;
+  let un = 4;
+  let ra = 3;
+  let vr = 2;
+  let le = 1;
+  var RA = a.Descriptors.rarity;
+  var RB = b.Descriptors.rarity;
+  if(RA == "Common") {
+    RA = co;
+  }
+  else if(RA == "Uncommon") {
+    RA = un;
+  }
+  else if(RA == "Rare") {
+    RA = ra;
+  }
+  else if(RA == "Very Rare") {
+    RA = vr;
+  }
+  else if(RA == "Legendary") {
+    RA = le;
+  }
+  
+  if(RB == "Common") {
+    RB = co;
+  }
+  else if(RB == "Uncommon") {
+    RB = un;
+  }
+  else if(RB == "Rare") {
+    RB = ra;
+  }
+  else if(RB == "Very Rare") {
+    RB = vr;
+  }
+  else if(RB == "Legendary") {
+    RB = le;
+  }
 
-    return hpB - hpA;
+  if(RA < RB) {
+    return -1;
+  }
+  else if(RA > RB) {
+    return 1;
+  }
+  else {
+    return 0;
+  }
 }
 
 // take in a string from the sidebar select, reorder object array and return, called whenever sort dropdown is changed
