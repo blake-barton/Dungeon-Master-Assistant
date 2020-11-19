@@ -48,6 +48,29 @@
             <div class="block" id="insert-button">
                 <button class="red" id="insert-buttonID" onclick="InsertLoot()">Insert</button>
             </div>
+            <br>
+            <form>
+                <input type="text" id="search-term2" placeholder="Jump to...">
+                <button id="item-search2" onclick="searchListItem()"><i class="fa fa-search"></i></button>
+            </form>
+            <br>
+            <form>
+                <label for="item-sort">Sort by:</label>
+                <select name="item-sort" id="item-sort">
+                    <option value="name">Name</option>
+                    <option value="rarity">Rarity (Lowest)</option>
+                    <option value="rarity">Rarity (Highest)</option>
+                </select>
+                <button id="refresh-btn2" onclick="loadItemList()"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+            </form>
+            <br>
+            <div class="block">
+                <button class="red" id="collapse-all-btn2" onclick="collapseAllItems()">Collapse All</button>
+                <span id="status2"></span>
+            </div>
+            <br>
+            <div id="collapse-target2"></div>
+            <div class="loader" id="list-loader2"></div>
         </div>
         <div id="bestiary" style="display: none;">
             <form>
@@ -90,6 +113,7 @@
     <?!= include('sidebarUtilityJS'); ?>
     <?!= include('sidebarLootRollJS'); ?>
     <?!= include('sidebarMonsterListJS'); ?>
+    <?!= include('sidebarItemListJS'); ?>
     
 </body>
 
