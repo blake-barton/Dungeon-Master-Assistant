@@ -947,7 +947,7 @@ function horde_11_16(gemstone500gp, gemstone1000gp, art250gp, art750gp)
     else if ((roll >= 11) && (roll <= 12))
     {
         var rollgems = 0;
-        var gems = "Gems: \n ";
+        var gems = "Gems: \n";
         for (var i = 0; i < gemroll; i++)
         {
             rollgems = Math.floor(Math.random() * gemstone500gp.length);
@@ -961,7 +961,7 @@ function horde_11_16(gemstone500gp, gemstone1000gp, art250gp, art750gp)
     else if ((roll >= 13) && (roll <= 15))
     {
         var rollgems = 0;
-        var gems = "Gems: \n ";
+        var gems = "Gems: \n";
         for (var i = 0; i < gemroll; i++)
         {
             rollgems = Math.floor(Math.random() * gemstone1000gp.length);
@@ -975,7 +975,7 @@ function horde_11_16(gemstone500gp, gemstone1000gp, art250gp, art750gp)
     else if ((roll >= 16) && (roll <= 19))//needs magic item roll
     {
         var rollart = 0;
-        var art = "Art: \n ";
+        var art = "Art: \n";
         var magic = "Magic Items:\n";
         for (var i = 0; i < artroll; i++)
         {
@@ -994,7 +994,7 @@ function horde_11_16(gemstone500gp, gemstone1000gp, art250gp, art750gp)
     else if ((roll >= 20) && (roll <= 23)) // needs magic items
     {
         var rollart = 0;
-        var art = "Art: \n ";
+        var art = "Art: \n";
         var magic = "Magic Items:\n";
         for (var i = 0; i < artroll; i++)
         {
@@ -1013,7 +1013,7 @@ function horde_11_16(gemstone500gp, gemstone1000gp, art250gp, art750gp)
     else if ((roll >= 24) && (roll <= 26))
     {
         var rollgems = 0;
-        var gems = "Gems: \n ";
+        var gems = "Gems: \n";
         var magic = "Magic Items:\n";
         for (var i = 0; i < gemroll; i++)
         {
@@ -1032,7 +1032,7 @@ function horde_11_16(gemstone500gp, gemstone1000gp, art250gp, art750gp)
     else if ((roll >= 27) && (roll <= 29))
     {
         rollgems = 0;
-        gems = "Gems: \n ";
+        gems = "Gems: \n";
         var magic = "Magic Items:\n";
         for (var i = 0; i < gemroll; i++)
         {
@@ -1050,7 +1050,7 @@ function horde_11_16(gemstone500gp, gemstone1000gp, art250gp, art750gp)
     else if ((roll >= 30) && (roll <= 35))//needs magic item roll
     {
         var rollart = 0;
-        var art = "Art: \n ";
+        var art = "Art: \n";
         var magic = "Magic Items:\n";
         for (var i = 0; i < artroll; i++)
         {
@@ -1067,7 +1067,7 @@ function horde_11_16(gemstone500gp, gemstone1000gp, art250gp, art750gp)
     else if ((roll >= 36) && (roll <= 40)) // needs magic items
     {
         var rollart = 0;
-        var art = "Art: \n ";
+        var art = "Art: \n";
         var magic = "Magic Items:\n";
         for (var i = 0; i < artroll; i++)
         {
@@ -1084,7 +1084,7 @@ function horde_11_16(gemstone500gp, gemstone1000gp, art250gp, art750gp)
     else if ((roll >= 41) && (roll <= 45))
     {
         var rollgems = 0;
-        var gems = "Gems: \n ";
+        var gems = "Gems: \n";
         var magic = "Magic Items:\n";
         for (var i = 0; i < gemroll; i++)
         {
@@ -1101,7 +1101,7 @@ function horde_11_16(gemstone500gp, gemstone1000gp, art250gp, art750gp)
     else if ((roll >= 46) && (roll <= 50))
     {
         var rollgems = 0;
-        var gems = "Gems: \n ";
+        var gems = "Gems: \n";
         var magic = "Magic Items:\n";
         for (var i = 0; i < gemroll; i++)
         {
@@ -1117,7 +1117,7 @@ function horde_11_16(gemstone500gp, gemstone1000gp, art250gp, art750gp)
     else if ((roll >= 51) && (roll <= 54))//needs magic item roll
     {
         var rollart = 0;
-        var art = "Art: \n ";
+        var art = "Art: \n";
         var magic = "Magic Items:\n";
         for (var i = 0; i < artroll; i++)
         {
@@ -1134,7 +1134,7 @@ function horde_11_16(gemstone500gp, gemstone1000gp, art250gp, art750gp)
     else if ((roll >= 55) && (roll <= 58)) // needs magic items
     {
         var rollart = 0;
-        var art = "Art: \n ";
+        var art = "Art: \n";
         var magic = "Magic Items:\n";
         for (var i = 0; i < artroll; i++)
         {
@@ -1151,7 +1151,7 @@ function horde_11_16(gemstone500gp, gemstone1000gp, art250gp, art750gp)
     else if ((roll >= 59) && (roll <= 62))
     {
         var rollgems = 0;
-        var gems = "Gems: \n ";
+        var gems = "Gems: \n";
         var magic = "Magic Items:\n";
         for (var i = 0; i < gemroll; i++)
         {
@@ -1168,7 +1168,7 @@ function horde_11_16(gemstone500gp, gemstone1000gp, art250gp, art750gp)
     else if ((roll >= 63) && (roll <= 66))
     {
         var rollgems = 0;
-        var gems = "Gems: \n ";
+        var gems = "Gems: \n";
         var magic = "Magic Items:\n";
         for (var i = 0; i < gemroll; i++)
         {
@@ -1185,7 +1185,7 @@ function horde_11_16(gemstone500gp, gemstone1000gp, art250gp, art750gp)
     else if ((roll >= 67) && (roll <= 68))//needs magic item roll
     {
         var rollart = 0;
-        var art = "Art: \n ";
+        var art = "Art: \n";
         var magic = "Magic Items:\n";
         for (var i = 0; i < artroll; i++)
         {
@@ -1202,7 +1202,7 @@ function horde_11_16(gemstone500gp, gemstone1000gp, art250gp, art750gp)
     else if ((roll >= 69) && (roll <= 70)) // needs magic items
     {
         var rollart = 0;
-        var art = "Art: \n ";
+        var art = "Art: \n";
         var magic = "Magic Items:\n";
         for (var i = 0; i < artroll; i++)
         {
@@ -1219,7 +1219,7 @@ function horde_11_16(gemstone500gp, gemstone1000gp, art250gp, art750gp)
     else if ((roll >= 71) && (roll <= 72))
     {
         var rollgems = 0;
-        var gems = "Gems: \n ";
+        var gems = "Gems: \n";
         var magic = "Magic Items:\n";
         for (var i = 0; i < gemroll; i++)
         {
@@ -1236,7 +1236,7 @@ function horde_11_16(gemstone500gp, gemstone1000gp, art250gp, art750gp)
     else if ((roll >= 73) && (roll <= 74))
     {
         var rollgems = 0;
-        var gems = "Gems: \n ";
+        var gems = "Gems: \n";
         var magic = "Magic Items:\n";
         for (var i = 0; i < gemroll; i++)
         {
@@ -1252,7 +1252,7 @@ function horde_11_16(gemstone500gp, gemstone1000gp, art250gp, art750gp)
     else if ((roll >= 75) && (roll <= 76))//needs magic item roll
     {
         var rollart = 0;
-        var art = "Art: \n ";
+        var art = "Art: \n";
         var magic = "Magic Items:\n";
         for (var i = 0; i < artroll; i++)
         {
@@ -1270,7 +1270,7 @@ function horde_11_16(gemstone500gp, gemstone1000gp, art250gp, art750gp)
     else if ((roll >= 77) && (roll <= 78)) // needs magic items
     {
         var rollart = 0;
-        var art = "Art: \n ";
+        var art = "Art: \n";
         var magic = "Magic Items:\n";
         for (var i = 0; i < artroll; i++)
         {
@@ -1288,7 +1288,7 @@ function horde_11_16(gemstone500gp, gemstone1000gp, art250gp, art750gp)
     else if ((roll >= 79) && (roll <= 80))
     {
         var rollgems = 0;
-        var gems = "Gems: \n ";
+        var gems = "Gems: \n";
         var magic = "Magic Items:\n";
         for (var i = 0; i < gemroll; i++)
         {
@@ -1306,7 +1306,7 @@ function horde_11_16(gemstone500gp, gemstone1000gp, art250gp, art750gp)
     else if ((roll >= 81) && (roll <= 82))
     {
         var rollgems = 0;
-        var gems = "Gems: \n ";
+        var gems = "Gems: \n";
         var magic = "Magic Items:\n";
         for (var i = 0; i < gemroll; i++)
         {
@@ -1324,7 +1324,7 @@ function horde_11_16(gemstone500gp, gemstone1000gp, art250gp, art750gp)
     else if ((roll >= 83) && (roll <= 85))//needs magic item roll
     {
         var rollart = 0;
-        var art = "Art: \n ";
+        var art = "Art: \n";
         var magic = "Magic Items:\n";
         for (var i = 0; i < artroll; i++)
         {
@@ -1341,7 +1341,7 @@ function horde_11_16(gemstone500gp, gemstone1000gp, art250gp, art750gp)
     else if ((roll >= 86) && (roll <= 88)) // needs magic items
     {
         var rollart = 0;
-        var art = "Art: \n ";
+        var art = "Art: \n";
         var magic = "Magic Items:\n";
         for (var i = 0; i < artroll; i++)
         {
@@ -1358,7 +1358,7 @@ function horde_11_16(gemstone500gp, gemstone1000gp, art250gp, art750gp)
     else if ((roll >= 89) && (roll <= 90))
     {
         var rollgems = 0;
-        var gems = "Gems: \n ";
+        var gems = "Gems: \n";
         var magic = "Magic Items:\n";
         for (var i = 0; i < gemroll; i++)
         {
@@ -1375,7 +1375,7 @@ function horde_11_16(gemstone500gp, gemstone1000gp, art250gp, art750gp)
     else if ((roll >= 91) && (roll <= 92))
     {
         var rollgems = 0;
-        var gems = "Gems: \n ";
+        var gems = "Gems: \n";
         var magic = "Magic Items:\n";
         for (var i = 0; i < gemroll; i++)
         {
@@ -1391,7 +1391,7 @@ function horde_11_16(gemstone500gp, gemstone1000gp, art250gp, art750gp)
     else if ((roll >= 93) && (roll <= 94))//needs magic item roll
     {
         var rollart = 0;
-        var art = "Art: \n ";
+        var art = "Art: \n";
         var magic = "Magic Items:\n";
         for (var i = 0; i < artroll; i++)
         {
@@ -1408,7 +1408,7 @@ function horde_11_16(gemstone500gp, gemstone1000gp, art250gp, art750gp)
     else if ((roll >= 95) && (roll <= 96)) // needs magic items
     {
         var rollgems = 0;
-        var gems = "Gems: \n ";
+        var gems = "Gems: \n";
         var magic = "Magic Items:\n";
         for (var i = 0; i < gemroll; i++)
         {
@@ -1424,7 +1424,7 @@ function horde_11_16(gemstone500gp, gemstone1000gp, art250gp, art750gp)
     else if ((roll >= 97) && (roll <= 98))
     {
         var rollgems = 0;
-        var gems = "Gems: \n ";
+        var gems = "Gems: \n";
         var magic = "Magic Items:\n";
         for (var i = 0; i < gemroll; i++)
         {
@@ -1441,7 +1441,7 @@ function horde_11_16(gemstone500gp, gemstone1000gp, art250gp, art750gp)
     else if ((roll >= 99) && (roll <= 100))
     {
         var rollgems = 0;
-        var gems = "Gems: \n ";
+        var gems = "Gems: \n";
         var magic = "Magic Items:\n";
         for (var i = 0; i < gemroll; i++)
         {
