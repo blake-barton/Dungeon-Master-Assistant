@@ -1,89 +1,106 @@
 <script>
-document.getElementById("item-sort").onchange = function() { loadItemList(); }
-function displayItemList(itemList) {
-  // hide the loader
-  let loader = document.getElementById("list-loader2");
-  loader.style.display = "none";
-
-  // update status
-  document.getElementById("status2").innerHTML = "Displaying " + itemList.length + " items."; 
-
-  // create a div to contain the list
-  let listDiv = document.createElement("div");
-  listDiv.id = "item-list";
-  let targetDiv = document.getElementById("collapse-target2");
-  insertAfter(listDiv, targetDiv);
-  for (let i = 0; i < itemList.length; i++) {
-    let newDiv = document.createElement("div");         // create new div
-    newDiv.id = itemList[i].name;
-    
-    let newButton = document.createElement("button");   // create button to place in the div
-    newButton.innerHTML = itemList[i].name;           // add text to the button
-    newButton.classList.add("collapsible-item");             // add collapsible class to button
-    
-    let collapseDiv = document.createElement("div");    // create div class="collapse-content"
-    collapseDiv.classList.add("collapse-content");
-    
-    let deleteButton = document.createElement("button");
-    deleteButton.innerHTML = '<i class="fa fa-trash"></i>';
-    deleteButton.classList.add("delete-button");
-    deleteButton.setAttribute("onClick", "removeItem('" + itemList[i].name + "')");
-    
-    let rarityLine = document.createElement("p");
-    rarityLine.innerHTML = "<b>Rarity </b>" + itemList[i].Descriptors.rarity;
-    
-    let attLine = document.createElement("p");
-    attLine.innerHTML = "<b>Attunement </b>" + itemList[i].Descriptors.attunement;
-    
-    let typeLine = document.createElement("p");
-    typeLine.innerHTML = "<b>Type </b>" + itemList[i].Descriptors.typeofitem;
-    
-    let hasDescription = false;
-    if (itemList[i].Descriptors.description !== "") {
-      hasDescription = true;
-      
-      var descHR = document.createElement("hr");
-    
-      var descLine = document.createElement("p");
-      descLine.innerHTML = "<b>Description </b>" + itemList[i].Descriptors.description;
-    }
-    
-    collapseDiv.appendChild(deleteButton);
-    collapseDiv.appendChild(rarityLine);
-    collapseDiv.appendChild(attLine);
-    collapseDiv.appendChild(typeLine);
-    if(hasDescription) {
-      collapseDiv.appendChild(descHR);
-      collapseDiv.appendChild(descLine);
-    }
-    
-    newDiv.appendChild(newButton);                      // attach button to parent div
-    newDiv.appendChild(collapseDiv);                    // attach collapse div to parent div
-    
-    // add div to monsterList div
-    listDiv.appendChild(newDiv);
-    
-  }
-    let collapse = document.getElementsByClassName("collapsible-item");
-        for (let i = 0; i < collapse.length; i++)
+    document.getElementById("item-sort").onchange = function () { loadItemList(); }
+    function displayItemList(itemList)
+    {
+        // no items in list
+        if (itemList.length === 0)
         {
-            collapse[i].addEventListener("click", function ()
-            {
-                this.classList.toggle("active");
-                let content = this.nextElementSibling;
-                if (content.style.display === "block")
-                {
-                    content.style.display = "none";
-                }
-                else
-                {
-                    content.style.display = "block";
-                }
-            });
-        }
-}
+            // hide the loader
+            let loader = document.getElementById("list-loader2");
+            loader.style.display = "none";
 
-// pulls monsterList object from server
+            // update status
+            document.getElementById("status2").innerHTML = "No items created.";
+        }
+        else
+        {
+            // hide the loader
+            let loader = document.getElementById("list-loader2");
+            loader.style.display = "none";
+
+            // update status
+            document.getElementById("status2").innerHTML = "Displaying " + itemList.length + " items.";
+
+            // create a div to contain the list
+            let listDiv = document.createElement("div");
+            listDiv.id = "item-list";
+            let targetDiv = document.getElementById("collapse-target2");
+            insertAfter(listDiv, targetDiv);
+            for (let i = 0; i < itemList.length; i++)
+            {
+                let newDiv = document.createElement("div");         // create new div
+                newDiv.id = itemList[i].name;
+
+                let newButton = document.createElement("button");   // create button to place in the div
+                newButton.innerHTML = itemList[i].name;           // add text to the button
+                newButton.classList.add("collapsible-item");             // add collapsible class to button
+
+                let collapseDiv = document.createElement("div");    // create div class="collapse-content"
+                collapseDiv.classList.add("collapse-content");
+
+                let deleteButton = document.createElement("button");
+                deleteButton.innerHTML = '<i class="fa fa-trash"></i>';
+                deleteButton.classList.add("delete-button");
+                deleteButton.setAttribute("onClick", "removeItem('" + itemList[i].name + "')");
+
+                let rarityLine = document.createElement("p");
+                rarityLine.innerHTML = "<b>Rarity </b>" + itemList[i].Descriptors.rarity;
+
+                let attLine = document.createElement("p");
+                attLine.innerHTML = "<b>Attunement </b>" + itemList[i].Descriptors.attunement;
+
+                let typeLine = document.createElement("p");
+                typeLine.innerHTML = "<b>Type </b>" + itemList[i].Descriptors.typeofitem;
+
+                let hasDescription = false;
+                if (itemList[i].Descriptors.description !== "")
+                {
+                    hasDescription = true;
+
+                    var descHR = document.createElement("hr");
+
+                    var descLine = document.createElement("p");
+                    descLine.innerHTML = "<b>Description </b>" + itemList[i].Descriptors.description;
+                }
+
+                collapseDiv.appendChild(deleteButton);
+                collapseDiv.appendChild(rarityLine);
+                collapseDiv.appendChild(attLine);
+                collapseDiv.appendChild(typeLine);
+                if (hasDescription)
+                {
+                    collapseDiv.appendChild(descHR);
+                    collapseDiv.appendChild(descLine);
+                }
+
+                newDiv.appendChild(newButton);                      // attach button to parent div
+                newDiv.appendChild(collapseDiv);                    // attach collapse div to parent div
+
+                // add div to monsterList div
+                listDiv.appendChild(newDiv);
+
+            }
+            let collapse = document.getElementsByClassName("collapsible-item");
+            for (let i = 0; i < collapse.length; i++)
+            {
+                collapse[i].addEventListener("click", function ()
+                {
+                    this.classList.toggle("active");
+                    let content = this.nextElementSibling;
+                    if (content.style.display === "block")
+                    {
+                        content.style.display = "none";
+                    }
+                    else
+                    {
+                        content.style.display = "block";
+                    }
+                });
+            }
+        }
+    }
+
+    // pulls monsterList object from server
     function loadItemList()
     {
         // if the monsterList div exists, delete it
@@ -133,10 +150,10 @@ function displayItemList(itemList) {
         let matchFound = false;
 
         for (let i = 0; i < count; i++)
-        {   
+        {
             currentItem = itemList.children[i];
             currentName = currentItem.getElementsByTagName('button')[0].innerHTML;
-            
+
             let testName = currentName.replaceAll(" ", "");
             let testTerm = term.replaceAll(" ", "");
             if (testName.toUpperCase() === testTerm.toUpperCase())
@@ -226,5 +243,3 @@ function displayItemList(itemList) {
         }
     }
 </script>
-
-

@@ -111,7 +111,7 @@ function loadNamesIntoArrayItems()
         // get matching folder
         var folder = folderList.next();
 
-        // search for file "monsterList.txt"
+        // search for file "itemList.txt"
         var fileList = folder.getFilesByName(filename);
 
         if (fileList.hasNext())
@@ -119,6 +119,12 @@ function loadNamesIntoArrayItems()
             // found matching file, load in text
             var file = fileList.next();
             content = file.getBlob().getDataAsString();
+
+            // return empty array if list is empty
+            if (content === "")
+            {
+                return [];
+            }
         }
     }
 
@@ -264,7 +270,14 @@ function sortByRarityHigh(a, b)
 function sortItems(sortType)
 {
     // generate object array
-    let objectArray = generateObjectArrayItem(loadNamesIntoArrayItems());
+    let nameArray = loadNamesIntoArrayItems();
+
+    if (nameArray.length === 0)
+    {
+        return [];
+    } 
+
+    let objectArray = generateObjectArrayItem(nameArray);
 
     switch (sortType)
     {
