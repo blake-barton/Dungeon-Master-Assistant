@@ -238,11 +238,11 @@
                 {
                     if (vulnIter == monsterList[i].Passives.vulnerabilities.length - 1)
                     {
-                        vulnerabilities.innerHTML += monsterList[i].Passives.vulnerabilities[vulnIter] + ", ";
+                        vulnerabilities.innerHTML += monsterList[i].Passives.vulnerabilities[vulnIter];
                     }
                     else
                     {
-                        vulnerabilities.innerHTML += monsterList[i].Passives.vulnerabilities[vulnIter];
+                        vulnerabilities.innerHTML += monsterList[i].Passives.vulnerabilities[vulnIter] + ", ";
                     }
                 }
             }
@@ -710,17 +710,20 @@
 
     function removeMonster(name)
     {
-        // TODO: add an alert to make sure the user wants to delete
+        let choice = confirm("Are you sure you want to delete " + name + "?");
 
-        // remove element from list
-        let obj = document.getElementById(name);
-        obj.remove();
+        if (choice)
+        {
+            // remove element from list
+            let obj = document.getElementById(name);
+            obj.remove();
 
-        // update status
-        document.getElementById("status").innerHTML = "Deleted " + name + ".";
+            // update status
+            document.getElementById("status").innerHTML = "Deleted " + name + ".";
 
-        // remove file from drive
-        google.script.run.deleteMonster(name);
+            // remove file from drive
+            google.script.run.deleteMonster(name);
+        }
     }
 
 </script>
