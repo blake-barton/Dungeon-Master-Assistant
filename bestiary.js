@@ -118,6 +118,11 @@ function loadNamesIntoArray()
             // found matching file, load in text
             var file = fileList.next();
             content = file.getBlob().getDataAsString();
+
+            if (content === "")
+            {
+                return [];
+            }
         }
     }
 
@@ -210,7 +215,14 @@ function sortByCRHigh(a, b)
 function sortBestiary(sortType)
 {
     // generate object array
-    var objectArray = generateObjectArray(loadNamesIntoArray());
+    var nameArray = loadNamesIntoArray();
+
+    if (nameArray.length === 0)
+    {
+        return [];
+    }
+    
+    var objectArray = generateObjectArray(nameArray);
 
     switch (sortType)
     {
