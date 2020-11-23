@@ -22,6 +22,7 @@ The user can roll for both Treasure Hoards and Individual loot as a function of 
 
  Happy DMing!
 
+## Credits
  * Backend and UI by Blake Barton
  * Loot Generator code by Jacob Smith
  * Loot Tables populated by Arsh Kabarwal, Shashaank Srikanth, and Matthew Weng 
