@@ -1,15 +1,31 @@
 <script>
 
+    function sanitizeInput(name)
+    {
+        // check for quotes
+        if (name.includes('"'))
+        {
+            alert("Name cannot contain quotation marks.");
+            return true;
+        }
+
+        // check for empty string
+        if (name === "")
+        {
+            alert("Name cannot be blank.");
+            return true;
+        }
+
+        // return false if no error
+        return false;
+    }
+
     function getResults(formID)
     {
         let form = document.getElementById(formID);
+        let errorFlag = sanitizeInput(form.name.value);
 
-        // check if name contains a quotation mark
-        if (form.name.value.includes('"'))
-        {
-            alert("Name cannot contain quotation marks.");
-        }
-        else
+        if (!errorFlag)
         {
             let newItem = {
                 "name": form.name.value,
