@@ -3,23 +3,31 @@
     function getResults(formID)
     {
         let form = document.getElementById(formID);
-        
-        let newItem = {
-            "name": form.name.value,
-            "Descriptors": {
-                "rarity": form.rarity.value,
-                "attunement": form.attunement.value,
-                "typeofitem": form.typeofitem.value,
-                "description": form.description.value
-            }
+
+        // check if name contains a quotation mark
+        if (form.name.value.includes('"'))
+        {
+            alert("Name cannot contain quotation marks.");
         }
+        else
+        {
+            let newItem = {
+                "name": form.name.value,
+                "Descriptors": {
+                    "rarity": form.rarity.value,
+                    "attunement": form.attunement.value,
+                    "typeofitem": form.typeofitem.value,
+                    "description": form.description.value
+                }
+            }
 
-        let itemJSON = JSON.stringify(newItem);
-        let filename = newItem.name + ".json";
+            let itemJSON = JSON.stringify(newItem);
+            let filename = newItem.name + ".json";
 
-        google.script.run.createItemJSON(filename, itemJSON, newItem.name);
-        alert(filename + " successfully created.");
-        google.script.host.close();
+            google.script.run.createItemJSON(filename, itemJSON, newItem.name);
+            alert(filename + " successfully created.");
+            google.script.host.close();
+        }
     }
     
 </script>
