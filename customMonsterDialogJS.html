@@ -406,6 +406,12 @@
             return true;
         }
 
+        if (name.includes("(") || name.includes(")"))
+        {
+            alert("Name cannot contain parentheses.");
+            return true;
+        }
+
         // return false if no error
         return false;
     }
