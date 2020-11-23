@@ -1,5 +1,13 @@
 <script>
     document.getElementById("item-sort").onchange = function () { loadItemList(); }
+
+    function cleanString(str)
+    {
+        let newStr = str.replaceAll("'", "\\'");
+        newStr = newStr.replaceAll('"', '\\"');
+        return newStr;
+    }
+
     function displayItemList(itemList)
     {
         // no items in list
@@ -38,10 +46,12 @@
                 let collapseDiv = document.createElement("div");    // create div class="collapse-content"
                 collapseDiv.classList.add("collapse-content");
 
+                // delete button
+                let deleteArg = cleanString(itemList[i].name);
                 let deleteButton = document.createElement("button");
                 deleteButton.innerHTML = '<i class="fa fa-trash"></i>';
                 deleteButton.classList.add("delete-button");
-                deleteButton.setAttribute("onClick", "removeItem('" + itemList[i].name + "')");
+                deleteButton.setAttribute("onClick", "removeItem('" + deleteArg + "')");
 
                 let rarityLine = document.createElement("p");
                 rarityLine.innerHTML = "<b>Rarity </b>" + itemList[i].Descriptors.rarity;
@@ -231,6 +241,9 @@
 
         if (choice)
         {
+            // debug
+            console.log("remove: " + name);
+
             // remove element from list
             let obj = document.getElementById(name);
             obj.remove();
