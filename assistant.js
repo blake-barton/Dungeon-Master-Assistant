@@ -27,7 +27,7 @@ function loadMonsters(e) {
    
 function onOpen(e) {
     DocumentApp.getUi().createAddonMenu()
-        .addItem('Start', 'showSidebar')
+        .addItem('Open', 'showSidebar')
         .addToUi();
 }
   
