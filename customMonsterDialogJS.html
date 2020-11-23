@@ -394,7 +394,14 @@
     {
         let form = document.getElementById(formID);
 
-        // calculate passives
+        // check if name contains a quotation mark
+        if (form.name.value.includes('"'))
+        {
+            alert("Name cannot contain quotation marks.");
+        }
+        else
+        {
+            // calculate passives
         let senses = selectInputResults(form, "sense-row00", "sense00", "senseRange00");
         let skills = selectInputResults(form, "skill-row00", "skill00", "skillMod00");
         let languages = selectResults(form, "language-row00", "language00");
@@ -513,5 +520,6 @@
         google.script.run.createMonsterJSON(filename, monsterJSON, newMonster.name);
         alert(filename + " successfully created.");
         google.script.host.close();
+        }
     }
 </script>
