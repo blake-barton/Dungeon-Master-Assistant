@@ -41,6 +41,13 @@ function createMonsterJSON(filename, monsterJSON, monsterName)
         filename = filename.replace(".json", "");
         filename += "(" + dupCount + ").json";
         monsterName += "(" + dupCount + ")";
+
+        // change name in json
+        monsterObject = JSON.parse(monsterJSON);
+        monsterObject.name = monsterName;
+
+        // convert back to json
+        monsterJSON = JSON.stringify(monsterObject);
     }
 
     // save monster json
