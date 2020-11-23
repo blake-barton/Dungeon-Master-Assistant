@@ -13,6 +13,13 @@
         }
     }
 
+    function cleanString(str)
+    {
+        let newStr = str.replaceAll("'", "\\'");
+        newStr = newStr.replaceAll('"', '\\"');
+        return newStr;
+    }
+
     // displayMonsterList is called after the server request is complete
     document.getElementById("bestiary-sort").onchange = function() { loadMonsterList(); }
     function displayMonsterList(monsterList)
@@ -57,10 +64,11 @@
                 // GENERATING CONTENT FOR STAT BLOCK
 
                 // delete button
+                let deleteArg = cleanString(monsterList[i].name);
                 let deleteButton = document.createElement("button");
                 deleteButton.innerHTML = '<i class="fa fa-trash"></i>';
                 deleteButton.classList.add("delete-button");
-                deleteButton.setAttribute("onClick", "removeMonster('" + monsterList[i].name + "')");
+                deleteButton.setAttribute("onClick", "removeMonster('" + deleteArg + "')");
 
                 // Description line
                 let descLine = document.createElement("p");
