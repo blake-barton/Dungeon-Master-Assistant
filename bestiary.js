@@ -1,54 +1,6 @@
-function removeDupMarks(list)
-{
-    var regex = /\(\d+\)/gm;
-    const subst = ``;
-
-    for (var i = 0; i < list.length; i++)
-    {
-        var str = list[i];
-        list[i] = str.replace(regex, subst);
-    }
-
-    return list;
-}
-
-function findDuplicates(name)
-{
-    var dupCount = 0;
-    var list = removeDupMarks(loadNamesIntoArray());
-
-    for (var i = 0; i < list.length; i++)
-    {
-        if (name === list[i])
-        {
-            dupCount++;
-        }
-    }
-    
-    return dupCount;
-}
-
 function createMonsterJSON(filename, monsterJSON, monsterName)
 {
     var folderName = "DMAssistant";
-
-    // handle if this name is a duplicate
-    var dupCount = findDuplicates(monsterName);
-
-    // add number if duplicate
-    if (dupCount > 0)
-    {
-        filename = filename.replace(".json", "");
-        filename += "(" + dupCount + ").json";
-        monsterName += "(" + dupCount + ")";
-
-        // change name in json
-        monsterObject = JSON.parse(monsterJSON);
-        monsterObject.name = monsterName;
-
-        // convert back to json
-        monsterJSON = JSON.stringify(monsterObject);
-    }
 
     // save monster json
     var folderList = DriveApp.getFoldersByName(folderName);
