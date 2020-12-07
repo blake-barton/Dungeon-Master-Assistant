@@ -1,6 +1,6 @@
 function createMonsterJSON(filename, monsterJSON, monsterName)
 {
-    var folderName = "DMAssistant";
+    var folderName = "DMAssistantMonsters";
 
     // save monster json
     var folderList = DriveApp.getFoldersByName(folderName);
@@ -17,7 +17,7 @@ function createMonsterJSON(filename, monsterJSON, monsterName)
 // read monster from list and turn it into a json
 function parseMonsterJSON(filename)
 {
-    var folderName = "DMAssistant";
+    var folderName = "DMAssistantMonsters";
 
     // find folder "DMAssistant"
     var folderList = DriveApp.getFoldersByName(folderName);
@@ -48,7 +48,7 @@ function parseMonsterJSON(filename)
 function saveMonsterToList(monsterName)
 {
     var filename = "monsterList.txt";
-    var folderName = "DMAssistant";
+    var folderName = "DMAssistantMonsters";
 
     // find folder "DMAssistant"
     var folderList = DriveApp.getFoldersByName(folderName);
@@ -75,7 +75,7 @@ function saveMonsterToList(monsterName)
 function clearMonsterList()
 {
     var filename = "monsterList.txt";
-    var folderName = "DMAssistant";
+    var folderName = "DMAssistantMonsters";
 
     // find folder "DMAssistant"
     var folderList = DriveApp.getFoldersByName(folderName);
@@ -100,7 +100,7 @@ function clearMonsterList()
 function loadNamesIntoArray()
 {
     var filename = "monsterList.txt";
-    var folderName = "DMAssistant";
+    var folderName = "DMAssistantMonsters";
     var content = "";
 
     // find folder "DMAssistant"
@@ -255,7 +255,7 @@ function deleteMonster(name)
     let filename = name + ".json";
 
     // find json in DMAssistant
-    var folderName = "DMAssistant";
+    var folderName = "DMAssistantMonsters";
 
     // find folder "DMAssistant"
     var folderList = DriveApp.getFoldersByName(folderName);

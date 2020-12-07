@@ -17,13 +17,6 @@
  *     determine which authorization mode (ScriptApp.AuthMode) the trigger is
  *     running in, inspect e.authMode.
  */
- 
-function loadMonsters(e) {
-    var monstersJSON = UrlFetchApp.fetch("https://blake-barton.github.io/Dungeon-Master-Assistant/monsters.json");
-    var monstersObject = JSON.parse(monstersJSON);
-    Logger.log(monstersObject[0].name);
-    Logger.log(monstersObject[0].Passives.senses[0]);
-}
    
 function onOpen(e) {
     DocumentApp.getUi().createAddonMenu()
@@ -52,7 +45,10 @@ function onInstall(e) {
  * the mobile add-on version.
  */
 function showSidebar() {
-    createFolder("DMAssistant", "DMAssistantItems", 'monsterList.txt', 'itemsList.txt');
+    //createFolder("DMAssistant", "DMAssistantItems", 'monsterList.txt', 'itemsList.txt');
+    var childFolders = ["DMAssistantMonsters", "DMAssistantItems", "DMAssistantPlayers", "DMAssistantEncounters"];
+    var textFiles = ["monsterList.txt", "itemsList.txt", "playerList.txt", "encounterList.txt"];
+    createFolder("DMAssistant", childFolders, textFiles);
     var template = HtmlService.createTemplateFromFile('sidebar')
       .evaluate()
       .setTitle('DM Assistant');
@@ -111,14 +107,26 @@ function showAddEncounterDialog()
 
 
 // create a DMAssistant folder with monsterList.txt and monsters folder when the add-on is installed
-function createFolder(foldername1, foldername2, referencefile1, referencefile2)
+function createFolder(rootFolder, childFolders, textFiles)
 {
-    var folderCheck = DriveApp.getFoldersByName(foldername1);
+    var folderCheck = DriveApp.getFoldersByName(rootFolder);
     if (!folderCheck.hasNext()){
-      var folder = DriveApp.createFolder(foldername1);
+
+        // create the DMAssistant root folder
+        var root = DriveApp.createFolder(rootFolder);
+
+        // create a child folder with text file inside DMAssistant for each string in childFolders
+        for (var i = 0; i < childFolders.length; i++)
+        {
+            var folder = root.createFolder(childFolders[i]);
+            var file = folder.createFile(textFiles[i], '', MimeType.PLAIN_TEXT);
+        }
+
+      /*
       var file = folder.createFile(referencefile1, '', MimeType.PLAIN_TEXT);
       var folder2 = folder.createFolder(foldername2);
       var file2 = folder2.createFile(referencefile2, '', MimeType.PLAIN_TEXT);
+      */
     }
 }
 
