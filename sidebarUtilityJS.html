@@ -9,6 +9,7 @@
         // track bestiary and lootgen divs
         let lootGen = document.getElementById("loot-gen");
         let bestiary = document.getElementById("bestiary");
+        let tracker = document.getElementById("tracker");
 
         // hide/show elements based on selectedUtility
         if (selectedUtility === "loot-gen")
@@ -16,12 +17,21 @@
             // show loot generation panel, hide bestiary panel
             lootGen.style.display = "block";
             bestiary.style.display = "none";
+            tracker.style.display = "none";
         }
         else if (selectedUtility === "bestiary")
         {
             // show bestiary panel, hide lootgen panel 
             bestiary.style.display = "block";
             lootGen.style.display = "none";
+            tracker.style.display = "none";
+        }
+        else if (selectedUtility === "tracker")
+        {
+            // show bestiary panel, hide lootgen panel 
+            tracker.style.display = "block";
+            lootGen.style.display = "none";
+            bestiary.style.display = "none";
         }
     }
 
