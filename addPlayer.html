@@ -2,10 +2,112 @@
 <html>
     <head>
         <base target="_top">
+        
         <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
         <!-- The CSS package above applies Google styling to buttons and other elements. -->
     </head>
     <body>
-        <h1>Welcome to the Player Adder!</h1>
+        <form id="player-form" action="" method="GET">
+            <table>
+                <tr>
+                    <td><label for="name">Name:</label></td>
+                    <td><input type="text" id="name" name="name" autocomplete="off"></td>
+                </tr>
+                <tr>
+                    <td><label for="perception">Passive Perception:</label></td>
+                    <td><input type="number" id="perception" name="perception" size="5"></td>
+                </tr>
+                <tr>
+                    <td><label for="conmod">Constitution Modifier: &nbsp;</label></td>
+                    <td><input type="number" id="conmod" name="conmod" size="5"></td>
+                </tr>
+                <tr>
+                    <td><label for="hunger">Hunger Status:</label></td>
+                    <td>
+                        <select name="hunger" id="hunger">
+                            <option value="Satiated">Satiated</option>
+                            <option value="Hungry">Hungry</option>
+                            <option value="Starving">Starving</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="thirst">Hydration Status:</label></td>
+                    <td>
+                        <select name="thirst" id="thirst">
+                            <option value="Hydrated">Hydrated</option>
+                            <option value="Dehydrated">Dehydrated</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="exhaustion">Exhaustion Level:</label></td>
+                    <td>
+                        <select name="exhaustion" id="exhaustion">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="eating-rate">Eating Rate:</label></td>
+                    <td>
+                        <select name="eatingRate" id="eating-rate">
+                            <option value="0">0 lb/day</option>
+                            <option value="0.5">0.5 lb/day</option>
+                            <option value="1">1 lb/day</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="drinking-rate">Eating Rate:</label></td>
+                    <td>
+                        <select name="drinkingRate" id="drinking-rate">
+                            <option value="0">0 gal/day</option>
+                            <option value="0.5">0.5 gal/day</option>
+                            <option value="1">1 gal/day</option>
+                            <option value="2">2 gal/day</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="order">Marching Order:</label></td>
+                    <td>
+                        <select name="marchingOrder" id="marching-order">
+                            <option value="Front">Front</option>
+                            <option value="Middle">Middle</option>
+                            <option value="Back">Back</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="lifestyle">Lifestyle:</label></td>
+                    <td>
+                        <select name="lifestyle" id="lifestyle">
+                            <option value="Squalid">Squalid</option>
+                            <option value="Poor">Poor</option>
+                            <option value="Modest">Modest</option>
+                            <option value="Comfortable">Comfortable</option>
+                            <option value="Wealthy">Wealthy</option>
+                            <option value="Aristocratic">Aristocratic</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <br>
+        </form>
+        <div class="block" id="submit-bar">
+            <button type="submit" class="blue" id="save" onclick="">Save Player</button>
+            <input type="button" value="Cancel" onclick="google.script.host.close()" />
+        </div>
+
+        
     </body>
 </html>
+
+
