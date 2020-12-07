@@ -2,10 +2,50 @@
 <html>
     <head>
         <base target="_top">
+        
         <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
         <!-- The CSS package above applies Google styling to buttons and other elements. -->
+        <?!= include('itemDialogCSS'); ?>
     </head>
     <body>
-        <h1>Welcome to the Random Encounter Adder!</h1>
+        <form id="encounter-form" action="" method="GET">
+            <p>Is this encounter an ambush?</p>
+            <input type="radio" id="ambush-true" name="ambush" value="true">
+            <label for="ambush-true">Yes</label><br>
+            <input type="radio" id="ambush-false" name="ambush" value="false">
+            <label for="ambush-true">No</label><br>
+            <table>
+                <tr>
+                    <td><label for="terrain">Terrain:</label></td>
+                    <td>
+                        <select name="terrain" id="terrain">
+                            <option value="Arctic">Arctic</option>
+                            <option value="Coastal"></option>
+                            <option value="Desert"></option>
+                            <option value="Forest"></option>
+                            <option value="Grassland"></option>
+                            <option value="Hill"></option>
+                            <option value="Mountain"></option>
+                            <option value="Swamp"></option>
+                            <option value="Underdark"></option>
+                            <option value="Underwater"></option>
+                            <option value="Urban"></option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <hr>
+            <p><b>Description</b></p>
+            <textarea class="width-500" id="description" rows="5"></textarea>
+        </form>
+        <br>
+        <div class="block" id="submit-bar">
+            <button type="submit" class="blue" id="save" onclick="">Save Player</button>
+            <input type="button" value="Cancel" onclick="google.script.host.close()" />
+        </div>
+
+        
     </body>
 </html>
+
+
