@@ -71,12 +71,22 @@ function showDialog()
 }
 
 function showItemDialog() {
-      var html = HtmlService.createTemplateFromFile('itemDialog')
+    var html = HtmlService.createTemplateFromFile('itemDialog')
         .evaluate()
         .setWidth(800)
         .setHeight(600);
     DocumentApp.getUi()
         .showModalDialog(html, 'Create Custom Item');
+}
+
+function showTrackerDialog()
+{
+    var html = HtmlService.createTemplateFromFile('tracker')
+        .evaluate()
+        .setWidth(800)
+        .setHeight(600);
+    DocumentApp.getUi()
+        .showModalDialog(html, 'Exploration Tracker');
 }
 
 
