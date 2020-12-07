@@ -20,8 +20,15 @@ The user can roll for both Treasure Hoards and Individual loot as a function of 
 * Searching for monsters with duplicate names will mark both of them. Hitting collapse all twice will unmark both. It's recommended that you don't create monsters with duplicate names.
 * It may take some time before custom monsters/items are saved to Drive. Give the script a second to fire before refreshing (or refresh multiple times).
 
-
- This project is open source! If you have your own ideas, feel free to submit a pull request or fork for your own personal use.
+## Creating an Apps Script Project
+ This project is open source! If you have your own ideas, feel free to submit a pull request or fork for your own personal use. In order to edit and test in the Apps Script development environment, follow these steps:
+ 1. Open a Google Docs file.
+ 1. Go to Tools -> Script Editor, and create a new project.
+ 1. For each HTML file in this repo, create a corresponding HTML file in the project.
+ 1. For each JS file in this repo, create a corresponding GS script file in the project.
+ 1. Save all files.
+ 1. Test the project by reloading the Google Doc, go to Add-ons -> DM Assistant -> Open.
+ 1. All set!
 
  Happy DMing!
 
