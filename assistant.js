@@ -89,6 +89,26 @@ function showTrackerDialog()
         .showModalDialog(html, 'Exploration Tracker');
 }
 
+function showAddPlayerDialog()
+{
+    var html = HtmlService.createTemplateFromFile('addPlayer')
+        .evaluate()
+        .setWidth(800)
+        .setHeight(600);
+    DocumentApp.getUi()
+        .showModalDialog(html, 'Add Player');
+}
+
+function showAddEncounterDialog()
+{
+    var html = HtmlService.createTemplateFromFile('addEncounter')
+        .evaluate()
+        .setWidth(800)
+        .setHeight(600);
+    DocumentApp.getUi()
+        .showModalDialog(html, 'Add Random Encounter');
+}
+
 
 // create a DMAssistant folder with monsterList.txt and monsters folder when the add-on is installed
 function createFolder(foldername1, foldername2, referencefile1, referencefile2)
