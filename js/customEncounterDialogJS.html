@@ -1,0 +1,27 @@
+<script>
+
+    function getResults(formID)
+    {
+        let form = document.getElementById(formID);
+
+        // assign true/false value to isAmbush
+        let isAmbush = false;
+        if (form.ambush.value === "true")
+        {
+            isAmbush = true;
+        }
+
+        let newEncounter = {
+            "isAmbush": isAmbush,
+            "terrain": form.terrain.value,
+            "description": form.description.value
+        }
+        
+        // pass to server
+        google.script.run.appendJSON(newEncounter);
+
+        alert("New encounter successfully created.");
+        google.script.host.close();
+    }
+    
+</script>

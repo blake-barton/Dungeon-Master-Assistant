@@ -36,16 +36,14 @@
             </table>
             <hr>
             <p><b>Description</b></p>
-            <textarea class="width-500" id="description" rows="5"></textarea>
+            <textarea class="width-500" id="description" name="description" rows="5"></textarea>
         </form>
         <br>
         <div class="block" id="submit-bar">
-            <button type="submit" class="blue" id="save" onclick="">Save Player</button>
+            <button type="submit" class="blue" id="save" onclick="getResults('encounter-form')">Save Random Encounter</button>
             <input type="button" value="Cancel" onclick="google.script.host.close()" />
         </div>
 
-        
+        <?!= include('customEncounterDialogJS'); ?>
     </body>
 </html>
-
-

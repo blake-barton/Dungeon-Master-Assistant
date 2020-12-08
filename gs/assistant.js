@@ -47,8 +47,10 @@ function onInstall(e) {
 function showSidebar() {
     //createFolder("DMAssistant", "DMAssistantItems", 'monsterList.txt', 'itemsList.txt');
     var childFolders = ["DMAssistantMonsters", "DMAssistantItems", "DMAssistantPlayers", "DMAssistantEncounters"];
-    var textFiles = ["monsterList.txt", "itemsList.txt", "playerList.txt", "encounterList.txt"];
-    createFolder("DMAssistant", childFolders, textFiles);
+    var textFiles = ["monsterList.txt", "itemsList.txt", "playerList.txt", "encounterList.json"];
+    var mimeTypes = [MimeType.PLAIN_TEXT, MimeType.PLAIN_TEXT, MimeType.PLAIN_TEXT, 'application/json']
+
+    createFolder("DMAssistant", childFolders, textFiles, mimeTypes);
     var template = HtmlService.createTemplateFromFile('sidebar')
       .evaluate()
       .setTitle('DM Assistant');
@@ -107,7 +109,7 @@ function showAddEncounterDialog()
 
 
 // create a DMAssistant folder with monsterList.txt and monsters folder when the add-on is installed
-function createFolder(rootFolder, childFolders, textFiles)
+function createFolder(rootFolder, childFolders, textFiles, mimeTypes)
 {
     var folderCheck = DriveApp.getFoldersByName(rootFolder);
     if (!folderCheck.hasNext()){
@@ -119,7 +121,15 @@ function createFolder(rootFolder, childFolders, textFiles)
         for (var i = 0; i < childFolders.length; i++)
         {
             var folder = root.createFolder(childFolders[i]);
-            var file = folder.createFile(textFiles[i], '', MimeType.PLAIN_TEXT);
+
+            if (mimeTypes[i] === "application/json")
+            {
+                var file = folder.createFile(textFiles[i], '[]', mimeTypes[i]);
+            }
+            else
+            {
+                var file = folder.createFile(textFiles[i], '', mimeTypes[i]);
+            }
         }
 
       /*
