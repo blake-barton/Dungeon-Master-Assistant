@@ -79,7 +79,7 @@
                 <tr>
                     <td><label for="order">Marching Order:</label></td>
                     <td>
-                        <select name="marchingOrder" id="marching-order">
+                        <select name="order" id="order">
                             <option value="Front">Front</option>
                             <option value="Middle">Middle</option>
                             <option value="Back">Back</option>
@@ -103,11 +103,11 @@
             <br>
         </form>
         <div class="block" id="submit-bar">
-            <button type="submit" class="blue" id="save" onclick="">Save Player</button>
+            <button type="submit" class="blue" id="save" onclick="getResults('player-form')">Save Player</button>
             <input type="button" value="Cancel" onclick="google.script.host.close()" />
         </div>
 
-        
+        <?!= include('addPlayerDialogJS'); ?>
     </body>
 </html>
 

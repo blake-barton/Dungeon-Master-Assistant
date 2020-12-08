@@ -1,4 +1,4 @@
-function appendJSON(newEncounterJSON)
+function appendEncounterJSON(newEncounterJSON)
 {
     // access encounters.json
     var folderName = "DMAssistantEncounters";

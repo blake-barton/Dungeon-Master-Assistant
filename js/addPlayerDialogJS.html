@@ -1,0 +1,27 @@
+<script>
+
+    function getResults(formID)
+    {
+        let form = document.getElementById(formID);
+
+        let newPlayer = {
+            "name": form.name.value,
+            "perception": form.perception.value,
+            "conmod": form.conmod.value,
+            "hunger": form.hunger.value,
+            "thirst": form.thirst.value,
+            "exhaustion": form.exhaustion.value,
+            "eatingRate": form.eatingRate.value,
+            "drinkingRate": form.drinkingRate.value,
+            "order": form.order.value,
+            "lifestyle": form.lifestyle.value
+        }
+        
+        // pass to server
+        google.script.run.appendPlayerJSON(newPlayer);
+
+        alert(newPlayer.name + " successfully created.");
+        google.script.host.close();
+    }
+    
+</script>
