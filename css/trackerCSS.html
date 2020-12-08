@@ -16,7 +16,41 @@
     /* Style page content */
     .main {
         margin-left: 160px; /* Same as the width of the sidebar */
-        padding: 0px 10px;
+        height: 896px;
+    }
+
+    .players {
+        height: 50%;
+        border: 1px solid gray;
+        position: relative;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-gap: 20px 50px;
+        grid-template-columns: auto auto auto auto;
+        justify-content: center;
+        align-items: center;
+        margin-top: 15px;
+    }
+
+    .player-block {
+        background-color: gray;
+        height: 200px;
+        width: 200px;
+    }
+
+    .party {
+        height: 50%;
+        border: 1px solid gray;
+        position: relative;
+    }
+
+    #insert-player-btn {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        margin: 10px;
     }
 
 </style>
