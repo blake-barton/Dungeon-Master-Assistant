@@ -1,9 +1,13 @@
 <style>
 
+    body {
+        background-color: #fff4e6;
+    }
+
     /* The sidebar menu */
     .sidebar {
         height: 100%; /* Full-height: remove this if you want "auto" height */
-        width: 160px; /* Set the width of the sidebar */
+        width: 300px; /* Set the width of the sidebar */
         position: fixed; /* Fixed Sidebar (stay in place on scroll) */
         z-index: 1; /* Stay on top */
         top: 0; /* Stay at the top */
@@ -15,7 +19,7 @@
 
     /* Style page content */
     .main {
-        margin-left: 160px; /* Same as the width of the sidebar */
+        margin-left: 300px; /* Same as the width of the sidebar */
         height: 896px;
     }
 
@@ -27,7 +31,7 @@
 
     .grid-container {
         display: grid;
-        grid-gap: 20px 40px;
+        grid-gap: 15px 2px;
         grid-template-columns: auto auto auto auto;
         justify-content: center;
         align-items: center;
@@ -35,11 +39,11 @@
     }
 
     .player-block {
-        background-color: gray;
+        background-color: rgb(202, 202, 202);
         height: 200px;
         width: 200px;
         padding: 10px;
-        font-size: .7em;
+        font-size: .8em;
     }
 
     .select-container {
@@ -54,8 +58,14 @@
         grid-template-columns: auto auto;
         justify-content: center;
         align-items: center;
-        margin-top: 8px;
+        margin-top: 10px;
         grid-gap: 0 25px;
+    }
+
+    .player-btn-bar button {
+        height: 25px;
+        min-width: 60px;
+        font-size: 1.1em;
     }
 
     .player-block h1 {
@@ -77,17 +87,21 @@
         padding-right: 6px;
     }
 
+    #insert-player-btn {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        margin: 10px;
+    }
+
     .party {
         height: 42%;
         border: 1px solid gray;
         position: relative;
     }
 
-    #insert-player-btn {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        margin: 10px;
+    .party-header {
+        font-size: 1.2em;
     }
 
 </style>
