@@ -81,8 +81,8 @@ function showTrackerDialog()
 {
     var html = HtmlService.createTemplateFromFile('tracker')
         .evaluate()
-        .setWidth(800)
-        .setHeight(600);
+        .setWidth(1200)
+        .setHeight(900);
     DocumentApp.getUi()
         .showModalDialog(html, 'Exploration Tracker');
 }
