@@ -112,6 +112,22 @@
                 <button id="add-player-btn" onclick="addPlayerPopoutDialog()">Add Player</button>
                 <button id="add-encounter-btn" onclick="addEncounterPopoutDialog()">Add Random Encounter</button>
             </div>
+            <br>
+            
+            <div class="tab">
+                <button class="tablinks" onclick="openList(event, 'Players')">Players</button>
+                <button class="tablinks" onclick="openList(event, 'Encounters')">Encounters</button>
+            </div>
+            
+            <div id="Players" class="tabcontent">
+                <p>This is the player list tab</p>
+            </div>
+
+            <div id="Encounters" class="tabcontent">
+                <p>This is the encounters list tab</p>
+            </div>
+
+
         </div>
     </div>
 
@@ -121,10 +137,12 @@
         <span class="gray branding-text">DM Assistant by Team 6</span>
     </div>
 
+
     <?!= include('sidebarUtilityJS'); ?>
     <?!= include('sidebarLootRollJS'); ?>
     <?!= include('sidebarMonsterListJS'); ?>
     <?!= include('sidebarItemListJS'); ?>
+    <?!= include('trackerSidebarJS'); ?>
     
 </body>
 
