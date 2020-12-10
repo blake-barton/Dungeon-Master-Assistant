@@ -223,4 +223,35 @@
             status.innerHTML = "";
         }
     }
+
+    function collapseAllPlayers()
+    {
+        // clear marked text
+        if (document.contains(document.getElementById("player-marked")))
+        {
+            let btn = document.getElementById("player-marked");
+            let text = btn.innerHTML;
+            let cutFirst = text.replace("<mark>", "");
+            let name = cutFirst.replace("</mark>", "");
+            btn.innerHTML = name;
+            btn.id = "";
+        }
+
+        playerList = document.getElementById("player-list");
+        let count = playerList.childElementCount;
+        let currentplayer = "";
+
+        for (let i = 0; i < count; i++)
+        {
+            currentPlayer = playerList.children[i];
+            let btn = currentPlayer.getElementsByTagName('button')[0];
+
+            // close collapsible
+            let content = btn.nextElementSibling;
+            if (content.style.display === "block")
+            {
+                btn.click();
+            }
+        }
+    }
 </script>
