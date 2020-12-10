@@ -48,17 +48,12 @@
                 deleteButton.classList.add("delete-button");
                 deleteButton.setAttribute("onClick", "removePlayer('" + deleteArg + "')");
 
-                // name
-                let name = document.createElement("p");
-                name.innerHTML = "<b>Name</b> " + playerList[i].name;
-
                 // passive perception
                 let perception = document.createElement("p");
                 perception.innerHTML = "<b>Passive Perception</b> " + playerList[i].perception;
 
                 // conmod
                 let conmod = document.createElement("p");
-
                 if (playerList[i].conmod >= 0)
                 {
                     conmod.innerHTML = "<b>Constitution Modifier</b> " + "+" + playerList[i].conmod;
@@ -70,7 +65,7 @@
                 
                 // hunger
                 let hunger = document.createElement("p");
-                name.innerHTML = "<b>Hunger Status</b> " + playerList[i].hunger;
+                hunger.innerHTML = "<b>Hunger Status</b> " + playerList[i].hunger;
 
                 // thirst
                 let thirst = document.createElement("p");
@@ -98,7 +93,6 @@
 
                 // adding content to stat block
                 collapseDiv.appendChild(deleteButton);
-                collapseDiv.appendChild(name);
                 collapseDiv.appendChild(perception);
                 collapseDiv.appendChild(conmod);
                 collapseDiv.appendChild(hunger);
