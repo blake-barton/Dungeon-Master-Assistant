@@ -37,7 +37,7 @@
             for (let i = 0; i < itemList.length; i++)
             {
                 let newDiv = document.createElement("div");         // create new div
-                newDiv.id = itemList[i].name;
+                newDiv.id = "item-" + itemList[i].name;
 
                 let newButton = document.createElement("button");   // create button to place in the div
                 newButton.innerHTML = itemList[i].name;           // add text to the button
@@ -51,7 +51,7 @@
                 let deleteButton = document.createElement("button");
                 deleteButton.innerHTML = '<i class="fa fa-trash"></i>';
                 deleteButton.classList.add("delete-button");
-                deleteButton.setAttribute("onClick", "removeItem('" + deleteArg + "')");
+                deleteButton.setAttribute("onClick", "removeItem('item-" + deleteArg + "')");
 
                 let rarityLine = document.createElement("p");
                 rarityLine.innerHTML = "<b>Rarity </b>" + itemList[i].Descriptors.rarity;
@@ -235,14 +235,16 @@
         }
     }
 
-    function removeItem(name)
+    function removeItem(id)
     {
+        // remove 'item-' from status messages
+        let name = id.substring(5);
         let choice = confirm("Are you sure you want to delete " + name + "?");
 
         if (choice)
         {
             // remove element from list
-            let obj = document.getElementById(name);
+            let obj = document.getElementById(id);
             obj.remove();
 
             // update status

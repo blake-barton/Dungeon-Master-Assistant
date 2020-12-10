@@ -52,7 +52,7 @@
             for (let i = 0; i < monsterList.length; i++)
             {
                 let newDiv = document.createElement("div");         // create new div
-                newDiv.id = monsterList[i].name;
+                newDiv.id = "monster-" + monsterList[i].name;
 
                 let newButton = document.createElement("button");   // create button to place in the div
                 newButton.innerHTML = monsterList[i].name;           // add text to the button
@@ -68,7 +68,7 @@
                 let deleteButton = document.createElement("button");
                 deleteButton.innerHTML = '<i class="fa fa-trash"></i>';
                 deleteButton.classList.add("delete-button");
-                deleteButton.setAttribute("onClick", "removeMonster('" + deleteArg + "')");
+                deleteButton.setAttribute("onClick", "removeMonster('monster-" + deleteArg + "')");
 
                 // Description line
                 let descLine = document.createElement("p");
@@ -728,14 +728,16 @@
         }
     }
 
-    function removeMonster(name)
+    function removeMonster(id)
     {
+        // remove 'monster-' from status messages
+        let name = id.substring(8);
         let choice = confirm("Are you sure you want to delete " + name + "?");
 
         if (choice)
         {
             // remove element from list
-            let obj = document.getElementById(name);
+            let obj = document.getElementById(id);
             obj.remove();
 
             // update status
