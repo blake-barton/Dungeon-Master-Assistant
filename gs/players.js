@@ -80,3 +80,45 @@ function generatePlayerObjectArray()
         }
     }
 }
+
+function deletePlayer(name)
+{
+    // access json
+    var folderName = "DMAssistantPlayers";
+    var filename = "playerList.json";
+
+    var folderList = DriveApp.getFoldersByName(folderName);
+    if (folderList.hasNext())
+    {
+        var folder = folderList.next();
+
+        // pull players.json down as an array of objects
+        var fileList = folder.getFilesByName(filename);
+        while (fileList.hasNext())
+        {
+            // found matching file, loading json
+            var file = fileList.next();
+            var jsonText = file.getBlob().getDataAsString();
+            
+            // get as javascript object
+            var playerArray = JSON.parse(jsonText);
+
+            // remove element with matching name
+            for (var i = 0; i < playerArray.length; i++)
+            {
+                if (playerArray[i].name === name)
+                {
+                    // delete
+                    playerArray.splice(i, 1);
+                    break;
+                }
+            }
+
+            // stringify array
+            jsonText = JSON.stringify(playerArray);
+
+            // save new content
+            file.setContent(jsonText);
+        }
+    }
+}
