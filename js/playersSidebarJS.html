@@ -30,7 +30,7 @@
             for (let i = 0; i < playerList.length; i++)
             {
                 let newDiv = document.createElement("div");         // create new div
-                newDiv.id = playerList[i].name;
+                newDiv.id = "player-" + playerList[i].name;
 
                 let newButton = document.createElement("button");   // create button to place in the div
                 newButton.innerHTML = playerList[i].name;           // add text to the button
@@ -46,7 +46,7 @@
                 let deleteButton = document.createElement("button");
                 deleteButton.innerHTML = '<i class="fa fa-trash"></i>';
                 deleteButton.classList.add("delete-button");
-                deleteButton.setAttribute("onClick", "removePlayer('" + deleteArg + "')");
+                deleteButton.setAttribute("onClick", "removePlayer('player-" + deleteArg + "')");
 
                 // passive perception
                 let perception = document.createElement("p");
@@ -252,6 +252,26 @@
             {
                 btn.click();
             }
+        }
+    }
+
+    function removePlayer(id)
+    {
+        // remove 'player-' from status messages
+        let name = id.substring(7);
+        let choice = confirm("Are you sure you want to delete " + name + "?");
+
+        if (choice)
+        {
+            // remove element from list
+            let obj = document.getElementById(id);
+            obj.remove();
+
+            // update status
+            document.getElementById("player-status").innerHTML = "Deleted " + name + ".";
+
+            // remove file from drive
+            google.script.run.deletePlayer(name);
         }
     }
 </script>
