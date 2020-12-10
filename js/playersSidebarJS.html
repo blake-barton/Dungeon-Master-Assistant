@@ -150,4 +150,77 @@
         // load in array and pass to display function
         google.script.run.withSuccessHandler(displayPlayerList).generatePlayerObjectArray();
     }
+
+    function searchPlayerList()
+    {
+        term = document.getElementById("player-search-term").value;
+
+        // unmark any previously marked text
+        if (document.contains(document.getElementById("player-marked")))
+        {
+            let btn = document.getElementById("player-marked");
+            let text = btn.innerHTML;
+            let cutFirst = text.replace("<mark>", "");
+            let name = cutFirst.replace("</mark>", "");
+            btn.innerHTML = name;
+            btn.id = "";
+
+            // close collapsible
+            let content = btn.nextElementSibling;
+            if (content.style.display === "block")
+            {
+                btn.click();
+            }
+        }
+
+        playerList = document.getElementById("player-list");
+        let count = playerList.childElementCount;
+        let currentplayer = "";
+        let currentName = "";
+        let matchFound = false;
+
+        for (let i = 0; i < count; i++)
+        {   
+            currentplayer = playerList.children[i];
+            currentName = currentplayer.getElementsByTagName('button')[0].innerHTML;
+            
+            let testName = currentName.replaceAll(" ", "");
+            let testTerm = term.replaceAll(" ", "");
+            if (testName.toUpperCase() === testTerm.toUpperCase())
+            {
+                let btn = currentplayer.getElementsByTagName('button')[0];
+
+                // highlight button
+                btn.innerHTML = "<mark>" + currentName + "</mark>";
+
+                // tag as marked so it can be removed on the next search
+                btn.id = "player-marked";
+
+                // click the collapsible
+                let content = btn.nextElementSibling;
+                if (content.style.display === "block")
+                {
+                }
+                else
+                {
+                    btn.click();
+                }
+
+                // scroll into view
+                btn.scrollIntoView();
+
+                matchFound = true;
+            }
+        }
+
+        let status = document.getElementById("player-status");
+        if (!matchFound)
+        {
+            status.innerHTML = "No matches.";
+        }
+        else
+        {
+            status.innerHTML = "";
+        }
+    }
 </script>
