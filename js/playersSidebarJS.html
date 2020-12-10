@@ -1,0 +1,159 @@
+<script>
+
+    function displayPlayerList(playerList)
+    {
+        // no items in list
+        if (playerList.length === 0)
+        {
+            // hide the loader
+            let loader = document.getElementById("player-list-loader");
+            loader.style.display = "none";
+
+            // update status
+            document.getElementById("player-status").innerHTML = "No players created.";
+        }
+        else
+        {
+            // hide the loader
+            let loader = document.getElementById("player-list-loader");
+            loader.style.display = "none";
+
+            // update status
+            document.getElementById("player-status").innerHTML = "Displaying " + playerList.length + " players."; 
+
+            // create a div to contain the list
+            let listDiv = document.createElement("div");
+            listDiv.id = "player-list";
+            let targetDiv = document.getElementById("player-collapse-target");
+            insertAfter(listDiv, targetDiv);
+
+            for (let i = 0; i < playerList.length; i++)
+            {
+                let newDiv = document.createElement("div");         // create new div
+                newDiv.id = playerList[i].name;
+
+                let newButton = document.createElement("button");   // create button to place in the div
+                newButton.innerHTML = playerList[i].name;           // add text to the button
+                newButton.classList.add("player-collapsible");             // add collapsible class to button
+
+                let collapseDiv = document.createElement("div");    // create div class="collapse-content"
+                collapseDiv.classList.add("collapse-content");
+                
+                // GENERATING CONTENT FOR STAT BLOCK
+
+                // delete button
+                let deleteArg = cleanString(playerList[i].name);
+                let deleteButton = document.createElement("button");
+                deleteButton.innerHTML = '<i class="fa fa-trash"></i>';
+                deleteButton.classList.add("delete-button");
+                deleteButton.setAttribute("onClick", "removePlayer('" + deleteArg + "')");
+
+                // name
+                let name = document.createElement("p");
+                name.innerHTML = "<b>Name</b> " + playerList[i].name;
+
+                // passive perception
+                let perception = document.createElement("p");
+                perception.innerHTML = "<b>Passive Perception</b> " + playerList[i].perception;
+
+                // conmod
+                let conmod = document.createElement("p");
+
+                if (playerList[i].conmod >= 0)
+                {
+                    conmod.innerHTML = "<b>Constitution Modifier</b> " + "+" + playerList[i].conmod;
+                }
+                else
+                {
+                    conmod.innerHTML = "<b>Constitution Modifier</b> " + playerList[i].conmod;
+                }
+                
+                // hunger
+                let hunger = document.createElement("p");
+                name.innerHTML = "<b>Hunger Status</b> " + playerList[i].hunger;
+
+                // thirst
+                let thirst = document.createElement("p");
+                thirst.innerHTML = "<b>Hydration Status</b> " + playerList[i].thirst;
+
+                // exhaustion
+                let exhaustion = document.createElement("p");
+                exhaustion.innerHTML = "<b>Exhaustion Level</b> " + playerList[i].exhaustion;
+
+                // eating rate
+                let foodRate = document.createElement("p");
+                foodRate.innerHTML = "<b>Eating Rate</b> " + playerList[i].eatingRate + " lb/day";
+
+                // drinking rate
+                let waterRate = document.createElement("p");
+                waterRate.innerHTML = "<b>Drinking Rate</b> " + playerList[i].drinkingRate + " gal/day";
+
+                // marching order
+                let order = document.createElement("p");
+                order.innerHTML = "<b>Marching Order</b> " + playerList[i].order;
+
+                // lifestyle
+                let lifestyle = document.createElement("p");
+                lifestyle.innerHTML = "<b>Lifestyle</b> " + playerList[i].lifestyle;
+
+                // adding content to stat block
+                collapseDiv.appendChild(deleteButton);
+                collapseDiv.appendChild(name);
+                collapseDiv.appendChild(perception);
+                collapseDiv.appendChild(conmod);
+                collapseDiv.appendChild(hunger);
+                collapseDiv.appendChild(thirst);
+                collapseDiv.appendChild(exhaustion);
+                collapseDiv.appendChild(foodRate);
+                collapseDiv.appendChild(waterRate);
+                collapseDiv.appendChild(order);
+                collapseDiv.appendChild(lifestyle);
+
+                newDiv.appendChild(newButton);                      // attach button to parent div
+                newDiv.appendChild(collapseDiv);                    // attach collapse div to parent div
+
+                // add div to playerList div
+                listDiv.appendChild(newDiv);
+            }
+
+            // for loop for collapsible functionality
+            let collapse = document.getElementsByClassName("player-collapsible");
+            for (let i = 0; i < collapse.length; i++)
+            {
+                collapse[i].addEventListener("click", function ()
+                {
+                    this.classList.toggle("active");
+                    let content = this.nextElementSibling;
+                    if (content.style.display === "block")
+                    {
+                        content.style.display = "none";
+                    }
+                    else
+                    {
+                        content.style.display = "block";
+                    }
+                });
+            }
+        }
+    }
+
+    // pulls playerList object from server
+    function loadPlayerList()
+    {
+        // if the playerList div exists, delete it
+        if (document.contains(document.getElementById("player-list")))
+        {
+            document.getElementById("player-list").remove();
+        }
+
+        // show loading circle
+        let loader = document.getElementById("player-list-loader");
+        loader.style.display = "block";
+
+        // display loading message
+        document.getElementById("player-status").innerHTML = "Loading player list...";
+
+        // load in array and pass to display function
+        google.script.run.withSuccessHandler(displayPlayerList).generatePlayerObjectArray();
+    }
+</script>
