@@ -94,7 +94,7 @@ function showAddPlayerDialog()
         .setWidth(800)
         .setHeight(600);
     DocumentApp.getUi()
-        .showModalDialog(html, 'Add Player');
+        .showModalDialog(html, 'Create a New Player');
 }
 
 function showAddEncounterDialog()
@@ -104,7 +104,7 @@ function showAddEncounterDialog()
         .setWidth(800)
         .setHeight(600);
     DocumentApp.getUi()
-        .showModalDialog(html, 'Add Random Encounter');
+        .showModalDialog(html, 'Create a New Random Encounter');
 }
 
 
