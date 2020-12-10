@@ -120,14 +120,51 @@
             </div>
             
             <div id="Players" class="tabcontent">
-                <p>This is the player list tab</p>
+                <form>
+                    <input type="text" id="player-search-term" placeholder="Jump to..." autocomplete="off">
+                    <button id="player-search" onclick="searchPlayerList()"><i class="fa fa-search"></i></button>
+                </form>
+                <br>
+                <div>
+                    <button id="player-refresh-btn" onclick="loadPlayerList()"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+                </div>
+                <br>
+                <div class="block">
+                    <button class="red" id="player-collapse-all-btn" onclick="collapseAllPlayers()">Collapse All</button>
+                    <span id="player-status"></span>
+                </div>
+                <br>
+                <div id="player-collapse-target"></div>
+                <div class="loader" id="player-list-loader"></div>
             </div>
 
             <div id="Encounters" class="tabcontent">
-                <p>This is the encounters list tab</p>
+                <form>
+                    <label for="encounter-sort">Terrain:</label>
+                    <select name="encounter-sort" id="encounter-sort">
+                        <option value="Arctic">Arctic</option>
+                        <option value="Coastal">Coastal</option>
+                        <option value="Desert">Desert</option>
+                        <option value="Forest">Forest</option>
+                        <option value="Grassland">Grassland</option>
+                        <option value="Hill">Hill</option>
+                        <option value="Mountain">Mountain</option>
+                        <option value="Swamp">Swamp</option>
+                        <option value="Underdark">Underdark</option>
+                        <option value="Underwater">Underwater</option>
+                        <option value="Urban">Urban</option>
+                    </select>
+                    <button id="encounter-refresh-btn" onclick="loadEncounterList()"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+                </form>
+                <br>
+                <div class="block">
+                    <button class="red" id="encounter-collapse-all-btn" onclick="collapseAllEncounters()">Collapse All</button>
+                    <span id="encounter-status"></span>
+                </div>
+                <br>
+                <div id="encounter-collapse-target"></div>
+                <div class="loader" id="encounter-list-loader"></div>
             </div>
-
-
         </div>
     </div>
 
