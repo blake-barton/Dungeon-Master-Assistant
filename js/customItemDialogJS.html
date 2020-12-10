@@ -37,11 +37,8 @@
                 }
             }
 
-            let itemJSON = JSON.stringify(newItem);
-            let filename = newItem.name + ".json";
-
-            google.script.run.createItemJSON(filename, itemJSON, newItem.name);
-            alert(filename + " successfully created.");
+            google.script.run.appendJSON(newItem, 'DMAssistantItems', 'itemList.json');
+            alert(newItem.name + " successfully created.");
             google.script.host.close();
         }
     }

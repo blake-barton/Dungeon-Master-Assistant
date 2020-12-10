@@ -418,124 +418,123 @@
         if (!errorFlag)
         {
             // calculate passives
-        let senses = selectInputResults(form, "sense-row00", "sense00", "senseRange00");
-        let skills = selectInputResults(form, "skill-row00", "skill00", "skillMod00");
-        let languages = selectResults(form, "language-row00", "language00");
-        let vulnerabilities = selectResults(form, "vulnerability-row00", "vulnerability00");
-        let resistances = selectResults(form, "resistance-row00", "resistance00");
-        let immunities = selectResults(form, "immunity-row00", "immunity00");
-        let conditionImmunities = selectResults(form, "c-immunity-row00", "cImmunity00");
+            let senses = selectInputResults(form, "sense-row00", "sense00", "senseRange00");
+            let skills = selectInputResults(form, "skill-row00", "skill00", "skillMod00");
+            let languages = selectResults(form, "language-row00", "language00");
+            let vulnerabilities = selectResults(form, "vulnerability-row00", "vulnerability00");
+            let resistances = selectResults(form, "resistance-row00", "resistance00");
+            let immunities = selectResults(form, "immunity-row00", "immunity00");
+            let conditionImmunities = selectResults(form, "c-immunity-row00", "cImmunity00");
 
-        // special passives
-        let specialPassives = selectInputResults(form, "s-passive-row00", "sPassive00", "sPassiveDesc00");
+            // special passives
+            let specialPassives = selectInputResults(form, "s-passive-row00", "sPassive00", "sPassiveDesc00");
 
-        // spells
-        let cantrips = selectResults(form, "cantrip-row00", "level0_00");
-        let level1 = selectResults(form, "spell-level1-row00", "level1_00");
-        let level2 = selectResults(form, "spell-level2-row00", "level2_00");
-        let level3 = selectResults(form, "spell-level3-row00", "level3_00");
-        let level4 = selectResults(form, "spell-level4-row00", "level4_00");
-        let level5 = selectResults(form, "spell-level5-row00", "level5_00");
-        let level6 = selectResults(form, "spell-level6-row00", "level6_00");
-        let level7 = selectResults(form, "spell-level7-row00", "level7_00");
-        let level8 = selectResults(form, "spell-level8-row00", "level8_00");
-        let level9 = selectResults(form, "spell-level9-row00", "level9_00");
+            // spells
+            let cantrips = selectResults(form, "cantrip-row00", "level0_00");
+            let level1 = selectResults(form, "spell-level1-row00", "level1_00");
+            let level2 = selectResults(form, "spell-level2-row00", "level2_00");
+            let level3 = selectResults(form, "spell-level3-row00", "level3_00");
+            let level4 = selectResults(form, "spell-level4-row00", "level4_00");
+            let level5 = selectResults(form, "spell-level5-row00", "level5_00");
+            let level6 = selectResults(form, "spell-level6-row00", "level6_00");
+            let level7 = selectResults(form, "spell-level7-row00", "level7_00");
+            let level8 = selectResults(form, "spell-level8-row00", "level8_00");
+            let level9 = selectResults(form, "spell-level9-row00", "level9_00");
 
-        // actions
-        let actions = selectInputResults(form, "action-row00", "action00", "actionDesc00");
-        let legendaryActions = selectInputResults(form, "le-action-row00", "leAction00", "leActionDesc00");
+            // actions
+            let actions = selectInputResults(form, "action-row00", "action00", "actionDesc00");
+            let legendaryActions = selectInputResults(form, "le-action-row00", "leAction00", "leActionDesc00");
 
-        // reactions
-        let reactions = selectInputResults(form, "reaction-row00", "reaction00", "reactionDesc00");
-        
-        let newMonster = {
-            "name": form.name.value,
-            "Descriptors": {
-                "type": form.type.value,
-                "size": form.size.value,
-                "alignment": form.alignment.value
-            },
-            "NumericStats": {
-                "ac": form.ac.value,
-                "hp": form.hp.value,
-                "Speeds": {
-                    "land": form.landSpeed.value,
-                    "fly": form.flySpeed.value,
-                    "swim": form.swimSpeed.value,
-                    "climb": form.climbSpeed.value,
-                    "burrow": form.burrowSpeed.value
+            // reactions
+            let reactions = selectInputResults(form, "reaction-row00", "reaction00", "reactionDesc00");
+            
+            let newMonster = {
+                "name": form.name.value,
+                "Descriptors": {
+                    "type": form.type.value,
+                    "size": form.size.value,
+                    "alignment": form.alignment.value
                 },
-                "cr": form.cr.value,
-            },
-            "AbilityScores": {
-                "str": form.str.value,
-                "dex": form.dex.value,
-                "con": form.con.value,
-                "int": form.int.value,
-                "wis": form.wis.value,
-                "cha": form.cha.value 
-            },
-            "SavingThrows": {
-                "str": form.saveStr.value,
-                "dex": form.saveDex.value,
-                "con": form.saveCon.value,
-                "int": form.saveInt.value,
-                "wis": form.saveWis.value,
-                "cha": form.saveCha.value 
-            },
-            "Passives": {
-                "passivePerception": form.passPerception.value,
-                "senses": senses,
-                "skills": skills,
-                "languages": languages,
-                "vulnerabilities": vulnerabilities,
-                "resistances": resistances,
-                "immunities": immunities,
-                "conditionImmunities": conditionImmunities
-            },
-            "SpecialPassives": specialPassives,
-            "Spellcasting": {
-                "castLevel": form.castLevel.value,
-                "castAbility": form.castAbility.value,
-                "saveDC": form.saveDC.value,
-                "spellAttackBonus": form.spellAttackBonus.value,
-                "SpellSlots": {
-                    "slot1": form.slot1.value,
-                    "slot2": form.slot2.value,
-                    "slot3": form.slot3.value,
-                    "slot4": form.slot4.value,
-                    "slot5": form.slot5.value,
-                    "slot6": form.slot6.value,
-                    "slot7": form.slot7.value,
-                    "slot8": form.slot8.value,
-                    "slot9": form.slot9.value,
+                "NumericStats": {
+                    "ac": form.ac.value,
+                    "hp": form.hp.value,
+                    "Speeds": {
+                        "land": form.landSpeed.value,
+                        "fly": form.flySpeed.value,
+                        "swim": form.swimSpeed.value,
+                        "climb": form.climbSpeed.value,
+                        "burrow": form.burrowSpeed.value
+                    },
+                    "cr": form.cr.value,
                 },
-                "Spells": {
-                    "cantrips": cantrips,
-                    "level1": level1,
-                    "level2": level2,
-                    "level3": level3,
-                    "level4": level4,
-                    "level5": level5,
-                    "level6": level6,
-                    "level7": level7,
-                    "level8": level8,
-                    "level9": level9,
-                }
-            },
-            "Actions": {
-                "actions": actions,
-                "legendaryActions": legendaryActions
-            },
-            "Reactions": reactions
-        }
+                "AbilityScores": {
+                    "str": form.str.value,
+                    "dex": form.dex.value,
+                    "con": form.con.value,
+                    "int": form.int.value,
+                    "wis": form.wis.value,
+                    "cha": form.cha.value 
+                },
+                "SavingThrows": {
+                    "str": form.saveStr.value,
+                    "dex": form.saveDex.value,
+                    "con": form.saveCon.value,
+                    "int": form.saveInt.value,
+                    "wis": form.saveWis.value,
+                    "cha": form.saveCha.value 
+                },
+                "Passives": {
+                    "passivePerception": form.passPerception.value,
+                    "senses": senses,
+                    "skills": skills,
+                    "languages": languages,
+                    "vulnerabilities": vulnerabilities,
+                    "resistances": resistances,
+                    "immunities": immunities,
+                    "conditionImmunities": conditionImmunities
+                },
+                "SpecialPassives": specialPassives,
+                "Spellcasting": {
+                    "castLevel": form.castLevel.value,
+                    "castAbility": form.castAbility.value,
+                    "saveDC": form.saveDC.value,
+                    "spellAttackBonus": form.spellAttackBonus.value,
+                    "SpellSlots": {
+                        "slot1": form.slot1.value,
+                        "slot2": form.slot2.value,
+                        "slot3": form.slot3.value,
+                        "slot4": form.slot4.value,
+                        "slot5": form.slot5.value,
+                        "slot6": form.slot6.value,
+                        "slot7": form.slot7.value,
+                        "slot8": form.slot8.value,
+                        "slot9": form.slot9.value,
+                    },
+                    "Spells": {
+                        "cantrips": cantrips,
+                        "level1": level1,
+                        "level2": level2,
+                        "level3": level3,
+                        "level4": level4,
+                        "level5": level5,
+                        "level6": level6,
+                        "level7": level7,
+                        "level8": level8,
+                        "level9": level9,
+                    }
+                },
+                "Actions": {
+                    "actions": actions,
+                    "legendaryActions": legendaryActions
+                },
+                "Reactions": reactions
+            }
 
-        let monsterJSON = JSON.stringify(newMonster);
-        let filename = newMonster.name + ".json";
+            // pass to server
+            google.script.run.appendJSON(newMonster, 'DMAssistantMonsters', 'monsterList.json');
 
-        google.script.run.createMonsterJSON(filename, monsterJSON, newMonster.name);
-        alert(filename + " successfully created.");
-        google.script.host.close();
+            alert(newMonster.name + " successfully created.");
+            google.script.host.close();
         }
     }
 </script>

@@ -251,7 +251,7 @@
             document.getElementById("status2").innerHTML = "Deleted " + name + ".";
 
             // remove file from drive
-            google.script.run.deleteItem(name);
+            google.script.run.deleteObject(name, 'DMAssistantItems', 'itemList.json');
         }
     }
 </script>

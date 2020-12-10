@@ -148,7 +148,7 @@
         document.getElementById("player-status").innerHTML = "Loading player list...";
 
         // load in array and pass to display function
-        google.script.run.withSuccessHandler(displayPlayerList).generatePlayerObjectArray();
+        google.script.run.withSuccessHandler(displayPlayerList).generateObjectArray('DMAssistantPlayers', 'playerList.json');
     }
 
     function searchPlayerList()
@@ -271,7 +271,7 @@
             document.getElementById("player-status").innerHTML = "Deleted " + name + ".";
 
             // remove file from drive
-            google.script.run.deletePlayer(name);
+            google.script.run.deleteObject(name, 'DMAssistantPlayers', 'playerList.json');
         }
     }
 </script>

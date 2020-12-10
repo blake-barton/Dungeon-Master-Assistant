@@ -532,6 +532,29 @@
                 }
                 let legendaryActionsHR = document.createElement("hr");
 
+                // Reactions
+                let hasReactions = false;
+                let reactions = document.createElement("div");
+
+                if (monsterList[i].Reactions[0][0] !== "")
+                {
+                    hasReactions = true;
+                    
+                    // header
+                    let reactionHeader = document.createElement("h2");
+                    reactionHeader.innerHTML = "Reactions";
+                    reactions.append(reactionHeader);
+
+                    let reactionArray = monsterList[i].Reactions;
+                    for (let iter = 0; iter < reactionArray.length; iter++)
+                    {
+                        let para = document.createElement("p");
+                        para.innerHTML = "<b>" + reactionArray[iter][0] + ".</b> " + reactionArray[iter][1];
+                        reactions.appendChild(para);
+                    }
+                }
+                let reactionsHR = document.createElement("hr");
+
                 
                 // ADDING CONTENT TO STAT BLOCK
                 collapseDiv.appendChild(deleteButton);
@@ -573,6 +596,11 @@
                 {
                     collapseDiv.appendChild(legendaryActionsHR);
                     collapseDiv.appendChild(legendaryActions);
+                }
+                if (hasReactions)
+                {
+                    collapseDiv.appendChild(reactionsHR);
+                    collapseDiv.appendChild(reactions);
                 }
 
                 newDiv.appendChild(newButton);                      // attach button to parent div
@@ -744,7 +772,7 @@
             document.getElementById("status").innerHTML = "Deleted " + name + ".";
 
             // remove file from drive
-            google.script.run.deleteMonster(name);
+            google.script.run.deleteObject(name, 'DMAssistantMonsters', 'monsterList.json');
         }
     }
 

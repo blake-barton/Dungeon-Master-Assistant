@@ -47,8 +47,8 @@ function onInstall(e) {
 function showSidebar() {
     //createFolder("DMAssistant", "DMAssistantItems", 'monsterList.txt', 'itemsList.txt');
     var childFolders = ["DMAssistantMonsters", "DMAssistantItems", "DMAssistantPlayers", "DMAssistantEncounters"];
-    var textFiles = ["monsterList.txt", "itemsList.txt", "playerList.json", "encounterList.json"];
-    var mimeTypes = [MimeType.PLAIN_TEXT, MimeType.PLAIN_TEXT, 'application/json', 'application/json']
+    var textFiles = ["monsterList.json", "itemList.json", "playerList.json", "encounterList.json"];
+    var mimeTypes = ['application/json', 'application/json', 'application/json', 'application/json']
 
     createFolder("DMAssistant", childFolders, textFiles, mimeTypes);
     var template = HtmlService.createTemplateFromFile('sidebar')

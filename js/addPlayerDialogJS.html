@@ -18,7 +18,7 @@
         }
         
         // pass to server
-        google.script.run.appendPlayerJSON(newPlayer);
+        google.script.run.appendJSON(newPlayer, 'DMAssistantPlayers', 'playerList.json');
 
         alert(newPlayer.name + " successfully created.");
         google.script.host.close();
