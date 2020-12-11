@@ -9,6 +9,10 @@
     </head>
     <body>
         <form id="encounter-form" action="" method="GET">
+            <label for="name">Title:</label>
+            <input type="text" id="name" name="name" autocomplete="off">
+            <br>
+            <hr>
             <p>Is this encounter an ambush?</p>
             <input type="radio" id="ambush-true" name="ambush" value="true">
             <label for="ambush-true">Yes</label><br>
@@ -19,6 +23,7 @@
                     <td><label for="terrain">Terrain:</label></td>
                     <td>
                         <select name="terrain" id="terrain">
+                            <option value="All Terrains">All Terrains</option>
                             <option value="Arctic">Arctic</option>
                             <option value="Coastal">Coastal</option>
                             <option value="Desert">Desert</option>

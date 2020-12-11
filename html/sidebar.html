@@ -140,6 +140,11 @@
 
             <div id="Encounters" class="tabcontent">
                 <form>
+                    <input type="text" id="encounter-search-term" placeholder="Jump to..." autocomplete="off">
+                    <button id="encounter-search" onclick="searchEncounterList()"><i class="fa fa-search"></i></button>
+                </form>
+                <br>
+                <form>
                     <label for="encounter-sort">Terrain:</label>
                     <select name="encounter-sort" id="encounter-sort">
                         <option value="Arctic">Arctic</option>
@@ -159,7 +164,9 @@
                 <br>
                 <div class="block">
                     <button class="red" id="encounter-collapse-all-btn" onclick="collapseAllEncounters()">Collapse All</button>
-                    <span id="encounter-status"></span>
+                    <div style="margin-top: 5px;">
+                        <span id="encounter-status"></span>
+                    </div>
                 </div>
                 <br>
                 <div id="encounter-collapse-target"></div>
@@ -181,6 +188,7 @@
     <?!= include('sidebarItemListJS'); ?>
     <?!= include('trackerSidebarJS'); ?>
     <?!= include('playerSidebarJS'); ?>
+    <?!= include('encounterSidebarJS'); ?>
     
 </body>
 

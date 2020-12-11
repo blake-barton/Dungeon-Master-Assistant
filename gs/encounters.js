@@ -1,33 +1,28 @@
-function appendEncounterJSON(newEncounterJSON)
+function generateTerrainArray(terrainType, objectArray)
 {
-    // access encounters.json
-    var folderName = "DMAssistantEncounters";
-    var filename = "encounterList.json";
+    var terrainArray = [];
 
-    var folderList = DriveApp.getFoldersByName(folderName);
-    if (folderList.hasNext())
+    for (var i = 0; i < objectArray.length; i++)
     {
-        var folder = folderList.next();
-
-        // pull encounters.json down as an array of objects
-        var fileList = folder.getFilesByName(filename);
-        while (fileList.hasNext())
+        if (objectArray[i].terrain === terrainType || objectArray[i].terrain === "All Terrains")
         {
-            // found matching file, loading json
-            var file = fileList.next();
-            var jsonText = file.getBlob().getDataAsString();
-            
-            // get as javascript object
-            var encounterArray = JSON.parse(jsonText);
-
-            // append new encounter
-            encounterArray.push(newEncounterJSON);
-
-            // stringify array
-            jsonText = JSON.stringify(encounterArray);
-
-            // save new content
-            file.setContent(jsonText);
+            terrainArray.push(objectArray[i]);
         }
     }
+
+    return terrainArray;
+}
+
+function selectEncounterTerrain(terrainType)
+{
+    // generate object array
+    var objectArray = generateObjectArray('DMAssistantEncounters', 'encounterList.json');
+    var terrainArray = generateTerrainArray(terrainType, objectArray);
+
+    if (terrainArray.length === 0)
+    {
+        return [];
+    }
+
+    return terrainArray;
 }

@@ -12,15 +12,16 @@
         }
 
         let newEncounter = {
+            "name": form.name.value,
             "isAmbush": isAmbush,
             "terrain": form.terrain.value,
             "description": form.description.value
         }
         
         // pass to server
-        google.script.run.appendEncounterJSON(newEncounter);
+        google.script.run.appendJSON(newEncounter, 'DMAssistantEncounters', 'encounterList.json');
 
-        alert("New encounter successfully created.");
+        alert(newEncounter.name + " successfully created.");
         google.script.host.close();
     }
     

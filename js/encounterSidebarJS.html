@@ -1,0 +1,248 @@
+<script>
+
+    document.getElementById("encounter-sort").onchange = function() { loadEncounterList(); }
+    function displayEncounterList(encounterList)
+    {
+        let terrainType = document.getElementById("encounter-sort").value;
+        // no items in list
+        if (encounterList.length === 0)
+        {
+            // hide the loader
+            let loader = document.getElementById("encounter-list-loader");
+            loader.style.display = "none";
+
+            // update status
+            document.getElementById("encounter-status").innerHTML = "No " + terrainType + " encounters created.";
+        }
+        else
+        {
+            // hide the loader
+            let loader = document.getElementById("encounter-list-loader");
+            loader.style.display = "none";
+
+            // update status
+            document.getElementById("encounter-status").innerHTML = "Displaying " + encounterList.length + " " + terrainType + " encounters."; 
+
+            // create a div to contain the list
+            let listDiv = document.createElement("div");
+            listDiv.id = "encounter-list";
+            let targetDiv = document.getElementById("encounter-collapse-target");
+            insertAfter(listDiv, targetDiv);
+
+            for (let i = 0; i < encounterList.length; i++)
+            {
+                let newDiv = document.createElement("div");         // create new div
+                newDiv.id = "encounter-" + encounterList[i].name;
+
+                let newButton = document.createElement("button");   // create button to place in the div
+                newButton.innerHTML = encounterList[i].name;           // add text to the button
+                newButton.classList.add("encounter-collapsible");             // add collapsible class to button
+
+                let collapseDiv = document.createElement("div");    // create div class="collapse-content"
+                collapseDiv.classList.add("collapse-content");
+                
+                // GENERATING CONTENT FOR STAT BLOCK
+
+                // delete button
+                let deleteArg = cleanString(encounterList[i].name);
+                let deleteButton = document.createElement("button");
+                deleteButton.innerHTML = '<i class="fa fa-trash"></i>';
+                deleteButton.classList.add("delete-button");
+                deleteButton.setAttribute("onClick", "removeEncounter('encounter-" + deleteArg + "')");
+
+                // is Ambush
+                let isAmbush = false;
+                let ambush = document.createElement("p");
+                if (encounterList[i].isAmbush === true)
+                {
+                    isAmbush = true;
+                    ambush.innerHTML = "<b>Ambush!</b>";
+                }
+                
+                // description
+                let description = document.createElement("p");
+                description.innerHTML = "<b>Description:</b> " + encounterList[i].description;
+                
+                
+                // adding content to stat block
+                collapseDiv.appendChild(deleteButton);
+                if (isAmbush)
+                {
+                    collapseDiv.appendChild(ambush);
+                }
+                collapseDiv.appendChild(description);
+                
+
+                newDiv.appendChild(newButton);                      // attach button to parent div
+                newDiv.appendChild(collapseDiv);                    // attach collapse div to parent div
+
+                // add div to encounterList div
+                listDiv.appendChild(newDiv);
+            }
+
+            // for loop for collapsible functionality
+            let collapse = document.getElementsByClassName("encounter-collapsible");
+            for (let i = 0; i < collapse.length; i++)
+            {
+                collapse[i].addEventListener("click", function ()
+                {
+                    this.classList.toggle("active");
+                    let content = this.nextElementSibling;
+                    if (content.style.display === "block")
+                    {
+                        content.style.display = "none";
+                    }
+                    else
+                    {
+                        content.style.display = "block";
+                    }
+                });
+            }
+        }
+    }
+
+    // pulls encounterList object from server
+    function loadEncounterList()
+    {
+        // if the encounterList div exists, delete it
+        if (document.contains(document.getElementById("encounter-list")))
+        {
+            document.getElementById("encounter-list").remove();
+        }
+
+        // show loading circle
+        let loader = document.getElementById("encounter-list-loader");
+        loader.style.display = "block";
+
+        // display loading message
+        document.getElementById("encounter-status").innerHTML = "Loading encounter list...";
+
+        // load in array and pass to display function
+        let terrainType = document.getElementById("encounter-sort").value;
+        google.script.run.withSuccessHandler(displayEncounterList).selectEncounterTerrain(terrainType);
+    }
+
+    function searchEncounterList()
+    {
+        term = document.getElementById("encounter-search-term").value;
+
+        // unmark any previously marked text
+        if (document.contains(document.getElementById("encounter-marked")))
+        {
+            let btn = document.getElementById("encounter-marked");
+            let text = btn.innerHTML;
+            let cutFirst = text.replace("<mark>", "");
+            let name = cutFirst.replace("</mark>", "");
+            btn.innerHTML = name;
+            btn.id = "";
+
+            // close collapsible
+            let content = btn.nextElementSibling;
+            if (content.style.display === "block")
+            {
+                btn.click();
+            }
+        }
+
+        encounterList = document.getElementById("encounter-list");
+        let count = encounterList.childElementCount;
+        let currentEncounter = "";
+        let currentName = "";
+        let matchFound = false;
+
+        for (let i = 0; i < count; i++)
+        {   
+            currentEncounter = encounterList.children[i];
+            currentName = currentEncounter.getElementsByTagName('button')[0].innerHTML;
+            
+            let testName = currentName.replaceAll(" ", "");
+            let testTerm = term.replaceAll(" ", "");
+            if (testName.toUpperCase() === testTerm.toUpperCase())
+            {
+                let btn = currentEncounter.getElementsByTagName('button')[0];
+
+                // highlight button
+                btn.innerHTML = "<mark>" + currentName + "</mark>";
+
+                // tag as marked so it can be removed on the next search
+                btn.id = "encounter-marked";
+
+                // click the collapsible
+                let content = btn.nextElementSibling;
+                if (content.style.display === "block")
+                {
+                }
+                else
+                {
+                    btn.click();
+                }
+
+                // scroll into view
+                btn.scrollIntoView();
+
+                matchFound = true;
+            }
+        }
+
+        let status = document.getElementById("encounter-status");
+        if (!matchFound)
+        {
+            status.innerHTML = "No matches.";
+        }
+        else
+        {
+            status.innerHTML = "";
+        }
+    }
+
+    function collapseAllEncounters()
+    {
+        // clear marked text
+        if (document.contains(document.getElementById("encounter-marked")))
+        {
+            let btn = document.getElementById("encounter-marked");
+            let text = btn.innerHTML;
+            let cutFirst = text.replace("<mark>", "");
+            let name = cutFirst.replace("</mark>", "");
+            btn.innerHTML = name;
+            btn.id = "";
+        }
+
+        encounterList = document.getElementById("encounter-list");
+        let count = encounterList.childElementCount;
+        let currentEncounter = "";
+
+        for (let i = 0; i < count; i++)
+        {
+            currentEncounter = encounterList.children[i];
+            let btn = currentEncounter.getElementsByTagName('button')[0];
+
+            // close collapsible
+            let content = btn.nextElementSibling;
+            if (content.style.display === "block")
+            {
+                btn.click();
+            }
+        }
+    }
+
+    function removeEncounter(id)
+    {
+        // remove 'encounter-' from status messages
+        let name = id.substring(10);
+        let choice = confirm("Are you sure you want to delete " + name + "?");
+
+        if (choice)
+        {
+            // remove element from list
+            let obj = document.getElementById(id);
+            obj.remove();
+
+            // update status
+            document.getElementById("encounter-status").innerHTML = "Deleted " + name + ".";
+
+            // remove file from drive
+            google.script.run.deleteObject(name, 'DMAssistantEncounters', 'encounterList.json');
+        }
+    }
+</script>

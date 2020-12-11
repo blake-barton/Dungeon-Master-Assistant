@@ -175,20 +175,20 @@
 
         playerList = document.getElementById("player-list");
         let count = playerList.childElementCount;
-        let currentplayer = "";
+        let currentPlayer = "";
         let currentName = "";
         let matchFound = false;
 
         for (let i = 0; i < count; i++)
         {   
-            currentplayer = playerList.children[i];
-            currentName = currentplayer.getElementsByTagName('button')[0].innerHTML;
+            currentPlayer = playerList.children[i];
+            currentName = currentPlayer.getElementsByTagName('button')[0].innerHTML;
             
             let testName = currentName.replaceAll(" ", "");
             let testTerm = term.replaceAll(" ", "");
             if (testName.toUpperCase() === testTerm.toUpperCase())
             {
-                let btn = currentplayer.getElementsByTagName('button')[0];
+                let btn = currentPlayer.getElementsByTagName('button')[0];
 
                 // highlight button
                 btn.innerHTML = "<mark>" + currentName + "</mark>";
@@ -239,7 +239,7 @@
 
         playerList = document.getElementById("player-list");
         let count = playerList.childElementCount;
-        let currentplayer = "";
+        let currentPlayer = "";
 
         for (let i = 0; i < count; i++)
         {
