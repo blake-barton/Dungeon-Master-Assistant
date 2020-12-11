@@ -29,4 +29,211 @@
     }
     /*--------------------------------------------------------*/
 
+    function insertPlayerBlock(player)
+    {
+        // create player block div
+        let playerDiv = document.createElement("div");
+        playerDiv.classList.add("player-block");
+        playerDiv.id = player.name;
+
+        // header
+        let playerName = document.createElement("h1");
+        playerName.innerHTML = player.name;
+        playerDiv.appendChild(playerName);
+
+        // passive perception
+        let perception = document.createElement("p");
+        perception.innerHTML = "<b>Passive Perception: </b>" + player.perception;
+        playerDiv.appendChild(perception);
+
+        // conmod
+        let conmod = document.createElement("p");
+        conmod.innerHTML = "<b>Constitution Modifier: </b>" + player.conmod;
+        playerDiv.appendChild(conmod);
+
+        // hunger
+        let hunger = document.createElement("p");
+        hunger.innerHTML = "<b>Hunger Status: </b>" + player.hunger;
+        playerDiv.appendChild(hunger);
+
+        // thirst
+        let thirst = document.createElement("p");
+        thirst.innerHTML = "<b>Hydration Status: </b>" + player.thirst;
+        playerDiv.appendChild(thirst);
+
+        // exhaustion
+        let exhaustion = document.createElement("p");
+        exhaustion.innerHTML = "<b>Exhaustion Level: </b>" + player.exhaustion;
+        playerDiv.appendChild(exhaustion);
+
+        // select section
+        let playerForm = document.createElement("form");
+        let selectContainer = document.createElement("div");
+        selectContainer.classList.add("select-container");
+        playerForm.appendChild(selectContainer);
+        playerDiv.appendChild(playerForm);
+
+        // eating rate
+        let eatingDiv = document.createElement("div");
+
+        let eatingLabel = document.createElement("label");
+        eatingLabel.setAttribute("for", player.name + "-eating-rate");
+
+        let eatingSelect = document.createElement("select");
+        eatingSelect.id = player.name + "-eating-rate";
+        eatingSelect.setAttribute("name", player.name + "eatingRate");
+        eatingSelect.value = player.eatingRate;
+
+        let eatOption0 = document.createElement("option");
+        eatOption0.value = "0";
+        eatOption0.innerHTML = "0 lb/day";
+
+        let eatOption1 = document.createElement("option");
+        eatOption1.value = "0.5";
+        eatOption1.innerHTML = "0.5 lb/day";
+
+        let eatOption2 = document.createElement("option");
+        eatOption2.value = "1";
+        eatOption2.innerHTML = "1 lb/day";
+
+        // adding eating rate div
+        eatingSelect.appendChild(eatOption0);
+        eatingSelect.appendChild(eatOption1);
+        eatingSelect.appendChild(eatOption2);
+        eatingDiv.appendChild(eatingLabel);
+        eatingDiv.appendChild(eatingSelect);
+        selectContainer.appendChild(eatingDiv);
+
+        // drinking rate
+        let drinkingDiv = document.createElement("div");
+
+        let drinkingLabel = document.createElement("label");
+        drinkingLabel.setAttribute("for", player.name + "-drinking-rate");
+
+        let drinkingSelect = document.createElement("select");
+        drinkingSelect.id = player.name + "-drinking-rate";
+        drinkingSelect.setAttribute("name", player.name + "drinkingRate");
+        drinkingSelect.value = player.drinkingRate;
+
+        let drinkOption0 = document.createElement("option");
+        drinkOption0.value = "0";
+        drinkOption0.innerHTML = "0 gal/day";
+
+        let drinkOption1 = document.createElement("option");
+        drinkOption1.value = "0.5";
+        drinkOption1.innerHTML = "0.5 gal/day";
+
+        let drinkOption2 = document.createElement("option");
+        drinkOption2.value = "1";
+        drinkOption2.innerHTML = "1 gal/day";
+
+        let drinkOption3 = document.createElement("option");
+        drinkOption3.value = "2";
+        drinkOption3.innerHTML = "2 gal/day";
+
+        // adding drinking rate div
+        drinkingSelect.appendChild(drinkOption0);
+        drinkingSelect.appendChild(drinkOption1);
+        drinkingSelect.appendChild(drinkOption2);
+        drinkingSelect.appendChild(drinkOption3);
+        drinkingDiv.appendChild(drinkingLabel);
+        drinkingDiv.appendChild(drinkingSelect);
+        selectContainer.appendChild(drinkingDiv);
+
+        // marching order
+        let marchingDiv = document.createElement("div");
+
+        let marchingLabel = document.createElement("label");
+        marchingLabel.setAttribute("for", player.name + "-marching-order");
+
+        let marchingSelect = document.createElement("select");
+        marchingSelect.id = player.name + "-marching-order";
+        marchingSelect.setAttribute("name", player.name + "marchingOrder");
+        marchingSelect.value = player.order;
+
+        let marchOption0 = document.createElement("option");
+        marchOption0.value = "Front";
+        marchOption0.innerHTML = "Front";
+
+        let marchOption1 = document.createElement("option");
+        marchOption1.value = "Middle";
+        marchOption1.innerHTML = "Middle";
+
+        let marchOption2 = document.createElement("option");
+        marchOption2.value = "Back";
+        marchOption2.innerHTML = "Back";
+
+        // adding marching order div
+        marchingSelect.appendChild(marchOption0);
+        marchingSelect.appendChild(marchOption1);
+        marchingSelect.appendChild(marchOption2);
+        marchingDiv.appendChild(marchingLabel);
+        marchingDiv.appendChild(marchingSelect);
+        selectContainer.appendChild(marchingDiv);
+
+        // lifestyle
+        let lifestyleDiv = document.createElement("div");
+
+        let lifestyleLabel = document.createElement("label");
+        lifestyleLabel.setAttribute("for", player.name + "-lifestyle");
+
+        let lifestyleSelect = document.createElement("select");
+        lifestyleSelect.id = player.name + "-lifestyle";
+        lifestyleSelect.setAttribute("name", player.name + "lifestyle");
+        lifestyleSelect.value = player.lifestyle;
+
+        let lifestyleOption0 = document.createElement("option");
+        lifestyleOption0.value = "Squalid";
+        lifestyleOption0.innerHTML = "Squalid";
+
+        let lifestyleOption1 = document.createElement("option");
+        lifestyleOption1.value = "Poor";
+        lifestyleOption1.innerHTML = "Poor";
+
+        let lifestyleOption2 = document.createElement("option");
+        lifestyleOption2.value = "Modest";
+        lifestyleOption2.innerHTML = "Modest";
+
+        let lifestyleOption3 = document.createElement("option");
+        lifestyleOption3.value = "Comfortable";
+        lifestyleOption3.innerHTML = "Comfortable";
+
+        let lifestyleOption4 = document.createElement("option");
+        lifestyleOption4.value = "Wealthy";
+        lifestyleOption4.innerHTML = "Wealthy";
+
+        let lifestyleOption5 = document.createElement("option");
+        lifestyleOption5.value = "Aristocratic";
+        lifestyleOption5.innerHTML = "Aristocratic";
+
+        // adding lifestyle rate div
+        lifestyleSelect.appendChild(lifestyleOption0);
+        lifestyleSelect.appendChild(lifestyleOption1);
+        lifestyleSelect.appendChild(lifestyleOption2);
+        lifestyleSelect.appendChild(lifestyleOption3);
+        lifestyleSelect.appendChild(lifestyleOption4);
+        lifestyleSelect.appendChild(lifestyleOption5);
+        lifestyleDiv.appendChild(lifestyleLabel);
+        lifestyleDiv.appendChild(lifestyleSelect);
+        selectContainer.appendChild(lifestyleDiv);
+
+        // button bar
+        let buttonDiv = document.createElement("div");
+        buttonDiv.classList.add("player-btn-bar");
+
+        // eat button
+        let eatBtnDiv = document.createElement("div");
+        let eatBtn = document.createElement("button");
+        eatBtnDiv.appendChild(eatBtn);
+
+        // drink button
+        let drinkBtnDiv = document.createElement("div");
+        let drinkBtn = document.createElement("button");
+        drinkBtnDiv.appendChild(drinkBtn);
+
+        buttonDiv.appendChild(eatBtnDiv);
+        buttonDiv.appendChild(drinkBtnDiv);
+        playerDiv.appendChild(buttonDiv);
+    }
+
 </script>
