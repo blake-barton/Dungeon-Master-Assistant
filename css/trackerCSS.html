@@ -168,7 +168,11 @@
         color: white;
     }
 
-    .modal-body {padding: 2px 16px;}
+    .modal-body {
+        padding: 2px 16px;
+        overflow: auto;
+        max-height: 400px;
+    }
 
     .modal-footer {
         padding: 2px 16px;
@@ -188,6 +192,25 @@
     @keyframes spin {
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
+    }
+
+    #add-player-submit-btn {
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+    }
+
+    .name-row {
+        display: inline-block;
+    }
+
+    .name-checkbox {
+        float: right;
+        margin-top: 1em !important;
+    }
+
+    .hidden-object-data {
+        display: none;
     }
 
 </style>

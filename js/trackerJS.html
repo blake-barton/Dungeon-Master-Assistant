@@ -81,6 +81,7 @@
         let eatingDiv = document.createElement("div");
 
         let eatingLabel = document.createElement("label");
+        eatingLabel.innerHTML = "FOOD: ";
         eatingLabel.setAttribute("for", player.name + "-eating-rate");
 
         let eatingSelect = document.createElement("select");
@@ -112,6 +113,7 @@
         let drinkingDiv = document.createElement("div");
 
         let drinkingLabel = document.createElement("label");
+        drinkingLabel.innerHTML = "H2O: ";
         drinkingLabel.setAttribute("for", player.name + "-drinking-rate");
 
         let drinkingSelect = document.createElement("select");
@@ -148,6 +150,7 @@
         let marchingDiv = document.createElement("div");
 
         let marchingLabel = document.createElement("label");
+        marchingLabel.innerHTML = "ORDER: ";
         marchingLabel.setAttribute("for", player.name + "-marching-order");
 
         let marchingSelect = document.createElement("select");
@@ -179,6 +182,7 @@
         let lifestyleDiv = document.createElement("div");
 
         let lifestyleLabel = document.createElement("label");
+        lifestyleLabel.innerHTML = "LIFE: ";
         lifestyleLabel.setAttribute("for", player.name + "-lifestyle");
 
         let lifestyleSelect = document.createElement("select");
@@ -228,16 +232,91 @@
         // eat button
         let eatBtnDiv = document.createElement("div");
         let eatBtn = document.createElement("button");
+        eatBtn.innerHTML = "Eat";
         eatBtnDiv.appendChild(eatBtn);
 
         // drink button
         let drinkBtnDiv = document.createElement("div");
         let drinkBtn = document.createElement("button");
+        drinkBtn.innerHTML = "Drink";
         drinkBtnDiv.appendChild(drinkBtn);
 
         buttonDiv.appendChild(eatBtnDiv);
         buttonDiv.appendChild(drinkBtnDiv);
         playerDiv.appendChild(buttonDiv);
+
+        // add block to grid
+        let playerGrid = document.getElementById("player-grid");
+        playerGrid.appendChild(playerDiv);
+    }
+
+    function checkGridForDuplicates(name, playerGrid)
+    {
+        for (let i = 0; i < playerGrid.childElementCount; i++)
+        {
+            let currentBlock = playerGrid.children[i].id;
+            if (currentBlock === name)
+            {
+                // duplicate found
+                return true;
+            }
+        }
+
+        // no duplicate
+        return false;
+    }
+
+    function collectPlayersToAdd()
+    {
+        let playersToAdd = [];
+        let playerList = document.getElementById("player-list");
+        let count = playerList.childElementCount;
+
+        for (let i = 0; i < count; i++)
+        {
+            // if box is checked, add player json as object to be added
+            let currentPlayer = playerList.children[i];
+
+            // skip if hr tag
+            if (currentPlayer.tagName === "HR")
+            {
+                continue;
+            }
+
+            let checkbox = currentPlayer.getElementsByTagName("input")[0];
+            if (checkbox.checked)
+            {
+                // parse json from hidden paragraph and push
+                let playerJSON = JSON.parse(currentPlayer.getElementsByTagName("p")[0].innerHTML);
+                playersToAdd.push(playerJSON);
+            }
+        }
+
+        // check that there are enough empty blocks to add these players
+        let status = document.getElementById("player-status");
+        let playerGrid = document.getElementById("player-grid");
+        let currentBlockCount = playerGrid.childElementCount;
+
+        if (playersToAdd.length + currentBlockCount > 8)
+        {
+            status.innerHTML = "There are not enough empty slots.";
+        }
+        else
+        {
+            let addCount = playersToAdd.length;
+            for (let i = 0; i < playersToAdd.length; i++)
+            {
+                // skip if player has already been added
+                if (checkGridForDuplicates(playersToAdd[i].name, playerGrid))
+                {
+                    addCount--;
+                    continue;
+                }
+
+                insertPlayerBlock(playersToAdd[i]);
+            }
+            status.innerHTML = addCount + " players added";
+        }
     }
 
     function displayPlayerList(playerList)
@@ -272,13 +351,37 @@
                 let newDiv = document.createElement("div");         // create new div
                 newDiv.id = "player-" + playerList[i].name;
 
-                let newButton = document.createElement("button");   // create button to place in the div
+                let newButton = document.createElement("h3");       // create button to place in the div
                 newButton.innerHTML = playerList[i].name;           // add text to the button
+                newButton.classList.add("name-row");
 
                 newDiv.appendChild(newButton);                      // attach button to parent div
 
+                // checkbox
+                let newCheck = document.createElement("input");
+                newCheck.setAttribute("type", "checkbox");
+                newCheck.value = "checked";
+                newCheck.classList.add("name-row");
+                newCheck.classList.add("name-checkbox");
+
+                // checkbox to div
+                newDiv.appendChild(newCheck);
+
+                // storing the json for later
+                let hiddenObject = document.createElement("p");
+                hiddenObject.classList.add("hidden-object-data");
+                hiddenObject.innerHTML = JSON.stringify(playerList[i]);
+                newDiv.appendChild(hiddenObject);
+
                 // add div to playerList div
                 listDiv.appendChild(newDiv);
+
+                // add an hr if this isn't the last child
+                if (i < playerList.length - 1)
+                {
+                    let newHr = document.createElement("hr");
+                    listDiv.appendChild(newHr);
+                }
             }
         }
     }
