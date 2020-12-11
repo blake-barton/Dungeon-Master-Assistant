@@ -1,6 +1,10 @@
 <script>
 
-    //  TODO: on load, load in the player and encounter lists
+    // call on its own to insert a new element after the reference
+    function insertAfter(newNode, referenceNode)
+    {
+        referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+    }
 
     /* ADD PLAYER MODAL --------------------------------------*/
     var modal = document.getElementById("add-player-modal");
@@ -234,6 +238,68 @@
         buttonDiv.appendChild(eatBtnDiv);
         buttonDiv.appendChild(drinkBtnDiv);
         playerDiv.appendChild(buttonDiv);
+    }
+
+    function displayPlayerList(playerList)
+    {
+        // no items in list
+        if (playerList.length === 0)
+        {
+            // hide the loader
+            let loader = document.getElementById("player-list-loader");
+            loader.style.display = "none";
+
+            // update status
+            document.getElementById("player-status").innerHTML = "No players created.";
+        }
+        else
+        {
+            // hide the loader
+            let loader = document.getElementById("player-list-loader");
+            loader.style.display = "none";
+
+            // update status
+            document.getElementById("player-status").innerHTML = "Displaying " + playerList.length + " players."; 
+
+            // create a div to contain the list
+            let listDiv = document.createElement("div");
+            listDiv.id = "player-list";
+            let targetDiv = document.getElementById("player-collapse-target");
+            insertAfter(listDiv, targetDiv);
+
+            for (let i = 0; i < playerList.length; i++)
+            {
+                let newDiv = document.createElement("div");         // create new div
+                newDiv.id = "player-" + playerList[i].name;
+
+                let newButton = document.createElement("button");   // create button to place in the div
+                newButton.innerHTML = playerList[i].name;           // add text to the button
+
+                newDiv.appendChild(newButton);                      // attach button to parent div
+
+                // add div to playerList div
+                listDiv.appendChild(newDiv);
+            }
+        }
+    }
+
+    function loadTrackerLists()
+    {
+        // if the playerList div exists, delete it
+        if (document.contains(document.getElementById("player-list")))
+        {
+            document.getElementById("player-list").remove();
+        }
+
+        // show loading circle
+        let loader = document.getElementById("player-list-loader");
+        loader.style.display = "block";
+
+        // display loading message
+        document.getElementById("player-status").innerHTML = "Loading player list...";
+
+        // load in array and pass to display function
+        google.script.run.withSuccessHandler(displayPlayerList).generateObjectArray('DMAssistantPlayers', 'playerList.json');
     }
 
 </script>

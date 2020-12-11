@@ -7,7 +7,7 @@
 
         <?!= include('trackerCSS'); ?>
     </head>
-    <body>
+    <body onload="loadTrackerLists()">
         <div class="sidebar">
             <h2 class="party-header">Narrator</h2>
         </div>
@@ -119,14 +119,14 @@
                 <div class="modal-header">
                     <span class="close">&times;</span>
                     <h2>Add Player(s)</h2>
-                  </div>
-                  <div class="modal-body">
-                    <p>Some text in the Modal Body</p>
-                    <p>Some other text...</p>
-                  </div>
-                  <div class="modal-footer">
-                    <h3>Modal Footer</h3>
-                  </div>
+                </div>
+                <div class="modal-body">
+                    <div id="player-collapse-target"></div>
+                    <div class="loader" id="player-list-loader"></div>
+                </div>
+                <div class="modal-footer">
+                    <h3 id="player-status"></h3>
+                </div>
             </div>
         </div>
 
