@@ -96,77 +96,95 @@
             </div>
             <div class="party">
                 <h2 class="party-header">Party Controls</h2>
-                <div>
-                    <label for="speed">Travel Speed:</label>
-                    <select name="speed" id="speed">
-                        <option value="fast">Fast</option>
-                        <option value="normal">Normal</option>
-                        <option value="slow">Slow</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="terrain">Terrain:</label>
-                    <select name="terrain" id="terrain">
-                        <option value="Arctic">Arctic</option>
-                        <option value="Coastal">Coastal</option>
-                        <option value="Desert">Desert</option>
-                        <option value="Forest">Forest</option>
-                        <option value="Grassland">Grassland</option>
-                        <option value="Hill">Hill</option>
-                        <option value="Mountain">Mountain</option>
-                        <option value="Swamp">Swamp</option>
-                        <option value="Underdark">Underdark</option>
-                        <option value="Underwater">Underwater</option>
-                        <option value="Urban">Urban</option>
-                    </select>
-                </div>
-                <div>
-                    <button>Travel</button>
-                </div>
-                <div class="block">
-                    <label for="party-eating-rate">Party Eating Rate:</label>
-                    <select name="partyEatingRate" id="party-eating-rate">
-                        <option value="0">0 lb/day</option>
-                        <option value="0.5">0.5 lb/day</option>
-                        <option value="1">1 lb/day</option>
-                    </select>
-                    <button>Set for All</button>
-                </div>
-                <div class="block">
-                    <label for="party-drinking-rate">Party Drinking Rate:</label>
-                    <select name="partyDrinkingRate" id="party-drinking-rate">
-                        <option value="0">0 gal/day</option>
-                        <option value="0.5">0.5 gal/day</option>
-                        <option value="1">1 gal/day</option>
-                        <option value="2">2 gal/day</option>
-                    </select>
-                    <button>Set for All</button>
-                </div>
-                <div class="block">
-                    <label for="party-lifestyle">Party Lifestyle:</label>
-                    <select name="partyLifestyle" id="party-lifestyle">
-                        <option value="Squalid">Squalid</option>
-                        <option value="Poor">Poor</option>
-                        <option value="Modest">Modest</option>
-                        <option value="Comfortable">Comfortable</option>
-                        <option value="Wealthy">Wealthy</option>
-                        <option value="Aristocratic">Aristocratic</option>
-                    </select>
-                    <button>Set for All</button>
-                </div>
-                <div class="block">
-                    <button>All Eat</button>
-                    <button>All Drink</button>
-                    <button>Long Rest</button>
-                </div>
-                <div>
-                    <td><label for="food">Food Stores (lbs.):</label></td>
-                    <td><input type="number" id="food" name="food" size="5"></td>
-                </div>
-                <div>
-                    <td><label for="water">Water Stores (gal.):</label></td>
-                    <td><input type="number" id="water" name="water" size="5"></td>
-                </div>
+                <form id="party-form" action="" method="GET">
+                    <div>
+                        <label for="speed">Travel Speed:</label>
+                        <select name="speed" id="speed">
+                            <option value="fast">Fast</option>
+                            <option value="normal">Normal</option>
+                            <option value="slow">Slow</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="terrain">Terrain:</label>
+                        <select name="terrain" id="terrain">
+                            <option value="Arctic">Arctic</option>
+                            <option value="Coastal">Coastal</option>
+                            <option value="Desert">Desert</option>
+                            <option value="Forest">Forest</option>
+                            <option value="Grassland">Grassland</option>
+                            <option value="Hill">Hill</option>
+                            <option value="Mountain">Mountain</option>
+                            <option value="Swamp">Swamp</option>
+                            <option value="Underdark">Underdark</option>
+                            <option value="Underwater">Underwater</option>
+                            <option value="Urban">Urban</option>
+                        </select>
+                    </div>
+                    <div class="block">
+                        <button>Travel</button>
+                        <input type="checkbox" id="rough-check" name="roughCheck" value="rough">
+                        <label for="rough-check"> Rough Terrain</label><br>
+                        <label for="encounter-chance">Random Encounter Chance:</label>
+                        <select name="encounterChance" id="encounter-chance">
+                            <option value="0">0%</option>
+                            <option value="10">10%</option>
+                            <option value="20">20%</option>
+                            <option value="30">30%</option>
+                            <option value="40">40%</option>
+                            <option value="50">50%</option>
+                            <option value="60">60%</option>
+                            <option value="70">70%</option>
+                            <option value="80">80%</option>
+                            <option value="90">90%</option>
+                            <option value="100">100%</option>
+                        </select>
+                    </div>
+                    <div class="block">
+                        <label for="party-eating-rate">Party Eating Rate:</label>
+                        <select name="partyEatingRate" id="party-eating-rate">
+                            <option value="0">0 lb/day</option>
+                            <option value="0.5">0.5 lb/day</option>
+                            <option value="1">1 lb/day</option>
+                        </select>
+                        <button>Set for All</button>
+                    </div>
+                    <div class="block">
+                        <label for="party-drinking-rate">Party Drinking Rate:</label>
+                        <select name="partyDrinkingRate" id="party-drinking-rate">
+                            <option value="0">0 gal/day</option>
+                            <option value="0.5">0.5 gal/day</option>
+                            <option value="1">1 gal/day</option>
+                            <option value="2">2 gal/day</option>
+                        </select>
+                        <button>Set for All</button>
+                    </div>
+                    <div class="block">
+                        <label for="party-lifestyle">Party Lifestyle:</label>
+                        <select name="partyLifestyle" id="party-lifestyle">
+                            <option value="Squalid">Squalid</option>
+                            <option value="Poor">Poor</option>
+                            <option value="Modest">Modest</option>
+                            <option value="Comfortable">Comfortable</option>
+                            <option value="Wealthy">Wealthy</option>
+                            <option value="Aristocratic">Aristocratic</option>
+                        </select>
+                        <button>Set for All</button>
+                    </div>
+                    <div class="block">
+                        <button>All Eat</button>
+                        <button>All Drink</button>
+                        <button>Long Rest</button>
+                    </div>
+                    <div style="float: right;">
+                        <td><label for="food">Food Stores (lbs.):</label></td>
+                        <td><input type="number" id="food" name="food" size="5"></td>
+                    </div>
+                    <div style="float: right;">
+                        <td><label for="water">Water Stores (gal.):</label></td>
+                        <td><input type="number" id="water" name="water" size="5"></td>
+                    </div>
+                </form>
             </div>
         </div>
 
