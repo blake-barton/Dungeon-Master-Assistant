@@ -402,7 +402,7 @@
         }
     }
 
-    function loadTrackerLists()
+    function loadPlayerList()
     {
         // if the playerList div exists, delete it
         if (document.contains(document.getElementById("player-list")))
@@ -419,6 +419,53 @@
 
         // load in array and pass to display function
         google.script.run.withSuccessHandler(displayPlayerList).generateObjectArray('DMAssistantPlayers', 'playerList.json');
+    }
+
+    function addNarratorMessage(message)
+    {
+        let narrator = document.getElementById("narrator");
+        let updateText = document.createElement("p");
+        updateText.innerHTML = "> " + message;
+        narrator.appendChild(updateText);
+    }
+
+    function storeEncounterList(objectArray, terrain)
+    {
+        // get the paragraph for this terrain
+        let list = document.getElementById(terrain);
+
+        // turn objectArray to string
+        let arrayString = JSON.stringify(objectArray);
+        
+        // push to paragraph
+        list.innerHTML = arrayString;
+
+        addNarratorMessage(terrain + "... done.");
+    }
+
+    function loadEncounterLists()
+    {
+        // display loading message
+        addNarratorMessage("Loading random encounter lists...");
+
+        // load in array and pass to display function
+        google.script.run.withSuccessHandler(storeEncounterList).withUserObject("Arctic").selectEncounterTerrain("Arctic");
+        google.script.run.withSuccessHandler(storeEncounterList).withUserObject("Coastal").selectEncounterTerrain("Coastal");
+        google.script.run.withSuccessHandler(storeEncounterList).withUserObject("Desert").selectEncounterTerrain("Desert");
+        google.script.run.withSuccessHandler(storeEncounterList).withUserObject("Forest").selectEncounterTerrain("Forest");
+        google.script.run.withSuccessHandler(storeEncounterList).withUserObject("Grassland").selectEncounterTerrain("Grassland");
+        google.script.run.withSuccessHandler(storeEncounterList).withUserObject("Hill").selectEncounterTerrain("Hill");
+        google.script.run.withSuccessHandler(storeEncounterList).withUserObject("Mountain").selectEncounterTerrain("Mountain");
+        google.script.run.withSuccessHandler(storeEncounterList).withUserObject("Swamp").selectEncounterTerrain("Swamp");
+        google.script.run.withSuccessHandler(storeEncounterList).withUserObject("Underdark").selectEncounterTerrain("Underdark");
+        google.script.run.withSuccessHandler(storeEncounterList).withUserObject("Underwater").selectEncounterTerrain("Underwater");
+        google.script.run.withSuccessHandler(storeEncounterList).withUserObject("Urban").selectEncounterTerrain("Urban");
+    }
+
+    function loadTrackerLists()
+    {
+        loadPlayerList();
+        loadEncounterLists();
     }
 
     // -------------- TRAVEL ---------------- //
