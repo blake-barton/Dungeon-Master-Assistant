@@ -124,7 +124,6 @@
         let drinkingSelect = document.createElement("select");
         drinkingSelect.id = player.name + "-drinking-rate";
         drinkingSelect.setAttribute("name", player.name + "drinkingRate");
-        drinkingSelect.value = player.drinkingRate;
 
         let drinkOption0 = document.createElement("option");
         drinkOption0.value = "0";
@@ -161,7 +160,6 @@
         let marchingSelect = document.createElement("select");
         marchingSelect.id = player.name + "-marching-order";
         marchingSelect.setAttribute("name", player.name + "marchingOrder");
-        marchingSelect.value = player.order;
 
         let marchOption0 = document.createElement("option");
         marchOption0.value = "Front";
@@ -193,7 +191,6 @@
         let lifestyleSelect = document.createElement("select");
         lifestyleSelect.id = player.name + "-lifestyle";
         lifestyleSelect.setAttribute("name", player.name + "lifestyle");
-        lifestyleSelect.value = player.lifestyle;
 
         let lifestyleOption0 = document.createElement("option");
         lifestyleOption0.value = "Squalid";
@@ -261,6 +258,12 @@
         // add block to grid
         let playerGrid = document.getElementById("player-grid");
         playerGrid.appendChild(playerDiv);
+
+        // set selects
+        lifestyleSelect.value = player.lifestyle;
+        marchingSelect.value = player.order;
+        drinkingSelect.value = player.drinkingRate;
+        eatingSelect.value = player.eatingRate;
     }
 
     function checkGridForDuplicates(name, playerGrid)
