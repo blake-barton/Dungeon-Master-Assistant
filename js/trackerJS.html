@@ -47,26 +47,31 @@
 
         // passive perception
         let perception = document.createElement("p");
+        perception.id = player.name + "-perception";
         perception.innerHTML = "<b>Passive Perception: </b>" + player.perception;
         playerDiv.appendChild(perception);
 
         // conmod
         let conmod = document.createElement("p");
+        conmod.id = player.name + "-conmod";
         conmod.innerHTML = "<b>Constitution Modifier: </b>" + player.conmod;
         playerDiv.appendChild(conmod);
 
         // hunger
         let hunger = document.createElement("p");
+        hunger.id = player.name + "-hunger";
         hunger.innerHTML = "<b>Hunger Status: </b>" + player.hunger;
         playerDiv.appendChild(hunger);
 
         // thirst
         let thirst = document.createElement("p");
+        thirst.id = player.name + "-thirst";
         thirst.innerHTML = "<b>Hydration Status: </b>" + player.thirst;
         playerDiv.appendChild(thirst);
 
         // exhaustion
         let exhaustion = document.createElement("p");
+        exhaustion.id = player.name + "-exhaustion";
         exhaustion.innerHTML = "<b>Exhaustion Level: </b>" + player.exhaustion;
         playerDiv.appendChild(exhaustion);
 
@@ -241,9 +246,17 @@
         drinkBtn.innerHTML = "Drink";
         drinkBtnDiv.appendChild(drinkBtn);
 
+        // add buttons to block
         buttonDiv.appendChild(eatBtnDiv);
         buttonDiv.appendChild(drinkBtnDiv);
         playerDiv.appendChild(buttonDiv);
+
+        // hidden stats
+        let hiddenObject = document.createElement("p");
+        hiddenObject.classList.add("hidden-object-data");
+        hiddenObject.innerHTML = JSON.stringify(player);
+        playerDiv.appendChild(hiddenObject);
+
 
         // add block to grid
         let playerGrid = document.getElementById("player-grid");
