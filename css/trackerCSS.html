@@ -1,33 +1,38 @@
 <style>
 
-    body {
-        background-color: #fff4e6;
-    }
-
     /* The sidebar menu */
     .sidebar {
-        height: 100%;
+        height: 899px;
         width: 25%;
         position: fixed;
         z-index: 1;
         top: 0;
         left: 0;
-        border-right: 1px solid gray;
         overflow-x: hidden;
-        padding-top: 20px;
+        border-top: 3px solid #6b2b1c;
+        border-left: 3px solid #6b2b1c;
+        border-bottom: 3px solid #6b2b1c;
+        background-color: #282828;
+        color: #33ff33;
+    }
+
+    .sidebar h2 {
+        color: #33ff33;
     }
 
     /* Style page content */
     .main {
         float: right;
         width: 75%;
-        height: 896px;
+        height: 890px;
     }
 
     .players {
         height: 58%;
-        border: 1px solid gray;
+        border: 3px solid #6b2b1c;
+        border-bottom: none;
         position: relative;
+        background-color: #ffe2c0;
     }
 
     .grid-container {
@@ -40,11 +45,14 @@
     }
 
     .player-block {
-        background-color: rgb(202, 202, 202);
+        background-color: #fff6e3;
         height: 200px;
         width: 200px;
         padding: 10px;
         font-size: .8em;
+        border: 2px solid #6b2b1c;
+        color: #6b2b1c;
+        border-radius: 2%;
     }
 
     .select-container {
@@ -72,6 +80,7 @@
     .player-block h1 {
         font-size: 1.2em;
         margin: 0;
+        color: #6b2b1c;
     }
 
     .player-block p {
@@ -97,12 +106,17 @@
 
     .party {
         height: 42%;
-        border: 1px solid gray;
+        border: 3px solid #6b2b1c;
         position: relative;
+        padding: 0 10px 0 10px;
+        background-color: #ffe2c0;
+        color: #6b2b1c;
+        font-weight: bold;
     }
 
     .party-header {
         font-size: 1.2em;
+        color: #6b2b1c;
     }
 
     /* The Modal (background) */
@@ -164,20 +178,37 @@
 
     .modal-header {
         padding: 2px 16px;
-        background-color: #5cb85c;
+        background-color: #6b2b1c;
         color: white;
+    }
+
+    .modal-header h2 {
+        color: #fff6e3;
     }
 
     .modal-body {
         padding: 2px 16px;
         overflow: auto;
         max-height: 400px;
+        background-color: #fff6e3;
+    }
+
+    .modal-body h3 {
+        color: #6b2b1c;
+    }
+
+    .modal-body hr {
+        border: 1px solid #6b2b1c;
     }
 
     .modal-footer {
         padding: 2px 16px;
-        background-color: #5cb85c;
+        background-color: #6b2b1c;
         color: white;
+    }
+
+    .modal-footer h3 {
+        color: #fff6e3;
     }
 
     .loader {
