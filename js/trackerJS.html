@@ -418,4 +418,16 @@
         google.script.run.withSuccessHandler(displayPlayerList).generateObjectArray('DMAssistantPlayers', 'playerList.json');
     }
 
+    // -------------- TRAVEL ---------------- //
+
+    function travel()
+    {
+        let narrator = document.getElementById("narrator");
+
+        // TEST CODE
+        let updateText = document.createElement("p");
+        updateText.innerHTML = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ornare tincidunt tellus at ornare. Nulla non suscipit sem. Quisque vel enim non elit porttitor scelerisque nec ut mauris. Quisque commodo odio sem, nec pulvinar urna vehicula ac.";
+        narrator.appendChild(updateText);
+    }
+
 </script>

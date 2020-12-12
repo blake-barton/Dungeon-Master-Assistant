@@ -8,7 +8,7 @@
         <?!= include('trackerCSS'); ?>
     </head>
     <body onload="loadTrackerLists()">
-        <div class="sidebar">
+        <div class="sidebar" id="narrator">
             <h2 class="party-header">Narrator</h2>
         </div>
         <div class="main">
@@ -46,7 +46,7 @@
                         </select>
                     </div>
                     <div class="block" style="float: right;">
-                        <button>Travel</button>
+                        <button onclick="travel()">Travel</button>
                         <input type="checkbox" id="rough-check" name="roughCheck" value="rough">
                         <label for="rough-check"> Rough Terrain</label><br>
                         <label for="encounter-chance">Random Encounter Chance:</label>
