@@ -429,6 +429,8 @@
         updateText.classList.add("message");
         updateText.innerHTML = "> " + message;
         narrator.appendChild(updateText);
+
+        updateText.scrollIntoView();
     }
 
     function clearNarrator()
