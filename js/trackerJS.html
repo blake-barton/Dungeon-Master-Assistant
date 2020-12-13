@@ -250,6 +250,7 @@
 
         // hidden stats
         let hiddenObject = document.createElement("p");
+        hiddenObject.id = player.name + "-hidden-data";
         hiddenObject.classList.add("hidden-object-data");
         hiddenObject.innerHTML = JSON.stringify(player);
         playerDiv.appendChild(hiddenObject);
@@ -469,15 +470,132 @@
     }
 
     // -------------- TRAVEL ---------------- //
+    let time = 24; // 24 hour cycles
+    let totalMilesCovered = 0; // miles that are covered in this travel session
+
+    // marching order
+    let frontRank = [];
+    let middleRank = [];
+    let backRank = [];
+
+    function getPlayerStats()
+    {
+        players = [];
+
+        // access grid
+        let playerGrid = document.getElementById("player-grid");
+
+        // loop through players and save their hidden jsons
+        for (let i = 0; i < playerGrid.childElementCount; i++)
+        {
+            let currentBlock = playerGrid.children[i].id;
+            let data = JSON.parse(document.getElementById(currentBlock + "-hidden-data").innerHTML);
+            players.push(data);
+        }
+
+        return players;
+    }
+
+    function calculatePartyNeeds()
+    {
+        // TODO
+        addNarratorMessage("The party needs are seen to.");
+    }
 
     function travel()
     {
-        let narrator = document.getElementById("narrator");
+        // get player data
+        let players = getPlayerStats();
 
-        // TEST CODE
-        let updateText = document.createElement("p");
-        updateText.innerHTML = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ornare tincidunt tellus at ornare. Nulla non suscipit sem. Quisque vel enim non elit porttitor scelerisque nec ut mauris. Quisque commodo odio sem, nec pulvinar urna vehicula ac.";
-        narrator.appendChild(updateText);
+        if (players.length === 0)
+        {
+            addNarratorMessage("An empty party cannot move!");
+        }
+        else
+        {
+            // --- Party Controls --- //
+            let partyForm = document.getElementById("party-form");
+
+            // travel speed and miles covered in an hour
+            let travelSpeed = partyForm.speed.value;
+            let milesCovered = 0;
+
+            switch (travelSpeed)
+            {
+                case "fast":
+                    milesCovered = 4;
+                    break;
+                case "normal":
+                    milesCovered = 3;
+                    break;
+                case "slow":
+                    milesCovered = 2;
+                    break;
+            }
+
+            // cut milesCovered in half if rough terrain
+            if (partyForm.roughCheck.checked)
+            {
+                milesCovered /= 2.0;
+            }
+
+            // increase total miles
+            totalMilesCovered += milesCovered;
+
+            // terrain
+            let terrain = partyForm.terrain.value;
+
+            // move party
+            addNarratorMessage(terrain + ": The party travels " + milesCovered + " miles in one hour.");
+            addNarratorMessage("Total distanced covered: " + totalMilesCovered + " miles");
+
+            // if a day has passed, do food, water, and exhaustion calculations
+            time--;
+            if (time <= 0)
+            {
+                addNarratorMessage("The day has passed.");
+                time = 24;
+                calculatePartyNeeds();
+            }
+            else
+            {
+                addNarratorMessage("Time until day passes: " + time + " hours");
+            }
+
+            // random encounter chance
+            let encounterChance = partyForm.encounterChance.value;
+            let roll = Math.floor(Math.random() * 100) + 1; // returns a random integer from 1 to 100
+            if (roll <= encounterChance)
+            {
+                // random encounter!
+                let encounterList = JSON.parse(document.getElementById(terrain).innerHTML);
+
+                // randomly choose an encounter from the list
+                let numEncounters = encounterList.length;
+                let randomIndex = Math.floor(Math.random() * numEncounters); // returns an integer from 0 to numEncounters - 1
+                let encounter = encounterList[randomIndex];
+
+                // print ambush message
+                if (encounter.isAmbush)
+                {
+                    addNarratorMessage("Ambush!");
+
+                    // if party is slow, print stealthy message
+                    if (travelSpeed === "slow")
+                    {
+                        addNarratorMessage("The party has a chance to sneak.");
+                    }
+
+                    // TODO: get highest passive perceptions in front and back ranks
+                }
+
+                // print description
+                addNarratorMessage(encounter.description);
+            }
+
+
+
+        }
     }
 
 </script>
