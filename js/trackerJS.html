@@ -559,8 +559,19 @@
                     console.log("New food stores: " + foodStores);
 
                     document.getElementById("food").value = foodStores;
-                    player.maxDaysHungry = parseInt(player.conmod) + 3;   // reset player food counter
-                    player.hunger = "Satiated";
+
+                    if (foodToEat === 1)
+                    {
+                        // full pound of food
+                        player.maxDaysHungry = parseInt(player.conmod) + 3;   // reset player food counter
+                        player.hunger = "Satiated";
+                    }
+                    else
+                    {
+                        // half pound
+                        player.maxDaysHungry -= 0.5;
+                        player.hunger = "Hungry";
+                    }
                 }
                 else
                 {
