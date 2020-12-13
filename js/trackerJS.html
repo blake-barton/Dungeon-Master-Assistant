@@ -510,23 +510,38 @@
 
     function updatePlayerBlock(player)
     {
-        addNarratorMessage(player.name + " block will be updated.");
+        // hunger
+        let hunger = document.getElementById(player.name + "-hunger");
+        hunger.innerHTML = "<b>Hunger Status: </b>" + player.hunger;
+
+        // thirst
+        let thirst = document.getElementById(player.name + "-thirst");
+        thirst.innerHTML = "<b>Hydration Status: </b>" + player.thirst;
+
+        // exhaustion
+        let exhaustion = document.getElementById(player.name + "-exhaustion");
+        exhaustion.innerHTML = "<b>Exhaustion Level: </b>" + player.exhaustion;
+
     }
 
     function calculatePartyNeeds(players)
     {
         // get food stores
         let foodStores = parseInt(document.getElementById("food").value);
+        console.log("Food stores: " + foodStores + " lbs");
         
         // feed each player according to their eating rate
         for (let i = 0; i < players.length; i++)
         {
             let player = players[i];
+            console.log("Calcualating needs for " + player.name);
 
             let foodToEat = parseInt(player.eatingRate);
+            console.log(player.name + " needs " + foodToEat + " pounds of food today.");
 
             if (foodToEat === 0)
             {
+                console.log("The player's eating rate is 0.");
                 // player does not eat today
                 player.maxDaysHungry--;
 
@@ -537,9 +552,15 @@
             {
                 if (foodStores - foodToEat >= 0)
                 {
-                    foodStores =- foodToEat;                    // decrease stores
+                    console.log("Food stores after conditional: " + foodStores);
+                    console.log("There is enough food to eat")
+
+                    foodStores -= foodToEat;                    // decrease stores
+                    console.log("New food stores: " + foodStores);
+
                     document.getElementById("food").value = foodStores;
                     player.maxDaysHungry = parseInt(player.conmod) + 3;   // reset player food counter
+                    player.hunger = "Satiated";
                 }
                 else
                 {
@@ -554,8 +575,11 @@
             if (player.maxDaysHungry <= 0)
             {
                 // if player is starving, increase exhaustion
-                player.exhaustion = parseInt(player.exhaustion) + 1;
-
+                if (player.exhaustion < 6)
+                {
+                    player.exhaustion = parseInt(player.exhaustion) + 1;
+                }
+                
                 // set player hunger to STARVING
                 player.hunger = "Starving";
 
