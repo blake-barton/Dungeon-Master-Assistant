@@ -426,8 +426,18 @@
     {
         let narrator = document.getElementById("narrator");
         let updateText = document.createElement("p");
+        updateText.classList.add("message");
         updateText.innerHTML = "> " + message;
         narrator.appendChild(updateText);
+    }
+
+    function clearNarrator()
+    {
+        let messages = document.getElementsByClassName("message");
+        while (messages[0])
+        {
+            messages[0].remove();
+        }
     }
 
     function storeEncounterList(objectArray, terrain)
@@ -496,10 +506,77 @@
         return players;
     }
 
-    function calculatePartyNeeds()
+    function updatePlayerBlock(player)
     {
-        // TODO
-        addNarratorMessage("The party needs are seen to.");
+        addNarratorMessage(player.name + " block will be updated.");
+    }
+
+    function calculatePartyNeeds(players)
+    {
+        // get food stores
+        let foodStores = parseInt(document.getElementById("food").value);
+        
+        // feed each player according to their eating rate
+        for (let i = 0; i < players.length; i++)
+        {
+            let player = players[i];
+
+            let foodToEat = parseInt(player.eatingRate);
+
+            if (foodToEat === 0)
+            {
+                // player does not eat today
+                player.maxDaysHungry--;
+
+                // set player hunger to HUNGRY
+                player.hunger = "Hungry";
+            }
+            else
+            {
+                if (foodStores - foodToEat >= 0)
+                {
+                    foodStores =- foodToEat;                    // decrease stores
+                    document.getElementById("food").value = foodStores;
+                    player.maxDaysHungry = parseInt(player.conmod) + 3;   // reset player food counter
+                }
+                else
+                {
+                    // player does not eat today
+                    player.maxDaysHungry--;
+
+                    // set player hunger to HUNGRY
+                    player.hunger = "Hungry";
+                }
+            }
+
+            if (player.maxDaysHungry <= 0)
+            {
+                // if player is starving, increase exhaustion
+                player.exhaustion = parseInt(player.exhaustion) + 1;
+
+                // set player hunger to STARVING
+                player.hunger = "Starving";
+
+                addNarratorMessage(player.name + " is starving.");
+            }
+
+            // water
+        }
+
+        
+        // save player jsons
+        for (let i = 0; i < players.length; i++)
+        {
+            // visible data
+            let player = players[i];
+            updatePlayerBlock(player);
+
+            // hidden data
+            let playerString = JSON.stringify(player);
+            let para = document.getElementById(player.name + "-hidden-data");
+            para.innerHTML = playerString;
+        }
+        
     }
 
     function travel()
@@ -555,7 +632,7 @@
             {
                 addNarratorMessage("The day has passed.");
                 time = 24;
-                calculatePartyNeeds();
+                calculatePartyNeeds(players);
             }
             else
             {
