@@ -3,6 +3,7 @@
     function getResults(formID)
     {
         let form = document.getElementById(formID);
+        let maxDaysHungry = parseInt(form.conmod.value) + 3;
 
         let newPlayer = {
             "name": form.name.value,
@@ -14,7 +15,8 @@
             "eatingRate": form.eatingRate.value,
             "drinkingRate": form.drinkingRate.value,
             "order": form.order.value,
-            "lifestyle": form.lifestyle.value
+            "lifestyle": form.lifestyle.value,
+            "maxDaysHungry": maxDaysHungry
         }
         
         // pass to server
