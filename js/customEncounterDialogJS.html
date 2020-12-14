@@ -1,5 +1,7 @@
 <script>
 
+    var isDuplicate = false;
+
     // return true if there are empty fields
     function detectErrors(form)
     {
@@ -19,17 +21,21 @@
         return false;
     }
 
-    function getResults(formID)
+    function finalizeResults(formID)
     {
         let form = document.getElementById(formID);
 
+        // empty field check
         let emptyFields = detectErrors(form);
+
+        console.log("is duplicate = " + isDuplicate);
         if (emptyFields)
         {
-            let errorDiv = document.getElementById("error-div");
-            errorDiv.style.display = "block";
-            let errorMessage = document.getElementById("error-message");
-            errorMessage.innerHTML = "Error: Cannot submit an encounter with empty fields.";
+            handleError("Error: Cannot submit an encounter with empty fields.");
+        }
+        else if (isDuplicate)
+        {
+            handleError("Error: There is already an encounter with this title.");
         }
         else
         {
@@ -53,6 +59,47 @@
             alert(newEncounter.name + " successfully created.");
             google.script.host.close();
         }
+    }
+
+    function checkForDuplicates(terrainList, name)
+    {
+        let duplicateFound = false;
+        console.log("checking duplicates");
+        // loop through list to check for duplicate names
+        for (let i = 0; i < terrainList.length; i++)
+        {
+            console.log("Comparing against: " + terrainList[i].name);
+            if (terrainList[i].name === name)
+            {
+                console.log("this is a duplicate");
+                isDuplicate = true;
+                duplicateFound = true;
+            }
+        }
+
+        if (!duplicateFound)
+        {
+            isDuplicate = false;
+        }
+
+        finalizeResults('encounter-form');
+    }
+
+    function handleError(message)
+    {
+        let errorDiv = document.getElementById("error-div");
+        errorDiv.style.display = "block";
+        let errorMessage = document.getElementById("error-message");
+        errorMessage.innerHTML = message;
+    }
+
+    function getResults(formID)
+    {
+        let form = document.getElementById(formID);
+
+        // duplicate check
+        console.log("about to check duplicates");
+        google.script.run.withSuccessHandler(checkForDuplicates).withUserObject(form.name.value).selectEncounterTerrain(form.terrain.value);
     }
     
 </script>
