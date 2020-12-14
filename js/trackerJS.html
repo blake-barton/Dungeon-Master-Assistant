@@ -231,21 +231,21 @@
         let buttonDiv = document.createElement("div");
         buttonDiv.classList.add("player-btn-bar");
 
-        // eat button
-        let eatBtnDiv = document.createElement("div");
-        let eatBtn = document.createElement("button");
-        eatBtn.innerHTML = "Eat";
-        eatBtnDiv.appendChild(eatBtn);
+        // increase exhaustion button
+        let exBtnDiv = document.createElement("div");
+        let exBtn = document.createElement("button");
+        exBtn.innerHTML = "+ Exhaustion";
+        exBtnDiv.appendChild(exBtn);
 
-        // drink button
-        let drinkBtnDiv = document.createElement("div");
-        let drinkBtn = document.createElement("button");
-        drinkBtn.innerHTML = "Drink";
-        drinkBtnDiv.appendChild(drinkBtn);
+        // decrease exhaustion button
+        let decExBtnDiv = document.createElement("div");
+        let decExBtn = document.createElement("button");
+        decExBtn.innerHTML = "- Exhaustion";
+        decExBtnDiv.appendChild(decExBtn);
 
         // add buttons to block
-        buttonDiv.appendChild(eatBtnDiv);
-        buttonDiv.appendChild(drinkBtnDiv);
+        buttonDiv.appendChild(exBtnDiv);
+        buttonDiv.appendChild(decExBtnDiv);
         playerDiv.appendChild(buttonDiv);
 
         // hidden stats
