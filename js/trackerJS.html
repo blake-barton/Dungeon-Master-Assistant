@@ -616,6 +616,15 @@
         
     }
 
+    function updateTimeAndDistance(milesCovered, time)
+    {
+        let milesPara = document.getElementById("miles");
+        let hoursPara = document.getElementById("hours");
+
+        milesPara.innerHTML = "Miles Traveled: " + milesCovered;
+        hoursPara.innerHTML = "Hours until new day: " + time;
+    }
+
     function travel()
     {
         // get player data
@@ -659,10 +668,6 @@
             // terrain
             let terrain = partyForm.terrain.value;
 
-            // move party
-            addNarratorMessage(terrain + ": The party travels " + milesCovered + " miles in one hour.");
-            addNarratorMessage("Total distanced covered: " + totalMilesCovered + " miles");
-
             // if a day has passed, do food, water, and exhaustion calculations
             time--;
             if (time <= 0)
@@ -671,10 +676,9 @@
                 time = 24;
                 calculatePartyNeeds(players);
             }
-            else
-            {
-                addNarratorMessage("Time until day passes: " + time + " hours");
-            }
+
+            // move party
+            updateTimeAndDistance(totalMilesCovered, time);
 
             // random encounter chance
             let encounterChance = partyForm.encounterChance.value;
