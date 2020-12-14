@@ -527,7 +527,7 @@
     function calculatePartyNeeds(players)
     {
         // get food stores
-        let foodStores = parseInt(document.getElementById("food").value);
+        let foodStores = parseFloat(document.getElementById("food").value);
         console.log("Food stores: " + foodStores + " lbs");
         
         // feed each player according to their eating rate
@@ -536,7 +536,7 @@
             let player = players[i];
             console.log("Calcualating needs for " + player.name);
 
-            let foodToEat = parseInt(player.eatingRate);
+            let foodToEat = parseFloat(document.getElementById(player.name + "-eating-rate").value);
             console.log(player.name + " needs " + foodToEat + " pounds of food today.");
 
             if (foodToEat === 0)
