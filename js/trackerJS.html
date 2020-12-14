@@ -815,4 +815,27 @@
         }
     }
 
+    function setRatesForAll(id, cutID)
+    {
+        let playerGrid = document.getElementById("player-grid");
+
+        if (playerGrid.childElementCount <= 0)
+        {
+            addNarratorMessage("No players to set values for.");
+        }
+        else
+        {
+            let newVal = document.getElementById(id).value;
+
+            for (let i = 0; i < playerGrid.childElementCount; i++)
+            {
+                let currentPlayerName = playerGrid.children[i].id;
+                let select = document.getElementById(currentPlayerName + cutID);
+                select.value = newVal;
+            }
+
+            addNarratorMessage('Value "' + newVal + '" set.');
+        }
+    }
+
 </script>

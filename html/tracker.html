@@ -82,7 +82,7 @@
                             <option value="0.5">0.5 lb/day</option>
                             <option value="1">1 lb/day</option>
                         </select>
-                        <button>Set for All</button>
+                        <button onclick="setRatesForAll('party-eating-rate', '-eating-rate')">Set for All</button>
                     </div>
                     <div class="block">
                         <label for="party-drinking-rate">Party Drinking Rate:</label>
@@ -92,7 +92,7 @@
                             <option value="1">1 gal/day</option>
                             <option value="2">2 gal/day</option>
                         </select>
-                        <button>Set for All</button>
+                        <button onclick="setRatesForAll('party-drinking-rate', '-drinking-rate')">Set for All</button>
                     </div>
                     <div class="block">
                         <label for="party-lifestyle">Party Lifestyle:</label>
@@ -104,7 +104,7 @@
                             <option value="Wealthy">Wealthy</option>
                             <option value="Aristocratic">Aristocratic</option>
                         </select>
-                        <button>Set for All</button>
+                        <button onclick="setRatesForAll('party-lifestyle', '-lifestyle')">Set for All</button>
                     </div>
                     <div class="block">
                         <button>All Eat</button>
