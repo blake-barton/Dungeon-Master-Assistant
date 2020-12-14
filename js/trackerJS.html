@@ -524,6 +524,75 @@
 
     }
 
+    function playerEat(player, foodStores)
+    {
+        let foodToEat = parseFloat(document.getElementById(player.name + "-eating-rate").value);
+        console.log(player.name + " needs " + foodToEat + " pounds of food today.");
+
+        if (foodToEat === 0)
+        {
+            console.log("The player's eating rate is 0.");
+            // player does not eat today
+            player.maxDaysHungry--;
+
+            // set player hunger to HUNGRY
+            player.hunger = "Hungry";
+        }
+        else
+        {
+            if (foodStores - foodToEat >= 0)
+            {
+                console.log("Food stores after conditional: " + foodStores);
+                console.log("There is enough food to eat")
+
+                foodStores -= foodToEat;                    // decrease stores
+                console.log("New food stores: " + foodStores);
+
+                document.getElementById("food").value = foodStores;
+
+                if (foodToEat === 1)
+                {
+                    // full pound of food
+                    player.maxDaysHungry = parseInt(player.conmod) + 3;   // reset player food counter
+                    player.hunger = "Satiated";
+                }
+                else
+                {
+                    // half pound
+                    player.maxDaysHungry -= 0.5;
+                    player.hunger = "Hungry";
+                }
+            }
+            else
+            {
+                // player does not eat today
+                player.maxDaysHungry--;
+
+                // set player hunger to HUNGRY
+                player.hunger = "Hungry";
+            }
+        }
+
+        if (player.maxDaysHungry <= 0)
+        {
+            // if player is starving, increase exhaustion
+            if (player.exhaustion < 6)
+            {
+                player.exhaustion = parseInt(player.exhaustion) + 1;
+            }
+            
+            // set player hunger to STARVING
+            player.hunger = "Starving";
+
+            addNarratorMessage(player.name + " is starving.");
+        }
+    }
+
+    function playerDrink(player, foodStores)
+    {
+        console.log(player.name + " is drinking.");
+    }
+
     function calculatePartyNeeds(players)
     {
         // get food stores
@@ -536,68 +605,8 @@
             let player = players[i];
             console.log("Calcualating needs for " + player.name);
 
-            let foodToEat = parseFloat(document.getElementById(player.name + "-eating-rate").value);
-            console.log(player.name + " needs " + foodToEat + " pounds of food today.");
-
-            if (foodToEat === 0)
-            {
-                console.log("The player's eating rate is 0.");
-                // player does not eat today
-                player.maxDaysHungry--;
-
-                // set player hunger to HUNGRY
-                player.hunger = "Hungry";
-            }
-            else
-            {
-                if (foodStores - foodToEat >= 0)
-                {
-                    console.log("Food stores after conditional: " + foodStores);
-                    console.log("There is enough food to eat")
-
-                    foodStores -= foodToEat;                    // decrease stores
-                    console.log("New food stores: " + foodStores);
-
-                    document.getElementById("food").value = foodStores;
-
-                    if (foodToEat === 1)
-                    {
-                        // full pound of food
-                        player.maxDaysHungry = parseInt(player.conmod) + 3;   // reset player food counter
-                        player.hunger = "Satiated";
-                    }
-                    else
-                    {
-                        // half pound
-                        player.maxDaysHungry -= 0.5;
-                        player.hunger = "Hungry";
-                    }
-                }
-                else
-                {
-                    // player does not eat today
-                    player.maxDaysHungry--;
-
-                    // set player hunger to HUNGRY
-                    player.hunger = "Hungry";
-                }
-            }
-
-            if (player.maxDaysHungry <= 0)
-            {
-                // if player is starving, increase exhaustion
-                if (player.exhaustion < 6)
-                {
-                    player.exhaustion = parseInt(player.exhaustion) + 1;
-                }
-                
-                // set player hunger to STARVING
-                player.hunger = "Starving";
-
-                addNarratorMessage(player.name + " is starving.");
-            }
-
-            // water
+            playerEat(player, foodStores);
+            playerDrink(player, foodStores);
         }
 
         
