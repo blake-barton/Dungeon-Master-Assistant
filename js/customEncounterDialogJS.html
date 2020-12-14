@@ -1,28 +1,58 @@
 <script>
 
+    // return true if there are empty fields
+    function detectErrors(form)
+    {
+        if (form.name.value === "")
+        {
+            return true;
+        }
+        else if (form.ambush.value === "")
+        {
+            return true;
+        }
+        else if (form.description.value === "")
+        {
+            return true;
+        }
+
+        return false;
+    }
+
     function getResults(formID)
     {
         let form = document.getElementById(formID);
 
-        // assign true/false value to isAmbush
-        let isAmbush = false;
-        if (form.ambush.value === "true")
+        let emptyFields = detectErrors(form);
+        if (emptyFields)
         {
-            isAmbush = true;
+            let errorDiv = document.getElementById("error-div");
+            errorDiv.style.display = "block";
+            let errorMessage = document.getElementById("error-message");
+            errorMessage.innerHTML = "Error: Cannot submit an encounter with empty fields.";
         }
+        else
+        {
+            // assign true/false value to isAmbush
+            let isAmbush = false;
+            if (form.ambush.value === "true")
+            {
+                isAmbush = true;
+            }
 
-        let newEncounter = {
-            "name": form.name.value,
-            "isAmbush": isAmbush,
-            "terrain": form.terrain.value,
-            "description": form.description.value
+            let newEncounter = {
+                "name": form.name.value,
+                "isAmbush": isAmbush,
+                "terrain": form.terrain.value,
+                "description": form.description.value
+            }
+            
+            // pass to server
+            google.script.run.appendJSON(newEncounter, 'DMAssistantEncounters', 'encounterList.json');
+
+            alert(newEncounter.name + " successfully created.");
+            google.script.host.close();
         }
-        
-        // pass to server
-        google.script.run.appendJSON(newEncounter, 'DMAssistantEncounters', 'encounterList.json');
-
-        alert(newEncounter.name + " successfully created.");
-        google.script.host.close();
     }
     
 </script>
