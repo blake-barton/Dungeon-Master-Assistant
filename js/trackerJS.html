@@ -520,8 +520,12 @@
 
         // exhaustion
         let exhaustion = document.getElementById(player.name + "-exhaustion");
-        exhaustion.innerHTML = "<b>Exhaustion Level: </b>" + player.exhaustion;
 
+        if (player.exhaustion > 6)
+        {
+            player.exhaustion = 6;
+        }
+        exhaustion.innerHTML = "<b>Exhaustion Level: </b>" + player.exhaustion;
     }
 
     function playerEat(player, foodStores)
@@ -588,25 +592,110 @@
         }
     }
 
-    function playerDrink(player, foodStores)
+    function playerDrink(player, waterStores)
     {
-        console.log(player.name + " is drinking.");
+        // get player's drinking rate
+        let waterToDrink = parseFloat(document.getElementById(player.name + "-drinking-rate").value);
+
+        // get how much water the player needs to drink
+        let waterNeeded = 1;
+        if (document.getElementById("temperature").value === "Hot")
+        {
+            waterNeeded = 2;
+        }
+
+        if (waterToDrink === 0 || waterStores - waterToDrink < 0)
+        {
+            // no water today, player increases exhaustion and becomes dehydrated
+            player.thirst = "Dehydrated";
+            addNarratorMessage(player.name + " is dehydrated.");
+            
+            if (parseInt(player.exhaustion) > 0)
+            {
+                player.exhaustion = parseInt(player.exhaustion) + 2;
+            }
+            else
+            {
+                player.exhaustion = parseInt(player.exhaustion) + 1;
+            }
+        }
+        else
+        {
+            // enough water in storage, decrease
+            waterStores -= waterToDrink;
+            document.getElementById("water").value = waterStores;
+
+            if (waterToDrink < waterNeeded / 2)
+            {
+                addNarratorMessage(player.name + " is dehydrated.");
+                player.thirst = "Dehydrated";
+
+                // drinking less than half, automatically one level
+                if (parseInt(player.exhaustion) > 0)
+                {
+                    player.exhaustion = parseInt(player.exhaustion) + 2;
+                }
+                else
+                {
+                    player.exhaustion = parseInt(player.exhaustion) + 1;
+                }
+            }
+            else if (waterToDrink < waterNeeded)
+            {
+                // less than needed, roll DC 15 con save
+                let roll = Math.floor(Math.random() * 20) + 1; // returns a random integer from 1 to 20
+                roll += parseInt(player.conmod);               // add player's constitution modifier
+
+                if (roll < 15)
+                {
+                    addNarratorMessage(player.name + " fails their hydration save with a " + roll + ".");
+                    addNarratorMessage(player.name + " is dehydrated.");
+                    player.thirst = "Dehydrated";
+
+                    // fail
+                    if (parseInt(player.exhaustion) > 0)
+                    {
+                        player.exhaustion = parseInt(player.exhaustion) + 2;
+                    }
+                    else
+                    {
+                        player.exhaustion = parseInt(player.exhaustion) + 1;
+                    }
+                }
+                else
+                {
+                    // succeed
+                    // drinking enough, set hydrated
+                    addNarratorMessage(player.name + " passes their hydration save with a " + roll + ".");
+                    player.thirst = "Hydrated";
+                }
+            }
+            else
+            {
+                // drinking enough, set hydrated
+                player.thirst = "Hydrated";
+            }
+        }
     }
 
     function calculatePartyNeeds(players)
     {
-        // get food stores
-        let foodStores = parseFloat(document.getElementById("food").value);
-        console.log("Food stores: " + foodStores + " lbs");
         
         // feed each player according to their eating rate
         for (let i = 0; i < players.length; i++)
         {
+            // get food stores
+            let foodStores = parseFloat(document.getElementById("food").value);
+            let waterStores = parseFloat(document.getElementById("water").value);
+
+            console.log("Food stores: " + foodStores + " lbs");
+            console.log("Water stores: " + waterStores + " gal");
+
             let player = players[i];
-            console.log("Calcualating needs for " + player.name);
+            console.log("Calculating needs for " + player.name);
 
             playerEat(player, foodStores);
-            playerDrink(player, foodStores);
+            playerDrink(player, waterStores);
         }
 
         
