@@ -1,29 +1,62 @@
 <script>
 
+    let errorMessage = "";
+
+    // return true if there are empty fields
+    function detectErrors(form)
+    {
+        if (form.name.value === "")
+        {
+            return true;
+        }
+        else if (form.perception.value === "")
+        {
+            return true;
+        }
+        else if (form.conmod.value === "")
+        {
+            return true;
+        }
+
+        return false;
+    }
+
     function getResults(formID)
     {
         let form = document.getElementById(formID);
-        let maxDaysHungry = parseInt(form.conmod.value) + 3;
 
-        let newPlayer = {
-            "name": form.name.value,
-            "perception": form.perception.value,
-            "conmod": form.conmod.value,
-            "hunger": form.hunger.value,
-            "thirst": form.thirst.value,
-            "exhaustion": form.exhaustion.value,
-            "eatingRate": form.eatingRate.value,
-            "drinkingRate": form.drinkingRate.value,
-            "order": form.order.value,
-            "lifestyle": form.lifestyle.value,
-            "maxDaysHungry": maxDaysHungry
+        let emptyFields = detectErrors(form);
+        if (emptyFields)
+        {
+            let errorDiv = document.getElementById("error-div");
+            errorDiv.style.display = "block";
+            let errorMessage = document.getElementById("error-message");
+            errorMessage.innerHTML = "Error: Cannot submit a player with empty fields.";
         }
-        
-        // pass to server
-        google.script.run.appendJSON(newPlayer, 'DMAssistantPlayers', 'playerList.json');
+        else
+        {
+            let maxDaysHungry = parseInt(form.conmod.value) + 3;
 
-        alert(newPlayer.name + " successfully created.");
-        google.script.host.close();
+            let newPlayer = {
+                "name": form.name.value,
+                "perception": form.perception.value,
+                "conmod": form.conmod.value,
+                "hunger": form.hunger.value,
+                "thirst": form.thirst.value,
+                "exhaustion": form.exhaustion.value,
+                "eatingRate": form.eatingRate.value,
+                "drinkingRate": form.drinkingRate.value,
+                "order": form.order.value,
+                "lifestyle": form.lifestyle.value,
+                "maxDaysHungry": maxDaysHungry
+            }
+            
+            // pass to server
+            google.script.run.appendJSON(newPlayer, 'DMAssistantPlayers', 'playerList.json');
+
+            alert(newPlayer.name + " successfully created.");
+            google.script.host.close();
+        }
     }
     
 </script>

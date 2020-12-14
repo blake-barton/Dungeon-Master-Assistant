@@ -106,6 +106,9 @@
             <button type="submit" class="blue" id="save" onclick="getResults('player-form')">Save Player</button>
             <input type="button" value="Cancel" onclick="google.script.host.close()" />
         </div>
+        <div id="error-div" style="display: none;">
+            <span id="error-message"></span>
+        </div>
 
         <?!= include('addPlayerDialogJS'); ?>
     </body>
