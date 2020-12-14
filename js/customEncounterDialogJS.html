@@ -28,7 +28,6 @@
         // empty field check
         let emptyFields = detectErrors(form);
 
-        console.log("is duplicate = " + isDuplicate);
         if (emptyFields)
         {
             handleError("Error: Cannot submit an encounter with empty fields.");
@@ -64,14 +63,11 @@
     function checkForDuplicates(terrainList, name)
     {
         let duplicateFound = false;
-        console.log("checking duplicates");
         // loop through list to check for duplicate names
         for (let i = 0; i < terrainList.length; i++)
         {
-            console.log("Comparing against: " + terrainList[i].name);
             if (terrainList[i].name === name)
             {
-                console.log("this is a duplicate");
                 isDuplicate = true;
                 duplicateFound = true;
             }
@@ -98,7 +94,6 @@
         let form = document.getElementById(formID);
 
         // duplicate check
-        console.log("about to check duplicates");
         google.script.run.withSuccessHandler(checkForDuplicates).withUserObject(form.name.value).selectEncounterTerrain(form.terrain.value);
     }
     
