@@ -7,7 +7,7 @@
 * Creation/storage of custom items (will not be placed into loot tables)
 
 ## Currently Planned Features
-* Right now I'm working on an Exploration Tracker, which aims to assist DMs in keeping track of time, distance, and survival stats such as hunger, thirst, and water when a party goes through overworld travel. Currently in early stages.
+* Done working for the forseeable future. Might work on minor things like bugfixes or duplicate protection for monsters/items sometime, but right now the effects of duplicates aren't a big deal for those two.
 
 ## How it Works
 ### Custom Monsters/Items
@@ -15,6 +15,16 @@ When a DM Assistant is installed and a Google Doc is open, the add-on will creat
 
 ### Random Loot Generation
 The user can roll for both Treasure Hoards and Individual loot as a function of challenge rating. The results will be displayed in a text box which can be directly inserted into the doc.
+
+### The Exploration Tracker
+Ever have difficulty tracking time while the party travels? Or feel too overwhelmed by the idea of tracking exhaustion to even bother? This module attempts to alleviate the DM's burden of tracking player survival on long journeys and make travel part of the game.
+
+#### Add Players and Random Encounters
+* Add players to let the system track their hunger, thirst, exhaustion, lifestyle, and more.
+
+#### Add Random Encounters
+* Customize in the tracker how often they fire, and whether or not they classify as an ambush or track.
+* Broken up by terrain so different encounters appear in different lands.
 
 ## Known Bugs/Quirks
 * Searching for monsters with duplicate names will mark both of them. Hitting collapse all twice will unmark both. It's recommended that you don't create monsters with duplicate names.
