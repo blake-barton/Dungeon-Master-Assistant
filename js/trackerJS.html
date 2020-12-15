@@ -886,39 +886,46 @@
             {
                 // random encounter!
                 let encounterList = JSON.parse(document.getElementById(terrain).innerHTML);
-
-                // randomly choose an encounter from the list
-                let numEncounters = encounterList.length;
-                let randomIndex = Math.floor(Math.random() * numEncounters); // returns an integer from 0 to numEncounters - 1
-                let encounter = encounterList[randomIndex];
-
-                // print ambush message
-                if (encounter.isAmbush)
+                
+                if (encounterList.length === 0)
                 {
-                    addNarratorMessage("Ambush!");
-
-                    // if party is slow, print stealthy message
-                    if (travelSpeed === "slow")
-                    {
-                        addNarratorMessage("The party has a chance to sneak.");
-                    }
-
-                    // TODO: get highest passive perceptions in front and back ranks
-                    let mostPerceptiveFront = getMostPerceptivePlayer(players, "Front");
-                    let mostPerceptiveBack = getMostPerceptivePlayer(players, "Back");
-
-                    if (mostPerceptiveFront !== "")
-                    {
-                        addNarratorMessage(mostPerceptiveFront.name + " has a chance to spot the ambush/trap if it's in front of the party (Perception = " + mostPerceptiveFront.perception + ")");
-                    }
-                    if (mostPerceptiveBack !== "")
-                    {
-                        addNarratorMessage(mostPerceptiveBack.name + " has a chance to spot the ambush/trap if it's behind the party (Perception = " + mostPerceptiveBack.perception + ")");
-                    }
+                    addNarratorMessage("The DM has not created any " + terrain + " random encounters.");
                 }
+                else
+                {
+                    // randomly choose an encounter from the list
+                    let numEncounters = encounterList.length;
+                    let randomIndex = Math.floor(Math.random() * numEncounters); // returns an integer from 0 to numEncounters - 1
+                    let encounter = encounterList[randomIndex];
 
-                // print description
-                addNarratorMessage(encounter.description);
+                    // print ambush message
+                    if (encounter.isAmbush)
+                    {
+                        addNarratorMessage("Ambush!");
+
+                        // if party is slow, print stealthy message
+                        if (travelSpeed === "slow")
+                        {
+                            addNarratorMessage("The party has a chance to sneak.");
+                        }
+
+                        // TODO: get highest passive perceptions in front and back ranks
+                        let mostPerceptiveFront = getMostPerceptivePlayer(players, "Front");
+                        let mostPerceptiveBack = getMostPerceptivePlayer(players, "Back");
+
+                        if (mostPerceptiveFront !== "")
+                        {
+                            addNarratorMessage(mostPerceptiveFront.name + " has a chance to spot the ambush/trap if it's in front of the party (Perception = " + mostPerceptiveFront.perception + ")");
+                        }
+                        if (mostPerceptiveBack !== "")
+                        {
+                            addNarratorMessage(mostPerceptiveBack.name + " has a chance to spot the ambush/trap if it's behind the party (Perception = " + mostPerceptiveBack.perception + ")");
+                        }
+                    }
+
+                    // print description
+                    addNarratorMessage(encounter.description);
+                }
             }
             else
             {
@@ -1025,19 +1032,26 @@
                     // random encounter!
                     let encounterList = JSON.parse(document.getElementById(terrain).innerHTML);
 
-                    // randomly choose an encounter from the list
-                    let numEncounters = encounterList.length;
-                    let randomIndex = Math.floor(Math.random() * numEncounters); // returns an integer from 0 to numEncounters - 1
-                    let encounter = encounterList[randomIndex];
-
-                    // print ambush message
-                    if (encounter.isAmbush)
+                    if (encounterList.length === 0)
                     {
-                        addNarratorMessage("Ambush!");
+                        addNarratorMessage("The DM has not created any " + terrain + " random encounters.");
                     }
+                    else
+                    {
+                        // randomly choose an encounter from the list
+                        let numEncounters = encounterList.length;
+                        let randomIndex = Math.floor(Math.random() * numEncounters); // returns an integer from 0 to numEncounters - 1
+                        let encounter = encounterList[randomIndex];
 
-                    // print description
-                    addNarratorMessage(encounter.description);
+                        // print ambush message
+                        if (encounter.isAmbush)
+                        {
+                            addNarratorMessage("Ambush!");
+                        }
+
+                        // print description
+                        addNarratorMessage(encounter.description);
+                    }
                 }
                 else
                 {
