@@ -927,6 +927,35 @@
 
                 time = 24;
                 updateTimeAndDistance(totalMilesCovered, time);
+
+                // random encounter chance
+                let partyForm = document.getElementById("party-form");
+                let terrain = partyForm.terrain.value;
+                let encounterChance = partyForm.encounterChance.value;
+                let roll = Math.floor(Math.random() * 100) + 1; // returns a random integer from 1 to 100
+                if (roll <= encounterChance)
+                {
+                    // random encounter!
+                    let encounterList = JSON.parse(document.getElementById(terrain).innerHTML);
+
+                    // randomly choose an encounter from the list
+                    let numEncounters = encounterList.length;
+                    let randomIndex = Math.floor(Math.random() * numEncounters); // returns an integer from 0 to numEncounters - 1
+                    let encounter = encounterList[randomIndex];
+
+                    // print ambush message
+                    if (encounter.isAmbush)
+                    {
+                        addNarratorMessage("Ambush!");
+                    }
+
+                    // print description
+                    addNarratorMessage(encounter.description);
+                }
+                else
+                {
+                    addNarratorMessage("The party enjoys a quiet long rest.");
+                }
             }
             else if (!isFood && isWater)
             {
