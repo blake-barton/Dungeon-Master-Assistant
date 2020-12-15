@@ -1059,4 +1059,35 @@
         }
     }
 
+    function setNewSelects(players)
+    {
+        for (let i = 0; i < players.length; i++)
+        {
+            // eating rate
+            players[i].eatingRate = document.getElementById(players[i].name + "-eating-rate").value;
+
+            // drinking rate
+            players[i].drinkingRate = document.getElementById(players[i].name + "-drinking-rate").value;
+
+            // order
+            players[i].order = document.getElementById(players[i].name + "-marching-order").value;
+
+            // lifestyle
+            players[i].lifestyle = document.getElementById(players[i].name + "-lifestyle").value;
+        }
+    }
+
+    function sendFinishedSavingMessage(response)
+    {
+        addNarratorMessage("Saving complete!");
+    }
+
+    function savePlayersToDrive()
+    {
+        addNarratorMessage("Saving players... Please do not exit the window.");
+        let players = getPlayerStats();
+        setNewSelects(players);
+        google.script.run.withSuccessHandler(sendFinishedSavingMessage).savePlayers(players);
+    }
+
 </script>

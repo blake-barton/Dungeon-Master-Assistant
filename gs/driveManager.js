@@ -30,6 +30,29 @@ function appendJSON(newJSON, folderName, filename)
     }
 }
 
+function replaceJSON(newJSON, folderName, filename)
+{
+    // access json file
+    var folderList = DriveApp.getFoldersByName(folderName);
+    if (folderList.hasNext())
+    {
+        var folder = folderList.next();
+
+        var fileList = folder.getFilesByName(filename);
+        while (fileList.hasNext())
+        {
+            // found matching file
+            var file = fileList.next();
+
+            // stringify array
+            jsonText = JSON.stringify(newJSON);
+
+            // set new content
+            file.setContent(jsonText);
+        }
+    }
+}
+
 // pulling all objects to be displayed as a list
 function generateObjectArray(folderName, filename)
 {
