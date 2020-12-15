@@ -443,11 +443,12 @@
         google.script.run.withSuccessHandler(displayPlayerList).generateObjectArray('DMAssistantPlayers', 'playerList.json');
     }
 
-    function addNarratorMessage(message)
+    function addNarratorMessage(message, color = "green")
     {
         let narrator = document.getElementById("narrator");
         let updateText = document.createElement("p");
         updateText.classList.add("message");
+        updateText.classList.add(color);
         updateText.innerHTML = "> " + message;
         narrator.appendChild(updateText);
 
@@ -607,7 +608,7 @@
             // set player hunger to STARVING
             player.hunger = "Starving";
 
-            addNarratorMessage(player.name + " is starving.");
+            addNarratorMessage(player.name + " is starving.", "red");
         }
     }
 
@@ -627,7 +628,7 @@
         {
             // no water today, player increases exhaustion and becomes dehydrated
             player.thirst = "Dehydrated";
-            addNarratorMessage(player.name + " is dehydrated.");
+            addNarratorMessage(player.name + " is dehydrated.", "red");
             
             if (parseInt(player.exhaustion) > 0)
             {
@@ -646,7 +647,7 @@
 
             if (waterToDrink < waterNeeded / 2)
             {
-                addNarratorMessage(player.name + " is dehydrated.");
+                addNarratorMessage(player.name + " is dehydrated.", "red");
                 player.thirst = "Dehydrated";
 
                 // drinking less than half, automatically one level
@@ -667,8 +668,8 @@
 
                 if (roll < 15)
                 {
-                    addNarratorMessage(player.name + " fails their hydration save with a " + roll + ".");
-                    addNarratorMessage(player.name + " is dehydrated.");
+                    addNarratorMessage(player.name + " fails their hydration save with a " + roll + ".", "yellow");
+                    addNarratorMessage(player.name + " is dehydrated.", "red");
                     player.thirst = "Dehydrated";
 
                     // fail
@@ -685,7 +686,7 @@
                 {
                     // succeed
                     // drinking enough, set hydrated
-                    addNarratorMessage(player.name + " passes their hydration save with a " + roll + ".");
+                    addNarratorMessage(player.name + " passes their hydration save with a " + roll + ".", "blue");
                     player.thirst = "Hydrated";
                 }
             }
@@ -806,7 +807,7 @@
 
         if (players.length === 0)
         {
-            addNarratorMessage("An empty party cannot move!");
+            addNarratorMessage("An empty party cannot move!", "yellow");
         }
         else
         {
@@ -866,7 +867,7 @@
                 
                 if (encounterList.length === 0)
                 {
-                    addNarratorMessage("The DM has not created any " + terrain + " random encounters.");
+                    addNarratorMessage("The DM has not created any " + terrain + " random encounters.", "yellow");
                 }
                 else
                 {
@@ -878,12 +879,12 @@
                     // print ambush message
                     if (encounter.isAmbush)
                     {
-                        addNarratorMessage("Ambush!");
+                        addNarratorMessage("Ambush!", "red");
 
                         // if party is slow, print stealthy message
                         if (travelSpeed === "slow")
                         {
-                            addNarratorMessage("The party has a chance to sneak.");
+                            addNarratorMessage("The party has a chance to sneak.", "purple");
                         }
 
                         // TODO: get highest passive perceptions in front and back ranks
@@ -892,11 +893,11 @@
 
                         if (mostPerceptiveFront !== "")
                         {
-                            addNarratorMessage(mostPerceptiveFront.name + " has a chance to spot the ambush/trap if it's in front of the party (Perception = " + mostPerceptiveFront.perception + ")");
+                            addNarratorMessage(mostPerceptiveFront.name + " has a chance to spot the ambush/trap if it's in front of the party (Perception = " + mostPerceptiveFront.perception + ")", "purple");
                         }
                         if (mostPerceptiveBack !== "")
                         {
-                            addNarratorMessage(mostPerceptiveBack.name + " has a chance to spot the ambush/trap if it's behind the party (Perception = " + mostPerceptiveBack.perception + ")");
+                            addNarratorMessage(mostPerceptiveBack.name + " has a chance to spot the ambush/trap if it's behind the party (Perception = " + mostPerceptiveBack.perception + ")", "purple");
                         }
                     }
 
@@ -917,7 +918,7 @@
 
         if (playerGrid.childElementCount <= 0)
         {
-            addNarratorMessage("No players to set values for.");
+            addNarratorMessage("No players to set values for.", "yellow");
         }
         else
         {
@@ -976,7 +977,7 @@
 
         if (players.length === 0)
         {
-            addNarratorMessage("Cannot rest without a party!");
+            addNarratorMessage("Cannot rest without a party!", "yellow");
         }
         else
         {
@@ -1011,7 +1012,7 @@
 
                     if (encounterList.length === 0)
                     {
-                        addNarratorMessage("The DM has not created any " + terrain + " random encounters.");
+                        addNarratorMessage("The DM has not created any " + terrain + " random encounters.", "yellow");
                     }
                     else
                     {
@@ -1023,7 +1024,7 @@
                         // print ambush message
                         if (encounter.isAmbush)
                         {
-                            addNarratorMessage("Ambush!");
+                            addNarratorMessage("Ambush!", "red");
                         }
 
                         // print description
@@ -1032,20 +1033,20 @@
                 }
                 else
                 {
-                    addNarratorMessage("The party enjoys a quiet long rest.");
+                    addNarratorMessage("The party enjoys a quiet long rest.", "blue");
                 }
             }
             else if (!isFood && isWater)
             {
-                addNarratorMessage("Cannot rest without enough food for everyone!");
+                addNarratorMessage("Cannot rest without enough food for everyone!", "yellow");
             }
             else if (!isWater && isFood)
             {
-                addNarratorMessage("Cannot rest without enough water for everyone!");
+                addNarratorMessage("Cannot rest without enough water for everyone!", "yellow");
             }
             else
             {
-                addNarratorMessage("Cannot rest without enough food and water for everyone!");
+                addNarratorMessage("Cannot rest without enough food and water for everyone!", "yellow");
             }
         }
     }
@@ -1070,7 +1071,7 @@
 
     function sendFinishedSavingMessage(response)
     {
-        addNarratorMessage("Saving complete!");
+        addNarratorMessage("Saving complete!", "blue");
     }
 
     function savePlayersToDrive()
