@@ -505,8 +505,8 @@
     }
 
     // -------------- TRAVEL ---------------- //
-    let time = 24; // 24 hour cycles
-    let totalMilesCovered = 0; // miles that are covered in this travel session
+    var time = 24; // 24 hour cycles
+    var totalMilesCovered = 0; // miles that are covered in this travel session
 
     // marching order
     let frontRank = [];
@@ -862,6 +862,84 @@
             }
 
             addNarratorMessage('Value "' + newVal + '" set.');
+        }
+    }
+
+    function checkIfEnoughFood(players)
+    {
+        let totalFoodToEat = 0;
+        let foodStores = parseFloat(document.getElementById("food").value);
+
+        for (let i = 0; i < players.length; i++)
+        {
+            totalFoodToEat += parseFloat(document.getElementById(players[i].name + "-eating-rate").value);
+        }
+
+        if (foodStores >= totalFoodToEat)
+        {
+            return true;
+        }
+        
+        return false;
+    }
+
+    function checkIfEnoughWater(players)
+    {
+        let totalWaterToDrink = 0;
+        let waterStores = parseFloat(document.getElementById("water").value);
+
+        for (let i = 0; i < players.length; i++)
+        {
+            totalWaterToDrink += parseFloat(document.getElementById(players[i].name + "-drinking-rate").value);
+        }
+
+        if (waterStores >= totalWaterToDrink)
+        {
+            return true;
+        }
+        
+        return false;
+    }
+
+    function longRest()
+    {
+        let players = getPlayerStats();
+
+        if (players.length === 0)
+        {
+            addNarratorMessage("Cannot rest without a party!");
+        }
+        else
+        {
+            // check if enough food/water to feed everyone
+            let isFood = checkIfEnoughFood(players);
+            let isWater = checkIfEnoughWater(players);
+
+            // if there is, decrease everyone's exhaustion by 1 and set time to 0 (and do the feeding)
+            if (isFood && isWater)
+            {
+                calculatePartyNeeds(players);
+
+                for (let i = 0; i < players.length; i++)
+                {
+                    increaseExhaustion(players[i].name, -1);
+                }
+
+                time = 24;
+                updateTimeAndDistance(totalMilesCovered, time);
+            }
+            else if (!isFood && isWater)
+            {
+                addNarratorMessage("Cannot rest without enough food for everyone!");
+            }
+            else if (!isWater && isFood)
+            {
+                addNarratorMessage("Cannot rest without enough water for everyone!");
+            }
+            else
+            {
+                addNarratorMessage("Cannot rest without enough food and water for everyone!");
+            }
         }
     }
 
