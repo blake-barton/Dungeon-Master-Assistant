@@ -1,5 +1,7 @@
 <script>
 
+    var isDuplicate = false;
+
     // return true if there are empty fields
     function detectErrors(form)
     {
@@ -19,17 +21,18 @@
         return false;
     }
 
-    function getResults(formID)
+    function finalizeResults(formID)
     {
         let form = document.getElementById(formID);
 
         let emptyFields = detectErrors(form);
         if (emptyFields)
         {
-            let errorDiv = document.getElementById("error-div");
-            errorDiv.style.display = "block";
-            let errorMessage = document.getElementById("error-message");
-            errorMessage.innerHTML = "Error: Cannot submit a player with empty fields.";
+            handleError("Error: Cannot submit a player with empty fields.")
+        }
+        else if (isDuplicate)
+        {
+            handleError("Error: There is already a player with this name.");
         }
         else
         {
@@ -55,6 +58,43 @@
             alert(newPlayer.name + " successfully created.");
             google.script.host.close();
         }
+    }
+
+    function checkForDuplicates(playerList, name)
+    {
+        let duplicateFound = false;
+        // loop through list to check for duplicate names
+        for (let i = 0; i < playerList.length; i++)
+        {
+            if (playerList[i].name === name)
+            {
+                isDuplicate = true;
+                duplicateFound = true;
+            }
+        }
+
+        if (!duplicateFound)
+        {
+            isDuplicate = false;
+        }
+
+        finalizeResults('player-form');
+    }
+
+    function handleError(message)
+    {
+        let errorDiv = document.getElementById("error-div");
+        errorDiv.style.display = "block";
+        let errorMessage = document.getElementById("error-message");
+        errorMessage.innerHTML = message;
+    }
+
+    function getResults(formID)
+    {
+        let form = document.getElementById(formID);
+
+        // duplicate check
+        google.script.run.withSuccessHandler(checkForDuplicates).withUserObject(form.name.value).generateObjectArray('DMAssistantPlayers', 'playerList.json');
     }
     
 </script>
