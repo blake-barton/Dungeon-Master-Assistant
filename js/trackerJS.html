@@ -750,6 +750,42 @@
         hoursPara.innerHTML = "Hours until new day: " + time;
     }
 
+    function calculateLifestyleDues(players)
+    {
+        let totalDues = 0;  // returned in gp
+
+        for (let i = 0; i < players.length; i++)
+        {
+            currentLifestyle = document.getElementById(players[i].name + "-lifestyle").value;
+
+            switch (currentLifestyle)
+            {
+                case "Squalid":
+                    totalDues += 0.1;
+                    break;
+                case "Poor":
+                    totalDues += 0.2;
+                    break;
+                case "Modest":
+                    totalDues += 1;
+                    break;
+                case "Comfortable":
+                    totalDues += 2;
+                    break;
+                case "Wealthy":
+                    totalDues += 4;
+                    break;
+                case "Aristocratic":
+                    totalDues += 10;
+                    break;
+            }
+        }
+
+        totalDues = totalDues.toPrecision(3);
+
+        addNarratorMessage("If the party is in town, they owe: " + totalDues + " gp in lifestyle expenses.");
+    }
+
     function travel()
     {
         // get player data
@@ -797,9 +833,11 @@
             time--;
             if (time <= 0)
             {
+                clearNarrator();
                 addNarratorMessage("The day has passed.");
                 time = 24;
                 calculatePartyNeeds(players);
+                calculateLifestyleDues(players);
             }
 
             // move party
@@ -918,6 +956,8 @@
             // if there is, decrease everyone's exhaustion by 1 and set time to 0 (and do the feeding)
             if (isFood && isWater)
             {
+                clearNarrator();
+                calculateLifestyleDues(players);
                 calculatePartyNeeds(players);
 
                 for (let i = 0; i < players.length; i++)
