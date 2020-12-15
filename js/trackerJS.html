@@ -271,8 +271,6 @@
 
     function increaseExhaustion(playerID, amount)
     {
-        console.log("exhaustion function called.");
-
         // pull hidden data
         let player = JSON.parse(document.getElementById(playerID + "-hidden-data").innerHTML);
 
@@ -558,11 +556,9 @@
     function playerEat(player, foodStores)
     {
         let foodToEat = parseFloat(document.getElementById(player.name + "-eating-rate").value);
-        console.log(player.name + " needs " + foodToEat + " pounds of food today.");
 
         if (foodToEat === 0)
         {
-            console.log("The player's eating rate is 0.");
             // player does not eat today
             player.maxDaysHungry--;
 
@@ -573,11 +569,7 @@
         {
             if (foodStores - foodToEat >= 0)
             {
-                console.log("Food stores after conditional: " + foodStores);
-                console.log("There is enough food to eat")
-
                 foodStores -= foodToEat;                    // decrease stores
-                console.log("New food stores: " + foodStores);
 
                 document.getElementById("food").value = foodStores;
 
@@ -715,11 +707,7 @@
             let foodStores = parseFloat(document.getElementById("food").value);
             let waterStores = parseFloat(document.getElementById("water").value);
 
-            console.log("Food stores: " + foodStores + " lbs");
-            console.log("Water stores: " + waterStores + " gal");
-
             let player = players[i];
-            console.log("Calculating needs for " + player.name);
 
             playerEat(player, foodStores);
             playerDrink(player, waterStores);
@@ -791,30 +779,19 @@
         let maxPerception = 0;
         let mostPerspective = "";
 
-        console.log("Checking order: " + order);
-
         // get all players with the passed order
         for (let i = 0; i < players.length; i++)
         {
-            console.log("Checking perception of " + players[i].name);
             let currentOrder = document.getElementById(players[i].name + "-marching-order").value;
-            console.log("Order is " + currentOrder);
 
             if (currentOrder === order)
             {
-                console.log("Matching order.");
-
                 let currentPerception = parseInt(players[i].perception);
-                console.log("Perception is " + currentPerception);
-
 
                 if (currentPerception > maxPerception)
                 {
-                    console.log(currentPerception + " is greater than the current max: " + maxPerception);
                     maxPerception = currentPerception;
-                    console.log("New max: " + maxPerception);
                     mostPerspective = players[i];
-                    console.log(mostPerspective.name + " is the most perspective player in this order.");
                 }
             }
         }
