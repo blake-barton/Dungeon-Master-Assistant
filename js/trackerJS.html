@@ -235,12 +235,14 @@
         let exBtnDiv = document.createElement("div");
         let exBtn = document.createElement("button");
         exBtn.innerHTML = "+ Exhaustion";
+        exBtn.setAttribute("onclick", "increaseExhaustion('" + player.name + "', 1)");
         exBtnDiv.appendChild(exBtn);
 
         // decrease exhaustion button
         let decExBtnDiv = document.createElement("div");
         let decExBtn = document.createElement("button");
         decExBtn.innerHTML = "- Exhaustion";
+        decExBtn.setAttribute("onclick", "increaseExhaustion('" + player.name + "', -1)");
         decExBtnDiv.appendChild(decExBtn);
 
         // add buttons to block
@@ -265,6 +267,27 @@
         marchingSelect.value = player.order;
         drinkingSelect.value = player.drinkingRate;
         eatingSelect.value = player.eatingRate;
+    }
+
+    function increaseExhaustion(playerID, amount)
+    {
+        console.log("exhaustion function called.");
+
+        // pull hidden data
+        let player = JSON.parse(document.getElementById(playerID + "-hidden-data").innerHTML);
+
+        // increase exhaustion
+        let exhaustion = parseInt(player.exhaustion);
+        exhaustion += amount;
+        player.exhaustion = exhaustion;
+
+        // update visible block
+        updatePlayerBlock(player);
+
+        // update hidden data
+        let playerString = JSON.stringify(player);
+        let para = document.getElementById(player.name + "-hidden-data");
+        para.innerHTML = playerString;
     }
 
     function checkGridForDuplicates(name, playerGrid)
@@ -524,6 +547,10 @@
         if (player.exhaustion > 6)
         {
             player.exhaustion = 6;
+        }
+        else if (player.exhaustion < 0)
+        {
+            player.exhaustion = 0;
         }
         exhaustion.innerHTML = "<b>Exhaustion Level: </b>" + player.exhaustion;
     }
