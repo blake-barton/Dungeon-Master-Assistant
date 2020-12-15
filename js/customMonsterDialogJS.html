@@ -392,13 +392,6 @@
 
     function sanitizeInput(name)
     {
-        // check for quotes
-        if (name.includes('"'))
-        {
-            alert("Name cannot contain quotation marks.");
-            return true;
-        }
-
         // check for empty string
         if (name === "")
         {
