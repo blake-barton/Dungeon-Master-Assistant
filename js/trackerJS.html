@@ -783,7 +783,43 @@
 
         totalDues = totalDues.toPrecision(3);
 
-        addNarratorMessage("If the party is in town, they owe: " + totalDues + " gp in lifestyle expenses.");
+        addNarratorMessage("If the party is in town, they owe " + totalDues + " gp in lifestyle expenses.");
+    }
+
+    function getMostPerceptivePlayer(players, order)
+    {
+        let maxPerception = 0;
+        let mostPerspective = "";
+
+        console.log("Checking order: " + order);
+
+        // get all players with the passed order
+        for (let i = 0; i < players.length; i++)
+        {
+            console.log("Checking perception of " + players[i].name);
+            let currentOrder = document.getElementById(players[i].name + "-marching-order").value;
+            console.log("Order is " + currentOrder);
+
+            if (currentOrder === order)
+            {
+                console.log("Matching order.");
+
+                let currentPerception = parseInt(players[i].perception);
+                console.log("Perception is " + currentPerception);
+
+
+                if (currentPerception > maxPerception)
+                {
+                    console.log(currentPerception + " is greater than the current max: " + maxPerception);
+                    maxPerception = currentPerception;
+                    console.log("New max: " + maxPerception);
+                    mostPerspective = players[i];
+                    console.log(mostPerspective.name + " is the most perspective player in this order.");
+                }
+            }
+        }
+        
+        return mostPerspective;
     }
 
     function travel()
@@ -868,6 +904,17 @@
                     }
 
                     // TODO: get highest passive perceptions in front and back ranks
+                    let mostPerceptiveFront = getMostPerceptivePlayer(players, "Front");
+                    let mostPerceptiveBack = getMostPerceptivePlayer(players, "Back");
+
+                    if (mostPerceptiveFront !== "")
+                    {
+                        addNarratorMessage(mostPerceptiveFront.name + " has a chance to spot the ambush/trap if it's in front of the party (Perception = " + mostPerceptiveFront.perception + ")");
+                    }
+                    if (mostPerceptiveBack !== "")
+                    {
+                        addNarratorMessage(mostPerceptiveBack.name + " has a chance to spot the ambush/trap if it's behind the party (Perception = " + mostPerceptiveBack.perception + ")");
+                    }
                 }
 
                 // print description
